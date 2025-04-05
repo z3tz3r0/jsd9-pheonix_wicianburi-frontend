@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- พื้นหลัง -->
+  <rect width="800" height="400" fill="#f8f3e6" rx="10" ry="10"/>
+  <rect x="10" y="10" width="780" height="380" fill="#fafafa" rx="5" ry="5" stroke="#e0c9a6" stroke-width="3"/>
+  
+  <!-- ลายไทยตกแต่ง -->
+  <path d="M0,50 Q200,20 400,50 T800,50" fill="none" stroke="#e0c9a6" stroke-width="3"/>
+  <path d="M0,350 Q200,380 400,350 T800,350" fill="none" stroke="#e0c9a6" stroke-width="3"/>
+  
+  <!-- รูปข้าวเหนียว -->
+  <ellipse cx="200" cy="200" rx="120" ry="80" fill="#ffffff" stroke="#d4b483" stroke-width="3"/>
+  <ellipse cx="190" cy="190" rx="100" ry="60" fill="#fefefe" stroke="#d4b483" stroke-width="1"/>
+  
+  <!-- ใบตอง -->
+  <path d="M70,200 Q110,170 200,190 T330,200" fill="#7ca82b" stroke="#5a7b1f" stroke-width="2"/>
+  <path d="M80,210 Q120,180 200,200 T320,210" fill="#8eba39" stroke="#5a7b1f" stroke-width="1"/>
+  
+  <!-- ข้อความโปรโมชั่น -->
+  <text x="400" y="160" font-family="Arial, sans-serif" font-size="50" font-weight="bold" text-anchor="middle" fill="#8b4513">โปรโมชั่นพิเศษ!</text>
+  <text x="400" y="220" font-family="Arial, sans-serif" font-size="45" font-weight="bold" text-anchor="middle" fill="#d4b483">ข้าวเหนียวทุกชนิด</text>
+  
+  <!-- แถบสีแดงสำหรับส่วนลด -->
+  <rect x="300" y="240" width="200" height="80" rx="40" ry="40" fill="#e74c3c"/>
+  <text x="400" y="295" font-family="Arial, sans-serif" font-size="50" font-weight="bold" text-anchor="middle" fill="#ffffff">ลด 10%</text>
+  
+  <!-- คำอธิบายเงื่อนไข -->
+  <text x="400" y="360" font-family="Arial, sans-serif" font-size="20" font-style="italic" text-anchor="middle" fill="#8b4513">*โปรโมชั่นถึงสิ้นเดือนนี้เท่านั้น</text>
+</svg>
