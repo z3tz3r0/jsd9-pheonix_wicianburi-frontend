@@ -26,6 +26,7 @@
 .logo-text {
   font-family: var(--ff-eng);
   @apply text-2xl font-bold ml-1
+
 }
 
 .nav-menu {
@@ -42,5 +43,4 @@
   @apply text-sm text-[var(--clr-gray)]
 
 }
-
 
