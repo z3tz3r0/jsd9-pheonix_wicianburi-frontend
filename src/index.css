@@ -1,46 +1,45 @@
 @import "tailwindcss";
 
-:root {
-  --clr-primary: #FAF9F6;
-  --clr-secondary: #01C9AC;
-  --clr-accent: #FF9F00;
-  --clr-black: #242124;
-  --clr-gray: #D3D3D3;
-  --clr-slategray: #708090;
-  --clr-footer: #6A7773;
-  --ff-main: 'Noto Sans Thai', sans-serif;
-  --ff-eng: 'Noto Sans Thai', sans-serif;
-  
+/* 
+อย่าใช้ :root แต่ให้ใช้ @theme แบบด้านล่าง นี้แทน
+ดูวิธีประกาศได้จาก https://tailwindcss.com/docs/theme#theme-variable-namespaces
+*/
+
+@theme {
+    --color-primary: #faf9f6;
+    --color-secondary: #01c9ac;
+    --color-accent: #ff9f00;
+    --color-black: #242124;
+    --color-gray: #d3d3d3;
+    --color-slategray: #708090;
+    --color-footer: #6a7773;
+    --font-main: "Noto Sans Thai", sans-serif;
 }
 
 @layer base {
-  body {
-    font-family: var(--ff-main);
-    background-color: var(--clr-primary)
-  }
-  footer {
-    background-color: var(--clr-footer);
-  }
+    body {
+        font-family: var(--font-main);
+        background-color: var(--color-primary);
+    }
+    footer {
+        background-color: var(--color-footer);
+    }
 }
 
-.logo-text {
-  font-family: var(--ff-eng);
-  @apply text-2xl font-bold ml-1
+@layer components {
+    .logo-text {
+        @apply ml-1 text-2xl font-bold font-main;
+    }
+
+    .nav-menu {
+        @apply mx-4 text-base font-bold text-slategray;
+    }
+
+    .footer-menu {
+        @apply mb-4 text-sm text-primary;
+    }
+
+    .footer-text {
+        @apply text-sm text-gray;
+    }
 }
-
-.nav-menu {
-  @apply text-base font-bold mx-4 text-[var(--clr-slategray)]
-
-}
-
-.footer-menu {
-  @apply text-sm mb-4  text-[var(--clr-primary)]
-
-}
-
-.footer-text {
-  @apply text-sm text-[var(--clr-gray)]
-
-}
-
-
