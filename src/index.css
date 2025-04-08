@@ -32,11 +32,11 @@
     }
 
     .nav-menu {
-        @apply mx-4 text-base font-bold text-slategray;
+        @apply mx-4 text-base font-bold text-slategray transform transition-transform duration-600 hover:text-accent hover:-translate-y-2;
     }
 
     .footer-menu {
-        @apply mb-4 text-sm text-primary;
+        @apply mb-4 text-sm text-primary transform transition-transform duration-600 hover:text-accent hover:-translate-y-1;
     }
 
     .footer-text {
