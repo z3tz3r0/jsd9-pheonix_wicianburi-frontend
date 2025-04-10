@@ -19,6 +19,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router": "^7.5.0",
+    "react-thailand-address-autocomplete": "^0.0.6",
     "swiper": "^11.2.6",
     "tailwindcss": "^4.1.3"
   },
