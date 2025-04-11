@@ -28,18 +28,22 @@
 
 @layer components {
     .logo-text {
-        @apply ml-1 text-2xl font-bold font-main;
+        @apply ml-1 text-2xl font-bold font-main text-nowrap;
     }
 
     .nav-menu {
-        @apply mx-4 text-base font-bold text-slategray transform transition-transform duration-600 hover:text-accent hover:-translate-y-2;
+        @apply mx-4 text-base font-bold text-slategray text-nowrap transform transition-transform duration-600 hover:text-accent hover:-translate-y-2;
     }
 
     .footer-menu {
-        @apply mb-4 text-sm text-primary transform transition-transform duration-600 hover:text-accent hover:-translate-y-1;
+        @apply mb-4 text-sm text-primary transform transition-transform duration-600 hover:text-accent hover:-translate-y-1 text-nowrap;
     }
 
     .footer-text {
-        @apply text-sm text-gray;
+        @apply text-sm text-gray text-nowrap;
+    }
+
+    .hero-section {
+        background-image: url('assets/hero-background.png');
     }
 }
