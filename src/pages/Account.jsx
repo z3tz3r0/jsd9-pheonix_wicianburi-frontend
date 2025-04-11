@@ -1,8 +1,11 @@
 import React from 'react'
+import ContainerAccount from '../containers/containerAccount/ContainerAccount'
 
 const Account = () => {
     return (
-        <div>Account</div>
+        <>
+            <ContainerAccount />
+        </>
     )
 }
 

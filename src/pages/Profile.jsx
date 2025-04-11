@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router'
+import Account from './Account'
 
 const Profile = () => {
     return (
