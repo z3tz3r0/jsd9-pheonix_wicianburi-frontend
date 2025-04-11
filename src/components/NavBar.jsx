@@ -5,6 +5,8 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import { Badge } from '@mui/material';
+
 
 const UserPopUp = ({isOpen = false, onClose = () => {}}) => {
   if (!isOpen) return null;
@@ -63,8 +65,8 @@ const SideBar = ({ isOpen, onClose }) => {
             <NavLink to='contact' onClick={onClose} className="block">ติดต่อเรา</NavLink>
           </li>
         </ul>
-        <div className="p-4 border-t">
-          <div className="flex items-center py-2">
+        <div className="p-4 bg-accent">
+          <div className="flex items-center py-2 text-primary">
             <NavLink to="cart" onClick={onClose}>
               <ShoppingCartOutlinedIcon className="mr-2" />
               ตะกร้าสินค้า
@@ -129,7 +131,7 @@ const NavBar = () => {
         <div className='flex ml-4 sm:items-center'>
           <figure className='flex items-center'>
             <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
-            <p className="logo-text ml-2">All Rice</p>
+            <p className="logo-text ml-2">ออลไรซ์</p>
           </figure>
           <ul className='hidden ml-10 sm:flex'>
             <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
@@ -140,7 +142,9 @@ const NavBar = () => {
         </div>
         <div className='flex mr-4 items-center'>
           <NavLink to='cart'>
-            <ShoppingCartOutlinedIcon />
+            <Badge badgeContent={5} color="error">
+              <ShoppingCartOutlinedIcon />
+            </Badge>
           </NavLink>
           <div className='profile-icon mx-6 hover:cursor-pointer relative'>
             <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
