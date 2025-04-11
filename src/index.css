@@ -16,14 +16,12 @@
     --font-main: "Noto Sans Thai", sans-serif;
 }
 
-@layer base {
-    body {
-        font-family: var(--font-main);
-        background-color: var(--color-primary);
-    }
-    footer {
-        background-color: var(--color-footer);
-    }
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-primary);
+}
+footer {
+    background-color: var(--color-footer);
 }
 
 @layer components {
@@ -32,15 +30,27 @@
     }
 
     .nav-menu {
-        @apply mx-4 text-base font-bold text-slategray;
+        @apply mx-4 text-base font-bold text-slategray transform transition-transform duration-600 hover:text-accent hover:-translate-y-2;
     }
 
     .footer-menu {
-        @apply mb-4 text-sm text-primary;
+        @apply mb-4 text-sm text-primary transform transition-transform duration-600 hover:text-accent hover:-translate-y-1;
     }
 
     .footer-text {
         @apply text-sm text-gray;
+    }
+
+    .swiper {
+        width: 100%;
+        height: max-content;
+    }
+
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 }
 
