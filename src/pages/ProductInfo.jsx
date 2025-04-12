@@ -1,10 +1,12 @@
-import { Box, Container, Typography } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import React from 'react';
 import ProductDetails from '../containers/ProductDetails';
 
+import { useParams } from 'react-router';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Carousel from '../containers/Carousel';
+import Review from '../containers/Review';
 import TabPane from '../containers/TabPane';
 
 
@@ -20,11 +22,8 @@ const mock = {
 
 
 const ProductInfo = () => {
-    // let params = useParams();
+    let params = useParams();
     // console.log(params.productId);
-
-
-
 
     return (
         <Container sx={{ p: 4 }} maxWidth='lg' >
@@ -43,18 +42,12 @@ const ProductInfo = () => {
 
             <TabPane>
                 {/* ไว้รอทำ .map() */}
-                <p headerlabel="Description">TEST1</p>
-                <p headerlabel="Reviews">TEST2</p>
+                <p headerlabel="รายละเอียดสินค้า">TEST1</p>
+                <Review headerlabel="รีวิว" productId={params} />
             </TabPane>
 
-            <Typography variant='h3' component='h1'
-                sx={{
-                    fontSize: { sm: "1.75rem", md: "2.5rem" },
-                    my: 4,
-                }}
-            >
-                คุณอาจจะอยากลอง
-            </Typography>
+            <h3 className='my-8 text-3xl font-bold sm:text-4xl'>คุณอาจจะอยากลอง</h3>
+
 
             <Carousel>
                 {/* ไว้รอทำ .map() */}
@@ -65,7 +58,6 @@ const ProductInfo = () => {
                 <Box className="flex rounded-lg items-center justify-center bg-gray-300 h-[229px] w-[152px]">Product Card</Box>
                 <Box className="flex rounded-lg items-center justify-center bg-gray-300 h-[229px] w-[152px]">Product Card</Box>
             </Carousel>
-
         </Container >
     )
 }
