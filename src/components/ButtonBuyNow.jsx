@@ -1,25 +1,14 @@
-import { Button } from '@mui/material';
+import { Button } from "@/components/ui/button";
 import React from 'react';
-
-
 
 const ButtonBuyNow = () => {
     return (
-
         <Button
-            variant="contained"
-            sx={{
-                borderRadius: 100,
-                background: "black",
-                // width: "100%",
-                flexGrow: 2,
-                fontWeight: 'Bold',
-                py: 1
-            }}
+            className="w-full font-bold bg-black rounded-full cursor-pointer hover:bg-black/90 active:shadow-md"
         >
             ซื้อเลย
         </Button>
-    )
+    );
 }
 
 export default ButtonBuyNow

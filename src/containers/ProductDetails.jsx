@@ -1,86 +1,61 @@
+import {
+    SelectGroup,
+    SelectItem,
+    SelectLabel
+} from "@/components/ui/select"
 import StarIcon from '@mui/icons-material/Star'
-import { MenuItem } from '@mui/material'
-import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
-import Grid from '@mui/material/Grid'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import React from 'react'
 import ButtonAddToCart from '../components/ButtonAddToCart'
 import ButtonBuyNow from '../components/ButtonBuyNow'
 import Dropdown from '../components/Dropdown'
 import ProductNumberField from '../components/ProductNumberField'
 
+
 const ProductDetails = ({ image, name, price, description, star, numbersReview }) => {
     return (
-        <Grid container spacing={{ sm: 4, md: 6 }} sx={{ alignItems: "center" }}>
+        <div>
 
-            <Grid size={{ xs: 12, sm: 6 }}>
-                <img src={image} className='my-8 rounded-3xl sm:rounded-xl' alt="" />
-            </Grid>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
 
-            <Grid size={{ xs: 12, sm: 6 }}>
+                <img src={image} className='my-4 rounded-3xl sm:rounded-xl' alt="" />
 
-                <Typography component='h1'
-                    sx={{
-                        fontSize: { xs: "1.25rem", md: "30px" },
-                        fontWeight: 600,
-                        mb: 2,
-                    }}
-                >
-                    {name}
-                </Typography>
+                <div>
+                    <h1 className="mb-4 text-xl font-bold md:text-2xl">{name}</h1>
 
+                    <p className='mb-4 text-4xl font-bold md:text-4xl'>฿{Intl.NumberFormat('th-TH').format(price)}</p>
 
-                <Typography variant='h3' component='p'
-                    sx={{
-                        fontSize: { sm: "1.75rem", md: "2.5rem" },
-                        mb: 2
-                    }}
-                >
-                    ฿{Intl.NumberFormat('th-TH').format(price)}
-                </Typography>
+                    <p className='mb-4 text-sm text-gray-400 md:text-base'>{description}</p>
 
-                <Typography
-                    sx={{
-                        fontSize: { xs: '0.75rem', md: '0.9rem' },
-                        color: "var(--color-gray-400)",
-                    }}
-                >
-                    {description}
-                </Typography>
+                    <div className='flex items-center my-4 sm:my-2'>
+                        <StarIcon className='mr-1 text-gray' />
+                        <p className='mr-2 font-bold'>{star}</p>
+                        <p className='text-gray-400'>({Intl.NumberFormat('th-TH').format(numbersReview)})</p>
+                    </div>
 
-                <Box className="flex items-center" sx={{ my: { xs: 2, sm: 1 } }}>
-                    <StarIcon className='mr-1 text-gray' />
-                    <p className='mr-2 font-bold'>{star}</p>
-                    <p className='text-gray-400'>({Intl.NumberFormat('th-TH').format(numbersReview)})</p>
-                </Box>
+                    <FormControl fullWidth sx={{ my: 2, pr: { xs: 0, lg: 20 } }}>
+                        <div className='flex justify-between'>
+                            <Dropdown label="กรุณาเลือกปริมาณ" size="small" className="w-3/5">
+                                <SelectGroup>
+                                    <SelectLabel>ปริมาณ</SelectLabel>
+                                    <SelectItem value={1}>1 กิโลกรัม</SelectItem>
+                                    <SelectItem value={5}>5 กิโลกรัม</SelectItem>
+                                </SelectGroup>
+                            </Dropdown>
+                            <Stack direction={'row'}>
+                                <ProductNumberField />
+                            </Stack>
+                        </div>
 
-                <FormControl fullWidth sx={{ my: 2, pr: { xs: 0, lg: 20 } }}>
-                    <Stack direction="row" sx={{ width: "100%", justifyContent: "space-between" }}>
-                        <Dropdown label="ปริมาณ" size="small" className="w-3/5">
-                            <MenuItem value={1}>1 กิโลกรัม</MenuItem>
-                            <MenuItem value={5}>5 กิโลกรัม</MenuItem>
-                        </Dropdown>
-                        <Stack direction={'row'}>
-                            <ProductNumberField />
-                        </Stack>
-                    </Stack>
-
-                    <Stack
-                        direction={{ xs: "column", sm: "row" }}
-                        mt={{ xs: 4, sm: 6 }}
-                        mb={{ xs: 6, sm: 4 }}
-                        spacing={2}
-                    >
-                        <ButtonBuyNow />
-                        <ButtonAddToCart />
-                    </Stack>
-                </FormControl>
-
-            </Grid>
-
-        </Grid>
+                        <div className='flex flex-col gap-4 my-8 sm:flex-row'>
+                            <ButtonBuyNow />
+                            <ButtonAddToCart />
+                        </div>
+                    </FormControl>
+                </div>
+            </div>
+        </div>
     )
 }
 
