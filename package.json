@@ -25,6 +25,7 @@
     "react": "^16.8 || ^17.0 || ^18.0 || ^19.0",
     "react-dom": "^16.8 || ^17.0 || ^18.0 || ^19.0",
     "react-router": "^7.5.0",
+    "react-thailand-address-autocomplete": "^0.0.6",
     "swiper": "^11.2.6",
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.1.3",
