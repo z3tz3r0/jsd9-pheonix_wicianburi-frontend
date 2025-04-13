@@ -8,7 +8,7 @@ import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
 import React from 'react'
 import ButtonAddToCart from '../components/ButtonAddToCart'
-import ButtonBuyNow from '../components/ButtonBuyNow'
+import ButtonMain from "../components/ButtonMain"
 import Dropdown from '../components/Dropdown'
 import ProductNumberField from '../components/ProductNumberField'
 
@@ -49,7 +49,7 @@ const ProductDetails = ({ image, name, price, description, star, numbersReview }
                         </div>
 
                         <div className='flex flex-col gap-4 my-8 sm:flex-row'>
-                            <ButtonBuyNow />
+                            <ButtonMain>ซื้อเลย</ButtonMain>
                             <ButtonAddToCart />
                         </div>
                     </FormControl>
