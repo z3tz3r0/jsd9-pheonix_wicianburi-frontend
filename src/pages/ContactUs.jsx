@@ -65,12 +65,17 @@ const ContactUs = () => {
     };
 
     return (
-        <section className='flex'>
-            <div>
-                <h1 className='text-4xl font-bold text-center'>ติดต่อเรา</h1>
+        <section className='grid items-center sm:grid-cols-2 sm:min-h-[80dvh] md:pl-20 md:max-w-7xl md:justify-self-center'>
+            <div className="flex flex-col justify-center gap-8 p-8">
+                <h1 className='text-4xl font-bold'>ติดต่อเรา</h1>
                 <p>กรุณาเลือกหัวข้อที่ต้องการติดต่อ พร้อมเพิ่มรายละเอียดที่ต้องการให้เราช่วยเหลือได้เลย</p>
-                <form ref={form} onSubmit={handleSubmit}>
-                    <Dropdown label="หัวข้อที่ต้องการติดต่อ" value={topic} onValueChange={setTopic} size="small" className="w-3/5">
+                <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-4">
+                    <Dropdown
+                        label="หัวข้อที่ต้องการติดต่อ"
+                        value={topic}
+                        onValueChange={setTopic}
+                        className="w-full px-4 py-6 text-base"
+                    >
                         <SelectGroup>
                             <SelectLabel>หัวข้อ</SelectLabel>
                             {Object.entries(topicOptions).map(([value, label]) => (
@@ -78,8 +83,9 @@ const ContactUs = () => {
                             ))}
                         </SelectGroup>
                     </Dropdown>
-                    <div>
+                    <div className="flex flex-col gap-4 sm:flex-row">
                         <Input
+                            className="px-4 py-6"
                             type="text"
                             value={name}
                             placeholder="ชื่อ"
@@ -88,6 +94,7 @@ const ContactUs = () => {
                             required
                         />
                         <Input
+                            className="px-4 py-6"
                             type="email"
                             value={email}
                             placeholder="อีเมล"
@@ -99,17 +106,17 @@ const ContactUs = () => {
                     <Textarea
                         value={message}
                         placeholder="กรุณาพิมพ์ข้อความ"
-                        row={5}
-                        required
+                        className="px-4"
                         onChange={(e) => setMessage(e.target.value)}
                         disabled={isSubmitting}
+                        required
                     />
-                    <ButtonMain type="submit" className="w-80">{isSubmitting ? `กำลังส่งข้อความ` : `ส่งข้อความเลย`}</ButtonMain>
+                    <ButtonMain type="submit" className="p-6 mt-8 mb-16 sm:w-40">{isSubmitting ? `กำลังส่งข้อความ` : `ส่งข้อความเลย`}</ButtonMain>
                 </form>
             </div>
 
             {/* Map Section */}
-            <div>
+            <div className="mb-16 aspect-square sm:pr-4">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.7960399139397!2d100.3336095!3d13.7911655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e293b2208cdc3d%3A0x9b86a084fc548c44!2zRCBLb21tdW5lIOC4lOC4tSDguITguK3guKHguKHguLnguYDguJksIFNwYWNlICYgVGFwcm9vbQ!5e0!3m2!1sth!2sth!4v1744528507988!5m2!1sth!2sth"
                     width="100%"
