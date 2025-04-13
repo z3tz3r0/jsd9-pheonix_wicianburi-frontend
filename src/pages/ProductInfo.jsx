@@ -14,6 +14,8 @@ const mock = {
     id: 1,
     image: "/assets/ข้าวเสาไห้.webp",
     name: "ข้าวเสาไห้",
+    category: "อาหารจานเดียว",
+    region: "อีสาน",
     price: 500,
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
     star: 4.8,
@@ -42,7 +44,7 @@ const ProductInfo = () => {
 
             <TabPane>
                 {/* ไว้รอทำ .map() */}
-                <p headerlabel="รายละเอียดสินค้า">TEST1</p>
+                <p headerlabel="รายละเอียดสินค้า">TEST{params.productId}</p>
                 <Review headerlabel="รีวิว" productId={params} />
             </TabPane>
 
