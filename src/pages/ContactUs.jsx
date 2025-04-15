@@ -7,9 +7,9 @@ import { useNavigate } from "react-router";
 import ButtonMain from '../components/ButtonMain';
 import Dropdown from '../components/Dropdown';
 
-const EMAILJS_SERVICE_ID = 'service_y2dha4w';
-const EMAILJS_TEMPLATE_ID = 'template_11qtrvs';
-const EMAILJS_PUBLIC_KEY = 'ixiCyohd78nkn3D3n';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const topicOptions = {
     product_inquiry: 'สอบถามเกี่ยวกับสินค้า',
