@@ -127,7 +127,7 @@ const NavBar = () => {
 
   return (
     <header className='justify-center sm:flex'>
-      <nav className='flex items-center justify-between h-16 sm:w-7xl '>
+      <nav className='flex items-center justify-between z-10 h-16 sm:w-7xl sm:fixed'>
         <div className='flex ml-4 sm:items-center'>
           <figure className='flex items-center'>
             <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
