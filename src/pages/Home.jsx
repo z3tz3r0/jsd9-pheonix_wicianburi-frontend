@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Typography } from '@mui/material'
 import ButtonAddToCart from '../components/ButtonAddToCart'
 import { NavLink } from 'react-router'
+import Carousel from '../containers/Carousel'
 
 const Home = () => {
     return (
@@ -48,6 +49,7 @@ const Home = () => {
 
             <section className='flex flex-col items-center h-[560px]'>
                 <Typography variant="h3" component="h2">สินค้าขายดี</Typography>
+                <Carousel />
             </section>
 
             <section className='h-[560px]'>
@@ -57,19 +59,63 @@ const Home = () => {
             <section>
                 <div className='flex flex-col items-center'>
                     <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวหอมมะลิ</Typography>
-                    <ButtonAddToCart />
+                    <NavLink to='products'>
+                        <Button variant="contained"  
+                        sx={{
+                        backgroundColor: "#01c9ac",
+                        color: "primary",
+                        borderRadius: 100,
+                        fontWeight: 'semibold',
+                        py: 1,
+                        textWrap: "nowrap",
+                        fontSize: "18px",
+                    }}>ช้อปเลย</Button>
+                    </NavLink>
                 </div>
                 <div className='flex flex-col items-center'>
                     <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวเหนียว</Typography>
-                    <ButtonAddToCart />
+                    <NavLink to='products'>
+                        <Button variant="contained"  
+                        sx={{
+                        backgroundColor: "#01c9ac",
+                        color: "primary",
+                        borderRadius: 100,
+                        fontWeight: 'semibold',
+                        py: 1,
+                        textWrap: "nowrap",
+                        fontSize: "18px",
+                    }}>ช้อปเลย</Button>
+                    </NavLink>
                 </div>
                 <div className='flex flex-col items-center'>
                     <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวขาว</Typography>
-                    <ButtonAddToCart />
+                    <NavLink to='products'>
+                        <Button variant="contained"  
+                        sx={{
+                        backgroundColor: "#01c9ac",
+                        color: "primary",
+                        borderRadius: 100,
+                        fontWeight: 'semibold',
+                        py: 1,
+                        textWrap: "nowrap",
+                        fontSize: "18px",
+                    }}>ช้อปเลย</Button>
+                    </NavLink>
                 </div>
                 <div className='flex flex-col items-center'>
                     <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600' }}>ข้าวเพื่อสุขภาพ</Typography>
-                    <ButtonAddToCart />
+                    <NavLink to='products'>
+                        <Button variant="contained"  
+                        sx={{
+                        backgroundColor: "#01c9ac",
+                        color: "primary",
+                        borderRadius: 100,
+                        fontWeight: 'semibold',
+                        py: 1,
+                        textWrap: "nowrap",
+                        fontSize: "18px",
+                    }}>ช้อปเลย</Button>
+                    </NavLink>
                 </div>
             </section>
 
