@@ -1,4 +1,5 @@
 import React from 'react'
+import ChatBot from '../components/ChatBot/ChatBot'
 import { Button, Typography } from '@mui/material'
 import ButtonAddToCart from '../components/ButtonAddToCart'
 import { NavLink } from 'react-router'
@@ -7,6 +8,7 @@ import Carousel from '../containers/Carousel'
 const Home = () => {
     return (
         <div>
+            <ChatBot />
             <section className='hero-section h-[654px] flex sm:justify-center'>
                 <div className='hidden sm:flex flex-col items-start mt-40 mr-20'>
                     <Typography variant="h3" component="h3">
