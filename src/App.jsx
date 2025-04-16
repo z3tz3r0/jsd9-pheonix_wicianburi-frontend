@@ -5,11 +5,13 @@ import {
 import Layout from "./containers/Layout";
 import AboutUs from "./pages/AboutUs";
 import Account from "./pages/Account";
+import AuthPage from "./modules/authPages/AuthPage";
 import Cart from "./pages/Cart";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import ConfirmPayment from "./pages/ConfirmPayment";
 import ContactUs from "./pages/ContactUs";
 import ContactUsDone from "./pages/ContactUsDone";
+import ForgetPassword from "./modules/authPages/ForgetPassword";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import OrderDetail from "./pages/OrderDetail";
@@ -26,10 +28,12 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <AboutUs /> },
+      { path: "authpage", element: <AuthPage /> },
+      { path: "authpage/:forgetpassword", element: <ForgetPassword /> },
       { path: "products", element: <ProductList /> },
       { path: "products/:productId", element: <ProductInfo /> },
       { path: "contact", element: <ContactUs /> },
-      { path: "contact/contactDone", element: <ContactUsDone />},
+      { path: "contact/contactdone", element: <ContactUsDone />},
 
       {
         path: "profile",

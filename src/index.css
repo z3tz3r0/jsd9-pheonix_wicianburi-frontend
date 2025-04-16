@@ -49,6 +49,7 @@
     --color-footer: #6a7773;
     --color-gray: #d3d3d3;
     --color-black: #242124;
+    --facebook-blue: #1877F2;
     /* --color-secondary: #01c9ac; */
 }
 
@@ -131,9 +132,11 @@
     * {
         @apply border-border outline-ring/50;
     }
+
     body {
         @apply bg-primary text-foreground font-main;
     }
+
     footer {
         @apply bg-footer;
     }
