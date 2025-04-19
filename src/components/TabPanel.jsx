@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const TabPanel = (props) => {
-    const { children, value, index, ...other } = props;
+    const { children, value, index, className, ...other } = props;
 
     return (
         <div
@@ -13,7 +13,7 @@ const TabPanel = (props) => {
             aria-labelledby={`simple-tab-${index}`}
             {...other}
         >
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+            {value === index && <Box className={`px-4 py-2 ${className}`}>{children}</Box>}
         </div>
     );
 }

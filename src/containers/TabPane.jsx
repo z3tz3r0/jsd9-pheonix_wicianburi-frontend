@@ -18,17 +18,23 @@ export default function TabPane({ children }) {
         <Box sx={{ width: '100%' }}>
 
             <Box>
-                <Tabs value={value} onChange={handleChange} sx={{
-                    '& .MuiTabs-indicator': {
-                        backgroundColor: "var(--color-gray-300)", // Use the prop color
-                    },
-                }}>
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    sx={{
+                        '& .MuiTabs-indicator': {
+                            bgcolor: "var(--color-gray-300)",
+                        },
+                    }}>
                     {childrenArray.map((child, index) => (
                         <Tab
                             key={index}
                             label={child.props?.headerlabel || `Tab ${index + 1}`}
                             sx={{
                                 textTransform: 'none',
+                                '&.MuiTab-root': {
+                                    fontFamily: 'var(--font-main)'
+                                },
                                 '&.Mui-selected': {
                                     color: "var(--color-black)",
                                     fontWeight: 'bold',
@@ -40,7 +46,11 @@ export default function TabPane({ children }) {
             </Box>
 
             {childrenArray.map((child, index) => (
-                <TabPanel key={index} value={value} index={index}>
+                <TabPanel
+                    key={index}
+                    value={value}
+                    index={index}
+                >
                     {child}
                 </TabPanel>
             ))}

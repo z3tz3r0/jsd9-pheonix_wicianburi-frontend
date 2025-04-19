@@ -1,35 +1,38 @@
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
+import {
+    Select,
+    SelectContent,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select";
 import * as React from 'react';
 
-export default function Dropdown({ id, label, children, size, className }) {
-    const [select, setSelect] = React.useState('');
 
-    const handleChange = (event) => {
-        setSelect(event.target.value);
-    };
-
+export default function Dropdown({ label, children, className, value, onValueChange }) {
     return (
-        <>
-            <InputLabel id={id} size={size}>{label}</InputLabel>
-            <Select
-                size={size}
-                className={className}
-                labelId={id}
-                id={id}
-                value={select}
-                label={label}
-                onChange={handleChange}
-            >
-                {/* 
-                    ให้ใช้ MenuItem เซ็ตค่า value ด้วย
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
-                    */}
+        <Select value={value} onValueChange={onValueChange}>
+            <SelectTrigger className={className}>
+                <SelectValue placeholder={label} />
+            </SelectTrigger>
+            <SelectContent>
                 {children}
-            </Select>
-        </>
+            </SelectContent>
+        </Select>
 
     );
 }
+
+// วิธีใช้
+// const [selectedValue, setSelectedValue] = useState('');  Example state in parent
+
+{/* <Dropdown
+    label="กรุณาเลือกปริมาณ"
+    className="w-3/5"
+    value={selectedValue} // Pass state value
+    onValueChange={setSelectedValue} // Pass state setter
+>
+        <SelectGroup>
+            <SelectLabel>ปริมาณ</SelectLabel>
+            <SelectItem value={1}>1 กิโลกรัม</SelectItem>
+            <SelectItem value={5}>5 กิโลกรัม</SelectItem>
+        </SelectGroup>
+    </Dropdown> */}
