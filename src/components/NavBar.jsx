@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router'
+import { Link, NavLink } from 'react-router'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -13,31 +13,29 @@ const UserPopUp = ({isOpen = false, onClose = () => {}}) => {
 
   return (
     <div className="absolute right-1 top-full mt-2 z-10">
-      <div className="absolute right-1 -top-0 w-3 h-5 bg-primary transform rotate-45 z-10"></div>
-
+      <div className="absolute right-1 -top-0 w-3 h-5 bg-primary transform rotate-45 z-10"></div>  
       <div className="relative -right-2 top-1 bg-primary rounded-md shadow-lg p-4 w-52">
         <ul>
           <li className="py-2 flex items-center hover:text-accent">
-            <NavLink to="profile" onClick={onClose}>
+            <Link to="profile" onClick={onClose}>
               <AccountCircleOutlinedIcon className='mr-2'/>
               โปรไฟล์
-            </NavLink>
+            </Link>
           </li>
           <li className="py-2 flex items-center hover:text-accent">
-            <NavLink to="order-history" onClick={onClose}>
+            <Link to="order-history" onClick={onClose}>
               <ShoppingBagOutlinedIcon className='mr-2'/>
               คำสั่งซื้อสินค้า
-            </NavLink>
+            </Link>
           </li>
           <li className="py-2 flex items-center hover:text-accent">
-            <NavLink to="/" onClick={onClose}>
+            <Link to="/" onClick={onClose}>
               <LogoutIcon className='mr-2'/>
               ออกจากระบบ
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </div>
-
     </div>
   );
 };
@@ -53,24 +51,24 @@ const SideBar = ({ isOpen, onClose }) => {
       <div className="relative w-64 bg-primary h-full shadow-xl flex flex-col transform transition-transform duration-600">
         <ul className="flex-1 p-4">
           <li className='py-3 hover:text-accent'>
-            <NavLink to='/' onClick={onClose} className="block">หน้าหลัก</NavLink>
+            <Link to='/' onClick={onClose} className="block">หน้าหลัก</Link>
           </li>
           <li className='py-3 hover:text-accent'>
-            <NavLink to='products' onClick={onClose} className="block">ผลิตภัณฑ์</NavLink>
+            <Link to='products' onClick={onClose} className="block">ผลิตภัณฑ์</Link>
           </li>
           <li className='py-3 hover:text-accent'>
-            <NavLink to='about' onClick={onClose} className="block">เกี่ยวกับเรา</NavLink>
+            <Link to='about' onClick={onClose} className="block">เกี่ยวกับเรา</Link>
           </li>
           <li className='py-3 hover:text-accent'>
-            <NavLink to='contact' onClick={onClose} className="block">ติดต่อเรา</NavLink>
+            <Link to='contact' onClick={onClose} className="block">ติดต่อเรา</Link>
           </li>
         </ul>
         <div className="p-4 bg-accent">
           <div className="flex items-center py-2 text-primary">
-            <NavLink to="cart" onClick={onClose}>
+            <Link to="cart" onClick={onClose}>
               <ShoppingCartOutlinedIcon className="mr-2" />
               ตะกร้าสินค้า
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>
@@ -127,7 +125,7 @@ const NavBar = () => {
 
   return (
     <header className='justify-center sm:flex'>
-      <nav className='flex items-center justify-between z-10 h-16 sm:w-7xl sm:fixed'>
+      <nav className='flex items-center justify-between z-10 h-16 sm:w-7xl '>
         <div className='flex ml-4 sm:items-center'>
           <figure className='flex items-center'>
             <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
@@ -141,11 +139,11 @@ const NavBar = () => {
           </ul>
         </div>
         <div className='flex mr-4 items-center'>
-          <NavLink to='cart'>
+          <Link to='profile/cart'>
             <Badge badgeContent={5} color="error">
               <ShoppingCartOutlinedIcon />
             </Badge>
-          </NavLink>
+          </Link>
           <div className='profile-icon mx-6 hover:cursor-pointer relative'>
             <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
             <UserPopUp isOpen={isUserPopUpOpen} onClose={closeUserPopup} />
