@@ -1,46 +1,92 @@
-import React from 'react';
+import React  from 'react';
 import { Button } from '@/components/ui/button';
-import ButtonMain from '../components/ButtonMain';
 import { X } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-
-console.log('@/components/ui/button'); // เพิ่มบรรทัดนี้
-console.log('Imported Button:', Button); // เพิ่มบรรทัดนี้เพื่อดูว่า import สำเร็จหรือไม่
+import { useForm } from 'react-hook-form';
+import FormInputs from '../components/account/FormInputs';
+import TextAreaInput from '../components/account/TextAreaInput';
+import ButtonFirst from '../components/account/ButtonFirst';
 
 
 const AccountContainer = () => {
+
+  const { register, handleSubmit, formState }= useForm();
+  const { isSubmitting } = formState;
+  console.log(isSubmitting);
+
+
+  const accountSubmit = async(data) => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    console.log(data);
+  };
+
     return (
-      <main className="max-w-3xl border">
-        <h1 className="hidden mb-4 text-4xl font-bold sm:block">
+      <main className="px-4 sm:w-4xl">
+        <h1 className="hidden mb-8 text-4xl font-bold sm:block">
           บัญชีของฉัน
         </h1>
         <section>
-          <h2 >
+          <h2 className="mb-8">
             ข้อมูลบัญชี
           </h2>
-          
-          <form >
-            <input type="text" />
-          </form>
-          
-          <div className="flex justify-center gap-4 my-8 sm:justify-start">
-            <ButtonMain
-                className={"w-auto"}
-            >
-                อัปเดตบัญชี
-            </ButtonMain>
-            <Button
+
+          <form onSubmit={handleSubmit(accountSubmit)}>
+            <div className="grid gap-4 mb-8 sm:grid-cols-2">
+              <FormInputs
+                register={register}
+                name="ชื่อ"
+                type="text"
+                placeholder="ชื่อ"
+              />
+
+              <FormInputs
+                register={register}
+                name="นามสกุล"
+                type="text"
+                placeholder="นามสกุล"
+              />
+
+              <FormInputs
+                register={register}
+                name="โทรศัพท์"
+                type="tel"
+                placeholder="โทรศัพท์"
+              />
+
+              <FormInputs
+                register={register}
+                name="อีเมล"
+                type="email"
+                placeholder="อีเมล"
+              />
+
+              <TextAreaInput
+                register={register}
+                name="ที่อยู่"
+                type="text"
+                placeholder="ที่อยู่"
+              />
+            </div>
+
+            <div className="flex justify-center gap-4 my-8 sm:justify-start">
+              <ButtonFirst
+              text="อัปเดตบัญชี"
+              type="submit"
+              isPending={isSubmitting}
+              />
+
+              <Button
                 className="w-auto font-bold text-black border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 active:bg-gray-200 active:shadow-md"
-            >
+              >
                 <X className=" text-gray"/>
                 ล้าง
-            </Button>
-          </div>
+              </Button>
+            </div>
+          </form>
         </section>
-        
+
         <div className="hidden mb-8 border-b sm:block"></div>
-        
-        <section>
+
+        <section className="mb-8">
             <h2 className="mb-4 text-2xl font-bold">
               เข้าสู่ระบบ
             </h2>
@@ -50,16 +96,16 @@ const AccountContainer = () => {
                     <p className="mb-2 text-sm text-gray-400 ">อัปเดตล่าสุดเมื่อ 1 เดือนที่แล้ว</p>
                 </div>
                 <div >
-                    <Button
-                        className="w-auto mb-8 font-bold text-black border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 active:bg-gray-200 active:shadow-md"
-                    >
-                        อัปเดตรหัสผ่าน
-                    </Button>
+                  <Button
+                    className="w-auto mb-8 font-bold text-black border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 active:bg-gray-200 active:shadow-md"
+                  >
+                    อัปเดตรหัสผ่าน
+                  </Button>
                 </div>
             </div>
         </section>
       </main>
     )
   }
-  
+
   export default AccountContainer
