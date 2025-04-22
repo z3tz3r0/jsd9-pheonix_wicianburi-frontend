@@ -1,6 +1,6 @@
+import { buttonVariants } from "@/components/ui/button";
 import React from "react";
 import { useNavigate } from "react-router";
-import { buttonVariants } from "@/components/ui/button";
 
 export default function OrderSuccess() {
   const navigate = useNavigate();
