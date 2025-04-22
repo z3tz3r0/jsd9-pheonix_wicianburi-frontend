@@ -3,15 +3,15 @@ import {
   RouterProvider,
 } from "react-router";
 import Layout from "./containers/Layout";
+import AuthPage from "./modules/authPages/AuthPage";
+import ForgetPassword from "./modules/authPages/ForgetPassword";
 import AboutUs from "./pages/AboutUs";
 import Account from "./pages/Account";
-import AuthPage from "./modules/authPages/AuthPage";
 import Cart from "./pages/Cart";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import ConfirmPayment from "./pages/ConfirmPayment";
 import ContactUs from "./pages/ContactUs";
 import ContactUsDone from "./pages/ContactUsDone";
-import ForgetPassword from "./modules/authPages/ForgetPassword";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import OrderDetail from "./pages/OrderDetail";
@@ -33,21 +33,21 @@ const router = createBrowserRouter([
       { path: "products", element: <ProductList /> },
       { path: "products/:productId", element: <ProductInfo /> },
       { path: "contact", element: <ContactUs /> },
-      { path: "contact/contactdone", element: <ContactUsDone />},
+      { path: "contact/contactdone", element: <ContactUsDone /> },
 
       {
         path: "profile",
         element: <Profile />,
         children: [
-          { path: "account", element: <Account /> },
+          { index: true, element: <Account /> },
           { path: "order-history", element: <OrderHistory /> },
           { path: "order-history/:orderId", element: <OrderDetail /> },
         ]
       },
-      { path: "profile/cart", element: <Cart />},
-      { path: "profile/cart/confirm-order", element: <ConfirmOrder />},
-      { path: "profile/cart/confirm-order/confirm-payment", element: <ConfirmPayment />},
-      { path: "profile/cart/confirm-order/confirm-payment/order-done", element: <OrderDone />},
+      { path: "/cart", element: <Cart /> },
+      { path: "/cart/confirm-order", element: <ConfirmOrder /> },
+      { path: "/cart/confirm-order/confirm-payment", element: <ConfirmPayment /> },
+      { path: "/cart/confirm-order/confirm-payment/order-done", element: <OrderDone /> },
       { path: "*", element: <NotFound /> },
     ]
   },
