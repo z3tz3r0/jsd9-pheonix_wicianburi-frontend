@@ -1,8 +1,7 @@
 import React from "react";
 import BasicButton from "../components/BasicButton";
 import UploadButton from "../components/UploadButton";
-import Typography from "@mui/material/Typography";
-
+ 
 
 export default function ConfirmPayment() {
   return (
@@ -12,7 +11,7 @@ export default function ConfirmPayment() {
 
 {/* Order Summary & Thank you message */}
 
-          <h1 className="mb-2 text-2xl font-semibold text-secondary">
+          <h1 className="mb-2 text-2xl font-semibold">
             ขอบคุณค่ะ เราได้รับคำสั่งซื้อของคุณแล้ว
           </h1>
           <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
