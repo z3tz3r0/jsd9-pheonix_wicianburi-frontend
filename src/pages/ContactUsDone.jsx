@@ -29,7 +29,7 @@ export default function ContactUsDone() {
             className={buttonVariants({
               variant: "default",
               className:
-                "p-6 sm:w-fit !bg-[var(--accent)] !text-white hover:bg-[var(--accent-hover)] active:scale-95 transition-transform duration-150",
+                "p-6 sm:w-fit !bg-[var(--accent)] !text-white hover:bg-[var(--accent)] active:scale-95 transition-transform duration-150",
             })}
           >
             กลับไปหน้าหลัก
