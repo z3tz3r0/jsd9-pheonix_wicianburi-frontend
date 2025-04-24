@@ -5,20 +5,21 @@ import { Link, NavLink } from 'react-router'
 import Carousel from '../containers/Carousel'
 import ButtonMain from '../components/ButtonMain'
 import ButtonFilter from '../components/ButtonFilter'
+import ScrollToTopButton from '../components/ButtonToTop'
 
 const Home = () => {
     return (
         <div>
             <ChatBot />
-
+            <ScrollToTopButton />
             {/* hero section */}
             <section className='hero-section h-[654px] flex sm:justify-center'>
                 <div className='hidden sm:flex flex-col items-start mt-40 mr-20'>
                     {/* <Typography variant="h3" component="h3">
                         <span className='text-accent text-6xl'>ข้าว</span>คุณภาพจากใจ <br/>ส่งตรงถึงคุณ
                     </Typography> */}
-                    <h3 className='text-4xl font-semibold text-nowrap'><span className='text-accent text-6xl'>ข้าว</span>คุณภาพจากใจ <br/>ส่งตรงถึงคุณ</h3>
-                    <p className='text-lg mt-2 mb-5'>เลือกข้าวคุณภาพ เพื่อมื้อพิเศษของคุณ</p>
+                    <h3 className='text-5xl font-semibold text-nowrap'><span className='text-accent text-7xl'>ข้าว</span>คุณภาพจากใจ <br/>ส่งตรงถึงคุณ</h3>
+                    <p className='text-xl mt-2 mb-5'>เลือกข้าวคุณภาพ เพื่อมื้อพิเศษของคุณ</p>
                     <Link to='products'>
                     <ButtonMain type="submit" className="py-6 mt-4 mb-16 sm:w-40 bg-[#01c9ac]">ช้อปเลย</ButtonMain>
                     </Link>
@@ -36,7 +37,7 @@ const Home = () => {
             </section>
 
             {/* recommend section */}
-            <section className='flex flex-col items-center h-[560px] mt-10 outline'>
+            <section className='flex flex-col items-center h-[560px] mt-10'>
                 <h2 className='text-4xl font-bold sm:text-[52px]'>สินค้าขายดี</h2>
                 <Carousel />
             </section>
@@ -44,10 +45,10 @@ const Home = () => {
             {/* image section */}
             <section className='flex flex-col my-20'>
                 <figure className='flex ml-20 sm:justify-end'>
-                    <img src="https://www.thaiticketmajor.com/variety/img_content/imgeditor/53220415_3178335835525744_2428596284089696256_n(2).jpg" alt="" className='h-[400px] sm:w-auto sm:h-auto' />
+                    <img src="https://www.thaiticketmajor.com/variety/img_content/imgeditor/53220415_3178335835525744_2428596284089696256_n(2).jpg" alt="image-decorate1" className='h-[400px] sm:w-auto sm:h-auto' />
                 </figure>
                 <figure className='mt-4'>
-                    <img src="https://img-ha.mthcdn.com/8ySBElIEiEu7AhUt34KWw0A3CAk=/travel.mthai.com/app/uploads/2019/03/kaosalee-9.jpg" alt="" className='h-[200px] sm:w-1/2 sm:h-auto' />
+                    <img src="https://img-ha.mthcdn.com/8ySBElIEiEu7AhUt34KWw0A3CAk=/travel.mthai.com/app/uploads/2019/03/kaosalee-9.jpg" alt="image-decorate2" className='h-[200px] sm:w-1/2 sm:h-auto' />
                 </figure>
             </section>
 
@@ -101,7 +102,7 @@ const Home = () => {
             {/* promotion section */}
             <section className='flex justify-between items-center h-40'>
                 <p className='font-semibold mx-10 sm:text-lg'>Free Delivery<br/> On all order over ฿1000</p>
-                <img src="https://static9.depositphotos.com/1713439/1191/i/450/depositphotos_11917531-stock-photo-three-rows-of-rice-varieties.jpg" alt="" className='h-40' />
+                <img src="https://static9.depositphotos.com/1713439/1191/i/450/depositphotos_11917531-stock-photo-three-rows-of-rice-varieties.jpg" alt="footer-image" className='h-40' />
             </section>
         </div>
     )
