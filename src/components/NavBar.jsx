@@ -6,6 +6,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Badge } from '@mui/material';
+import { useCart } from '../CartApp';
 
 
 const UserPopUp = ({isOpen = false, onClose = () => {}}) => {
@@ -79,6 +80,7 @@ const SideBar = ({ isOpen, onClose }) => {
 const NavBar = () => {
   const [isUserPopUpOpen, setIsUserPopUpOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const { getTotalItems } = useCart();
 
   const toggleUserPopUp = () => {
     setIsUserPopUpOpen(!isUserPopUpOpen);
@@ -140,7 +142,7 @@ const NavBar = () => {
         </div>
         <div className='flex mr-4 items-center'>
           <Link to='profile/cart'>
-            <Badge badgeContent={5} color="error">
+            <Badge badgeContent={getTotalItems()} color="error">
               <ShoppingCartOutlinedIcon />
             </Badge>
           </Link>
