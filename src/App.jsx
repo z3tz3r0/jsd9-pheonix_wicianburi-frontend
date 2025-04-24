@@ -18,6 +18,7 @@ import OrderHistory from "./pages/OrderHistory";
 import ProductInfo from "./pages/ProductInfo";
 import ProductList from "./pages/ProductList";
 import Profile from "./pages/Profile";
+import { CartProvider } from "./CartApp";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "about", element: <AboutUs /> },
       { path: "products", element: <ProductList /> },
+      { path: "products/:category", element: <ProductList /> },
       { path: "products/:productId", element: <ProductInfo /> },
       { path: "contact", element: <ContactUs /> },
       { path: "contact/contactDone", element: <ContactUsDone />},
@@ -52,7 +54,9 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   )
 }
 
