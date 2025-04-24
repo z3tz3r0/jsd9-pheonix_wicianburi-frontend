@@ -1,9 +1,12 @@
 import React from 'react'
-import ProductCard from '../containers/ProductCard'
+import ChatBot from '../components/ChatBot/ChatBot'
 
 const Home = () => {
-    return(
-        <div>Home</div>
+    return (
+        <div className=''>
+            <h1>Home</h1>
+            <ChatBot />
+        </div>
     )
 }
 

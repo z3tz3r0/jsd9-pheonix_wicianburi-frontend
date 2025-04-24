@@ -262,7 +262,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ).jfif",
+        image: "public/assets/สินค้าแปรรูป_สาเก.jpg",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
     },
 
@@ -322,7 +322,7 @@ const products = [
       price: "฿500",
       rating: 4.5,
       reviews: 120,
-      image: "/assets/ข้าวกล้อง.webp",
+      image: "public/assets/สินค้าแปรรูป_มอลท์จากข้าวเหนียวดำ.jpg",
       tags: ["ผลิตภัณฑ์แปรรูป"] 
   },
 ];
