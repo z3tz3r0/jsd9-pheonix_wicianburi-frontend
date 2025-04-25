@@ -54,36 +54,36 @@ const Home = () => {
 
             {/* filter section */}
             <section className='grid grid-cols-2 sm:flex sm:flex-col'>
-                <div className='flex flex-col justify-center items-center h-[200px] sm:h-[300px] outline'>
+                <div className='category-1 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
                     {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวหอมมะลิ</Typography> */}
-                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px]'>ข้าวหอมมะลิ</h3>
+                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวหอมมะลิ</h3>
                     <Link to='products'>
                         <ButtonFilter>
                             shop
                         </ButtonFilter>
                     </Link>
                 </div>
-                <div className='flex flex-col justify-center items-center h-[200px] sm:h-[300px] outline'>
+                <div className='category-2 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
                     {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวเหนียว</Typography> */}
-                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px]'>ข้าวเหนียว</h3>
+                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวเหนียว</h3>
                     <Link to='products'>
                         <ButtonFilter>
                             shop
                         </ButtonFilter>
                     </Link>
                 </div>
-                <div className='flex flex-col justify-center items-center h-[200px] sm:h-[300px] outline'>
+                <div className='category-3 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
                     {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวขาว</Typography> */}
-                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px]'>ข้าวขาว</h3>
+                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวขาว</h3>
                     <Link to='products'>
                         <ButtonFilter>
                             shop
                         </ButtonFilter>
                     </Link>
                 </div>
-                <div className='flex flex-col justify-center items-center h-[200px] sm:h-[300px] outline'>
+                <div className='category-4 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
                     {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600' }}>ข้าวเพื่อสุขภาพ</Typography> */}
-                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px]'>ข้าวเพื่อสุขภาพ</h3>
+                    <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวเพื่อสุขภาพ</h3>
                     <Link to='products'>
                         <ButtonFilter>
                             shop
