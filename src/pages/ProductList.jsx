@@ -40,7 +40,7 @@ const products = [
     price: "฿500",
     rating: 4.5,
     reviews: 120,
-    image: "public/assets/ข้าวสังข์หยดพัทลุง.webp",
+    image: "/assets/ข้าวสังข์หยดพัทลุง.webp",
     region: "ภาคใต้",
     tags: ["ข้าวเพื่อสุขภาพ"]
   },
