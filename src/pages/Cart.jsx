@@ -1,7 +1,7 @@
 import React from 'react';
-import { useCart } from '../CartApp';
 import ButtonMain from '../components/ButtonMain';
 import { Link, useNavigate } from 'react-router';
+import { useCart } from '../context/CartContext';
 
     const Cart = () => {
         const { cart, updateQuantity, removeFromCart, getSubtotal } = useCart();
@@ -63,8 +63,8 @@ import { Link, useNavigate } from 'react-router';
                                         {/* Quantity Controls */}
                                         <div className='col-span-2 text-center'>
                                             <div className="col-span-2 ">
-                                                <div className="flex items-center justify-center">
-                                                    <button className="w-8 h-8 flex items-center justify-center border border-black rounded-l"
+                                                <div className='flex items-center justify-center'>
+                                                    <button className='w-8 h-8 flex items-center justify-center border border-black rounded-l'
                                                         onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
                                                     >
                                                         −
@@ -73,9 +73,9 @@ import { Link, useNavigate } from 'react-router';
                                                     type="text"
                                                     value={item.quantity}
                                                     readOnly
-                                                    className="w-10 h-8 text-center border-t border-b border-gray-300"
+                                                    className='w-10 h-8 text-center border-t border-b border-gray-300'
                                                     />
-                                                    <button className="w-8 h-8 flex items-center justify-center border border-black rounded-r"
+                                                    <button className='w-8 h-8 flex items-center justify-center border border-black rounded-r'
                                                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                                     >
                                                         +
@@ -88,7 +88,7 @@ import { Link, useNavigate } from 'react-router';
                                             <p className=''>฿{(item.price * item.quantity).toFixed(2)}</p>
                                             <button 
                                                 onClick={() => removeFromCart(item.id)}
-                                                className="right-0 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500"
+                                                className='right-0 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-red-500'
                                             >
                                                 ×
                                             </button>
@@ -97,7 +97,7 @@ import { Link, useNavigate } from 'react-router';
                                 ))
                             )}
                                 <div className="mt-8">
-                                    <Link to="/products" className="flex items-center text-gray-600 mb-4 hover:text-accent">
+                                    <Link to="/products" className='flex items-center text-gray-600 mb-4 hover:text-accent'>
                                     ← กลับไปช้อปต่อ
                                     </Link>
                                 </div>
@@ -105,7 +105,7 @@ import { Link, useNavigate } from 'react-router';
                         </div>
                         {/* cart total */}
                         <div className='p-6 bg-primary rounded-lg shadow-md w-full sm:w-sm'>
-                            <h3 className='text-lg font-bold mb-4'>ยอดรวม</h3>
+                            <h3 className='text-lg font-bold mb-4'>ยอดรวมสินค้า</h3>
                             <div className='border-t border-gray-200'>
                                 <div className='flex justify-between py-3'>
                                     <span>ยอดรวม</span>
