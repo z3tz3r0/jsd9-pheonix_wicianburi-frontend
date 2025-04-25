@@ -13,7 +13,7 @@ const OrderDetail = () => {
   const orderDetails = [
     {
       id: 1,
-      image: "../../public/assets/ข้าวหอมมะลิ กข15.webp",
+      image: "../../public/assets/ข้าวหอมมะลิ_กข15.webp",
       name: "ข้าวหอมมะลิ 105",
       itemVariant: "1 กิโลกรัม",
       price: 100,
@@ -44,16 +44,16 @@ const OrderDetail = () => {
 
 
   return (
-    <div className='flex flex-col w-full max-w-5xl gap-8 px-4 mx-auto sm:px-8 lg:pl-36 outline-1'>
-      <h1 className='text-4xl font-bold'>รายละเอียดคำสั่งซื้อ</h1>
-      <table className='w-full max-w-5xl text-center bg-gray-100 rounded-lg *:text-sm'>
+    <div className='flex flex-col w-full max-w-4xl px-4 mb-20 mr-4 '>
+      <h1 className='hidden mb-8 text-4xl font-bold sm:block'>รายละเอียดคำสั่งซื้อ</h1>
+      <table className='w-full mb-8 max-w-5xl text-center bg-gray-100 rounded-lg *:text-sm'>
         <thead>
           <tr className='h-12 *:p-4 *:font-normal'>
             <th className='text-left w-30'>รายการสินค้า</th>
             <th className='text-left'></th>
             <th>ราคา</th>
             <th>จำนวน</th>
-            <th>รวม</th>
+            <th>ราคารวม</th>
           </tr>
         </thead>
         <tbody>
@@ -68,9 +68,9 @@ const OrderDetail = () => {
           ))}
         </tbody>
       </table>
-      <p className='w-[75%] text-right'>ค่าขนส่ง:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className='font-bold'>฿{shippingCost}</span></p>
+      <p className='mb-8 text-right w-[91%]'>ค่าขนส่ง:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className='font-bold'>฿{shippingCost}</span></p>
       <hr />
-      <p className='w-[75%] text-right'>ราคารวม:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className='font-bold'>฿{grandTotal}</span></p>
+      <p className='mt-8 text-right w-[91%]'>รวมคำสั่งซื้อ:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span className='font-bold'>฿{grandTotal}</span></p>
 
     </div >
   )
