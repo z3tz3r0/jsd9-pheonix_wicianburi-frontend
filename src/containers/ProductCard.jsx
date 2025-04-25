@@ -2,6 +2,8 @@ import React from 'react'
 import Rating from "react-rating"
 {/*import { Card, CardMedia, CardContent, IconButton, Rating, Typography, Box } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';*/}
+{/*import { Card, CardMedia, CardContent, IconButton, Rating, Typography, Box } from '@mui/material'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';*/}
 
 const ProductCard = ({ product }) => {
   return (
