@@ -20,7 +20,7 @@ const Account = () => {
   };
 
     return (
-      <main className="px-4 sm:w-4xl">
+      <main className="px-4 mb-20 mr-4 sm:w-4xl">
         <h1 className="hidden mb-8 text-4xl font-bold sm:block">
           บัญชีของฉัน
         </h1>
@@ -74,19 +74,13 @@ const Account = () => {
               isPending={isSubmitting}
               />
 
-              <Button
-                className="w-auto font-bold text-black border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 active:bg-gray-200 active:shadow-md"
-              >
-                <X className=" text-gray"/>
-                ล้าง
-              </Button>
             </div>
           </form>
         </section>
 
         <div className="hidden mb-8 border-b sm:block"></div>
 
-        <section className="mb-8">
+        <section >
             <h2 className="mb-4 text-2xl font-bold">
               เข้าสู่ระบบ
             </h2>
@@ -95,9 +89,9 @@ const Account = () => {
                     <p className="mb-2 font-bold">รหัสผ่าน</p>
                     <p className="mb-2 text-sm text-gray-400 ">อัปเดตล่าสุดเมื่อ 1 เดือนที่แล้ว</p>
                 </div>
-                <div >
+                <div className='flex justify-center'>
                   <Button
-                    className="w-auto mb-8 font-bold text-black border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 active:bg-gray-200 active:shadow-md"
+                    className="w-auto font-bold text-black border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 active:bg-gray-200 active:shadow-md"
                   >
                     อัปเดตรหัสผ่าน
                   </Button>

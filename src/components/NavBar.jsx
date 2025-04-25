@@ -22,7 +22,7 @@ const UserPopUp = ({ isOpen = false, onClose = () => { } }) => {
             </NavLink>
           </li>
           <li className="flex items-center py-2 hover:text-accent">
-            <NavLink to="order-history" onClick={onClose}>
+            <NavLink to="profile/order-history" onClick={onClose}>
               <ShoppingBagOutlinedIcon className='mr-2' />
               คำสั่งซื้อสินค้า
             </NavLink>
