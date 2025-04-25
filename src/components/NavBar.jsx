@@ -1,41 +1,42 @@
+import React, { useEffect, useState } from 'react'
+import { Link, NavLink } from 'react-router'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router';
+import { Badge } from '@mui/material';
+import { useCart } from '../context/CartContext';
+
 
 const UserPopUp = ({ isOpen = false, onClose = () => { } }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute z-10 mt-2 right-1 top-full">
-      <div className="absolute z-10 w-3 h-5 transform rotate-45 right-1 -top-0 bg-primary"></div>
-
-      <div className="relative p-4 rounded-md shadow-lg -right-2 top-1 bg-primary w-52">
+    <div className="absolute right-1 top-full mt-2 z-10">
+      <div className="absolute right-1 -top-0 w-3 h-5 bg-primary transform rotate-45 z-10"></div>
+      <div className="relative -right-2 top-1 bg-primary rounded-md shadow-lg p-4 w-52">
         <ul>
-          <li className="flex items-center py-2 hover:text-accent">
-            <NavLink to="profile" onClick={onClose}>
-              <AccountCircleOutlinedIcon className='mr-2' />
+          <li className="py-2 flex items-center hover:text-accent">
+            <Link to="profile" onClick={onClose}>
+              <AccountCircleOutlinedIcon className='mr-2'/>
               โปรไฟล์
-            </NavLink>
+            </Link>
           </li>
-          <li className="flex items-center py-2 hover:text-accent">
-            <NavLink to="order-history" onClick={onClose}>
-              <ShoppingBagOutlinedIcon className='mr-2' />
+          <li className="py-2 flex items-center hover:text-accent">
+            <Link to="order-history" onClick={onClose}>
+              <ShoppingBagOutlinedIcon className='mr-2'/>
               คำสั่งซื้อสินค้า
-            </NavLink>
+            </Link>
           </li>
-          <li className="flex items-center py-2 hover:text-accent">
-            <NavLink to="/" onClick={onClose}>
-              <LogoutIcon className='mr-2' />
+          <li className="py-2 flex items-center hover:text-accent">
+            <Link to="/" onClick={onClose}>
+              <LogoutIcon className='mr-2'/>
               ออกจากระบบ
-            </NavLink>
+            </Link>
           </li>
         </ul>
       </div>
-
     </div>
   );
 };
@@ -51,24 +52,24 @@ const SideBar = ({ isOpen, onClose }) => {
       <div className="relative flex flex-col w-64 h-full transition-transform transform shadow-xl bg-primary duration-600">
         <ul className="flex-1 p-4">
           <li className='py-3 hover:text-accent'>
-            <NavLink to='/' onClick={onClose} className="block">หน้าหลัก</NavLink>
+            <Link to='/' onClick={onClose} className="block">หน้าหลัก</Link>
           </li>
           <li className='py-3 hover:text-accent'>
-            <NavLink to='products' onClick={onClose} className="block">ผลิตภัณฑ์</NavLink>
+            <Link to='products' onClick={onClose} className="block">ผลิตภัณฑ์</Link>
           </li>
           <li className='py-3 hover:text-accent'>
-            <NavLink to='about' onClick={onClose} className="block">เกี่ยวกับเรา</NavLink>
+            <Link to='about' onClick={onClose} className="block">เกี่ยวกับเรา</Link>
           </li>
           <li className='py-3 hover:text-accent'>
-            <NavLink to='contact' onClick={onClose} className="block">ติดต่อเรา</NavLink>
+            <Link to='contact' onClick={onClose} className="block">ติดต่อเรา</Link>
           </li>
         </ul>
-        <div className="p-4 border-t">
-          <div className="flex items-center py-2">
-            <NavLink to="cart" onClick={onClose}>
+        <div className="p-4 bg-accent">
+          <div className="flex items-center py-2 text-primary">
+            <Link to="cart" onClick={onClose}>
               <ShoppingCartOutlinedIcon className="mr-2" />
               ตะกร้าสินค้า
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>
@@ -79,6 +80,7 @@ const SideBar = ({ isOpen, onClose }) => {
 const NavBar = () => {
   const [isUserPopUpOpen, setIsUserPopUpOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const { getTotalItems } = useCart();
 
   const toggleUserPopUp = () => {
     setIsUserPopUpOpen(!isUserPopUpOpen);
@@ -125,24 +127,27 @@ const NavBar = () => {
 
   return (
     <header className='justify-center sm:flex'>
-      <nav className='flex items-center justify-between h-16 sm:w-7xl '>
+      <nav className='flex items-center justify-between z-10 h-16 sm:w-7xl '>
         <div className='flex ml-4 sm:items-center'>
           <figure className='flex items-center'>
             <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
-            <p className="logo-text">All Rice</p>
+            <p className="logo-text ml-2">All rice</p>
+
           </figure>
         </div>
+        <div className='flex mr-4 items-center'>
+          <Link to='profile/cart'>
+            <Badge badgeContent={getTotalItems()} color="error">
+              <ShoppingCartOutlinedIcon />
+            </Badge>
+          </Link>
+          <div className='profile-icon mx-6 hover:cursor-pointer relative'>
         <div className='hidden gap-4 sm:gap-8 sm:flex'>
           <NavLink className='nav-menu' to='/'>หน้าหลัก</NavLink>
           <NavLink className='nav-menu' to='products'>ผลิตภัณฑ์</NavLink>
           <NavLink className='nav-menu' to='about'>เกี่ยวกับเรา</NavLink>
           <NavLink className='nav-menu' to='contact'>ติดต่อเรา</NavLink>
         </div>
-        <div className='flex items-center mr-4'>
-          <NavLink to='cart'>
-            <ShoppingCartOutlinedIcon />
-          </NavLink>
-          <div className='relative mx-6 profile-icon hover:cursor-pointer'>
             <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
             <UserPopUp isOpen={isUserPopUpOpen} onClose={closeUserPopup} />
           </div>
