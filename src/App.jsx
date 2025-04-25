@@ -20,6 +20,7 @@ import OrderHistory from "./pages/OrderHistory";
 import ProductInfo from "./pages/ProductInfo";
 import ProductList from "./pages/ProductList";
 import Profile from "./pages/Profile";
+import { CartProvider } from "./context/CartProvider";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const router = createBrowserRouter([
       { path: "authpage", element: <AuthPage /> },
       { path: "authpage/:forgetpassword", element: <ForgetPassword /> },
       { path: "products", element: <ProductList /> },
+      { path: "products/:category", element: <ProductList /> },
       { path: "products/:productId", element: <ProductInfo /> },
       { path: "contact", element: <ContactUs /> },
       { path: "contact/contactdone", element: <ContactUsDone /> },
@@ -56,7 +58,9 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <RouterProvider router={router} />
+    <CartProvider>
+      <RouterProvider router={router} />
+    </CartProvider>
   )
 }
 
