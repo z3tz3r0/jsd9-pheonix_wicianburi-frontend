@@ -18,7 +18,7 @@ import OrderHistory from "./pages/OrderHistory";
 import ProductInfo from "./pages/ProductInfo";
 import ProductList from "./pages/ProductList";
 import Profile from "./pages/Profile";
-import { CartProvider } from "./CartApp";
+import { CartProvider } from "./context/CartProvider";
 
 const router = createBrowserRouter([
   {
