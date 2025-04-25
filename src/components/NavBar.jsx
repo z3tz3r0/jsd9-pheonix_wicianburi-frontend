@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
+import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Badge } from '@mui/material';
 import { useCart } from '../context/CartContext';
 
-const UserPopUp = ({isOpen = false, onClose = () => {}}) => {
+
+const UserPopUp = ({ isOpen = false, onClose = () => { } }) => {
   if (!isOpen) return null;
 
   return (
@@ -44,11 +45,11 @@ const SideBar = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed justify-end inset-0 z-50 flex">
+    <div className="fixed inset-0 z-50 flex justify-end">
 
       <div className="fixed inset-0 bg-transparent" onClick={onClose}></div>
 
-      <div className="relative w-64 bg-primary h-full shadow-xl flex flex-col transform transition-transform duration-600">
+      <div className="relative flex flex-col w-64 h-full transition-transform transform shadow-xl bg-primary duration-600">
         <ul className="flex-1 p-4">
           <li className='py-3 hover:text-accent'>
             <Link to='/' onClick={onClose} className="block">หน้าหลัก</Link>
@@ -131,13 +132,8 @@ const NavBar = () => {
           <figure className='flex items-center'>
             <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
             <p className="logo-text ml-2">All rice</p>
+
           </figure>
-          <ul className='hidden ml-10 sm:flex'>
-            <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
-            <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
-            <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
-            <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
-          </ul>
         </div>
         <div className='flex mr-4 items-center'>
           <Link to='profile/cart'>
@@ -146,6 +142,12 @@ const NavBar = () => {
             </Badge>
           </Link>
           <div className='profile-icon mx-6 hover:cursor-pointer relative'>
+        <div className='hidden gap-4 sm:gap-8 sm:flex'>
+          <NavLink className='nav-menu' to='/'>หน้าหลัก</NavLink>
+          <NavLink className='nav-menu' to='products'>ผลิตภัณฑ์</NavLink>
+          <NavLink className='nav-menu' to='about'>เกี่ยวกับเรา</NavLink>
+          <NavLink className='nav-menu' to='contact'>ติดต่อเรา</NavLink>
+        </div>
             <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
             <UserPopUp isOpen={isUserPopUpOpen} onClose={closeUserPopup} />
           </div>

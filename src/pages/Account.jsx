@@ -1,9 +1,14 @@
 import React from 'react'
+import AccountContainer from '../containers/AccountContainer'
+
+
 
 const Account = () => {
-    return (
-        <div>Account</div>
-    )
+  return (
+    <div className='flex justify-center'>
+      <AccountContainer />
+    </div>
+  )
 }
 
 export default Account
