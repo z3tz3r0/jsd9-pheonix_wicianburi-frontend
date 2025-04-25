@@ -6,15 +6,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Badge } from '@mui/material';
-import { useCart } from '../CartApp';
-
+import { useCart } from '../context/CartContext';
 
 const UserPopUp = ({isOpen = false, onClose = () => {}}) => {
   if (!isOpen) return null;
 
   return (
     <div className="absolute right-1 top-full mt-2 z-10">
-      <div className="absolute right-1 -top-0 w-3 h-5 bg-primary transform rotate-45 z-10"></div>  
+      <div className="absolute right-1 -top-0 w-3 h-5 bg-primary transform rotate-45 z-10"></div>
       <div className="relative -right-2 top-1 bg-primary rounded-md shadow-lg p-4 w-52">
         <ul>
           <li className="py-2 flex items-center hover:text-accent">
@@ -131,7 +130,7 @@ const NavBar = () => {
         <div className='flex ml-4 sm:items-center'>
           <figure className='flex items-center'>
             <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
-            <p className="logo-text ml-2">ออลไรซ์</p>
+            <p className="logo-text ml-2">All rice</p>
           </figure>
           <ul className='hidden ml-10 sm:flex'>
             <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
