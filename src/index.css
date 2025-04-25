@@ -160,6 +160,22 @@
         background-image: url('assets/hero-background.png');
     }
 
+    .category-1 {
+        background-image: url('assets/bg-ข้าวหอมมะลิ.png');
+    }
+
+    .category-2 {
+        background-image: url('assets/bg-ข้าวเหนียว.png');
+    }
+
+    .category-3 {
+        background-image: url('assets/bg-ข้าวขาว.png');
+    }
+
+    .category-4 {
+        background-image: url('assets/bg-ข้าวกล้อง.png');
+    }
+
     .swiper {
         width: 100%;
         height: max-content;
