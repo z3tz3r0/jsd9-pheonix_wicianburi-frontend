@@ -272,7 +272,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "/assets/สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ).jfif",
+        image: "/assets/สินค้าแปรรูป_สาเกพรีเมี่ยม.jpg",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
     },
 
