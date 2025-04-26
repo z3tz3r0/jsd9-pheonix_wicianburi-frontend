@@ -1,6 +1,6 @@
 const products = [
   {
-    id: 1,
+    product_id: 1,
     name: "ข้าวกล้อง",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -11,7 +11,7 @@ const products = [
     image: "assets/ข้าวกล้อง.webp",
   },
   {
-    id: 2,
+    product_id: 2,
     name: "ข้าวมันปู",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -22,7 +22,7 @@ const products = [
     image: "assets/ข้าวมันปู.webp",
   },
   {
-    id: 3,
+    product_id: 3,
     name: "ข้าวไรซ์เบอร์รี่",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -34,7 +34,7 @@ const products = [
     image: "assets/ข้าวไรซ์เบอร์รี่.webp",
   },
   {
-    id: 4,
+    product_id: 4,
     name: "ข้าวสังข์หยดพัทลุง",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -45,7 +45,7 @@ const products = [
     image: "assets/ข้าวสังข์หยดพัทลุง.webp",
   },
   {
-    id: 5,
+    product_id: 5,
     name: "ข้าวเสาไห้",
     type: "ข้าวขาว",
     variants: [
@@ -56,7 +56,7 @@ const products = [
     image: "assets/ข้าวเสาไห้.webp",
   },
   {
-    id: 6,
+    product_id: 6,
     name: "ข้าวหอมมะลิ 105",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -68,7 +68,7 @@ const products = [
     image: "assets/ข้าวหอมมะลิ105.webp",
   },
   {
-    id: 7,
+    product_id: 7,
     name: "ข้าวหอมมะลิ กข15",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -79,7 +79,7 @@ const products = [
     image: "assets/ข้าวหอมมะลิ กข15.webp",
   },
   {
-    id: 8,
+    product_id: 8,
     name: "ข้าวหอมมะลิทุ่งกุลา",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -91,7 +91,7 @@ const products = [
     image: "assets/ข้าวหอมมะลิทุ่งกุลา.webp",
   },
   {
-    id: 9,
+    product_id: 9,
     name: "ข้าวหอมมะลิปทุมธานี",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -102,7 +102,7 @@ const products = [
     image: "assets/ข้าวหอมมะลิปทุมธานี.webp",
   },
   {
-    id: 10,
+    product_id: 10,
     name: "ข้าวเหนียว กข6",
     type: "ข้าวเหนียว",
     variants: [
@@ -113,7 +113,7 @@ const products = [
     image: "assets/ข้าวเหนียว กข6.webp",
   },
   {
-    id: 11,
+    product_id: 11,
     name: "ข้าวเหนียวเขาวงกาฬสินธุ์",
     type: "ข้าวเหนียว",
     variants: [
@@ -125,7 +125,7 @@ const products = [
     image: "assets/ข้าวเหนียวเขาวงกาฬสินธุ์.webp",
   },
   {
-    id: 12,
+    product_id: 12,
     name: "ข้าวเหนียวเขี้ยวงู",
     type: "ข้าวเหนียว",
     variants: [
@@ -136,7 +136,7 @@ const products = [
     image: "assets/ข้าวเหนียวเขี้ยวงู.webp",
   },
   {
-    id: 13,
+    product_id: 13,
     name: "ข้าวเหนียวดำ",
     type: "ข้าวเหนียว",
     variants: [
@@ -148,7 +148,7 @@ const products = [
     image: "assets/ข้าวเหนียวดำ.webp",
   },
   {
-    id: 14,
+    product_id: 14,
     name: "ข้าวเหนียว กข4",
     type: "ข้าวเหนียว",
     variants: [
@@ -159,7 +159,7 @@ const products = [
     image: "assets/ข้าวเหนียวพันธุ์ กข4.webp",
   },
   {
-    id: 15,
+    product_id: 15,
     name: "ข้าวเหนียวสกลนคร",
     type: "ข้าวเหนียว",
     variants: [
@@ -170,7 +170,7 @@ const products = [
     image: "assets/ข้าวเหนียวสกลนคร.webp",
   },
   {
-    id: 16,
+    product_id: 16,
     name: "ข้าวเหลืองประทิวชุมพร",
     type: "ข้าวขาว",
     variants: [
@@ -181,7 +181,7 @@ const products = [
     image: "assets/ข้าวเหลืองประทิวชุมพร.webp",
   },
   {
-    id: 17,
+    product_id: 17,
     name: "ข้าวตังทอดตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (50g)", value: "50g", price: 45 }],
@@ -190,7 +190,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_ข้าวตังทอด.jpg",
   },
   {
-    id: 18,
+    product_id: 18,
     name: "ขนมข้าวอบกรอบแบบแท่งตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (50g)", value: "50g", price: 45 }],
@@ -199,7 +199,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_ขนมข้าวอบกรอบแบบแท่ง.jpg",
   },
   {
-    id: 19,
+    product_id: 19,
     name: "ขนมเจลลี่ตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (25g)", value: "25g", price: 30 }],
@@ -208,7 +208,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_ขนมเจลลี่.jpg",
   },
   {
-    id: 20,
+    product_id: 20,
     name: "ขนมเจลลี่ข้าวเจ้าตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (25g)", value: "25g", price: 35 }],
@@ -217,7 +217,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_ขนมเจลลี่ข้าวเจ้า.jpg",
   },
   {
-    id: 21,
+    product_id: 21,
     name: "น้ำนมจมูกข้าวหอมมะลิตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 65 }],
@@ -226,7 +226,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_น้ำนมจมูกข้าวหอมมะลิ.jpg",
   },
   {
-    id: 22,
+    product_id: 22,
     name: "น้ำนมจมูกข้าวกล้องตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 65 }],
@@ -235,7 +235,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_น้ำนมจมูกข้าวกล้อง.jpg",
   },
   {
-    id: 23,
+    product_id: 23,
     name: "น้ำมันรำข้าวตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 85 }],
@@ -244,7 +244,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_น้ำมันรำข้าว.jpg",
   },
   {
-    id: 24,
+    product_id: 24,
     name: "น้ำมันรำข้าวพรีเมียมข้าวตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 95 }],
@@ -253,7 +253,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_น้ำมันรำข้าวพรีเมียม.jpg",
   },
   {
-    id: 25,
+    product_id: 25,
     name: "สาเก (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (330ml)", value: "330ml", price: 250 }],
@@ -262,7 +262,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_สาเก.jpg",
   },
   {
-    id: 26,
+    product_id: 26,
     name: "สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (330ml)", value: "330ml", price: 450 }],
@@ -271,7 +271,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_สาเกพรีเมี่ยม.jpg",
   },
   {
-    id: 27,
+    product_id: 27,
     name: "เบียร์ลาเกอร์ตราออลไรซ์ (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 กระป๋อง (330ml)", value: "330ml", price: 120 }],
@@ -280,7 +280,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_เบียร์ลาเกอร์.jpg",
   },
   {
-    id: 28,
+    product_id: 28,
     name: "เบียร์เพลเอลตราออลไรซ์ (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 กระป๋อง (330ml)", value: "330ml", price: 150 }],
@@ -289,8 +289,8 @@ const products = [
     image: "assets/สินค้าแปรรูป_เบียร์เพลเอล.jpg",
   },
   {
-    id: 29,
-    name: "เบียร์ดำจากข้าวมอลท์ตราออลไรซ์ (แอลกอฮอลลต่ำ)",
+    product_id: 29,
+    name: "เบียร์ดำจากข้าวมอลท์ตราออลไรซ์ (แแอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 กระป๋อง (330ml)", value: "330ml", price: 160 }],
     description:
@@ -298,7 +298,7 @@ const products = [
     image: "assets/สินค้าแปรรูป_เบียร์ดำ.jpg",
   },
   {
-    id: 30,
+    product_id: 30,
     name: "มอลท์ข้าวหอมมะลิเชียงราย",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (450g)", value: "450g", price: 85 }],
@@ -307,14 +307,14 @@ const products = [
     image: "assets/สินค้าแปรรูป_มอลท์จากข้าวหอมมะลิ.jpg",
   },
   {
-    id: 31,
+    product_id: 31,
     name: "มอลท์ข้าวเหนียวดำ",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (450g)", value: "450g", price: 95 }],
     description:
       "มอลท์จากข้าวเหนียวดำ หอมละมุนเป็นเอกลักษณ์  ผ่านกระบวนการมอลท์อย่างพิถีพิถัน คงรสชาติและกลิ่นของข้าวไทยแท้ นำไปทำเครื่องดื่มเพื่อสุขภาพ หรือนำไปสร้างสรรค์เครื่องดื่มคราฟต์ที่ต้องการความแตกต่างอย่างมีระดับ",
     image: "assets/สินค้าแปรรูป_มอลท์จากข้าวเหนียวดำ.jpg",
-  }
+  },
 ];
 
 export default products;

@@ -13,23 +13,23 @@ const UserPopUp = ({ isOpen = false, onClose = () => { } }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="absolute right-1 top-full mt-2 z-10">
-      <div className="absolute right-1 -top-0 w-3 h-5 bg-primary transform rotate-45 z-10"></div>
-      <div className="relative -right-2 top-1 bg-primary rounded-md shadow-lg p-4 w-52">
+    <div className="absolute z-10 mt-2 right-1 top-full">
+      <div className="absolute z-10 w-3 h-5 transform rotate-45 right-1 -top-0 bg-primary"></div>
+      <div className="relative p-4 rounded-md shadow-lg -right-2 top-1 bg-primary w-52">
         <ul>
-          <li className="py-2 flex items-center hover:text-accent">
+          <li className="flex items-center py-2 hover:text-accent">
             <Link to="profile" onClick={onClose}>
               <AccountCircleOutlinedIcon className='mr-2'/>
               โปรไฟล์
             </Link>
           </li>
-          <li className="py-2 flex items-center hover:text-accent">
-            <Link to="order-history" onClick={onClose}>
+          <li className="flex items-center py-2 hover:text-accent">
+            <Link to="profile/order-history" onClick={onClose}>
               <ShoppingBagOutlinedIcon className='mr-2'/>
               คำสั่งซื้อสินค้า
             </Link>
           </li>
-          <li className="py-2 flex items-center hover:text-accent">
+          <li className="flex items-center py-2 hover:text-accent">
             <Link to="/" onClick={onClose}>
               <LogoutIcon className='mr-2'/>
               ออกจากระบบ
@@ -139,6 +139,7 @@ const NavBar = () => {
               <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
               <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
             </ul>
+
           </div>
           <div className='flex mr-4 items-center'>
             <NavLink to='cart' className="flex items-center">

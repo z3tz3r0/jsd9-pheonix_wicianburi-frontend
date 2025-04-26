@@ -1,24 +1,24 @@
 import {
-    Select,
-    SelectContent,
-    SelectTrigger,
-    SelectValue
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue
 } from "@/components/ui/select";
 import * as React from 'react';
 
 
 export default function Dropdown({ label, children, className, value, onValueChange }) {
-    return (
-        <Select value={value} onValueChange={onValueChange}>
-            <SelectTrigger className={className}>
-                <SelectValue placeholder={label} />
-            </SelectTrigger>
-            <SelectContent>
-                {children}
-            </SelectContent>
-        </Select>
+  return (
+    <Select value={value} onValueChange={onValueChange} required>
+      <SelectTrigger className={className}>
+        <SelectValue placeholder={label} />
+      </SelectTrigger>
+      <SelectContent>
+        {children}
+      </SelectContent>
+    </Select>
 
-    );
+  );
 }
 
 // วิธีใช้
