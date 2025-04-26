@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ProductCard from '../containers/ProductCard'; 
+import ProductCard from '../containers/ProductCard';
 // import { Container, Grid, Typography } from '@mui/material';
-import FilterSidebar from '../components/FilterSidebar'; 
+import FilterSidebar from '../components/FilterSidebar';
 const products = [
 
   {
@@ -382,8 +382,8 @@ const ProductList = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-6">
-      <div className="flex flex-col-1 md:flex-row md:items-center md:justify-end gap-4 mb-6 w-full">
+    <div className="px-4 py-6 mx-auto max-w-7xl">
+      <div className="flex w-full gap-4 mb-6 flex-col-1 md:flex-row md:items-center md:justify-end">
         {/* Left Section: Region Selector */}
         <div className="flex items-center gap-2 md:mr-auto">
           <span className="text-lg">
@@ -420,7 +420,7 @@ const ProductList = () => {
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, region: e.target.value }))
             }
-            className="border rounded px-2 py-1 text-sm"
+            className="px-2 py-1 text-sm border rounded"
           >
             <option value="ทั้งหมด">ทั้งหมด</option>
             <option value="ภาคกลาง">ภาคกลาง</option>
@@ -431,7 +431,7 @@ const ProductList = () => {
         </div>
 
         {/* Middle Section: Search Bar */}
-        <div className="flex items-center gap-2 border px-3 py-2 rounded w-full md:w-1/2">
+        <div className="flex items-center w-full gap-2 px-3 py-2 border rounded md:w-1/2">
           <span className="text-gray-500">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -449,7 +449,7 @@ const ProductList = () => {
           <input
             type="text"
             placeholder="ค้นหาสินค้า..."
-            className="flex-1 outline-none text-sm"
+            className="flex-1 text-sm outline-none"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -458,7 +458,7 @@ const ProductList = () => {
         {/* Right Section: Filter Button */}
         <div>
           <button
-            className="bg-black text-white p-2 rounded flex items-center gap-1"
+            className="flex items-center gap-1 p-2 text-white bg-black rounded"
             onClick={() => setShowFilterDrawer(true)}
           >
              <svg
@@ -482,7 +482,7 @@ const ProductList = () => {
       {/* Filter Drawer Overlay */}
       {showFilterDrawer && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-40 transition-opacity duration-300 ease-in-out"
+          className="fixed inset-0 z-40 transition-opacity duration-300 ease-in-out bg-black bg-opacity-40"
           onClick={closeFilterDrawer} // Close when clicking outside overlay
         ></div>
       )}
