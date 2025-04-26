@@ -3,7 +3,7 @@ import { CartContext } from "./CartContext";
 import { carts } from "../data/mockCarts.js";
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(carts);
 
   // Load cart from localStorage on component mount
   useEffect(() => {
@@ -63,15 +63,18 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
   };
 
+  const value = {
+    cart,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    getTotalItems,
+    getSubtotal
+
+  }
+
   return (
-    <CartContext.Provider value={{
-      cart,
-      addToCart,
-      removeFromCart,
-      updateQuantity,
-      getTotalItems,
-      getSubtotal
-    }}>
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );
