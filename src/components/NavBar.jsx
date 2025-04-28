@@ -139,7 +139,6 @@ const NavBar = () => {
               <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
               <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
             </ul>
-
           </div>
           <div className='flex mr-4 items-center'>
             <NavLink to='cart' className="flex items-center">
