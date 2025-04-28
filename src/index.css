@@ -149,11 +149,11 @@
     }
 
     .nav-menu {
-        @apply mx-4 text-base font-bold text-slategray text-nowrap transform transition-transform duration-600 hover:text-accent hover:-translate-y-2;
+        @apply mx-4 text-base font-bold transition-transform transform text-slategray text-nowrap duration-600 hover:text-accent hover:-translate-y-2;
     }
 
     .footer-menu {
-        @apply mb-4 text-sm text-primary transform transition-transform duration-600 hover:text-accent hover:-translate-y-1 text-nowrap;
+        @apply mb-4 text-sm transition-transform transform text-primary duration-600 hover:text-accent hover:-translate-y-1 text-nowrap;
     }
 
     .footer-text {
