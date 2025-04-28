@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Link } from 'react-router';
+import { Link } from 'react-router';
 
 // import { useParams } from 'react-router';
 
@@ -16,6 +16,12 @@ const OrderHistory = () => {
   const orderHistories = [
     {
       orderId: "1236",
+      user_id: "1231345asdasbjasd21543",
+      order_items: [
+        { name: "ข้าวหอมมะลิ 105", variant: "1 กก.", price: 100, quantiy: 1 },
+        { name: "ข้าวมันปู", variant: "1 กก.", price: 100, quantiy: 1 },
+        { name: "ข้าวกล้อง", variant: "1 กก.", price: 100, quantiy: 1 },
+      ],
       orderDate: "22 มีนาคม 2025",
       stateVariant: "ระหว่างการชำระ",
       totalPrice: 810,
@@ -57,8 +63,8 @@ const OrderHistory = () => {
               <td >{item.totalPrice}</td>
               <td className='px-4 '>
                 <Link to={`/profile/order-history/${item.orderId}`}
-                className="block px-4 py-2 mx-1 bg-black rounded-md cursor-pointer hover:bg-black/90 active:shadow-md text-primary">
-                    ดูรายละเอียด
+                  className="block px-4 py-2 mx-1 bg-black rounded-md cursor-pointer hover:bg-black/90 active:shadow-md text-primary">
+                  ดูรายละเอียด
                 </Link>
               </td>
             </tr>

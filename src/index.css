@@ -143,43 +143,45 @@
 }
 
 @layer components {
+  .logo-text {
+    @apply ml-1 text-2xl font-bold font-main text-nowrap;
+  }
 
-    .logo-text {
-        @apply ml-1 text-2xl font-bold font-main text-nowrap;
-    }
+  .nav-menu {
+    @apply mx-4 text-base font-bold transition-transform transform text-slategray text-nowrap duration-600 hover:text-accent hover:-translate-y-2;
+  }
 
-    .nav-menu {
-        @apply mx-4 text-base font-bold text-slategray text-nowrap transform transition-transform duration-600 hover:text-accent hover:-translate-y-2;
-    }
+  .footer-menu {
+    @apply mb-4 text-sm transition-transform transform text-primary duration-600 hover:text-accent hover:-translate-y-1 text-nowrap;
+  }
 
-    .footer-menu {
-        @apply mb-4 text-sm text-primary transform transition-transform duration-600 hover:text-accent hover:-translate-y-1 text-nowrap;
-    }
+  .footer-text {
+    @apply text-sm text-gray text-nowrap;
+  }
 
-    .footer-text {
-        @apply text-sm text-gray text-nowrap;
-    }
+  .hero-section {
+    background-image: url("assets/hero-background.png");
+  }
 
-    .hero-section {
-        background-image: url('assets/hero-background.png');
-    }
+  .category-1 {
+    background-image: url("assets/bg-ข้าวหอมมะลิ.png");
+    background-size: cover;
+  }
 
-    .category-1 {
-        background-image: url('assets/bg-ข้าวหอมมะลิ.png');
-    }
+  .category-2 {
+    background-image: url("assets/bg-ข้าวเหนียว.png");
+    background-size: cover;
+  }
 
-    .category-2 {
-        background-image: url('assets/bg-ข้าวเหนียว.png');
-    }
+  .category-3 {
+    background-image: url("assets/bg-ข้าวขาว.png");
+    background-size: cover;
+  }
 
-    .category-3 {
-        background-image: url('assets/bg-ข้าวขาว.png');
-    }
-
-    .category-4 {
-        background-image: url('assets/bg-ข้าวกล้อง.png');
-    }
-
+  .category-4 {
+    background-image: url("assets/bg-ข้าวกล้อง.png");
+    background-size: cover;
+  }
 
   .swiper {
     width: 100%;
@@ -193,5 +195,3 @@
     object-fit: cover;
   }
 }
-
-
