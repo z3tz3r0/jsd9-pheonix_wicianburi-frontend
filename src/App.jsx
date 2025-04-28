@@ -3,6 +3,7 @@ import {
   RouterProvider,
 } from "react-router";
 import Layout from "./containers/Layout";
+import { CartProvider } from "./context/CartProvider";
 import AuthPage from "./modules/authPages/AuthPage";
 import ForgetPassword from "./modules/authPages/ForgetPassword";
 import AboutUs from "./pages/AboutUs";
@@ -20,7 +21,6 @@ import OrderHistory from "./pages/OrderHistory";
 import ProductInfo from "./pages/ProductInfo";
 import ProductList from "./pages/ProductList";
 import Profile from "./pages/Profile";
-import { CartProvider } from "./context/CartProvider";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +32,6 @@ const router = createBrowserRouter([
       { path: "authpage", element: <AuthPage /> },
       { path: "authpage/:forgetpassword", element: <ForgetPassword /> },
       { path: "products", element: <ProductList /> },
-      { path: "products/:category", element: <ProductList /> },
       { path: "products/:productId", element: <ProductInfo /> },
       { path: "contact", element: <ContactUs /> },
       { path: "contact/contactdone", element: <ContactUsDone /> },
