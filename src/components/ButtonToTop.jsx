@@ -37,7 +37,7 @@ export default function ScrollToTopButton() {
           position: 'fixed',
           bottom: '6rem',
           right: '2rem',
-          zIndex: 1,
+          zIndex: 5,
         }}
       >
         <KeyboardArrowUpIcon />
