@@ -1,7 +1,7 @@
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router";
+} from "react-router-dom";
 import Layout from "./containers/Layout";
 import { CartProvider } from "./context/CartProvider";
 import AuthPage from "./modules/authPages/AuthPage";

@@ -1,29 +1,44 @@
 import { useEffect, useState } from "react";
-import { CartContext } from "./CartContext";
 import { carts } from "../data/mockCarts.js";
+import { CartContext } from "./CartContext";
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState(carts);
+  const [cart, setCart] = useState([]);
+  const [isInitialMount, setIsInitialMount] = useState(true);
 
   // Load cart from localStorage on component mount
   useEffect(() => {
     try {
       const savedCart = localStorage.getItem('cart');
+      console.log("Attempting to load cart:", savedCart); // Log what was retrieved
       if (savedCart) {
-        setCart(JSON.parse(savedCart));
+        const parsedCart = JSON.parse(savedCart); // Parse first
+        console.log("Successfully parsed cart:", parsedCart);
+        setCart(parsedCart); // Set state *after* successful parse
       } else {
-        // Use sample data for demonstration
+        console.log("No cart found in localStorage, using mock data.");
         setCart(carts);
       }
     } catch (error) {
-      console.error('Error loading cart from localStorage:', error);
+      // Log the specific error and the data that caused it
+      console.error('Error parsing cart from localStorage:', error);
+      console.error('Data that caused error:', localStorage.getItem('cart'));
+      console.log("Falling back to mock data due to error.");
       setCart(carts);
     }
-  }, []);
+  }, []); // Dependencies are empty, correct for load-once
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
+    if (isInitialMount) {
+      setIsInitialMount(false);
+      console.log("Skipping save on initial mount.")
+    } else {
+      console.log("Effect that watch cart working...")
+      localStorage.setItem('cart', JSON.stringify(cart));
+      console.log(cart)
+      console.log("Effect that watch cart done.")
+    }
   }, [cart]);
 
   // Add item to cart
@@ -48,9 +63,14 @@ export const CartProvider = ({ children }) => {
 
   // Update item quantity
   const updateQuantity = (productId, newQuantity) => {
-    setCart(cart.map(item =>
-      item.id === productId ? { ...item, newQuantity } : item
-    ));
+    const quantityValue = Math.max(0, Number(newQuantity) || 0);
+    setCart(prevCart =>
+      prevCart.map(item =>
+        item.id === productId
+          ? { ...item, quantity: quantityValue }
+          : item
+      ).filter(item => item.quantity > 0)
+    );
   };
 
   // Get total number of items in cart
