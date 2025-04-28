@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
@@ -6,7 +6,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Badge } from '@mui/material';
-import { useCart } from '../context/CartContext';
+import { CartContext } from '../context/CartContext';
 
 
 const UserPopUp = ({ isOpen = false, onClose = () => { } }) => {
@@ -80,7 +80,7 @@ const SideBar = ({ isOpen, onClose }) => {
 const NavBar = () => {
   const [isUserPopUpOpen, setIsUserPopUpOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const { getTotalItems } = useCart();
+  const { getTotalItems } = useContext(CartContext);
 
   const toggleUserPopUp = () => {
     setIsUserPopUpOpen(!isUserPopUpOpen);
@@ -127,33 +127,33 @@ const NavBar = () => {
 
   return (
     <header className='justify-center sm:flex'>
-      <nav className='z-10 flex items-center justify-between h-16 sm:w-7xl '>
-        <div className='flex ml-4 sm:items-center'>
-          <figure className='flex items-center'>
-            <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
-            <p className="ml-2 logo-text">All rice</p>
+      <nav className='flex items-center justify-between z-10 h-16 sm:w-7xl '>
+      <div className='flex ml-4 sm:items-center'>
+            <figure className='flex items-center'>
+              <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
+              <p className="logo-text">All Rice</p>
+            </figure>
+            <ul className='hidden ml-10 sm:flex'>
+              <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
+              <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
+              <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
+              <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
+            </ul>
 
-          </figure>
-        </div>
-        <div className='flex items-center mr-4'>
-          <Link to='profile/cart'>
+          </div>
+          <div className='flex mr-4 items-center'>
+            <NavLink to='cart' className="flex items-center">
             <Badge badgeContent={getTotalItems()} color="error">
-              <ShoppingCartOutlinedIcon />
-            </Badge>
-          </Link>
-          <div className='relative mx-6 profile-icon hover:cursor-pointer'>
-        <div className='hidden gap-4 sm:gap-8 sm:flex'>
-          <NavLink className='nav-menu' to='/'>หน้าหลัก</NavLink>
-          <NavLink className='nav-menu' to='products'>ผลิตภัณฑ์</NavLink>
-          <NavLink className='nav-menu' to='about'>เกี่ยวกับเรา</NavLink>
-          <NavLink className='nav-menu' to='contact'>ติดต่อเรา</NavLink>
-        </div>
-            <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
-            <UserPopUp isOpen={isUserPopUpOpen} onClose={closeUserPopup} />
-          </div>
-          <div className='sm:hidden' onClick={toggleSideBar}>
-            <MenuIcon />
-          </div>
+                <ShoppingCartOutlinedIcon />
+              </Badge>
+            </NavLink>
+            <div className='mx-6 hover:cursor-pointer relative profile-icon-container'>
+              <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
+              <UserPopUp isOpen={isUserPopUpOpen} onClose={closeUserPopup} />
+            </div>
+            <div className='sm:hidden cursor-pointer' onClick={toggleSideBar}>
+              <MenuIcon />
+            </div>
           <SideBar isOpen={isSideBarOpen} onClose={closeSideBar} />
         </div>
       </nav>
