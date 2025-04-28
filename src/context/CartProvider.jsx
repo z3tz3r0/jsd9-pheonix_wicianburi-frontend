@@ -10,13 +10,10 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     try {
       const savedCart = localStorage.getItem('cart');
-      console.log("Attempting to load cart:", savedCart); // Log what was retrieved
       if (savedCart) {
         const parsedCart = JSON.parse(savedCart); // Parse first
-        console.log("Successfully parsed cart:", parsedCart);
         setCart(parsedCart); // Set state *after* successful parse
       } else {
-        console.log("No cart found in localStorage, using mock data.");
         setCart(carts);
       }
     } catch (error) {
@@ -32,12 +29,8 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     if (isInitialMount) {
       setIsInitialMount(false);
-      console.log("Skipping save on initial mount.")
     } else {
-      console.log("Effect that watch cart working...")
       localStorage.setItem('cart', JSON.stringify(cart));
-      console.log(cart)
-      console.log("Effect that watch cart done.")
     }
   }, [cart]);
 
