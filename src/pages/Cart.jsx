@@ -14,8 +14,10 @@ const Cart = () => {
   const total = subtotal + delivery; // ยอดรวมทั้งหมด
 
   const handleCheckout = () => {
-    if (cart.legnth === 0) return;
-    navigate('/cart/confirm-order');
+    console.log(cart.length);
+    if (cart.length !== 0) {
+      navigate('/cart/confirm-order');
+    }
   };
 
   return (
@@ -127,15 +129,13 @@ const Cart = () => {
                 </span>
               </div>
             </div>
-            <Link to="confirm-order">
-              <ButtonMain
-                type="submit"
-                className="w-full py-6 mt-4 mb-16 bg-black"
-                onClick={handleCheckout}
-              >
-                ชำระเงิน
-              </ButtonMain>
-            </Link>
+            <ButtonMain
+              type="submit"
+              className="w-full py-6 mt-4 mb-16 bg-black"
+              onClick={handleCheckout}
+            >
+              ชำระเงิน
+            </ButtonMain>
           </div>
         </div>
       </div>
