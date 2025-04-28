@@ -13,7 +13,7 @@ const OrderDetail = () => {
   const orderDetails = [
     {
       id: 1,
-      image: "../../public/assets/ข้าวหอมมะลิ_กข15.webp",
+      image: "../../public/assets/ข้าวหอมมะลิ105.webp",
       name: "ข้าวหอมมะลิ 105",
       itemVariant: "1 กิโลกรัม",
       price: 100,
@@ -76,4 +76,4 @@ const OrderDetail = () => {
   )
 }
 
-export default OrderDetail
+export default OrderDetail;
