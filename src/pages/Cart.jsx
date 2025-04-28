@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router';
 import ButtonMain from '../components/ButtonMain';
 import { CartContext } from '../context/CartContext';
-// import { useCart } from '../context/CartContext';
+
 
 const Cart = () => {
   const { cart, updateQuantity, removeFromCart, getSubtotal } = useContext(CartContext);

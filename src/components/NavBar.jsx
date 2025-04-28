@@ -125,22 +125,22 @@ const NavBar = () => {
 
   return (
     <header className='justify-center sm:flex'>
-      <nav className='z-10 flex items-center justify-between h-16 sm:w-7xl '>
-        <div className='flex ml-4 sm:items-center'>
-          <figure className='flex items-center'>
-            <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
-            <p className="logo-text">All Rice</p>
-          </figure>
-          <ul className='hidden ml-10 sm:flex'>
-            <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
-            <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
-            <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
-            <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
-          </ul>
+      <nav className='flex items-center justify-between z-10 h-16 sm:w-7xl '>
+      <div className='flex ml-4 sm:items-center'>
+            <figure className='flex items-center'>
+              <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
+              <p className="logo-text">All Rice</p>
+            </figure>
+            <ul className='hidden ml-10 sm:flex'>
+              <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
+              <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
+              <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
+              <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
+            </ul>
+          </div>
+          <div className='flex mr-4 items-center'>
+            <NavLink to='cart' className="flex items-center">
 
-        </div>
-        <div className='flex items-center mr-4'>
-          <NavLink to='cart' className="flex items-center">
             <Badge badgeContent={getTotalItems()} color="error">
               <ShoppingCartOutlinedIcon />
             </Badge>

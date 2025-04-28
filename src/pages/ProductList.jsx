@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ProductCard from '../containers/ProductCard';
 // import { Container, Grid, Typography } from '@mui/material';
 import FilterSidebar from '../components/FilterSidebar';
+import { CartContext } from '../context/CartContext';
 const products = [
 
   {
@@ -10,7 +11,7 @@ const products = [
     price: "฿500",
     rating: 4.5,
     reviews: 120,
-    image: "/assets/ข้าวกล้อง.webp",
+    image: "assets/ข้าวกล้อง.webp",
     region: "ภาคกลาง",
     tags: ["ข้าวเพื่อสุขภาพ"]
   },
@@ -40,7 +41,7 @@ const products = [
     price: "฿500",
     rating: 4.5,
     reviews: 120,
-    image: "public/assets/ข้าวสังข์หยดพัทลุง.webp",
+    image: "assets/ข้าวสังข์หยดพัทลุง.webp",
     region: "ภาคใต้",
     tags: ["ข้าวเพื่อสุขภาพ"]
   },
@@ -50,7 +51,7 @@ const products = [
     price: "฿500",
     rating: 4.5,
     reviews: 120,
-    image: "/public/assets/ข้าวเสาไห้.webp",
+    image: "assets/ข้าวเสาไห้.webp",
     region: "ภาคกลาง",
     tags: ["ข้าวเพื่อสุขภาพ"]
   },
@@ -61,7 +62,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิ_กข15.webp",
+        image: "assets/ข้าวหอมมะลิ_กข15.webp",
         region: "ภาคอีสาน",
         tags: ["ข้าวหอมมะลิ"]
     },
@@ -72,7 +73,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิ105.webp",
+        image: "assets/ข้าวหอมมะลิ105.webp",
         region: "ภาคเหนือ",
         tags: ["ข้าวหอมมะลิ"]
     },
@@ -83,7 +84,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิทุ่งกุลา.webp",
+        image: "assets/ข้าวหอมมะลิทุ่งกุลา.webp",
         region: "ภาคอีสาน",
         tags: ["ข้าวหอมมะลิ"]
     },
@@ -94,7 +95,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิปทุมธานี.webp",
+        image: "assets/ข้าวหอมมะลิปทุมธานี.webp",
         region: "ภาคกลาง",
         tags: ["ข้าวหอมมะลิ"]
     },
@@ -105,7 +106,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวเหนียว_กข6.webp",
+        image: "assets/ข้าวเหนียว_กข6.webp",
         region: "ภาคอีสาน",
         tags: ["ข้าวเหนียว"]
     },
@@ -116,7 +117,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวเหนียวเขาวงกาฬสินธุ์.webp",
+        image: "assets/ข้าวเหนียวเขาวงกาฬสินธุ์.webp",
         region: "ภาคอีสาน",
         tags: ["ข้าวเหนียว"]
     },
@@ -127,7 +128,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวเหนียวเขี้ยวงู.webp",
+        image: "assets/ข้าวเหนียวเขี้ยวงู.webp",
         region: "ภาคเหนือ",
         tags: ["ข้าวเหนียว"]
     },
@@ -138,7 +139,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวเหนียวดำ.webp",
+        image: "assets/ข้าวเหนียวดำ.webp",
         region: "ภาคเหนือ",
         tags: ["ข้าวเหนียว", "ข้าวเพื่อสุขภาพ"]
     },
@@ -149,7 +150,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวเหนียวพันธุ์_กข.4.webp",
+        image: "assets/ข้าวเหนียวพันธุ์_กข.4.webp",
         region: "ภาคใต้",
         tags: ["ข้าวเหนียว"]
     },
@@ -160,7 +161,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวเหนียวสกลนคร.webp",
+        image: "assets/ข้าวเหนียวสกลนคร.webp",
         region: "ภาคอีสาน",
         tags: ["ข้าวเหนียว"]
     },
@@ -171,7 +172,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ข้าวเหลืองประทิวชุมพร.webp",
+        image: "assets/ข้าวเหลืองประทิวชุมพร.webp",
         region: "ภาคใต้",
         tags: ["ข้าวขาว"]
     },
@@ -182,7 +183,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ขนมข้าวกรอบทำจากข้าวหอมมะลิ.jfif",
+        image: "assets/ขนมข้าวกรอบทำจากข้าวหอมมะลิ.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
     },
 
@@ -192,7 +193,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ขนมข้าวอบกรอบแบบแท่ง.jfif",
+        image: "assets/ขนมข้าวอบกรอบแบบแท่ง.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
     },
 
@@ -202,7 +203,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ขนมขบเคี้ยว รวมข้าวหลายชนิด.jfif",
+        image: "assets/ขนมขบเคี้ยว รวมข้าวหลายชนิด.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
     },
 
@@ -212,7 +213,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/ขนมขบเคี้ยวผสมเจลลี่มีข้าวเจ้าเป็นส่วนประกอบ.jfif",
+        image: "assets/ขนมขบเคี้ยวผสมเจลลี่มีข้าวเจ้าเป็นส่วนประกอบ.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
     },
 
@@ -222,7 +223,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/น้ำนมจมูกข้าวหอมมะลิ.jfif",
+        image: "assets/น้ำนมจมูกข้าวหอมมะลิ.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
     },
 
@@ -232,7 +233,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/น้ำนมจมูกข้าวกล้อง.jfif",
+        image: "assets/น้ำนมจมูกข้าวกล้อง.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
     },
 
@@ -242,7 +243,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/น้ำมันรำข้าว.jfif",
+        image: "assets/น้ำมันรำข้าว.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป"]
     },
 
@@ -252,7 +253,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/น้ำมันรำข้าว plastic.jfif",
+        image: "assets/น้ำมันรำข้าว plastic.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป"] 
     },
 
@@ -262,7 +263,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/สินค้าแปรรูป_สาเก.jpg",
+        image: "assets/สินค้าแปรรูป_สาเก.jpg",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
     },
 
@@ -272,7 +273,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ).jfif",
+        image: "assets/สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ).jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
     },
 
@@ -282,7 +283,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/เบียร์จากข้าวมอลท์ (แอลกอฮอลลต่ำ) white.jfif",
+        image: "assets/เบียร์จากข้าวมอลท์ (แอลกอฮอลลต่ำ) white.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"] 
     },
 
@@ -292,7 +293,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/เบียร์จากข้าวมอลท์เพลเอล (แอลกอฮอลลต่ำ).jfif",
+        image: "assets/เบียร์จากข้าวมอลท์เพลเอล (แอลกอฮอลลต่ำ).jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"] 
     },
 
@@ -302,7 +303,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/เบียร์ดำจากข้าวมอลท์ (แอลกอฮอลลต่ำ) green.jfif",
+        image: "assets/เบียร์ดำจากข้าวมอลท์ (แอลกอฮอลลต่ำ) green.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"] 
     },
 
@@ -312,7 +313,7 @@ const products = [
         price: "฿500",
         rating: 4.5,
         reviews: 120,
-        image: "public/assets/มอลท์จากข้าวหอมมะลิเชียงราย.jfif",
+        image: "assets/มอลท์จากข้าวหอมมะลิเชียงราย.jfif",
         tags: ["ผลิตภัณฑ์แปรรูป"] 
     },
 
@@ -322,7 +323,7 @@ const products = [
       price: "฿500",
       rating: 4.5,
       reviews: 120,
-      image: "public/assets/สินค้าแปรรูป_มอลท์จากข้าวเหนียวดำ.jpg",
+      image: "assets/สินค้าแปรรูป_มอลท์จากข้าวเหนียวดำ.jpg",
       tags: ["ผลิตภัณฑ์แปรรูป"] 
   },
 ];
@@ -330,15 +331,10 @@ const products = [
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filters, setFilters] = useState({
-    tags: [],
-    rating: "any",
-    price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
-    region: "ทั้งหมด",
-  });
-
+  
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
+  const { filters, setFilters } = useContext(CartContext);
   // Function to apply filters
   const applyFilters = (product) => {
       // Filter by search term

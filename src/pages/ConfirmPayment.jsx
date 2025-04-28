@@ -38,7 +38,7 @@ export default function ConfirmPayment() {
 
             <div className="flex items-center p-4 space-x-4 border rounded-lg">
               <img
-                src="/public/assets/qrcode-phoenix.png"
+                src="assets/qrcode-phoenix.png"
                 alt="PromptPay QR"
                 className="object-contain w-24 h-24"
               />
