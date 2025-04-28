@@ -43,6 +43,7 @@ const Cart = () => {
             </div>
 
             {/* content */}
+
             <div >
               {cart.length === 0 ? (
                 <div className='flex justify-center'>
@@ -63,10 +64,12 @@ const Cart = () => {
                     </div>
 
                     {/* Quantity Controls */}
+
                     <div className='col-span-2 text-center'>
                       <div className="col-span-2">
                         <div className='flex items-center justify-center'>
-                          <button className='flex items-center justify-center w-8 h-8 border border-black rounded-l'
+                          <button
+                            className='flex items-center justify-center w-8 h-8 border border-black rounded-l'
                             onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
                           >
                             −
@@ -105,31 +108,39 @@ const Cart = () => {
               </div>
             </div>
           </div>
-
           {/* cart total */}
-          <div className='w-full p-6 mb-4 rounded-md shadow-md bg-primary sm:w-sm '>
-            <h3 className='mb-4 text-lg font-bold'>ยอดรวมสินค้า</h3>
-            <div className='border-t border-gray-200'>
-              <div className='flex justify-between py-3'>
+          <div className="w-full p-6 mb-4 rounded-md shadow-md bg-primary sm:w-sm ">
+            <h3 className="mb-4 text-lg font-bold">ยอดรวมสินค้า</h3>
+            <div className="border-t border-gray-200">
+              <div className="flex justify-between py-3">
                 <span>ยอดรวม</span>
-                <span className='font-semibold'>{subtotal.toFixed(2)}</span>
+                <span className="font-semibold">{subtotal.toFixed(2)}</span>
               </div>
-              <div className='flex justify-between py-3'>
+              <div className="flex justify-between py-3">
                 <span>ค่าส่งสินค้า</span>
-                <span className='font-semibold'>{delivery}</span>
+                <span className="font-semibold">{delivery}</span>
               </div>
-              <div className='flex justify-between py-3 mt-2 border-t border-gray-200'>
-                <span className='text-lg font-bold'>ยอดสุทธิ</span>
-                <span className='font-bold text-accent'>{total.toFixed(2)} บาท</span>
+              <div className="flex justify-between py-3 mt-2 border-t border-gray-200">
+                <span className="text-lg font-bold">ยอดสุทธิ</span>
+                <span className="font-bold text-accent">
+                  {total.toFixed(2)} บาท
+                </span>
               </div>
             </div>
-            <ButtonMain type="submit" className='w-full py-6 mt-4 mb-16 bg-black' onClick={handleCheckout}>ชำระเงิน</ButtonMain>
+            <Link to="confirm-order">
+              <ButtonMain
+                type="submit"
+                className="w-full py-6 mt-4 mb-16 bg-black"
+                onClick={handleCheckout}
+              >
+                ชำระเงิน
+              </ButtonMain>
+            </Link>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
-
+export default Cart;

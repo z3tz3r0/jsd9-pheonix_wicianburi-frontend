@@ -4,8 +4,8 @@ const products = [
     name: "ข้าวกล้อง",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 45 },
-      { label: "5 กก", value: "5kg", price: 225 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 45 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 225 },
     ],
     description: "มีเส้นใยสูง ช่วยบำรุงร่างกาย อุดมด้วยวิตามินและเกลือแร่",
     image: "assets/ข้าวกล้อง.webp",
@@ -15,8 +15,8 @@ const products = [
     name: "ข้าวมันปู",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 38 },
-      { label: "5 กก", value: "5kg", price: 190 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 38 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 190 },
     ],
     description: "สีแดงมันปู หุงแล้วนุ่มสวย มีสารแคโรทีนสูง",
     image: "assets/ข้าวมันปู.webp",
@@ -26,8 +26,8 @@ const products = [
     name: "ข้าวไรซ์เบอร์รี่",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 100 },
-      { label: "5 กก", value: "5kg", price: 500 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 100 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 500 },
     ],
     description:
       "สีม่วงเข้ม หอมมัน คุณค่าทางอาหารสูง ช่วยลดความเสี่ยงโรคเรื้อรัง",
@@ -38,8 +38,8 @@ const products = [
     name: "ข้าวสังข์หยดพัทลุง",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 57 },
-      { label: "5 กก", value: "5kg", price: 285 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 57 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 285 },
     ],
     description: "เมล็ดเล็กเรียว สีแดงเข้ม คุณค่าทางอาหารสูง ช่วยบำรุงโลหิต",
     image: "assets/ข้าวสังข์หยดพัทลุง.webp",
@@ -49,8 +49,8 @@ const products = [
     name: "ข้าวเสาไห้",
     type: "ข้าวขาว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 26 },
-      { label: "5 กก", value: "5kg", price: 130 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 26 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 130 },
     ],
     description: "เมล็ดข้าวหุงขึ้นหม้อ ไม่แข็งกระด้าง ไม่บูดง่าย นิยมแปรรูป",
     image: "assets/ข้าวเสาไห้.webp",
@@ -60,8 +60,8 @@ const products = [
     name: "ข้าวหอมมะลิ 105",
     type: "ข้าวหอมมะลิ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 50 },
-      { label: "5 กก", value: "5kg", price: 250 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 50 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 250 },
     ],
     description:
       "มีกลิ่นหอมใบเตย ปลูกได้ดีที่สุดในไทย เมล็ดเรียวยาว หุงสุกแล้วมีกลิ่นหอมมาก",
@@ -72,8 +72,8 @@ const products = [
     name: "ข้าวหอมมะลิ กข15",
     type: "ข้าวหอมมะลิ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 40 },
-      { label: "5 กก", value: "5kg", price: 200 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 40 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 200 },
     ],
     description: "หุง ต้ม นุ่ม มีกลิ่นหอม",
     image: "assets/ข้าวหอมมะลิ กข15.webp",
@@ -83,8 +83,8 @@ const products = [
     name: "ข้าวหอมมะลิทุ่งกุลา",
     type: "ข้าวหอมมะลิ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 38 },
-      { label: "5 กก", value: "5kg", price: 190 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 38 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 190 },
     ],
     description:
       "จากแหล่งปลูกที่ดีที่สุดในโลก “ทุ่งกุลาร้องไห้” เมล็ดข้าวยาวเรียว หอมและนุ่ม",
@@ -95,8 +95,8 @@ const products = [
     name: "ข้าวหอมมะลิปทุมธานี",
     type: "ข้าวหอมมะลิ",
     variants: [
-      { label: "1 กก", value: "1kg", price: 32 },
-      { label: "5 กก", value: "5kg", price: 160 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 32 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 160 },
     ],
     description: "ข้าวสุกจะนุ่มเหนียว และมีกลิ่นที่หอมมาก",
     image: "assets/ข้าวหอมมะลิปทุมธานี.webp",
@@ -106,8 +106,8 @@ const products = [
     name: "ข้าวเหนียว กข6",
     type: "ข้าวเหนียว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 35 },
-      { label: "5 กก", value: "5kg", price: 175 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 35 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 175 },
     ],
     description: "เมล็ดยาวเรียว หอมเหนียวนุ่ม หุงขึ้นหม้อ",
     image: "assets/ข้าวเหนียว กข6.webp",
@@ -117,8 +117,8 @@ const products = [
     name: "ข้าวเหนียวเขาวงกาฬสินธุ์",
     type: "ข้าวเหนียว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 100 },
-      { label: "5 กก", value: "5kg", price: 500 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 100 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 500 },
     ],
     description:
       "มีกลิ่นที่หอมมาก นุ่ม อร่อย และไม่เหนียวติดมือเหมือนข้าวเหนียวทั่วไป",
@@ -129,8 +129,8 @@ const products = [
     name: "ข้าวเหนียวเขี้ยวงู",
     type: "ข้าวเหนียว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 29 },
-      { label: "5 กก", value: "5kg", price: 145 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 29 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 145 },
     ],
     description: "เมล็ดยาว สีขาวเลื่อมมัน เหนียวนุ่ม หอม",
     image: "assets/ข้าวเหนียวเขี้ยวงู.webp",
@@ -140,8 +140,8 @@ const products = [
     name: "ข้าวเหนียวดำ",
     type: "ข้าวเหนียว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 60 },
-      { label: "5 กก", value: "5kg", price: 300 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 60 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 300 },
     ],
     description:
       "สีม่วงดำ เนื้อสัมผัสแข็ง เหมาะสำหรับทำขนมและผลิตภัณฑ์สำหรับหมักดอง",
@@ -152,8 +152,8 @@ const products = [
     name: "ข้าวเหนียว กข4",
     type: "ข้าวเหนียว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 38 },
-      { label: "5 กก", value: "5kg", price: 190 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 38 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 190 },
     ],
     description: "คุณภาพข้าวสุก แข็งร่วน ทานง่าย",
     image: "assets/ข้าวเหนียวพันธุ์ กข4.webp",
@@ -163,8 +163,8 @@ const products = [
     name: "ข้าวเหนียวสกลนคร",
     type: "ข้าวเหนียว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 58 },
-      { label: "5 กก", value: "5kg", price: 290 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 58 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 290 },
     ],
     description: "นึ่งสุกแล้วเหนียวนุ่ม มีกลิ่นหอมน่าทาน",
     image: "assets/ข้าวเหนียวสกลนคร.webp",
@@ -174,8 +174,8 @@ const products = [
     name: "ข้าวเหลืองประทิวชุมพร",
     type: "ข้าวขาว",
     variants: [
-      { label: "1 กก", value: "1kg", price: 28 },
-      { label: "5 กก", value: "5kg", price: 140 },
+      { label: "1 กิโลกรัม", value: "1kg", price: 28 },
+      { label: "5 กิโลกรัม", value: "5kg", price: 140 },
     ],
     description: "เมล็ดเหลืองเลื่อมมัน หุงขึ้นหม้อ ทนโรคแมลง",
     image: "assets/ข้าวเหลืองประทิวชุมพร.webp",
