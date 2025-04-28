@@ -64,7 +64,7 @@ const Home = () => {
 
       {/* filter section */}
       <section className='grid grid-cols-2 sm:flex sm:flex-col'>
-        <div className='category-1 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
+        <div className='category-1 flex flex-col justify-center items-center h-[200px] sm:h-[280px]'>
           {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวหอมมะลิ</Typography> */}
           <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวหอมมะลิ</h3>
             <ButtonFilter
@@ -73,7 +73,7 @@ const Home = () => {
               ซื้อสินค้า
             </ButtonFilter>
         </div>
-        <div className='category-2 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
+        <div className='category-2 flex flex-col justify-center items-center h-[200px] sm:h-[280px]'>
           {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวเหนียว</Typography> */}
           <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวเหนียว</h3>
             <ButtonFilter
@@ -82,7 +82,7 @@ const Home = () => {
               ซื้อสินค้า
             </ButtonFilter>
         </div>
-        <div className='category-3 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
+        <div className='category-3 flex flex-col justify-center items-center h-[200px] sm:h-[280px]'>
           {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600'}}>ข้าวขาว</Typography> */}
           <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวขาว</h3>
             <ButtonFilter
@@ -91,7 +91,7 @@ const Home = () => {
               ซื้อสินค้า
             </ButtonFilter>
         </div>
-        <div className='category-4 flex flex-col justify-center items-center h-[200px] sm:h-[300px]'>
+        <div className='category-4 flex flex-col justify-center items-center h-[200px] sm:h-[280px]'>
           {/* <Typography component="h3" sx={{fontSize: {xs:'1.25rem', sm:'2.25rem'}, fontWeight: '600' }}>ข้าวเพื่อสุขภาพ</Typography> */}
           <h3 className='text-[28px] font-bold my-2 sm:text-[44px] text-black'>ข้าวเพื่อสุขภาพ</h3>
             <ButtonFilter
@@ -105,7 +105,7 @@ const Home = () => {
       {/* other product */}
       <section className='flex flex-col items-center'>
         {/* <Typography variant="h3" component="h2">ผลิตภัณฑ์แปรรูปจากข้าว</Typography> */}
-        <h2 className='text-4xl font-bold mt-10 mb-10 sm:text-[52px]'>ผลิตภัณฑ์แปรรูปจากข้าว</h2>
+        <h2 className='text-4xl font-bold my-10 sm:text-[52px]'>ผลิตภัณฑ์แปรรูปจากข้าว</h2>
         <Carousel >
         { products.slice(0, 10).map((product) => (
             <ProductCard key={product.product_type} product={product} />
@@ -115,7 +115,7 @@ const Home = () => {
       </section>
 
       {/* promotion section */}
-      <section className='flex items-center justify-between h-40 mt-10'>
+      <section className='flex items-center justify-between h-40 mt-15'>
         <p className='mx-10 font-semibold sm:text-lg'>Free Delivery<br /> On all order over ฿1000</p>
         <img src="https://static9.depositphotos.com/1713439/1191/i/450/depositphotos_11917531-stock-photo-three-rows-of-rice-varieties.jpg" alt="footer-image" className='h-40' />
       </section>
