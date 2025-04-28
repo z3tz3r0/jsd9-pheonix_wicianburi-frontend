@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ProductCard from '../containers/ProductCard';
 // import { Container, Grid, Typography } from '@mui/material';
 import FilterSidebar from '../components/FilterSidebar';
+import { CartContext } from '../context/CartContext';
 const products = [
 
   {
@@ -330,15 +331,10 @@ const products = [
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filters, setFilters] = useState({
-    tags: [],
-    rating: "any",
-    price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
-    region: "ทั้งหมด",
-  });
-
+  
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
+  const { filters, setFilters } = useContext(CartContext);
   // Function to apply filters
   const applyFilters = (product) => {
       // Filter by search term
