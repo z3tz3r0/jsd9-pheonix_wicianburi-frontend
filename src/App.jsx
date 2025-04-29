@@ -3,6 +3,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from "./containers/Layout";
+import AuthProvider from "./context/AuthProvider";
 import { CartProvider } from "./context/CartProvider";
 import AuthPage from "./modules/authPages/AuthPage";
 import ForgetPassword from "./modules/authPages/ForgetPassword";
@@ -57,9 +58,11 @@ const router = createBrowserRouter([
 function App() {
 
   return (
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </AuthProvider>
   )
 }
 

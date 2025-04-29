@@ -5,7 +5,8 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import { Badge } from '@mui/material';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 
 
@@ -77,8 +78,9 @@ const NavBar = () => {
   const [isUserPopUpOpen, setIsUserPopUpOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const { getTotalItems } = useContext(CartContext);
-
+  const { isLogin } = useContext(AuthContext);
   const toggleUserPopUp = () => {
+
     setIsUserPopUpOpen(prev => !prev); // Use functional update
     setIsSideBarOpen(false); // Close sidebar when opening user popup
   };
@@ -125,18 +127,20 @@ const NavBar = () => {
 
   return (
     <header className='justify-center sm:flex'>
-      <nav className='flex items-center justify-between z-10 h-16 sm:w-7xl '>
-      <div className='flex ml-4 sm:items-center'>
-            <figure className='flex items-center'>
-              <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
-              <p className="logo-text">All Rice</p>
-            </figure>
-            <ul className='hidden ml-10 sm:flex'>
-              <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
-              <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
-              <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
-              <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
-            </ul>
+
+      <nav className='z-10 flex items-center justify-between h-16 sm:w-7xl '>
+        <div className='flex ml-4 sm:items-center'>
+          <Link to="/" className='flex items-center'>
+            <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
+            <p className="logo-text">All Rice</p>
+          </Link>
+          <ul className='hidden ml-10 sm:flex'>
+            <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
+            <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
+            <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
+            <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
+          </ul>
+
           </div>
           <div className='flex mr-4 items-center'>
             <NavLink to='cart' className="flex items-center">

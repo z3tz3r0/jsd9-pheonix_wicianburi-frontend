@@ -44,17 +44,16 @@ const ProductDetails = ({ productItem, reviews }) => {
     const selectedVariant = productVariants.find(variant => variant.value === selectedVariantValue);
 
     if (!selectedVariant) {
-      console.error("Caanot add to cart: Variant is not selected or not found")
+      console.error("Cannot add to cart: Variant is not selected or not found")
       return null;
     }
-    console.log(productItem)
     if (!productItem || !productItem.product_id) {
       console.error("Cannot add to cart: Product data is missing");
       return null;
     }
 
     return {
-      id: productItem.id,
+      product_id: productItem.product_id,
       name: productItem.name,
       variantValue: selectedVariant.value,
       variantLabel: selectedVariant.label,
@@ -107,8 +106,8 @@ const ProductDetails = ({ productItem, reviews }) => {
           <p className='mb-4 text-sm text-gray-400 md:text-base'>{productItem.description}</p>
 
           <div className='flex items-center my-4 sm:my-2'>
-            <StarIcon className='mr-1 text-gray' />
-            <p className='mr-2 font-bold'>{averageStars}</p>
+            <StarIcon className={`mr-1 ${averageStars >= 0 ? "text-yellow-500" : "text-gray"}`} />
+            <p className='mr-2 font-bold'>{averageStars.toFixed(2)}</p>
             <p className='text-gray-400'>({Intl.NumberFormat('th-TH').format(reviewCount)})</p>
           </div>
 
