@@ -1,15 +1,84 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import axios from "axios";
+import { Link, Navigate, useNavigate } from "react-router";
 
 import CloseButton from "@/components/CloseButton";
 import ButtonMain from "@/components/ButtonMain";
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
 
+// รอจัดการกับ context !!!
 const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
 
   const toggleSlide = () => setIsSignUp(!isSignUp);
+
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [registerData, setRegisterData] = useState({
+    email: "",
+    firstname: "",
+    lastname: "",
+    password: "",
+    confirmpassword: "",
+  });
+
+  const handleLoginChange = (e) => {
+    setLoginData({ ...loginData, [e.target.name]: e.target.value });
+  };
+
+  const handleRegisterChange = (e) => {
+    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/auth/login",
+        loginData
+      );
+      localStorage.setItem("token", res.data.token);
+      // รอ state นี้ส่งไปที่อื่น ไว้ตั้งชื่อทีหลัง
+      // navigate to ...รอมาแก้ตอนส่ง login แล้วไปไหนต่อ
+      navigate();
+      console.log(res.status) // ควรจะส่ง 200 เถอะนะ
+    } catch (error) {
+      console.error(error);
+      setError(error.response?.data?.error || "Login failed");
+    }
+  };
+
+  const handleRegisterSubmit = async (e) => {
+    e.preventDefault();
+    if (registerData.password !== registerData.confirmpassword) {
+      setError("Passwords do not match");
+      alert("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
+      console.error(error);
+      return;
+    }
+    try {
+      await axios.post("http://localhost:5000/api/auth/register", registerData);
+      alert("ลงทะเบียนสำเร็จ");
+      setRegisterData({
+        email: "",
+        firstname: "",
+        lastname: "",
+        password: "",
+        confirmpassword: "",
+      });
+      toggleSlide();
+    } catch (error) {
+      setError(error);
+      console.error(error);
+    }
+  };
 
   return (
     <div className="flex items-center justify-center h-full bg-[var(--primary)] p-4 sm:scale-90">
@@ -27,7 +96,7 @@ const AuthPage = () => {
               isSignUp ? "-translate-x-full" : "translate-x-0"
             }`}
           >
-{/* Login */}
+            {/* Login */}
             <div className="flex flex-col w-full md:flex-row shrink-0">
               <div className="w-full p-8 space-y-6 md:w-1/2">
                 <div className="flex flex-col items-center justify-center gap-2 md:hidden">
@@ -45,16 +114,22 @@ const AuthPage = () => {
                     ยินดีต้อนรับ
                   </h1>
                 </div>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleLoginSubmit}>
                   <input
                     type="email"
+                    name="email"
                     placeholder="อีเมล"
                     className="w-full p-2 border border-[var(--clr-gray-400)] rounded-md"
+                    value={loginData.email}
+                    onChange={handleLoginChange}
                   />
                   <input
                     type="password"
+                    name="password"
                     placeholder="รหัสผ่าน"
                     className="w-full p-2 border border-[var(--clr-gray-400)] rounded-md"
+                    value={loginData.password}
+                    onChange={handleLoginChange}
                   />
                   <div className="flex justify-center w-full md:flex md:justify-end">
                     <Link
@@ -106,7 +181,7 @@ const AuthPage = () => {
               </div>
             </div>
 
-{/* Register */}
+            {/* Register */}
             <div className="flex flex-col w-full md:flex-row-reverse shrink-0">
               <div className="w-full p-8 space-y-6 md:w-1/2">
                 <div className="flex flex-col items-center justify-center gap-2 md:hidden">
@@ -124,33 +199,48 @@ const AuthPage = () => {
                     ลงทะเบียนเพื่อเข้าใช้งาน
                   </h2>
                 </div>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleRegisterSubmit}>
                   <input
                     type="email"
+                    name="email"
                     placeholder="อีเมล"
                     className="w-full p-2 border border-[var(--clr-gray-400)] rounded-md"
+                    value={registerData.email}
+                    onChange={handleRegisterChange}
                   />
                   <div className="flex space-x-2">
                     <input
                       type="text"
-                      placeholder="ชื่อจริง (ภาษาอังกฤษ)"
+                      name="firstname"
+                      placeholder="ชื่อจริง"
                       className="w-1/2 p-2 border border-[var(--clr-gray-400)] rounded-md"
+                      value={registerData.firstname}
+                      onChange={handleRegisterChange}
                     />
                     <input
                       type="text"
-                      placeholder="นามสกุล (ภาษาอังกฤษ)"
+                      name="lastname"
+                      placeholder="นามสกุล"
                       className="w-1/2 p-2 border border-[var(--clr-gray-400)] rounded-md"
+                      value={registerData.lastname}
+                      onChange={handleRegisterChange}
                     />
                   </div>
                   <input
                     type="password"
+                    name="password"
                     placeholder="โปรดระบุรหัสผ่าน"
                     className="w-full p-2 border border-[var(--clr-gray-400)] rounded-md"
+                    value={registerData.password}
+                    onChange={handleRegisterChange}
                   />
                   <input
                     type="password"
+                    name="confirmpassword"
                     placeholder="ยืนยันรหัสผ่าน"
                     className="w-full p-2 border border-[var(--clr-gray-400)] rounded-md"
+                    value={registerData.confirmpassword}
+                    onChange={handleRegisterChange}
                   />
                   <ButtonMain
                     onClick={() => console.log("Submit login clicked")}
