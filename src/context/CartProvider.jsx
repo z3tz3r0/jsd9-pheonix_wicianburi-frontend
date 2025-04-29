@@ -7,12 +7,11 @@ export const CartProvider = ({ children }) => {
   const [isInitialMount, setIsInitialMount] = useState(true);
 
   const [filters, setFilters] = useState({
-      tags: [],
-      rating: "any",
-      price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
-      region: "ทั้งหมด",
-    });
-  
+    tags: [],
+    rating: "any",
+    price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
+    region: "ทั้งหมด",
+  });
 
   // Load cart from localStorage on component mount
   useEffect(() => {
@@ -71,7 +70,7 @@ export const CartProvider = ({ children }) => {
   //   ));
   // };
 
-  const updateQuantity = (productId, newQuantity) => {  
+  const updateQuantity = (productId, newQuantity) => {
     const quantityValue = Math.max(0, Number(newQuantity) || 0);
     setCart(prevCart =>
       prevCart.map(item =>
