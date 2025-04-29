@@ -11,6 +11,7 @@ const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
 
+
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
   const [filters, setFilters] = useState({
@@ -19,6 +20,7 @@ const ProductList = () => {
     price: [0, 1000], // Gotta make sure prices in products are numbers for proper filtering
     region: "ทั้งหมด",
   });
+
   // Function to apply filters
   const applyFilters = (product) => {
 
