@@ -127,6 +127,7 @@ const NavBar = () => {
 
   return (
     <header className='justify-center sm:flex'>
+
       <nav className='z-10 flex items-center justify-between h-16 sm:w-7xl '>
         <div className='flex ml-4 sm:items-center'>
           <Link to="/" className='flex items-center'>
@@ -140,9 +141,10 @@ const NavBar = () => {
             <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
           </ul>
 
-        </div>
-        <div className='flex items-center mr-4'>
-          <NavLink to='cart' className="flex items-center">
+          </div>
+          <div className='flex mr-4 items-center'>
+            <NavLink to='cart' className="flex items-center">
+
             <Badge badgeContent={getTotalItems()} color="error">
               <ShoppingCartOutlinedIcon />
             </Badge>

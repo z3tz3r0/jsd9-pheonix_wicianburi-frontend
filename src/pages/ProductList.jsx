@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ProductCard from '../containers/ProductCard';
 // import { Container, Grid, Typography } from '@mui/material';
 import { Backdrop } from '@mui/material';
@@ -6,7 +6,7 @@ import { Funnel, MapPin, Search } from 'lucide-react';
 import FilterSidebar from '../components/FilterSidebar';
 import mockReviews from '../data/mockReviews';
 import mockProducts from '../data/products';
-
+import { CartContext } from '../context/CartContext';
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,6 +19,7 @@ const ProductList = () => {
 
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
+  const { filters, setFilters } = useContext(CartContext);
   // Function to apply filters
   const applyFilters = (product) => {
 
