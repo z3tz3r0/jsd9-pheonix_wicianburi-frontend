@@ -1,339 +1,19 @@
 import React, { useState } from 'react';
 import ProductCard from '../containers/ProductCard';
 // import { Container, Grid, Typography } from '@mui/material';
+import { Backdrop } from '@mui/material';
+import { Funnel, MapPin, Search } from 'lucide-react';
 import FilterSidebar from '../components/FilterSidebar';
-const products = [
-
-  {
-    id: 1,
-    name: "ข้าวกล้อง",
-    price: "฿500",
-    rating: 4.5,
-    reviews: 120,
-    image: "/assets/ข้าวกล้อง.webp",
-    region: "ภาคกลาง",
-    tags: ["ข้าวเพื่อสุขภาพ"]
-  },
-  {
-    id: 2,
-    name: "ข้าวมันปู",
-    price: "฿500",
-    rating: 4.5,
-    reviews: 120,
-    image: "/assets/ข้าวมันปู.webp",
-    region: "ภาคเหนือ",
-    tags: ["ข้าวเพื่อสุขภาพ"] 
-  },
-  {
-    id: 3,
-    name: "ข้าวไรซ์เบอร์รี่",
-    price: "฿500",
-    rating: 4.5,
-    reviews: 120,
-    image: "/assets/ข้าวไรซ์เบอร์รี่.webp",
-    region: "ภาคอีสาน",
-    tags: ["ข้าวเพื่อสุขภาพ"] 
-  },
-  {
-    id: 4,
-    name: "ข้าวสังข์หยดพัทลุง",
-    price: "฿500",
-    rating: 4.5,
-    reviews: 120,
-    image: "public/assets/ข้าวสังข์หยดพัทลุง.webp",
-    region: "ภาคใต้",
-    tags: ["ข้าวเพื่อสุขภาพ"]
-  },
-  {
-    id: 5,
-    name: "ข้าวเสาให้",
-    price: "฿500",
-    rating: 4.5,
-    reviews: 120,
-    image: "/public/assets/ข้าวเสาไห้.webp",
-    region: "ภาคกลาง",
-    tags: ["ข้าวเพื่อสุขภาพ"]
-  },
-  // ... add region to other products or add other filterable properties
-    {
-        id: 6,
-        name: "ข้าวหอมมะลิ กข 15",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิ_กข15.webp",
-        region: "ภาคอีสาน",
-        tags: ["ข้าวหอมมะลิ"]
-    },
-
-    {
-        id: 7,
-        name: "ข้าวหอมมะลิ 105",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิ105.webp",
-        region: "ภาคเหนือ",
-        tags: ["ข้าวหอมมะลิ"]
-    },
-
-    {
-        id: 8,
-        name: "ข้าวหอมมะลิทุ่งกุลา",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิทุ่งกุลา.webp",
-        region: "ภาคอีสาน",
-        tags: ["ข้าวหอมมะลิ"]
-    },
-
-    {
-        id: 9,
-        name: "ข้าวหอมมะลิปทุมธานี",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวหอมมะลิปทุมธานี.webp",
-        region: "ภาคกลาง",
-        tags: ["ข้าวหอมมะลิ"]
-    },
-
-    {
-        id: 10,
-        name: "ข้าวเหนียว กข 6",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวเหนียว_กข6.webp",
-        region: "ภาคอีสาน",
-        tags: ["ข้าวเหนียว"]
-    },
-
-    {
-        id: 11,
-        name: "ข้าวเหนียวเขาวงกาฬสินธุ์",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวเหนียวเขาวงกาฬสินธุ์.webp",
-        region: "ภาคอีสาน",
-        tags: ["ข้าวเหนียว"]
-    },
-
-    {
-        id: 12,
-        name: "ข้าวเหนียวเขี้ยวงู",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวเหนียวเขี้ยวงู.webp",
-        region: "ภาคเหนือ",
-        tags: ["ข้าวเหนียว"]
-    },
-
-    {
-        id: 13,
-        name: "ข้าวเหนียวดำ",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวเหนียวดำ.webp",
-        region: "ภาคเหนือ",
-        tags: ["ข้าวเหนียว", "ข้าวเพื่อสุขภาพ"]
-    },
-
-    {
-        id: 14,
-        name: "ข้าวเหนียว กข 4",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวเหนียวพันธุ์_กข.4.webp",
-        region: "ภาคใต้",
-        tags: ["ข้าวเหนียว"]
-    },
-
-    {
-        id: 15,
-        name: "ข้าวเหนียวสกลนคร",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวเหนียวสกลนคร.webp",
-        region: "ภาคอีสาน",
-        tags: ["ข้าวเหนียว"]
-    },
-
-    {
-        id: 16,
-        name: "ข้าวเหลืองประทิวชุมพร",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ข้าวเหลืองประทิวชุมพร.webp",
-        region: "ภาคใต้",
-        tags: ["ข้าวขาว"]
-    },
-
-    {
-        id: 17,
-        name: "ขนมข้าวกรอบทำจากข้าวหอมมะลิ",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ขนมข้าวกรอบทำจากข้าวหอมมะลิ.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
-    },
-
-    {
-        id: 18,
-        name: "ขนมข้าวอบกรอบแบบแท่ง",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ขนมข้าวอบกรอบแบบแท่ง.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
-    },
-
-    {
-        id: 19,
-        name: "ขนมขบเคี้ยว รวมข้าวหลายชนิด",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ขนมขบเคี้ยว รวมข้าวหลายชนิด.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
-    },
-
-    {
-        id: 20,
-        name: "ขนมขบเคี้ยวผสมเจลลี่มีข้าวเจ้าเป็นส่วนประกอบ",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/ขนมขบเคี้ยวผสมเจลลี่มีข้าวเจ้าเป็นส่วนประกอบ.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "ขนมขบเคี้ยว"] 
-    },
-
-    {
-        id: 21,
-        name: "น้ำนมจมูกข้าวหอมมะลิ",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/น้ำนมจมูกข้าวหอมมะลิ.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
-    },
-
-    {
-        id: 22,
-        name: "น้ำนมจมูกข้าวกล้อง",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/น้ำนมจมูกข้าวกล้อง.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
-    },
-
-    {
-        id: 23,
-        name: "น้ำมันรำข้าว ",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/น้ำมันรำข้าว.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป"]
-    },
-
-    {
-        id: 24,
-        name: "น้ำมันรำข้าว ",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/น้ำมันรำข้าว plastic.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป"] 
-    },
-
-    {
-        id: 25,
-        name: "สาเก (แอลกอฮอลลต่ำ)",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/สินค้าแปรรูป_สาเก.jpg",
-        tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
-    },
-
-    {
-        id: 26,
-        name: "สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ)",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ).jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"]
-    },
-
-    {
-        id: 27,
-        name: "เบียร์จากข้าวมอลท์  ตราออลไรซ์ (แอลกอฮอลลต่ำ)",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/เบียร์จากข้าวมอลท์ (แอลกอฮอลลต่ำ) white.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"] 
-    },
-
-    {
-        id: 28,
-        name: "เบียร์จากข้าวมอลท์เพลเอล  ตราออลไรซ์ (แอลกอฮอลลต่ำ)",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/เบียร์จากข้าวมอลท์เพลเอล (แอลกอฮอลลต่ำ).jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"] 
-    },
-
-    {
-        id: 29,
-        name: "เบียร์ดำจากข้าวมอลท์  ตราออลไรซ์ (แอลกอฮอลลต่ำ)",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/เบียร์ดำจากข้าวมอลท์ (แอลกอฮอลลต่ำ) green.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป", "เครื่องดื่ม"] 
-    },
-
-    {
-        id: 30,
-        name: "มอลท์จากข้าวหอมมะลิเชียงราย",
-        price: "฿500",
-        rating: 4.5,
-        reviews: 120,
-        image: "public/assets/มอลท์จากข้าวหอมมะลิเชียงราย.jfif",
-        tags: ["ผลิตภัณฑ์แปรรูป"] 
-    },
-
-    {
-      id: 31,
-      name: "มอลท์ข้าวเหนียวดำ",
-      price: "฿500",
-      rating: 4.5,
-      reviews: 120,
-      image: "public/assets/สินค้าแปรรูป_มอลท์จากข้าวเหนียวดำ.jpg",
-      tags: ["ผลิตภัณฑ์แปรรูป"] 
-  },
-];
+import mockReviews from '../data/mockReviews';
+import mockProducts from '../data/products';
 
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
-    tags: [],
+    types: [],
     rating: "any",
-    price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
+    price: [0, 1000], // Gotta make sure prices in products are numbers for proper filtering
     region: "ทั้งหมด",
   });
 
@@ -341,34 +21,57 @@ const ProductList = () => {
 
   // Function to apply filters
   const applyFilters = (product) => {
-      // Filter by search term
-      const matchesSearchTerm = product.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-      // Filter by region
-      const matchesRegion = filters.region === "ทั้งหมด" || product.region === filters.region;
+    // --- 1. Filter by Search Term ---
+    const matchesSearchTerm = searchTerm === "" || product.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-       // Filter by price (assuming product.price is a string like "฿500")
-    const productPrice = parseFloat(product.price.replace('฿', ''));
-    // Ensure productPrice is a valid number before comparison
-    const matchesPrice = !isNaN(productPrice) && productPrice >= filters.price[0] && productPrice <= filters.price[1];
+    // --- 2. Filter by Region ---
+    const matchesRegion = filters.region === "ทั้งหมด" || product.region === filters.region;
 
-
-    // Filter by product tags/types
-    // Check if product.tags exists and if any selected tag is included in product.tags
-    const matchesTags = filters.tags.length === 0 || (product.tags && product.tags.some(tag => filters.tags.includes(tag)));
+    // --- 3. Filter by Price ---
+    const productPrice = product.variants[0].price;
+    const matchesPrice = productPrice >= filters.price[0] && productPrice <= filters.price[1];
 
 
-    // Filter by rating
-    // Check if rating filter is 'any' or if product rating is >= selected rating
-    const matchesRating = filters.rating === 'any' || (product.rating >= parseFloat(filters.rating));
+    // --- 4. Filter by product type ---
+    const matchesTypes = filters.types.length === 0 || (product.type && filters.types.includes(product.type));
+
+    // --- 5. Filter by stars ---
+    let matchesRating = false; // Default to false
+
+    if (filters.rating === 'any') {
+      matchesRating = true; // If filter is 'any', always match
+    } else {
+      // Find reviews for the current product
+      const productReviews = mockReviews.filter(review => review.product_id === product.product_id);
+
+      if (productReviews.length > 0) {
+        // Calculate the average rating
+        const totalStars = productReviews.reduce((sum, review) => sum + review.stars, 0);
+        const averageRating = totalStars / productReviews.length;
+
+        // Get the minimum rating required by the filter
+        const requiredRating = parseFloat(filters.rating); // e.g., "4" becomes 4.0
+
+        // Check if the product's average rating meets the requirement
+        if (!isNaN(requiredRating) && averageRating >= requiredRating) {
+          matchesRating = true;
+        }
+      }
+      // If a product has no reviews, it will only match if filters.rating is 'any'
+    }
 
 
     // Combine ALL filter conditions
-    return matchesSearchTerm && matchesRegion && matchesPrice && matchesTags && matchesRating;
+    return matchesSearchTerm
+      && matchesRegion
+      && matchesPrice
+      && matchesTypes
+      && matchesRating;
   };
 
 
-  const filteredProducts = products.filter(applyFilters);
+  const filteredProducts = mockProducts.filter(applyFilters);
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
@@ -386,27 +89,7 @@ const ProductList = () => {
       <div className="flex w-full gap-4 mb-6 flex-col-1 md:flex-row md:items-center md:justify-end">
         {/* Left Section: Region Selector */}
         <div className="flex items-center gap-2 md:mr-auto">
-          <span className="text-lg">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
-              />
-            </svg>
-          </span>
+          <MapPin />
           <label htmlFor="region" className="text-sm font-medium">
             ภูมิภาค
           </label>
@@ -420,7 +103,7 @@ const ProductList = () => {
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, region: e.target.value }))
             }
-            className="px-2 py-1 text-sm border rounded"
+            className="px-2 py-1 text-sm border rounded cursor-pointer"
           >
             <option value="ทั้งหมด">ทั้งหมด</option>
             <option value="ภาคกลาง">ภาคกลาง</option>
@@ -433,18 +116,7 @@ const ProductList = () => {
         {/* Middle Section: Search Bar */}
         <div className="flex items-center w-full gap-2 px-3 py-2 border rounded md:w-1/2">
           <span className="text-gray-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="size-6"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <Search />
           </span>
           <input
             type="text"
@@ -458,36 +130,32 @@ const ProductList = () => {
         {/* Right Section: Filter Button */}
         <div>
           <button
-            className="flex items-center gap-1 p-2 text-white bg-black rounded"
+            className="flex items-center gap-1 p-2 text-white bg-black rounded cursor-pointer"
             onClick={() => setShowFilterDrawer(true)}
           >
-             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z"
-                />
-              </svg>
+            <Funnel />
           </button>
         </div>
       </div>
 
       {/* Filter Drawer Overlay */}
       {showFilterDrawer && (
-        <div
-          className="fixed inset-0 z-40 transition-opacity duration-300 ease-in-out bg-black bg-opacity-40"
-          onClick={closeFilterDrawer} // Close when clicking outside overlay
-        ></div>
+        <Backdrop
+          open={showFilterDrawer}
+          onClick={closeFilterDrawer}
+          sx={{ "zIndex": 49 }}
+        >
+        </Backdrop>
       )}
 
       {/* Filter Sidebar */}
+      <Backdrop
+        open={showFilterDrawer}
+        onClick={closeFilterDrawer}
+        sx={{ "zIndex": 49 }}
+      >
+      </Backdrop>
+
       <div
         className={`fixed inset-y-0 right-0 z-50 w-full sm:w-3/4 md:w-1/3 lg:w-1/4 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
           ${showFilterDrawer ? 'translate-x-0' : 'translate-x-full'}`}
@@ -502,7 +170,7 @@ const ProductList = () => {
       <h2 className="text-2xl font-extrabold mb-7">สินค้าทั้งหมด</h2>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-7">
         {visibleProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.product_id} product={product} />
         ))}
       </div>
 

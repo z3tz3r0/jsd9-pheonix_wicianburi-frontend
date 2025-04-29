@@ -3,13 +3,12 @@ import { Link } from 'react-router'
 import ButtonFilter from '../components/ButtonFilter'
 import ButtonMain from '../components/ButtonMain'
 import ScrollToTopButton from '../components/ButtonToTop'
-import ChatBot from '../components/ChatBot/ChatBot'
+
 import Carousel from '../containers/Carousel'
 
 const Home = () => {
   return (
     <div>
-      <ChatBot />
       <ScrollToTopButton />
       {/* hero section */}
       <section className='hero-section h-[654px] flex sm:justify-center'>
