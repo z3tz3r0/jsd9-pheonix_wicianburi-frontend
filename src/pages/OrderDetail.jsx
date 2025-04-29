@@ -13,7 +13,7 @@ const OrderDetail = () => {
   const orderDetails = [
     {
       id: 1,
-      image: "../../public/assets/ข้าวหอมมะลิ_กข15.webp",
+      image: "../../assets/ข้าวหอมมะลิ_กข15.webp",
       name: "ข้าวหอมมะลิ 105",
       itemVariant: "1 กิโลกรัม",
       price: 100,
@@ -21,7 +21,7 @@ const OrderDetail = () => {
     },
     {
       id: 2,
-      image: "../../public/assets/ข้าวมันปู.webp",
+      image: "../../assets/ข้าวมันปู.webp",
       name: "ข้าวมันปู",
       itemVariant: "1 กิโลกรัม",
       price: 150,
@@ -29,7 +29,7 @@ const OrderDetail = () => {
     },
     {
       id: 3,
-      image: "../../public/assets/ข้าวกล้อง.webp",
+      image: "../../assets/ข้าวกล้อง.webp",
       name: "ข้าวกล้อง",
       itemVariant: "1 กิโลกรัม",
       price: 120,

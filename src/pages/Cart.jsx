@@ -58,11 +58,12 @@ const Cart = () => {
                       <img src={item.image} alt={item.name} className='w-1/3 rounded sm:w-1/4 ' />
                       <div className='mx-2 sm:mx-4'>
                         <h3 className='text-sm font-semibold sm:text-base text-nowrap'>{item.name}</h3>
-                        <p className='text-sm font-normal sm:text-base'>{item.weight} กิโลกรัม</p>
+                        <p className='text-sm font-normal sm:text-base'>{item.variantLabel}</p>
                       </div>
                     </div>
                     <div className='col-span-2 text-center sm:col-span-1'>
-                      <p>฿{item.price.toFixed(1)}</p>
+                      <p>฿{item.price}</p>
+                      {/* .toFixed(1) */}
                     </div>
 
                     {/* Quantity Controls */}

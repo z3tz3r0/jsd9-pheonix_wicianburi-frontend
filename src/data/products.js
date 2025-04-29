@@ -121,7 +121,7 @@ const products = [
       { label: "5 กิโลกรัม", value: "5kg", price: 175 },
     ],
     description: "เมล็ดยาวเรียว หอมเหนียวนุ่ม หุงขึ้นหม้อ",
-    image: "assets/ข้าวเหนียว กข6.webp",
+    image: "assets/ข้าวเหนียว_กข6.webp",
     region: "ภาคอีสาน", // Added
   },
   {

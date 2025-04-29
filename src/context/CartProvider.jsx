@@ -36,11 +36,13 @@ export const CartProvider = ({ children }) => {
 
   // Add item to cart
   const addToCart = (product) => {
-    const existingItem = cart.find((item) => item.id === product.id);
+    // console.log(product)
+    // console.log(cart)
+    const existingItem = cart.find((item) => item.product_id === product.product_id);
 
     if (existingItem) {
       setCart(cart.map(item =>
-        item.id === product.id
+        item.product_id === product.product_id
           ? { ...item, quantity: item.quantity + 1 }
           : item
       ));
