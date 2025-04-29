@@ -17,7 +17,7 @@ const AuthPage = ({ onClose }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const { setIsLogin } = useContext(AuthContext);
+  // const { setIsLogin } = useContext(AuthContext);
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -84,7 +84,7 @@ const AuthPage = ({ onClose }) => {
   };
 
   return (
-    <div className="flex items-center justify-center h-full bg-[var(--primary)] p-4 sm:scale-90">
+    <div className="fixed inset-0 z-10 flex items-center justify-center scale-75 sm:scale-100">
       <div className="relative max-w-4xl bg-[var(--primary)] shadow-2xl rounded-lg overflow-hidden p-4">
         <CloseButton
           onClick={onClose}
