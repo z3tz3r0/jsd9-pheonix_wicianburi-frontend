@@ -47,7 +47,7 @@ const AboutUs = () => {
           <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-20">
             <div className="rounded-lg overflow-hidden shadow-md mb-8 md:mb-0">
               <img
-                src="/assets/farmer_with_magnificent_mountains.jpg"
+                src="assets/farmer_with_magnificent_mountains.jpg"
                 alt="Our Story Image"
                 className="w-full h-auto"
               />
@@ -71,7 +71,7 @@ const AboutUs = () => {
           <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-20 md:grid-flow-row-dense">
             <div className="md:order-2 rounded-lg overflow-hidden shadow-md mb-8 md:mb-0">
               <img
-                src="/assets/A_scenic_landscape_rice_field.jpeg"
+                src="assets/A_scenic_landscape_rice_field.jpeg"
                 alt="Our Mission Image"
                 className="w-full h-auto"
               />

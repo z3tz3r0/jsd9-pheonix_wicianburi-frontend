@@ -144,19 +144,43 @@
 
 @layer components {
   .logo-text {
-    @apply ml-2 text-xl font-bold text-nowrap font-main;
+    @apply ml-1 text-2xl font-bold font-main text-nowrap;
   }
 
   .nav-menu {
-    @apply text-base font-bold transition-transform transform text-nowrap text-slategray duration-600 hover:text-accent hover:-translate-y-2;
+    @apply mx-4 text-base font-bold transition-transform transform text-slategray text-nowrap duration-600 hover:text-accent hover:-translate-y-2;
   }
 
   .footer-menu {
-    @apply mb-4 text-sm transition-transform transform text-primary duration-600 hover:text-accent hover:-translate-y-1;
+    @apply mb-4 text-sm transition-transform transform text-primary duration-600 hover:text-accent hover:-translate-y-1 text-nowrap;
   }
 
   .footer-text {
-    @apply text-sm text-gray;
+    @apply text-sm text-gray text-nowrap;
+  }
+
+  .hero-section {
+    background-image: url("assets/hero-background.png");
+  }
+
+  .category-1 {
+    background-image: url("assets/bg-ข้าวหอมมะลิ.png");
+    background-size: cover;
+  }
+
+  .category-2 {
+    background-image: url("assets/bg-ข้าวเหนียว.png");
+    background-size: cover;
+  }
+
+  .category-3 {
+    background-image: url("assets/bg-ข้าวขาว.png");
+    background-size: cover;
+  }
+
+  .category-4 {
+    background-image: url("assets/bg-ข้าวกล้อง.png");
+    background-size: cover;
   }
 
   .swiper {

@@ -1,6 +1,5 @@
 import React from "react";
 import BasicButton from "../components/BasicButton";
-import Typography from "@mui/material/Typography";
 
 
 export default function ConfirmOrder() {
@@ -10,7 +9,7 @@ export default function ConfirmOrder() {
         <div className="space-y-6 lg:col-span-2">
           <h1 className="text-2xl font-bold">ตรวจสอบคำสั่งซื้อ</h1>
 
-{/* input field  */}
+          {/* input field  */}
 
           <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
             <h2 className="text-lg font-semibold">
@@ -81,39 +80,39 @@ export default function ConfirmOrder() {
             </div>
           </div>
 
-{/* Mui Button (need to be fix) !! */}
+          {/* Mui Button (need to be fix) !! */}
           <BasicButton text="ยืนยันคำสั่งซื้อ" />
         </div>
 
-{/* Right Column for items summary and Subtotal */}
+        {/* Right Column for items summary and Subtotal */}
 
         <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
           <h2 className="text-lg font-semibold">รายการสั่งซื้อ</h2>
-          <table class="w-full border-collapse mt-4">
+          <table className="w-full mt-4 border-collapse">
             <thead>
-              <tr class="border-b">
-                <th class="text-left text-xl font-semibold py-2">สินค้า</th>
-                <th class="text-right text-xl font-semibold py-2">ราคา</th>
+              <tr className="border-b">
+                <th className="py-2 text-xl font-semibold text-left">สินค้า</th>
+                <th className="py-2 text-xl font-semibold text-right">ราคา</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-b-[0.5px] border-gray-300">
-                <td class="py-2">ข้าวเหนียวเขี้ยวงู เกรดเอ x 2 กก.</td>
-                <td class="text-right py-2">฿ 120</td>
+              <tr className="border-b-[0.5px] border-gray-300">
+                <td className="py-2">ข้าวเหนียวเขี้ยวงู เกรดเอ x 2 กก.</td>
+                <td className="py-2 text-right">฿ 120</td>
               </tr>
 
-              <tr class="border-b-[0.5px] border-gray-300">
-                <td class="py-2">ข้าวไรซ์เบอรี่ เกรดเอบวก x 2 กก.</td>
-                <td class="text-right py-2">฿ 180</td>
+              <tr className="border-b-[0.5px] border-gray-300">
+                <td className="py-2">ข้าวไรซ์เบอรี่ เกรดเอบวก x 2 กก.</td>
+                <td className="py-2 text-right">฿ 180</td>
               </tr>
             </tbody>
           </table>
-          <div class="mt-4 text-right">
-            <p class="text-lg font-semibold">
-              ราคารวม :<span class=""> ฿300</span>
+          <div className="mt-4 text-right">
+            <p className="text-lg font-semibold">
+              ราคารวม :<span className=""> ฿300</span>
             </p>
-            <p class="text-lg font-semibold">
-              ค่าจัดส่ง :<span class=""> ฿35</span>
+            <p className="text-lg font-semibold">
+              ค่าจัดส่ง :<span className=""> ฿35</span>
             </p>
           </div>
         </div>
