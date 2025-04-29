@@ -10,13 +10,6 @@ import { CartContext } from '../context/CartContext';
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filters, setFilters] = useState({
-    types: [],
-    rating: "any",
-    price: [0, 1000], // Gotta make sure prices in products are numbers for proper filtering
-    region: "ทั้งหมด",
-  });
-
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
   const { filters, setFilters } = useContext(CartContext);
