@@ -11,7 +11,9 @@ const Layout = () => {
     <>
       <NavBar />
       <ChatBot />
-      <Outlet /> {/* react router dom component */}
+      <div className='min-h-[80dvh]'>
+        <Outlet /> {/* react router dom component */}
+      </div>
       <Footer />
     </>
   )

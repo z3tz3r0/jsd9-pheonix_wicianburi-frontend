@@ -156,7 +156,7 @@
   }
 
   .footer-text {
-    @apply text-sm text-gray text-nowrap;
+    @apply text-xs sm:text-sm text-gray text-nowrap;
   }
 
   .hero-section {
