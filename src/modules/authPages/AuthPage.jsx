@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router";
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
 import ButtonMain from "@/components/ButtonMain";
-import CloseButton from "@/components/CloseButton";
 
 // รอจัดการกับ context !!!
 const AuthPage = ({ onClose }) => {
@@ -51,7 +50,7 @@ const AuthPage = ({ onClose }) => {
       // navigate to ...รอมาแก้ตอนส่ง login แล้วไปไหนต่อ
       navigate();
       const resBody = res.data;
-      console.log(resBody) // ควรจะส่ง 200 เถอะนะ
+      console.log(resBody); // ควรจะส่ง 200 เถอะนะ
     } catch (error) {
       console.error(error.response.data.error);
       setError(error.response?.data?.error || "Login failed");
@@ -84,16 +83,18 @@ const AuthPage = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-10 flex items-center justify-center scale-75 sm:scale-100">
-      <div className="relative max-w-4xl bg-[var(--primary)] shadow-2xl rounded-lg overflow-hidden p-4">
-        <CloseButton
-          onClick={onClose}
-          isSignUp={isSignUp}
-        />
+    <div className="fixed inset-0 z-10 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/30" onClick={onClose}></div>
+
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="scale-75 sm:scale-100 relative z-20 w-full max-w-lg sm:max-w-4xl bg-[var(--primary)] shadow-2xl rounded-lg overflow-hidden p-4"
+      >
         <div className="flex max-w-4xl overflow-hidden">
           <div
-            className={`flex w-full transform transition-transform duration-300 ${isSignUp ? "-translate-x-full" : "translate-x-0"
-              }`}
+            className={`flex w-full transform transition-transform duration-300 ${
+              isSignUp ? "-translate-x-full" : "translate-x-0"
+            }`}
           >
             {/* Login */}
             <div className="flex flex-col w-full md:flex-row shrink-0">
@@ -114,7 +115,7 @@ const AuthPage = ({ onClose }) => {
                   </h1>
                 </div>
                 <form className="space-y-4" onSubmit={handleLoginSubmit}>
-                  {error && (<p className="text-red-600">{error}</p>)}
+                  {error && <p className="text-red-600">{error}</p>}
                   <input
                     type="email"
                     name="email"
@@ -134,18 +135,15 @@ const AuthPage = ({ onClose }) => {
                   <div className="flex justify-center w-full md:flex md:justify-end">
                     <Link
                       to="/AuthPage/ForgetAuth"
+                      onClick={onClose}
                       className="text-sm text-[var(--clr-blue-600)]"
                     >
                       ลืมรหัสผ่าน ?
-                    </Link>{" "}
+                    </Link>
                   </div>
-                  <ButtonMain
-                    onClick={() => console.log("Submit login clicked")}
-                    type="submit"
-                    className="p-6 mt-8 mb-8 sm:w-full"
-                  >
+                  <ButtonMain type="submit" className="p-6 mt-8 mb-8 sm:w-full">
                     เข้าสู่ระบบ
-                  </ButtonMain>{" "}
+                  </ButtonMain>
                 </form>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="w-1/5 border-t border-[var(--border-500)]"></span>
@@ -155,12 +153,8 @@ const AuthPage = ({ onClose }) => {
                   <span className="w-1/5 border-t border-[var(--border-500)]"></span>
                 </div>
                 <div className="flex justify-center space-x-8">
-                  <ButtonFacebook
-                    onClick={() => console.log("Facebook login clicked")}
-                  />
-                  <ButtonGoogle
-                    onClick={() => console.log("Google login clicked")}
-                  />
+                  <ButtonFacebook />
+                  <ButtonGoogle />
                 </div>
                 <p className="text-center text-[var(--clr-gray-400)]">
                   ยังไม่มีบัญชี ?
@@ -242,13 +236,9 @@ const AuthPage = ({ onClose }) => {
                     value={registerData.confirmpassword}
                     onChange={handleRegisterChange}
                   />
-                  <ButtonMain
-                    onClick={() => console.log("Submit login clicked")}
-                    type="submit"
-                    className="p-6 mt-8 mb-8 sm:w-full"
-                  >
+                  <ButtonMain type="submit" className="p-6 mt-8 mb-8 sm:w-full">
                     ลงทะเบียน
-                  </ButtonMain>{" "}
+                  </ButtonMain>
                 </form>
                 <div className="flex items-center justify-center space-x-2">
                   <span className="w-1/5 border-t border-[var(--border-500)]"></span>
@@ -258,12 +248,8 @@ const AuthPage = ({ onClose }) => {
                   <span className="w-1/5 border-t border-[var(--border-500)]"></span>
                 </div>
                 <div className="flex justify-center space-x-8">
-                  <ButtonFacebook
-                    onClick={() => console.log("Facebook login clicked")}
-                  />
-                  <ButtonGoogle
-                    onClick={() => console.log("Google login clicked")}
-                  />
+                  <ButtonFacebook />
+                  <ButtonGoogle />
                 </div>
                 <p className="text-center text-[var(--clr-gray-400)]">
                   มีบัญชีแล้ว ?
