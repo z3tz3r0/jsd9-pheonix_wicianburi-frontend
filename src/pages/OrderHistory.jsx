@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import orderHistories from '../data/mockOrderHistory';
 
 // import { useParams } from 'react-router';
 
@@ -13,32 +14,32 @@ const OrderHistory = () => {
 
   // render order history using hard code
 
-  const orderHistories = [
-    {
-      orderId: "1236",
-      user_id: "1231345asdasbjasd21543",
-      order_items: [
-        { name: "ข้าวหอมมะลิ 105", variant: "1 กก.", price: 100, quantiy: 1 },
-        { name: "ข้าวมันปู", variant: "1 กก.", price: 100, quantiy: 1 },
-        { name: "ข้าวกล้อง", variant: "1 กก.", price: 100, quantiy: 1 },
-      ],
-      orderDate: "22 มีนาคม 2025",
-      stateVariant: "ระหว่างการชำระ",
-      totalPrice: 810,
-    },
-    {
-      orderId: "1235",
-      orderDate: "21 มีนาคม 2025",
-      stateVariant: "ระหว่างการจัดส่ง",
-      totalPrice: 810,
-    },
-    {
-      orderId: "1234",
-      orderDate: "20 มีนาคม 2025",
-      stateVariant: "สำเร็จ",
-      totalPrice: 810,
-    },
-  ]
+  // const orderHistories = [
+  //   {
+  //     orderId: "1236",
+  //     user_id: "1231345asdasbjasd21543",
+  //     order_items: [
+  //       { name: "ข้าวหอมมะลิ 105", variant: "1 กก.", price: 100, quantiy: 1 },
+  //       { name: "ข้าวมันปู", variant: "1 กก.", price: 100, quantiy: 1 },
+  //       { name: "ข้าวกล้อง", variant: "1 กก.", price: 100, quantiy: 1 },
+  //     ],
+  //     orderDate: "22 มีนาคม 2025",
+  //     stateVariant: "ระหว่างการชำระ",
+  //     totalPrice: 810,
+  //   },
+  //   {
+  //     orderId: "1235",
+  //     orderDate: "21 มีนาคม 2025",
+  //     stateVariant: "ระหว่างการจัดส่ง",
+  //     totalPrice: 810,
+  //   },
+  //   {
+  //     orderId: "1234",
+  //     orderDate: "20 มีนาคม 2025",
+  //     stateVariant: "สำเร็จ",
+  //     totalPrice: 810,
+  //   },
+  // ]
 
 
   return (
@@ -60,7 +61,7 @@ const OrderHistory = () => {
               <td className='py-8 '>{item.orderId}</td>
               <td >{item.orderDate}</td>
               <td >{item.stateVariant}</td>
-              <td >{item.totalPrice}</td>
+              <td >฿{item.totalAmount + item.deliveryFee}</td>
               <td className='px-4 '>
                 <Link to={`/profile/order-history/${item.orderId}`}
                   className="block px-4 py-2 mx-1 bg-black rounded-md cursor-pointer hover:bg-black/90 active:shadow-md text-primary">
