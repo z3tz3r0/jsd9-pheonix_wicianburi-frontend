@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import FormInputs from '../components/account/FormInputs';
-import TextAreaInput from '../components/account/TextAreaInput';
 import ButtonFirst from '../components/account/ButtonFirst';
 
 
@@ -59,11 +58,39 @@ const Account = () => {
                 placeholder="อีเมล"
               />
 
-              <TextAreaInput
+              <FormInputs
                 register={register}
                 name="ที่อยู่"
                 type="text"
                 placeholder="ที่อยู่"
+              />
+
+              <FormInputs
+                register={register}
+                name="ตำบล"
+                type="text"
+                placeholder="ตำบล"
+              />
+
+              <FormInputs
+                register={register}
+                name="อำเภอ"
+                type="text"
+                placeholder="อำเภอ"
+              />
+
+              <FormInputs
+                register={register}
+                name="จังหวัด"
+                type="text"
+                placeholder="จังหวัด"
+              />
+
+              <FormInputs
+                register={register}
+                name="รหัสไปรษณีย์"
+                type="text"
+                placeholder="รหัสไปรษณีย์"
               />
             </div>
 
