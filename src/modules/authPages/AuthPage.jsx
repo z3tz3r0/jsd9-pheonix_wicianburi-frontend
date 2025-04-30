@@ -1,12 +1,11 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
 import ButtonMain from "@/components/ButtonMain";
 import CloseButton from "@/components/CloseButton";
-import { AuthContext } from "../../context/AuthContext";
 
 // รอจัดการกับ context !!!
 const AuthPage = ({ onClose }) => {
@@ -51,9 +50,10 @@ const AuthPage = ({ onClose }) => {
       // รอ state นี้ส่งไปที่อื่น ไว้ตั้งชื่อทีหลัง
       // navigate to ...รอมาแก้ตอนส่ง login แล้วไปไหนต่อ
       navigate();
-      console.log(res.status) // ควรจะส่ง 200 เถอะนะ
+      const resBody = res.data;
+      console.log(resBody) // ควรจะส่ง 200 เถอะนะ
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.error);
       setError(error.response?.data?.error || "Login failed");
     }
   };
@@ -114,6 +114,7 @@ const AuthPage = ({ onClose }) => {
                   </h1>
                 </div>
                 <form className="space-y-4" onSubmit={handleLoginSubmit}>
+                  {error && (<p className="text-red-600">{error}</p>)}
                   <input
                     type="email"
                     name="email"
