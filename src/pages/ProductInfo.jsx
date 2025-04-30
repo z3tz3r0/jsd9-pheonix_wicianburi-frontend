@@ -46,9 +46,6 @@ const ProductInfo = () => {
 
   return (
     <Container sx={{ p: 4 }} maxWidth='lg' >
-      <div className='flex items-center justify-center mb-4 bg-gray-400 h-22' id="filter">
-        <p className='text-white'>filter component placeholder</p>
-      </div>
 
       <ProductDetails
         productItem={product}

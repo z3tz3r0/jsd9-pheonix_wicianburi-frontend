@@ -17,8 +17,10 @@ const Cart = () => {
   const total = subtotal + delivery; // ยอดรวมทั้งหมด
 
   const handleCheckout = () => {
-    if (cart.legnth === 0) return;
-    navigate('/cart/confirm-order');
+    console.log(cart.length);
+    if (cart.length !== 0) {
+      navigate('/cart/confirm-order');
+    }
   };
 
   return (
@@ -59,11 +61,12 @@ const Cart = () => {
                       <img src={item.image} alt={item.name} className='w-1/3 rounded sm:w-1/4 ' />
                       <div className='mx-2 sm:mx-4'>
                         <h3 className='text-sm font-semibold sm:text-base text-nowrap'>{item.name}</h3>
-                        <p className='text-sm font-normal sm:text-base'>{item.weight} กิโลกรัม</p>
+                        <p className='text-sm font-normal sm:text-base'>{item.variantLabel}</p>
                       </div>
                     </div>
                     <div className='col-span-2 text-center sm:col-span-1'>
-                      <p>฿{item.price.toFixed(1)}</p>
+                      <p>฿{item.price}</p>
+                      {/* .toFixed(1) */}
                     </div>
 
                     {/* Quantity Controls */}
@@ -143,15 +146,13 @@ const Cart = () => {
                 </span>
               </div>
             </div>
-            <Link to="confirm-order">
-              <ButtonMain
-                type="submit"
-                className="w-full py-6 mt-4 mb-16 bg-black"
-                onClick={handleCheckout}
-              >
-                ชำระเงิน
-              </ButtonMain>
-            </Link>
+            <ButtonMain
+              type="submit"
+              className="w-full py-6 mt-4 mb-16 bg-black"
+              onClick={handleCheckout}
+            >
+              ชำระเงิน
+            </ButtonMain>
           </div>
         </div>
       </div>

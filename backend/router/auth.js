@@ -1,5 +1,5 @@
-import { Router } from "express";
 import bcrypt from "bcryptjs";
+import { Router } from "express";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
     });
 
     await newUser.save();
-    res.status(201).json({ message: "User registered succesfully!" });
+    res.status(201).json({ message: "สร้างผู้ใช้งานใหม่สำเร็จ" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -28,19 +28,20 @@ router.post("/login", async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ error: "Invalid credentials" });
+    if (!user) return res.status(400).json({ error: "อีเมลไม่ถูกต้อง" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
+    if (!isMatch) return res.status(400).json({ error: "รหัสผ่านไม่ถูกต้อง" });
 
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",}) 
-      res.json({ 
-          userId: user._id,
-          firstname: user.firstname,
-          lastname: user.lastname,
-          token,
-       });
+      expiresIn: "1h",
+    });
+    res.json({
+      userId: user._id,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      token,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

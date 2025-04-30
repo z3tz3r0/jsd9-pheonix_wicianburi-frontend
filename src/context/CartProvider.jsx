@@ -7,24 +7,20 @@ export const CartProvider = ({ children }) => {
   const [isInitialMount, setIsInitialMount] = useState(true);
 
   const [filters, setFilters] = useState({
-      tags: [],
-      rating: "any",
-      price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
-      region: "ทั้งหมด",
-    });
-  
+    tags: [],
+    rating: "any",
+    price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
+    region: "ทั้งหมด",
+  });
 
   // Load cart from localStorage on component mount
   useEffect(() => {
     try {
       const savedCart = localStorage.getItem('cart');
-      console.log("Attempting to load cart:", savedCart); // Log what was retrieved
       if (savedCart) {
         const parsedCart = JSON.parse(savedCart); // Parse first
-        console.log("Successfully parsed cart:", parsedCart);
         setCart(parsedCart); // Set state *after* successful parse
       } else {
-        console.log("No cart found in localStorage, using mock data.");
         setCart(carts);
       }
     } catch (error) {
@@ -40,22 +36,20 @@ export const CartProvider = ({ children }) => {
   useEffect(() => {
     if (isInitialMount) {
       setIsInitialMount(false);
-      console.log("Skipping save on initial mount.")
     } else {
-      console.log("Effect that watch cart working...")
       localStorage.setItem('cart', JSON.stringify(cart));
-      console.log(cart)
-      console.log("Effect that watch cart done.")
     }
   }, [cart]);
 
   // Add item to cart
   const addToCart = (product) => {
-    const existingItem = cart.find((item) => item.id === product.id);
+    // console.log(product)
+    // console.log(cart)
+    const existingItem = cart.find((item) => item.product_id === product.product_id);
 
     if (existingItem) {
       setCart(cart.map(prevItem =>
-        prevItem.id === product.id
+        prevItem.product_id === product.product_id
           ? { ...prevItem, quantity: prevItem.quantity + 1 }
           : prevItem
       ));
@@ -76,7 +70,7 @@ export const CartProvider = ({ children }) => {
   //   ));
   // };
 
-  const updateQuantity = (productId, newQuantity) => {  
+  const updateQuantity = (productId, newQuantity) => {
     const quantityValue = Math.max(0, Number(newQuantity) || 0);
     setCart(prevCart =>
       prevCart.map(item =>

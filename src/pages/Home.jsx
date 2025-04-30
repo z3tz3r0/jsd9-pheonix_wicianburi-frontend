@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router'
 import ButtonFilter from '../components/ButtonFilter'
 import ButtonMain from '../components/ButtonMain'
-import ChatBot from '../components/ChatBot/ChatBot'
 import Carousel from '../containers/Carousel'
 import ProductCard from '../containers/ProductCard'
 import products from '../data/products'
@@ -14,7 +13,6 @@ const Home = () => {
   return (
 
     <div>
-      <ChatBot />
       {/* hero section */}
       <section className='hero-section h-[654px] flex sm:justify-center'>
         <div className='flex-col items-start hidden mt-40 mr-20 sm:flex'>

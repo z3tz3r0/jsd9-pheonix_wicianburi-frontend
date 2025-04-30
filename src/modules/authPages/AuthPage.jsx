@@ -1,20 +1,22 @@
-import { useState } from "react";
 import axios from "axios";
-import { Link, Navigate, useNavigate } from "react-router";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 
-import CloseButton from "@/components/CloseButton";
-import ButtonMain from "@/components/ButtonMain";
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
+import ButtonMain from "@/components/ButtonMain";
+import CloseButton from "@/components/CloseButton";
 
 // รอจัดการกับ context !!!
-const AuthPage = () => {
+const AuthPage = ({ onClose }) => {
   const [isSignUp, setIsSignUp] = useState(false);
 
   const toggleSlide = () => setIsSignUp(!isSignUp);
 
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // const { setIsLogin } = useContext(AuthContext);
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -48,9 +50,10 @@ const AuthPage = () => {
       // รอ state นี้ส่งไปที่อื่น ไว้ตั้งชื่อทีหลัง
       // navigate to ...รอมาแก้ตอนส่ง login แล้วไปไหนต่อ
       navigate();
-      console.log(res.status) // ควรจะส่ง 200 เถอะนะ
+      const resBody = res.data;
+      console.log(resBody) // ควรจะส่ง 200 เถอะนะ
     } catch (error) {
-      console.error(error);
+      console.error(error.response.data.error);
       setError(error.response?.data?.error || "Login failed");
     }
   };
@@ -81,20 +84,16 @@ const AuthPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-full bg-[var(--primary)] p-4 sm:scale-90">
+    <div className="fixed inset-0 z-10 flex items-center justify-center scale-75 sm:scale-100">
       <div className="relative max-w-4xl bg-[var(--primary)] shadow-2xl rounded-lg overflow-hidden p-4">
         <CloseButton
-          onClick={() => {
-            console.log("Close clicked");
-            window.history.back();
-          }}
+          onClick={onClose}
           isSignUp={isSignUp}
         />
         <div className="flex max-w-4xl overflow-hidden">
           <div
-            className={`flex w-full transform transition-transform duration-300 ${
-              isSignUp ? "-translate-x-full" : "translate-x-0"
-            }`}
+            className={`flex w-full transform transition-transform duration-300 ${isSignUp ? "-translate-x-full" : "translate-x-0"
+              }`}
           >
             {/* Login */}
             <div className="flex flex-col w-full md:flex-row shrink-0">
@@ -115,6 +114,7 @@ const AuthPage = () => {
                   </h1>
                 </div>
                 <form className="space-y-4" onSubmit={handleLoginSubmit}>
+                  {error && (<p className="text-red-600">{error}</p>)}
                   <input
                     type="email"
                     name="email"
