@@ -142,7 +142,7 @@ const NavBar = () => {
           </ul>
 
           </div>
-          <div className='flex mr-4 items-center'>
+          <div className='flex items-center mr-4'>
             <NavLink to='cart' className="flex items-center">
 
             <Badge badgeContent={getTotalItems()} color="error">
