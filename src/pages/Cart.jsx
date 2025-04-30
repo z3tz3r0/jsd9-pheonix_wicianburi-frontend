@@ -10,7 +10,10 @@ const Cart = () => {
 
   // คำนวณค่าส่งและยอดรวม
   const subtotal = getSubtotal();
-  const delivery = 100; // การจัดส่ง
+    const FREE_SHIPPING_THRESHOLD = 1000;
+  const SHIPPING_FEE = 100;
+  
+  const delivery = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
   const total = subtotal + delivery; // ยอดรวมทั้งหมด
 
   const handleCheckout = () => {
@@ -21,7 +24,7 @@ const Cart = () => {
   };
 
   return (
-    <div className=''>
+    <div className='min-h-screen'>
       <div className='flex flex-col items-center'>
         <h1 className='text-[28px] font-bold mx-4 sm:text-[44px]'>Cart</h1>
         <div className='w-full sm:grid sm:grid-cols-3 sm:max-w-7xl '>
@@ -111,22 +114,35 @@ const Cart = () => {
               </div>
             </div>
           </div>
+
           {/* cart total */}
-          <div className="w-full p-6 mb-4 rounded-md shadow-md bg-primary sm:w-sm ">
+          <div className="w-full h-[360px] p-6 mb-4 rounded-md shadow-md bg-primary sm:w-sm ">
             <h3 className="mb-4 text-lg font-bold">ยอดรวมสินค้า</h3>
             <div className="border-t border-gray-200">
               <div className="flex justify-between py-3">
                 <span>ยอดรวม</span>
                 <span className="font-semibold">{subtotal.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between py-3">
-                <span>ค่าส่งสินค้า</span>
-                <span className="font-semibold">{delivery}</span>
+
+              <div className="flex justify-between py-2">
+                  <span>ค่าจัดส่ง</span>
+                  <span>
+                    {delivery === 0 ? (
+                      <span className="text-green-600">ฟรี</span>
+                    ) : (
+                      `${delivery.toFixed(2)}`
+                    )}
+                  </span>
               </div>
+              {subtotal < FREE_SHIPPING_THRESHOLD && (
+                <div className="text-xs text-gray-600 mt-2 mb-3">
+                  ซื้ออีก ฿{(FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2)} เพื่อรับส่วนลดค่าส่งฟรี
+                </div>
+              )}
               <div className="flex justify-between py-3 mt-2 border-t border-gray-200">
                 <span className="text-lg font-bold">ยอดสุทธิ</span>
                 <span className="font-bold text-accent">
-                  {total.toFixed(2)} บาท
+                  ฿{total.toFixed(2)} 
                 </span>
               </div>
             </div>
