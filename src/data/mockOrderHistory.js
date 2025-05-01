@@ -7,8 +7,8 @@ const orderHistories = [
     paymentSlipLink: "string", // link
     totalAmount: 557, //ไม่รวมขนส่ง
     deliveryFee: 100,
-    createdAt: Date,
-    updatedAt: Date,
+    createdAt: "2025-03-22",
+    updatedAt: "2025-03-24",
     orderDetails:[
       {
           orderItemId: "od_001",
@@ -53,8 +53,8 @@ const orderHistories = [
     paymentSlipLink: "string", // link
     totalAmount: 750, //ไม่รวมขนส่ง,
     deliveryFee: 100,
-    createdAt: Date,
-    updatedAt: Date,
+    createdAt: "2025-03-21",
+    updatedAt: "2025-03-23",
     orderDetails:[
       {
           orderItemId: "od_001",
@@ -88,8 +88,8 @@ const orderHistories = [
     paymentSlipLink: "string", // link
     totalAmount: 226, //ไม่รวมขนส่ง,
     deliveryFee: 100,
-    createdAt: Date,
-    updatedAt: Date,
+    createdAt: "2025-03-20",
+    updatedAt: "2025-03-22",
     orderDetails:[
       {
           orderItemId: "od_001",
