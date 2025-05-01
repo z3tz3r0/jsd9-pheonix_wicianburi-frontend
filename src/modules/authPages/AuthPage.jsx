@@ -12,7 +12,9 @@ const AuthPage = ({ onClose }) => {
 
   const toggleSlide = () => setIsSignUp(!isSignUp);
 
-  const [error, setError] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [registerError, setRegisterError] = useState("");
+
   const navigate = useNavigate();
 
   // const { setIsLogin } = useContext(AuthContext);
@@ -50,19 +52,18 @@ const AuthPage = ({ onClose }) => {
       // navigate to ...รอมาแก้ตอนส่ง login แล้วไปไหนต่อ
       navigate();
       const resBody = res.data;
-      console.log(resBody); // ควรจะส่ง 200 เถอะนะ
+      console.log(resBody);
     } catch (error) {
       console.error(error.response.data.error);
-      setError(error.response?.data?.error || "Login failed");
+      setLoginError(error.response?.data?.error || "Login failed");
     }
   };
 
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmpassword) {
-      setError("Passwords do not match");
-      alert("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
-      console.error(error);
+      setRegisterError("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
+      console.error(registerError);
       return;
     }
     try {
@@ -77,7 +78,7 @@ const AuthPage = ({ onClose }) => {
       });
       toggleSlide();
     } catch (error) {
-      setError(error);
+      setRegisterError(error);
       console.error(error);
     }
   };
@@ -115,7 +116,7 @@ const AuthPage = ({ onClose }) => {
                   </h1>
                 </div>
                 <form className="space-y-4" onSubmit={handleLoginSubmit}>
-                  {error && <p className="text-red-600">{error}</p>}
+                  {loginError && <p className="text-red-600">{loginError}</p>}
                   <input
                     type="email"
                     name="email"
@@ -235,7 +236,8 @@ const AuthPage = ({ onClose }) => {
                     className="w-full p-2 border border-[var(--clr-gray-400)] rounded-md"
                     value={registerData.confirmpassword}
                     onChange={handleRegisterChange}
-                  />
+                    />
+                    {registerError && <p className="text-red-600">{registerError}</p>}
                   <ButtonMain type="submit" className="p-6 mt-8 mb-8 sm:w-full">
                     ลงทะเบียน
                   </ButtonMain>
