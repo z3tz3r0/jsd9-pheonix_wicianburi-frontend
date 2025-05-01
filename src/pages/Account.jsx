@@ -1,9 +1,10 @@
 import React  from 'react';
 import { Button } from '@/components/ui/button';
-import { X } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import FormInputs from '../components/account/FormInputs';
 import ButtonFirst from '../components/account/ButtonFirst';
+//import { X } from 'lucide-react';
+
 
 
 const Account = () => {
@@ -63,6 +64,7 @@ const Account = () => {
                 name="ที่อยู่"
                 type="text"
                 placeholder="ที่อยู่"
+                className="sm:col-span-2"
               />
 
               <FormInputs
