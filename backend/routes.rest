@@ -3,10 +3,10 @@ POST http://localhost:5000/api/auth/register
 Content-Type: application/json
 
 {
-    "email": "paween2025@gmail.com",
-    "firstname": "Paween Konghin",
-    "lastname": "Paween Konghin",
-    "password": "ujishappy123"
+    "email": "pakkadd@gmail.com",
+    "firstname": "test",
+    "lastname": "test",
+    "password": "123"
 }
 
 ### Login with the registered User
