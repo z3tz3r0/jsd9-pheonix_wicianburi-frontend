@@ -68,14 +68,14 @@ const Home = () => {
         <div className="mx-auto">
           <figure className="flex ml-20 sm:justify-end">
             <img
-              src="https://www.thaiticketmajor.com/variety/img_content/imgeditor/53220415_3178335835525744_2428596284089696256_n(2).jpg"
+              src="/assets/field.jpg"
               alt="image-decorate1"
               className="h-[400px] sm:w-auto sm:h-auto"
             />
           </figure>
           <figure className="mt-4">
             <img
-              src="https://img-ha.mthcdn.com/8ySBElIEiEu7AhUt34KWw0A3CAk=/travel.mthai.com/app/uploads/2019/03/kaosalee-9.jpg"
+              src="/assets/rice-field.jpg"
               alt="image-decorate2"
               className="h-[200px] sm:w-1/2 sm:h-auto"
             />
