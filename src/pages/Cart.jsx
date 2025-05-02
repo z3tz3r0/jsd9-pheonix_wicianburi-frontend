@@ -57,7 +57,7 @@ const Cart = () => {
               ) : (
                 cart.map((item) => (
                   <div
-                    key={item.id}
+                    key={item.product_id}
                     className="grid grid-cols-12 bg-[#dfdddd] p-4 border-b-2 sm:p-5"
                   >
                     <div className="flex col-span-6 sm:col-span-7">
@@ -89,7 +89,7 @@ const Cart = () => {
                             className="flex items-center justify-center w-8 h-8 border border-black rounded-l"
                             onClick={() =>
                               updateQuantity(
-                                item.id,
+                                item.product_id,
                                 Math.max(1, item.quantity - 1)
                               )
                             }
@@ -105,7 +105,7 @@ const Cart = () => {
                           <button
                             className="flex items-center justify-center w-8 h-8 border border-black rounded-r"
                             onClick={() =>
-                              updateQuantity(item.id, item.quantity + 1)
+                              updateQuantity(item.product_id, item.quantity + 1)
                             }
                           >
                             +
@@ -120,7 +120,7 @@ const Cart = () => {
                       </p>
                     </div>
                     <button
-                      onClick={() => removeFromCart(item.id)}
+                      onClick={() => removeFromCart(item.product_id)}
                       className="flex items-start justify-end col-span-1 text-gray-400 hover:text-red-500"
                     >
                       ×
@@ -159,7 +159,7 @@ const Cart = () => {
                 </span>
               </div>
               {subtotal < FREE_SHIPPING_THRESHOLD && (
-                <div className="text-xs text-gray-600 mt-2 mb-3">
+                <div className="mt-2 mb-3 text-xs text-gray-600">
                   ซื้ออีก ฿{(FREE_SHIPPING_THRESHOLD - subtotal).toFixed(2)}{" "}
                   เพื่อรับส่วนลดค่าส่งฟรี
                 </div>

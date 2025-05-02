@@ -4,8 +4,8 @@ import ButtonFilter from "../components/ButtonFilter";
 import ButtonMain from "../components/ButtonMain";
 import Carousel from "../containers/Carousel";
 import ProductCard from "../containers/ProductCard";
-import products from "../data/products";
 import { CartContext } from "../context/CartContext";
+import products from "../data/products";
 
 const Home = () => {
   const { filters, setFilters } = useContext(CartContext);
@@ -163,7 +163,7 @@ const Home = () => {
       </section>
 
       {/* promotion section */}
-      <section className="promotion-section flex items-center justify-between h-40 mt-15">
+      <section className="flex items-center justify-between h-40 promotion-section mt-15">
         <p className="mx-10 font-semibold sm:text-lg">
           Free Delivery
           <br /> On all order over ฿1000
