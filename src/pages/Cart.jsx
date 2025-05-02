@@ -27,7 +27,7 @@ const Cart = () => {
     <div className="min-h-screen">
       <div className="flex flex-col items-center">
         <h1 className="text-[28px] font-bold mx-4 sm:text-[44px]">Cart</h1>
-        <div className="w-full sm:grid sm:grid-cols-3 sm:max-w-7xl ">
+        <div className="w-full md:grid md:grid-cols-3 md:max-w-7xl ">
           <div className="col-span-2 mx-4 border-b">
             {/* header */}
             <div>
@@ -140,7 +140,7 @@ const Cart = () => {
           </div>
 
           {/* cart total */}
-          <div className="w-full h-[360px] p-6 mb-4 rounded-md shadow-md bg-primary sm:w-sm ">
+          <div className="w-full h-[360px] p-6 mb-4 rounded-md shadow-md bg-primary md:w-sm ">
             <h3 className="mb-4 text-lg font-bold">ยอดรวมสินค้า</h3>
             <div className="border-t border-gray-200">
               <div className="flex justify-between py-3">
