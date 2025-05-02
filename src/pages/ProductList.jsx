@@ -1,55 +1,59 @@
-import React, { useState } from 'react';
-import ProductCard from '../containers/ProductCard';
+import React, { useContext, useState } from "react";
+import ProductCard from "../containers/ProductCard";
 // import { Container, Grid, Typography } from '@mui/material';
-import { Backdrop } from '@mui/material';
-import { Funnel, MapPin, Search } from 'lucide-react';
-import FilterSidebar from '../components/FilterSidebar';
-import mockReviews from '../data/mockReviews';
-import mockProducts from '../data/products';
+import { Backdrop } from "@mui/material";
+import { Funnel, MapPin, Search } from "lucide-react";
+import FilterSidebar from "../components/FilterSidebar";
+import mockReviews from "../data/mockReviews";
+import mockProducts from "../data/products";
+import { CartContext } from "../context/CartContext";
 
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [searchTerm, setSearchTerm] = useState("");
 
-
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
-  const [filters, setFilters] = useState({
-    types: [],
-    rating: "any",
-    price: [0, 1000], // Gotta make sure prices in products are numbers for proper filtering
-    region: "ทั้งหมด",
-  });
+  const { filters, setFilters } = useContext(CartContext);
 
   // Function to apply filters
   const applyFilters = (product) => {
-
     // --- 1. Filter by Search Term ---
-    const matchesSearchTerm = searchTerm === "" || product.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearchTerm =
+      searchTerm === "" ||
+      product.name.toLowerCase().includes(searchTerm.toLowerCase());
 
     // --- 2. Filter by Region ---
-    const matchesRegion = filters.region === "ทั้งหมด" || product.region === filters.region;
+    const matchesRegion =
+      filters.region === "ทั้งหมด" || product.region === filters.region;
 
     // --- 3. Filter by Price ---
     const productPrice = product.variants[0].price;
-    const matchesPrice = productPrice >= filters.price[0] && productPrice <= filters.price[1];
-
+    const matchesPrice =
+      productPrice >= filters.price[0] && productPrice <= filters.price[1];
 
     // --- 4. Filter by product type ---
-    const matchesTypes = filters.types.length === 0 || (product.type && filters.types.includes(product.type));
+    const matchesTypes =
+      filters.types.length === 0 ||
+      (product.type && filters.types.includes(product.type));
 
     // --- 5. Filter by stars ---
     let matchesRating = false; // Default to false
 
-    if (filters.rating === 'any') {
+    if (filters.rating === "any") {
       matchesRating = true; // If filter is 'any', always match
     } else {
       // Find reviews for the current product
-      const productReviews = mockReviews.filter(review => review.product_id === product.product_id);
+      const productReviews = mockReviews.filter(
+        (review) => review.product_id === product.product_id
+      );
 
       if (productReviews.length > 0) {
         // Calculate the average rating
-        const totalStars = productReviews.reduce((sum, review) => sum + review.stars, 0);
+        const totalStars = productReviews.reduce(
+          (sum, review) => sum + review.stars,
+          0
+        );
         const averageRating = totalStars / productReviews.length;
 
         // Get the minimum rating required by the filter
@@ -63,15 +67,15 @@ const ProductList = () => {
       // If a product has no reviews, it will only match if filters.rating is 'any'
     }
 
-
     // Combine ALL filter conditions
-    return matchesSearchTerm
-      && matchesRegion
-      && matchesPrice
-      && matchesTypes
-      && matchesRating;
+    return (
+      matchesSearchTerm &&
+      matchesRegion &&
+      matchesPrice &&
+      matchesTypes &&
+      matchesRating
+    );
   };
-
 
   const filteredProducts = mockProducts.filter(applyFilters);
 
@@ -145,15 +149,14 @@ const ProductList = () => {
         <Backdrop
           open={showFilterDrawer}
           onClick={closeFilterDrawer}
-          sx={{ "zIndex": 49 }}
-        >
-        </Backdrop>
+          sx={{ zIndex: 49 }}
+        ></Backdrop>
       )}
 
       {/* Filter Sidebar */}
       <div
         className={`fixed inset-y-0 right-0 z-50 w-full sm:w-3/4 md:w-1/3 lg:w-1/4 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
-          ${showFilterDrawer ? 'translate-x-0' : 'translate-x-full'}`}
+          ${showFilterDrawer ? "translate-x-0" : "translate-x-full"}`}
       >
         <FilterSidebar
           filter={filters}
