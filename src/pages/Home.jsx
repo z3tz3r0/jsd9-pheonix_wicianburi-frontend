@@ -54,7 +54,7 @@ const Home = () => {
       {/* recommend section */}
       <section className="flex flex-col items-center mt-10">
         <h2 className="text-4xl font-bold mb-10 sm:text-[52px]">สินค้าขายดี</h2>
-        <div className="w-7xl ">
+        <div className="w-full sm:w-7xl ">
           <Carousel>
             {products.slice(0, 10).map((product) => (
               <ProductCard key={product.product_id} product={product} />
@@ -153,7 +153,7 @@ const Home = () => {
         <h2 className="text-4xl font-bold my-10 sm:text-[52px]">
           ผลิตภัณฑ์แปรรูปจากข้าว
         </h2>
-        <div className="w-7xl ">
+        <div className="w-full sm:w-7xl  ">
           <Carousel>
             {products.slice(17, 31).map((product) => (
               <ProductCard key={product.product_id} product={product} />
