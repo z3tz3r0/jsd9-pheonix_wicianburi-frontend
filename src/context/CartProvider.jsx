@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { carts } from "../data/mockCarts.js";
 import { CartContext } from "./CartContext";
 
@@ -6,12 +6,17 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [isInitialMount, setIsInitialMount] = useState(true);
 
-  const [filters, setFilters] = useState({
+
+  const initialFilter = {
     types: [],
     rating: "any",
-    price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
+    price: [0, 1000], // Gotta make sure prices in products are numbers for proper filtering
     region: "ทั้งหมด",
-  });
+  }
+  const initialSearchTerm = "";
+
+  const [filters, setFilters] = useState(initialFilter);
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
 
   // Load cart from localStorage on component mount
   useEffect(() => {
@@ -95,6 +100,13 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
+  // Reset Filter
+  const resetFilter = useCallback(() => {
+    console.log("Reset");
+    setFilters(initialFilter);
+    setSearchTerm(initialSearchTerm);
+  }, []);
+
   const value = {
     cart,
     addToCart,
@@ -104,6 +116,9 @@ export const CartProvider = ({ children }) => {
     getSubtotal,
     filters,
     setFilters,
+    searchTerm,
+    setSearchTerm,
+    resetFilter
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

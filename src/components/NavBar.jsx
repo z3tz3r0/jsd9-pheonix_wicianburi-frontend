@@ -11,7 +11,7 @@ import { CartContext } from '../context/CartContext';
 import AuthPage from '../modules/authPages/AuthPage';
 
 
-const UserPopUp = ({ isOpen }) => {
+const UserPopUp = ({ isOpen, setIsLogin }) => {
   if (!isOpen) return null;
 
   return (
@@ -29,7 +29,7 @@ const UserPopUp = ({ isOpen }) => {
           คำสั่งซื้อสินค้า
         </NavLink>
 
-        <NavLink className="flex items-center py-2 hover:text-accent" to="/">
+        <NavLink className="flex items-center py-2 hover:text-accent" to="/" onClick={() => setIsLogin(false)}>
           <LogoutIcon className='mr-2' />
           ออกจากระบบ
         </NavLink>
@@ -83,7 +83,7 @@ const NavBar = () => {
   const authPageRef = useRef(null);
 
   const { getTotalItems } = useContext(CartContext);
-  const { isLogin } = useContext(AuthContext);
+  const { isLogin, setIsLogin } = useContext(AuthContext);
 
   const openAuthPage = () => {
     setIsAuthPageOpen(true);
@@ -190,7 +190,7 @@ const NavBar = () => {
             </NavLink>
             <div className='relative mx-6 hover:cursor-pointer profile-icon-container'>
               <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
-              <UserPopUp isOpen={isUserPopUpOpen} />
+              <UserPopUp isOpen={isUserPopUpOpen} setIsLogin={setIsLogin} />
             </div>
             <div className='cursor-pointer sm:hidden' onClick={toggleSideBar}>
               <MenuIcon />
