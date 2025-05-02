@@ -19,7 +19,7 @@ const Footer = () => {
             <li className='mr-4 footer-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
             <li className='footer-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
           </ul>
-          <div className='flex justify-end mt-4 mb-15'>
+          <div className='flex justify-end mt-4 mb-15'>+
             <NavLink to='/' >
               <FacebookOutlinedIcon className='text-3xl text-primary' />
             </NavLink>

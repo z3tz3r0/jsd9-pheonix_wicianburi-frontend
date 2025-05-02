@@ -1,20 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProductCard from "../containers/ProductCard";
 // import { Container, Grid, Typography } from '@mui/material';
 import { Backdrop } from "@mui/material";
 import { Funnel, MapPin, Search } from "lucide-react";
 import FilterSidebar from "../components/FilterSidebar";
+import { CartContext } from "../context/CartContext";
 import mockReviews from "../data/mockReviews";
 import mockProducts from "../data/products";
-import { CartContext } from "../context/CartContext";
 
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
-  const [searchTerm, setSearchTerm] = useState("");
+
 
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
-  const { filters, setFilters } = useContext(CartContext);
+  const { filters, setFilters, searchTerm, setSearchTerm, resetFilter } = useContext(CartContext);
 
   // Function to apply filters
   const applyFilters = (product) => {
@@ -89,6 +89,12 @@ const ProductList = () => {
   const closeFilterDrawer = () => {
     setShowFilterDrawer(false);
   };
+
+  useEffect(() => {
+    return () => {
+      resetFilter();
+    }
+  }, [resetFilter]);
 
   return (
     <div className="px-4 py-6 mx-auto max-w-7xl">

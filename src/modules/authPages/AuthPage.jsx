@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
 import ButtonMain from "@/components/ButtonMain";
+import { AuthContext } from "../../context/AuthContext";
 
 // รอจัดการกับ context !!!
 const AuthPage = ({ onClose }) => {
@@ -14,6 +15,7 @@ const AuthPage = ({ onClose }) => {
 
   const [loginError, setLoginError] = useState("");
   const [registerError, setRegisterError] = useState("");
+  const { isLogin, setIsLogin } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -53,6 +55,8 @@ const AuthPage = ({ onClose }) => {
       navigate();
       const resBody = res.data;
       console.log(resBody);
+      setIsLogin(true);
+      console.log(isLogin)
     } catch (error) {
       console.error(error.response.data.error);
       setLoginError(error.response?.data?.error || "Login failed");
@@ -93,9 +97,8 @@ const AuthPage = ({ onClose }) => {
       >
         <div className="flex max-w-4xl overflow-hidden">
           <div
-            className={`flex w-full transform transition-transform duration-300 ${
-              isSignUp ? "-translate-x-full" : "translate-x-0"
-            }`}
+            className={`flex w-full transform transition-transform duration-300 ${isSignUp ? "-translate-x-full" : "translate-x-0"
+              }`}
           >
             {/* Login */}
             <div className="flex flex-col w-full md:flex-row shrink-0">
@@ -236,8 +239,8 @@ const AuthPage = ({ onClose }) => {
                     className="w-full p-2 border border-[var(--clr-gray-400)] rounded-md"
                     value={registerData.confirmpassword}
                     onChange={handleRegisterChange}
-                    />
-                    {registerError && <p className="text-red-600">{registerError}</p>}
+                  />
+                  {registerError && <p className="text-red-600">{registerError}</p>}
                   <ButtonMain type="submit" className="p-6 mt-8 mb-8 sm:w-full">
                     ลงทะเบียน
                   </ButtonMain>

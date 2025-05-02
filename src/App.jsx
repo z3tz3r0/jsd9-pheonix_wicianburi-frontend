@@ -9,6 +9,8 @@ import AuthPage from "./modules/authPages/AuthPage";
 import ForgetPassword from "./modules/authPages/ForgetPassword";
 import AboutUs from "./pages/AboutUs";
 import Account from "./pages/Account";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminLayout from "./pages/Admin/AdminLayout";
 import Cart from "./pages/Cart";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import ConfirmPayment from "./pages/ConfirmPayment";
@@ -53,6 +55,13 @@ const router = createBrowserRouter([
       { path: "*", element: <NotFound /> },
     ]
   },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      { index: true, element: <AdminDashboard /> }
+    ]
+  }
 ]);
 
 function App() {
