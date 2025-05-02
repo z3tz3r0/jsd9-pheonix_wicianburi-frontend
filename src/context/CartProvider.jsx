@@ -7,7 +7,7 @@ export const CartProvider = ({ children }) => {
   const [isInitialMount, setIsInitialMount] = useState(true);
 
   const [filters, setFilters] = useState({
-    tags: [],
+    types: [],
     rating: "any",
     price: [50, 1000], // Gotta make sure prices in products are numbers for proper filtering
     region: "ทั้งหมด",
@@ -16,7 +16,7 @@ export const CartProvider = ({ children }) => {
   // Load cart from localStorage on component mount
   useEffect(() => {
     try {
-      const savedCart = localStorage.getItem('cart');
+      const savedCart = localStorage.getItem("cart");
       if (savedCart) {
         const parsedCart = JSON.parse(savedCart); // Parse first
         setCart(parsedCart); // Set state *after* successful parse
@@ -25,8 +25,8 @@ export const CartProvider = ({ children }) => {
       }
     } catch (error) {
       // Log the specific error and the data that caused it
-      console.error('Error parsing cart from localStorage:', error);
-      console.error('Data that caused error:', localStorage.getItem('cart'));
+      console.error("Error parsing cart from localStorage:", error);
+      console.error("Data that caused error:", localStorage.getItem("cart"));
       console.log("Falling back to mock data due to error.");
       setCart(carts);
     }
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
     if (isInitialMount) {
       setIsInitialMount(false);
     } else {
-      localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart));
     }
   }, [cart]);
 
@@ -45,14 +45,18 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product) => {
     // console.log(product)
     // console.log(cart)
-    const existingItem = cart.find((item) => item.product_id === product.product_id);
+    const existingItem = cart.find(
+      (item) => item.product_id === product.product_id
+    );
 
     if (existingItem) {
-      setCart(cart.map(prevItem =>
-        prevItem.product_id === product.product_id
-          ? { ...prevItem, quantity: prevItem.quantity + 1 }
-          : prevItem
-      ));
+      setCart(
+        cart.map((prevItem) =>
+          prevItem.product_id === product.product_id
+            ? { ...prevItem, quantity: prevItem.quantity + 1 }
+            : prevItem
+        )
+      );
     } else {
       setCart([...cart, { ...product, quantity: 1 }]);
     }
@@ -60,7 +64,7 @@ export const CartProvider = ({ children }) => {
 
   // Remove item from cart
   const removeFromCart = (productId) => {
-    setCart(cart.filter(item => item.id !== productId));
+    setCart(cart.filter((item) => item.id !== productId));
   };
 
   // Update item quantity
@@ -72,15 +76,14 @@ export const CartProvider = ({ children }) => {
 
   const updateQuantity = (productId, newQuantity) => {
     const quantityValue = Math.max(0, Number(newQuantity) || 0);
-    setCart(prevCart =>
-      prevCart.map(item =>
-        item.id === productId
-          ? { ...item, quantity: quantityValue }
-          : item
-      ).filter(item => item.quantity > 0)
+    setCart((prevCart) =>
+      prevCart
+        .map((item) =>
+          item.id === productId ? { ...item, quantity: quantityValue } : item
+        )
+        .filter((item) => item.quantity > 0)
     );
   };
-
 
   // Get total number of items in cart
   const getTotalItems = () => {
@@ -89,7 +92,7 @@ export const CartProvider = ({ children }) => {
 
   // Calculate subtotal of all items in cart
   const getSubtotal = () => {
-    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   const value = {
@@ -100,13 +103,8 @@ export const CartProvider = ({ children }) => {
     getTotalItems,
     getSubtotal,
     filters,
-    setFilters
+    setFilters,
+  };
 
-  }
-
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
