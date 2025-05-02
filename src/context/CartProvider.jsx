@@ -69,7 +69,7 @@ export const CartProvider = ({ children }) => {
 
   // Remove item from cart
   const removeFromCart = (productId) => {
-    setCart(cart.filter((item) => item.id !== productId));
+    setCart(cart.filter((item) => item.product_id !== productId));
   };
 
   // Update item quantity
@@ -84,7 +84,7 @@ export const CartProvider = ({ children }) => {
     setCart((prevCart) =>
       prevCart
         .map((item) =>
-          item.id === productId ? { ...item, quantity: quantityValue } : item
+          item.product_id === productId ? { ...item, quantity: quantityValue } : item
         )
         .filter((item) => item.quantity > 0)
     );
