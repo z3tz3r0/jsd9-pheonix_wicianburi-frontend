@@ -1,5 +1,3 @@
-"use client";
-
 import {
   DndContext,
   KeyboardSensor,
@@ -7,9 +5,7 @@ import {
   TouchSensor,
   closestCenter,
   useSensor,
-  useSensors,
-  type DragEndEvent,
-  type UniqueIdentifier,
+  useSensors
 } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
@@ -20,11 +16,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import {
-  ColumnDef,
-  ColumnFiltersState,
-  Row,
-  SortingState,
-  VisibilityState,
   flexRender,
   getCoreRowModel,
   getFacetedRowModel,
@@ -32,7 +23,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable,
+  useReactTable
 } from "@tanstack/react-table";
 import {
   CheckCircle2Icon,
@@ -56,10 +47,9 @@ import { z } from "zod";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  ChartConfig,
   ChartContainer,
   ChartTooltip,
-  ChartTooltipContent,
+  ChartTooltipContent
 } from "@/components/ui/chart";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -112,7 +102,7 @@ export const schema = z.object({
 });
 
 // Create a separate component for the drag handle
-function DragHandle({ id }: { id: number }) {
+function DragHandle({ id }) {
   const { attributes, listeners } = useSortable({
     id,
   });
@@ -131,7 +121,7 @@ function DragHandle({ id }: { id: number }) {
   );
 }
 
-const columns: ColumnDef<z.infer<typeof schema>>[] = [
+const columns = [
   {
     id: "drag",
     header: () => null,
@@ -201,7 +191,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "target",
-    header: () => <div className="w-full text-right">Target</div>,
+    header: () => <div className="w-full text-center">Target</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -217,7 +207,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
           Target
         </Label>
         <Input
-          className="w-16 h-8 text-right bg-transparent border-transparent shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background"
+          className="w-16 h-8 mx-auto text-center bg-transparent border-transparent shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background"
           defaultValue={row.original.target}
           id={`${row.original.id}-target`}
         />
@@ -226,7 +216,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
   {
     accessorKey: "limit",
-    header: () => <div className="w-full text-right">Limit</div>,
+    header: () => <div className="w-full text-center">Limit</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -242,8 +232,9 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
           Limit
         </Label>
         <Input
-          className="w-16 h-8 text-right bg-transparent border-transparent shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background"
+          className="w-16 h-8 mx-auto text-center bg-transparent border-transparent shadow-none hover:bg-input/30 focus-visible:border focus-visible:bg-background"
           defaultValue={row.original.limit}
+          maxLength={4}
           id={`${row.original.id}-limit`}
         />
       </form>
@@ -308,7 +299,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   },
 ];
 
-function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
+function DraggableRow({ row }) {
   const { transform, transition, setNodeRef, isDragging } = useSortable({
     id: row.original.id,
   });
@@ -333,19 +324,12 @@ function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
   );
 }
 
-export function DataTable({
-  data: initialData,
-}: {
-  data: z.infer<typeof schema>[];
-}) {
+export function DataTable({ data: initialData }) {
   const [data, setData] = React.useState(() => initialData);
   const [rowSelection, setRowSelection] = React.useState({});
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  );
-  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnVisibility, setColumnVisibility] = React.useState({});
+  const [columnFilters, setColumnFilters] = React.useState([]);
+  const [sorting, setSorting] = React.useState([]);
   const [pagination, setPagination] = React.useState({
     pageIndex: 0,
     pageSize: 10,
@@ -357,7 +341,7 @@ export function DataTable({
     useSensor(KeyboardSensor, {})
   );
 
-  const dataIds = React.useMemo<UniqueIdentifier[]>(
+  const dataIds = React.useMemo(
     () => data?.map(({ id }) => id) || [],
     [data]
   );
@@ -387,7 +371,7 @@ export function DataTable({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
-  function handleDragEnd(event: DragEndEvent) {
+  function handleDragEnd(event) {
     const { active, over } = event;
     if (active && over && active.id !== over.id) {
       setData((data) => {
@@ -483,6 +467,7 @@ export function DataTable({
           </Button>
         </div>
       </div>
+
       <TabsContent
         value="outline"
         className="relative flex flex-col gap-4 px-4 overflow-auto lg:px-6"
@@ -505,9 +490,9 @@ export function DataTable({
                           {header.isPlaceholder
                             ? null
                             : flexRender(
-                                header.column.columnDef.header,
-                                header.getContext()
-                              )}
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
                         </TableHead>
                       );
                     })}
@@ -653,9 +638,9 @@ const chartConfig = {
     label: "Mobile",
     color: "var(--primary)",
   },
-} satisfies ChartConfig;
+}
 
-function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
+function TableCellViewer({ item }) {
   const isMobile = useIsMobile();
 
   return (
