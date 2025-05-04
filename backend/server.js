@@ -13,6 +13,11 @@ app.use(cors()); // อย่าลืมมาแก้ cors ตอน deploy
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 
+// TODO : Kob working on this
+// TODO : required other models to be done to see what schema look like.
+// import adminRoutes from "./routes/adminRoutes.js";
+// app.use("/admin", adminRoutes);
+
 (async () => {
   // Connect to MongoDB via Mongoose
   try {
