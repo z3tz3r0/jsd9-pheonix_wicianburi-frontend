@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { PlusIcon } from 'lucide-react';
 import React from 'react';
+import { addProduct } from '../services/productApi.js';
 import ProductForm from './ProductForm';
-import { addProduct } from './services/productApi';
 
 const AddProductDialog = ({ children }) => {
   // Function for handling product addition

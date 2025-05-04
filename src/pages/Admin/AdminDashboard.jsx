@@ -1,10 +1,8 @@
 import { chartData } from "@/data/chartData";
 import { useState } from "react";
 import ChartAreaInteractive from "./Dashboard/ChartAreaInteractive";
-import { DataTable } from "./Dashboard/DataTable";
 import SectionCards from "./Dashboard/SectionCards";
 import TimeRangeSelector from "./Dashboard/TimeRangeSelector";
-import data from "./data.json";
 
 const timeRangeOptions = [
   { value: "all", label: "All time" },
@@ -30,7 +28,6 @@ export default function AdminDashboard() {
         <div className="px-4 lg:px-6">
           <ChartAreaInteractive timeRange={timeRange} timeRangeOptions={timeRangeOptions} chartData={chartData} />
         </div>
-        <DataTable data={data} />
       </div>
     </div>
   )

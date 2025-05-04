@@ -1,7 +1,7 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import React from 'react';
+import { updateProduct } from '../services/productApi.js';
 import ProductForm from './ProductForm';
-import { updateProduct } from './services/productApi';
 
 const EditProductDialog = ({ product, children }) => {
   // Function for handling product update
