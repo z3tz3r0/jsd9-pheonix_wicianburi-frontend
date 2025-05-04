@@ -1,11 +1,19 @@
 import { Router } from "express";
 import * as adminController from "../controllers/adminController.js";
+import authAdmin from "../middlewares/adminAuth.js";
 
 const adminRoutes = Router();
 
 // Auth
 adminRoutes.post("/auth/register", adminController.createNewAdmin);
 adminRoutes.post("/auth/login", adminController.loginAdmin);
+adminRoutes.post("/auth/logout", adminController.logoutAdmin);
+
+// From this point on, any route below this required authentication.
+adminRoutes.use(authAdmin);
+
+// For useEffect to fetch if token still valid.
+adminRoutes.get("/auth/verify", adminController.getCurrentAdmin);
 
 // Manage Products
 adminRoutes.get("/products", adminController.getAllProducts);

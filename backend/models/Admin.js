@@ -2,13 +2,6 @@ import mongoose from "mongoose";
 
 const AdminSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      require: [true, "Username is required"],
-      unique: true,
-      trim: true,
-      maxLength: [30, "Username should not longer than 30 characters"],
-    },
     email: {
       type: String,
       required: [true, "Email is required"],

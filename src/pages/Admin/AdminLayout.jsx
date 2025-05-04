@@ -1,7 +1,10 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { Backdrop, CircularProgress } from "@mui/material";
 import { LayoutDashboardIcon, ShoppingBag, ShoppingCart, UsersRound } from 'lucide-react';
 import React, { useCallback, useState } from 'react';
 import { Outlet, useLocation } from 'react-router';
+import { useAdminAuth } from "./AdminContext";
+import AdminLogin from "./AdminLogin";
 import AppSidebar from './Dashboard/AppSidebar';
 import SiteHeader from "./Dashboard/SiteHeader";
 
@@ -28,8 +31,8 @@ const navData = {
       icon: ShoppingCart,
     },
     {
-      title: "Customers",
-      url: "customers",
+      title: "Users",
+      url: "users",
       icon: UsersRound,
     },
   ],
@@ -47,6 +50,24 @@ const AdminLayout = () => {
   const [activeTitle, setActiveTitle] = useState(() => getTitleFromPath(location.pathname));
 
   const handleTitleUpdate = useCallback((newTitle) => setActiveTitle(newTitle), []);
+
+  const { admin, loading } = useAdminAuth();
+
+  if (loading) {
+    return (
+      <Backdrop
+        open={loading}
+      >
+        <CircularProgress />
+      </Backdrop>
+    )
+  }
+
+  if (!admin) {
+    return <AdminLogin />
+  }
+
+
   return (
     // Using dark theme as in AdminDashboard example
     <SidebarProvider className="text-white dark">

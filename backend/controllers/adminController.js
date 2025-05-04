@@ -1,17 +1,15 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
-import Admin from "../models/Admin";
+import Admin from "../models/Admin.js";
 
 // Auth
 // adminRoutes.post("/auth/register", createNewAdmin);
 // adminRoutes.post("/auth/login", loginAdmin);
 export const createNewAdmin = async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!username || !email || !password) {
-    return res
-      .status(400)
-      .json({ message: "Username, Email, or Password is missing" });
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email, or Password is missing" });
   }
 
   try {
@@ -20,10 +18,10 @@ export const createNewAdmin = async (req, res) => {
       return res.status(409).json({ message: "Email already in used" });
     }
     const hashPassword = await bcrypt.hash(password, 10);
-    const admin = new Admin({ username, email, password: hashPassword });
+    const admin = new Admin({ email, password: hashPassword });
     await admin.save();
     return res
-      .stauts(201)
+      .status(201)
       .json({ message: "SUCCESS: Create new admin", admin });
   } catch (error) {
     return res.status(500).json({ message: `Server Error: ${error}` });
@@ -45,11 +43,9 @@ export const loginAdmin = async (req, res) => {
     if (!isPasswordMatch) {
       return res.status(401).json({ message: "invalid credential" });
     }
-    const token = await jwt.sign(
-      { adminId: admin._id },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    const token = jwt.sign({ adminId: admin._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
     const isProd = process.env.NODE_ENV === "production";
 
     res.cookie("accessToken", token, {
@@ -63,13 +59,45 @@ export const loginAdmin = async (req, res) => {
       message: "SUCESS: Loging in",
       admin: {
         _id: admin._id,
-        username: admin.username,
         email: admin.email,
         password: admin.password,
       },
     });
   } catch (error) {
     return res.status(500).json({ message: `Server Error: ${error}` });
+  }
+};
+
+export const logoutAdmin = async (req, res) => {
+  res.clearCookie("accessToken", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "Strict",
+    path: "/admin",
+  });
+  res.status(200).json({ message: "SUCESS: Logged out" });
+};
+
+export const getCurrentAdmin = async (req, res) => {
+  if (!req.admin || !req.admin.adminId) {
+    // This case should ideally be caught by the middleware sending 401/403
+    return res.status(401).json({ message: "Not authorized or token invalid" });
+  }
+  try {
+    const admin = await Admin.findById(req.admin.adminId).select("-password");
+    if (!admin) {
+      return res
+        .status(404)
+        .json({ message: "Admin associated with token not found" });
+    }
+    res.status(200).json({ message: "Admin verified", admin });
+  } catch (error) {
+    res
+      .status(500)
+      .json({
+        message: "Server error verifying admin",
+        details: error.message,
+      });
   }
 };
 
@@ -106,12 +134,10 @@ export const getProductById = async (req, res) => {
     }
     return res.json({ message: "SUCCESS: Retrieved product", product });
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to fetch product",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to fetch product",
+      details: error.message,
+    });
   }
 };
 
@@ -128,12 +154,10 @@ export const createNewProduct = async (req, res) => {
         .status(400)
         .json({ message: "Validation Error", details: error.message });
     }
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to create product",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to create product",
+      details: error.message,
+    });
   }
 };
 
@@ -160,12 +184,10 @@ export const updateProductById = async (req, res) => {
         .status(400)
         .json({ message: "Validation Error", details: error.message });
     }
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to update product",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to update product",
+      details: error.message,
+    });
   }
 };
 
@@ -185,12 +207,10 @@ export const deleteProductById = async (req, res) => {
       .json({ message: "SUCCESS: Product deleted", data: { _id: id } });
     // return res.status(204).send();
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to delete product",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to delete product",
+      details: error.message,
+    });
   }
 };
 
@@ -204,12 +224,10 @@ export const getAllOrders = async (_req, res) => {
     const orders = await Order.find().sort({ createdAt: -1 }); // Sort by newest first
     return res.json({ message: "SUCCESS: Retrieved all orders", data: orders });
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to fetch orders",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to fetch orders",
+      details: error.message,
+    });
   }
 };
 
@@ -226,12 +244,10 @@ export const getOrderById = async (req, res) => {
     }
     return res.json({ message: "SUCCESS: Retrieved order", data: order });
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to fetch order",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to fetch order",
+      details: error.message,
+    });
   }
 };
 
@@ -268,12 +284,10 @@ export const updateOrder = async (req, res) => {
         .status(400)
         .json({ message: "Validation Error", details: error.message });
     }
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to update order",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to update order",
+      details: error.message,
+    });
   }
 };
 
@@ -288,12 +302,10 @@ export const getAllUsers = async (_req, res) => {
     const users = await User.find().select("-password");
     return res.json({ message: "SUCCESS: Retrieved all users", data: users });
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to fetch users",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to fetch users",
+      details: error.message,
+    });
   }
 };
 
@@ -341,12 +353,10 @@ export const createNewUser = async (req, res) => {
         .status(400)
         .json({ message: "Validation Error", details: error.message });
     }
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to create user",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to create user",
+      details: error.message,
+    });
   }
 };
 
@@ -380,12 +390,10 @@ export const updateUserById = async (req, res) => {
         .status(400)
         .json({ message: "Validation Error", details: error.message });
     }
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to update user",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to update user",
+      details: error.message,
+    });
   }
 };
 
@@ -403,11 +411,9 @@ export const deleteUserById = async (req, res) => {
       .status(200)
       .json({ message: "SUCCESS: User deleted", data: { _id: id } });
   } catch (error) {
-    return res
-      .status(500)
-      .json({
-        message: "ERROR: Failed to delete user",
-        details: error.message,
-      });
+    return res.status(500).json({
+      message: "ERROR: Failed to delete user",
+      details: error.message,
+    });
   }
 };
