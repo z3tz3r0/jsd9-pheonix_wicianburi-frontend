@@ -54,7 +54,7 @@ const Home = () => {
       {/* recommend section */}
       <section className="flex flex-col items-center mt-10">
         <h2 className="text-4xl font-bold mb-10 sm:text-[52px]">สินค้าขายดี</h2>
-        <div className="w-7xl ">
+        <div className="w-full sm:w-7xl ">
           <Carousel>
             {products.slice(0, 10).map((product) => (
               <ProductCard key={product.product_id} product={product} />
@@ -68,14 +68,14 @@ const Home = () => {
         <div className="mx-auto">
           <figure className="flex ml-20 sm:justify-end">
             <img
-              src="https://www.thaiticketmajor.com/variety/img_content/imgeditor/53220415_3178335835525744_2428596284089696256_n(2).jpg"
+              src="/assets/field.jpg"
               alt="image-decorate1"
               className="h-[400px] sm:w-auto sm:h-auto"
             />
           </figure>
           <figure className="mt-4">
             <img
-              src="https://img-ha.mthcdn.com/8ySBElIEiEu7AhUt34KWw0A3CAk=/travel.mthai.com/app/uploads/2019/03/kaosalee-9.jpg"
+              src="/assets/rice-field.jpg"
               alt="image-decorate2"
               className="h-[200px] sm:w-1/2 sm:h-auto"
             />
@@ -153,7 +153,7 @@ const Home = () => {
         <h2 className="text-4xl font-bold my-10 sm:text-[52px]">
           ผลิตภัณฑ์แปรรูปจากข้าว
         </h2>
-        <div className="w-7xl ">
+        <div className="w-full sm:w-7xl  ">
           <Carousel>
             {products.slice(17, 31).map((product) => (
               <ProductCard key={product.product_id} product={product} />
