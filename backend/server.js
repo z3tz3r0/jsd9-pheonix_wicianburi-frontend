@@ -1,8 +1,11 @@
-import cors from "cors";
-import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import authRoutes from "./router/auth.js";
+import dotenv from "dotenv";
+import cors from "cors";
+import userRoutes from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
+import errorHandler from "./middlewares/errorHandler.js";
+
 
 dotenv.config();
 
@@ -11,21 +14,30 @@ const app = express();
 // Middleware
 app.use(cors()); // อย่าลืมมาแก้ cors ตอน deploy
 app.use(express.json());
-app.use("/api/auth", authRoutes);
+app.use(cookieParser());
 
-(async () => {
-  // Connect to MongoDB via Mongoose
+// Routes
+app.use("/api/auth", userRoutes);
+
+// app.use("/api/products", productRoutes);
+// app.use("/api/orders", orderRoutes);
+// app.use("/api/reviews", reviewRoutes);
+
+const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGO_URI);
-    console.log("Connected to Mongo database");
+    console.log(`🍺 MongoDB is chilled and on tap! Now let's serve some fresh code on port ${5000} — cheers! 🍻`);
   } catch (err) {
-    console.error(`MongoDB connection error: ${err}`);
+    console.error(`💥🍻 Oops! MongoDB just spilled the beer. Error: ${err.message}`);
     process.exit(1);
   }
-})();
+};
 
-const port = process.env.PORT || 5000;
+app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, async () => {
+  await connectDB();
+  console.log(`🍺 Server is brewing at http://localhost:${PORT} — cheers to code & cold beers!`);
 });
+
