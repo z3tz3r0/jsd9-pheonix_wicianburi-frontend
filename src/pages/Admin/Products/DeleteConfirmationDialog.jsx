@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import React from 'react';
-import { deleteProduct } from './services/productApi';
+import { deleteProduct } from '../services/productApi.js';
 
 const DeleteConfirmationDialog = ({ productId, productName, children }) => {
   // Function for handling product deletion
