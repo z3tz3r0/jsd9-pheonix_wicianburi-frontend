@@ -1,10 +1,13 @@
 import jwt from "jsonwebtoken";
 
 export const authUser = async (req, res, next) => {
-  const token = req.cookies?.accessToken;
+  const token =
+    req.cookies?.accessToken || req.headers.authorization?.split(" ")[1];
+
   if (!token) {
     return res.json({ success: false, message: "Access denied. No token." });
   }
+
   try {
     const decoded_token = jwt.verify(token, process.env.JWT_SECRET);
     req.user = { user: { _id: decoded_token.userId } };
@@ -20,3 +23,4 @@ export const authUser = async (req, res, next) => {
     });
   }
 };
+

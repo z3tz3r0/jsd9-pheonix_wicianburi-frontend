@@ -36,6 +36,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <AboutUs /> },
+      { path: "account", element: <Account /> },
       { path: "authpage", element: <AuthPage /> },
       { path: "authpage/:forgetpassword", element: <ForgetPassword /> },
       { path: "products", element: <ProductList /> },

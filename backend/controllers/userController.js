@@ -5,6 +5,10 @@ import User from "../models/User.js";
 export const registerUser = async (req, res) => {
   const { email, firstname, lastname, password } = req.body;
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "บัญชีนี้มีผู้ใช้งานแล้ว" }); // เพิ่มข้อความนี้เมื่ออีเมลซ้ำ
+    }
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
       email,
@@ -50,7 +54,24 @@ export const getUsers = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       error: true,
-      message: "Failed to fetch users",
+      message: "ดึงข้อมูลจาก users ไม่สำเร็จ",
+      details: err.message,
+    });
+  }
+};
+
+export const getCurrentUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.user._id).select("-password");
+    if (!user) {
+      return res.status(404).json({ error: true, message: "ไม่พบผู้ใช้" });
+    }
+
+    res.json({ user });
+  } catch (err) {
+    res.status(500).json({
+      error: true,
+      message: "ดึงข้อมูลผู้ใช้ล้มเหลว",
       details: err.message,
     });
   }
