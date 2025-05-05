@@ -7,9 +7,11 @@ import Admin from "../models/Admin.js";
 // adminRoutes.post("/auth/register", createNewAdmin);
 // adminRoutes.post("/auth/login", loginAdmin);
 export const createNewAdmin = async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(400).json({ message: "Email, or Password is missing" });
+  const { username, email, password } = req.body;
+  if (!username || !email || !password) {
+    return res
+      .status(400)
+      .json({ message: "Username, Email, or Password is missing" });
   }
 
   try {
@@ -18,7 +20,7 @@ export const createNewAdmin = async (req, res) => {
       return res.status(409).json({ message: "Email already in used" });
     }
     const hashPassword = await bcrypt.hash(password, 10);
-    const admin = new Admin({ email, password: hashPassword });
+    const admin = new Admin({ username, email, password: hashPassword });
     await admin.save();
     return res
       .status(201)
@@ -59,6 +61,7 @@ export const loginAdmin = async (req, res) => {
       message: "SUCESS: Loging in",
       admin: {
         _id: admin._id,
+        username: admin.username,
         email: admin.email,
         password: admin.password,
       },
@@ -92,12 +95,10 @@ export const getCurrentAdmin = async (req, res) => {
     }
     res.status(200).json({ message: "Admin verified", admin });
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Server error verifying admin",
-        details: error.message,
-      });
+    res.status(500).json({
+      message: "Server error verifying admin",
+      details: error.message,
+    });
   }
 };
 
@@ -410,6 +411,7 @@ export const deleteUserById = async (req, res) => {
     return res
       .status(200)
       .json({ message: "SUCCESS: User deleted", data: { _id: id } });
+    // return res.status(204).send();
   } catch (error) {
     return res.status(500).json({
       message: "ERROR: Failed to delete user",
