@@ -1,13 +1,12 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
 import ButtonMain from "@/components/ButtonMain";
-import { AuthContext } from "../../context/AuthContext";
+import useAuth from "../../context/useAuth";
 
-// รอจัดการกับ context !!!
 const AuthPage = ({ onClose }) => {
   const [isSignUp, setIsSignUp] = useState(false);
 
@@ -15,12 +14,12 @@ const AuthPage = ({ onClose }) => {
 
   const [loginError, setLoginError] = useState("");
   const [registerError, setRegisterError] = useState("");
-  const { isLogin, setIsLogin } = useContext(AuthContext);
+  const { setIsLogin, setUser } = useAuth();
+  // ใช้ useAuth ตัวนี้ในหน้าอื่น ๆ
 
   const navigate = useNavigate();
 
-  // const { setIsLogin } = useContext(AuthContext);
-
+  // คืนค่า default
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -34,6 +33,7 @@ const AuthPage = ({ onClose }) => {
     confirmpassword: "",
   });
 
+  // จัดการ ลอกอิน และ ลงทะเบียน
   const handleLoginChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
@@ -42,6 +42,7 @@ const AuthPage = ({ onClose }) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
 
+  // จัดการ หลังกด Login button
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -49,20 +50,24 @@ const AuthPage = ({ onClose }) => {
         "http://localhost:5000/api/auth/login",
         loginData
       );
-      localStorage.setItem("token", res.data.token);
-      // รอ state นี้ส่งไปที่อื่น ไว้ตั้งชื่อทีหลัง
-      // navigate to ...รอมาแก้ตอนส่ง login แล้วไปไหนต่อ
-      navigate();
-      const resBody = res.data;
-      console.log(resBody);
-      setIsLogin(true);
-      console.log(isLogin)
+      if (res && res.data && res.data.token) {
+        localStorage.setItem("token", res.data.token);
+        console.log("Login response:", res);
+
+        setIsLogin(true);
+        setUser(res.data.user || null);
+        onClose();
+        navigate("/profile");
+      } else {
+        throw new Error("ไม่พบข้อมูล token จาก server");
+      }
     } catch (error) {
-      console.error(error.response.data.error);
+      console.error("Login error:", error);
       setLoginError(error.response?.data?.error || "Login failed");
     }
   };
 
+  // จัดการ หลังกด Register button
   const handleRegisterSubmit = async (e) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmpassword) {
@@ -82,7 +87,11 @@ const AuthPage = ({ onClose }) => {
       });
       toggleSlide();
     } catch (error) {
-      setRegisterError(error);
+      if (error.response && error.response.data.error) {
+        setRegisterError(error.response.data.error);
+      } else {
+        setRegisterError("เกิดข้อผิดพลาดในการลงทะเบียน");
+      }
       console.error(error);
     }
   };
@@ -97,8 +106,9 @@ const AuthPage = ({ onClose }) => {
       >
         <div className="flex max-w-4xl overflow-hidden">
           <div
-            className={`flex w-full transform transition-transform duration-300 ${isSignUp ? "-translate-x-full" : "translate-x-0"
-              }`}
+            className={`flex w-full transform transition-transform duration-300 ${
+              isSignUp ? "-translate-x-full" : "translate-x-0"
+            }`}
           >
             {/* Login */}
             <div className="flex flex-col w-full md:flex-row shrink-0">
@@ -240,7 +250,9 @@ const AuthPage = ({ onClose }) => {
                     value={registerData.confirmpassword}
                     onChange={handleRegisterChange}
                   />
-                  {registerError && <p className="text-red-600">{registerError}</p>}
+                  {registerError && (
+                    <p className="text-red-600">{registerError}</p>
+                  )}
                   <ButtonMain type="submit" className="p-6 mt-8 mb-8 sm:w-full">
                     ลงทะเบียน
                   </ButtonMain>

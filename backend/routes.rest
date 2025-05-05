@@ -18,6 +18,9 @@ Content-Type: application/json
     "password": "tg40489"
 }
 
-### Get all users
+### Get my user after logged in 
+GET http://localhost:5000/api/auth/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3OGI5MzMzNzVlMjU4OGZmZjViOTUiLCJpYXQiOjE3NDY0MTYyNDQsImV4cCI6MTc0NjQxOTg0NH0.9IsqhxbV7GjVy3554GBfnXJf7bgatKKgYn2Sl5BcXY8
 
+### Get all users for Admin
 GET http://localhost:5000/api/auth/users
