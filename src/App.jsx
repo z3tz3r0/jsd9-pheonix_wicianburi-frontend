@@ -9,6 +9,12 @@ import AuthPage from "./modules/authPages/AuthPage";
 import ForgetPassword from "./modules/authPages/ForgetPassword";
 import AboutUs from "./pages/AboutUs";
 import Account from "./pages/Account";
+import { AdminProvider } from "./pages/Admin/AdminContext";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminLayout from "./pages/Admin/AdminLayout";
+import AdminOrders from "./pages/Admin/AdminOrders";
+import AdminProducts from "./pages/Admin/AdminProducts";
+import AdminUsers from "./pages/Admin/AdminUsers";
 import Cart from "./pages/Cart";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import ConfirmPayment from "./pages/ConfirmPayment";
@@ -30,6 +36,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <AboutUs /> },
+      { path: "account", element: <Account /> },
       { path: "authpage", element: <AuthPage /> },
       { path: "authpage/:forgetpassword", element: <ForgetPassword /> },
       { path: "products", element: <ProductList /> },
@@ -53,6 +60,16 @@ const router = createBrowserRouter([
       { path: "*", element: <NotFound /> },
     ]
   },
+  {
+    path: "/admin",
+    element: <AdminProvider><AdminLayout /></AdminProvider>,
+    children: [
+      { index: true, element: <AdminDashboard /> },
+      { path: "/admin/products", element: <AdminProducts /> },
+      { path: "/admin/orders", element: <AdminOrders /> },
+      { path: "/admin/users", element: <AdminUsers /> },
+    ]
+  }
 ]);
 
 function App() {

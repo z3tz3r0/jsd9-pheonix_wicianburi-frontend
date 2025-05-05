@@ -3,14 +3,16 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import MenuIcon from '@mui/icons-material/Menu';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import { Badge } from '@mui/material';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { Backdrop, Badge } from '@mui/material';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
+import AuthPage from '../modules/authPages/AuthPage';
 
 
 const UserPopUp = ({ isOpen }) => {
+   const { logout } = useContext(AuthContext);
   if (!isOpen) return null;
 
   return (
@@ -28,7 +30,7 @@ const UserPopUp = ({ isOpen }) => {
           คำสั่งซื้อสินค้า
         </NavLink>
 
-        <NavLink className="flex items-center py-2 hover:text-accent" to="/">
+        <NavLink className="flex items-center py-2 hover:text-accent" to="/" onClick={logout}>
           <LogoutIcon className='mr-2' />
           ออกจากระบบ
         </NavLink>
@@ -77,12 +79,34 @@ const SideBar = ({ isOpen, onClose }) => {
 const NavBar = () => {
   const [isUserPopUpOpen, setIsUserPopUpOpen] = useState(false);
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const { getTotalItems } = useContext(CartContext);
-  const { isLogin } = useContext(AuthContext);
-  const toggleUserPopUp = () => {
 
-    setIsUserPopUpOpen(prev => !prev); // Use functional update
-    setIsSideBarOpen(false); // Close sidebar when opening user popup
+  const [isAuthPageOpen, setIsAuthPageOpen] = useState(false);
+  const authPageRef = useRef(null);
+
+  const { getTotalItems } = useContext(CartContext);
+  const { isLogin, setIsLogin } = useContext(AuthContext);
+
+  const openAuthPage = () => {
+    setIsAuthPageOpen(true);
+    setIsUserPopUpOpen(false); // Ensure other popups are closed
+    setIsSideBarOpen(false);
+  };
+
+  const closeAuthPage = useCallback(() => {
+    setIsAuthPageOpen(false);
+  }, []);
+
+  // --- UserPopUp Controls (Keep for now, modify later based on isLogin) ---
+  const toggleUserPopUp = () => {
+    // TODO: This logic will change. If logged in, toggle UserPopUp. If not, call openAuthPage.
+    // For now, let's make it open AuthPage if not logged in.
+    if (isLogin) {
+      setIsUserPopUpOpen(prev => !prev);
+      setIsSideBarOpen(false);
+      closeAuthPage(); // Close auth modal if opening user popup
+    } else {
+      openAuthPage(); // Open Auth modal if not logged in
+    }
   };
 
   const closeUserPopup = useCallback(() => {
@@ -92,11 +116,26 @@ const NavBar = () => {
   const toggleSideBar = () => {
     setIsSideBarOpen(prev => !prev); // Use functional update
     setIsUserPopUpOpen(false);
+    closeAuthPage();
   }
 
   const closeSideBar = useCallback(() => {
     setIsSideBarOpen(false);
   }, []);
+
+  useEffect(() => {
+    if (!isAuthPageOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (authPageRef.current && !authPageRef.current.contains(event.target)) {
+        closeAuthPage();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isAuthPageOpen, closeAuthPage]);
 
   useEffect(() => {
     if (!isUserPopUpOpen) return;
@@ -123,43 +162,57 @@ const NavBar = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [isSideBarOpen]);
+  }, [isSideBarOpen, isAuthPageOpen, isUserPopUpOpen]);
 
   return (
-    <header className='justify-center sm:flex'>
+    <>
+      <header className='justify-center sm:flex'>
 
-      <nav className='z-10 flex items-center justify-between h-16 sm:w-7xl '>
-        <div className='flex ml-4 sm:items-center'>
-          <Link to="/" className='flex items-center'>
-            <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
-            <p className="logo-text">All Rice</p>
-          </Link>
-          <ul className='hidden ml-10 sm:flex'>
-            <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
-            <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
-            <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
-            <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
-          </ul>
+        <nav className='z-10 flex items-center justify-between h-16 sm:w-7xl '>
+          <div className='flex ml-4 sm:items-center'>
+            <Link to="/" className='flex items-center'>
+              <img className='w-6' src="/assets/logo-all_rice-black.svg" alt="All Rice Logo" />
+              <p className="logo-text">All Rice</p>
+            </Link>
+            <ul className='hidden ml-10 sm:flex'>
+              <li className='nav-menu'><NavLink to='/'>หน้าหลัก</NavLink></li>
+              <li className='nav-menu'><NavLink to='products'>ผลิตภัณฑ์</NavLink></li>
+              <li className='nav-menu'><NavLink to='about'>เกี่ยวกับเรา</NavLink></li>
+              <li className='nav-menu'><NavLink to='contact'>ติดต่อเรา</NavLink></li>
+            </ul>
 
           </div>
-          <div className='flex mr-4 items-center'>
+          <div className='flex items-center mr-4'>
             <NavLink to='cart' className="flex items-center">
 
-            <Badge badgeContent={getTotalItems()} color="error">
-              <ShoppingCartOutlinedIcon />
-            </Badge>
-          </NavLink>
-          <div className='relative mx-6 hover:cursor-pointer profile-icon-container'>
-            <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
-            <UserPopUp isOpen={isUserPopUpOpen} />
+              <Badge badgeContent={getTotalItems()} color="error">
+                <ShoppingCartOutlinedIcon />
+              </Badge>
+            </NavLink>
+            <div className='relative mx-6 hover:cursor-pointer profile-icon-container'>
+              <AccountCircleOutlinedIcon onClick={toggleUserPopUp} />
+              <UserPopUp isOpen={isUserPopUpOpen} setIsLogin={setIsLogin} />
+            </div>
+            <div className='cursor-pointer sm:hidden' onClick={toggleSideBar}>
+              <MenuIcon />
+            </div>
+            <SideBar isOpen={isSideBarOpen} onClose={closeSideBar} />
           </div>
-          <div className='cursor-pointer sm:hidden' onClick={toggleSideBar}>
-            <MenuIcon />
-          </div>
-          <SideBar isOpen={isSideBarOpen} onClose={closeSideBar} />
+        </nav>
+      </header>
+
+      {/* --- Conditionally Render AuthPage Modal --- */}
+      {isAuthPageOpen && (
+        <div ref={authPageRef}>
+          <Backdrop
+            open={isAuthPageOpen}
+            onClick={openAuthPage}
+          >
+          </Backdrop>
+          <AuthPage onClose={closeAuthPage} />
         </div>
-      </nav>
-    </header>
+      )}
+    </>
   );
 };
 

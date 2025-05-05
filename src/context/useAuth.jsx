@@ -1,0 +1,8 @@
+// ใช้ useAuth เป็นค่า AuthContext 
+
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
+
+const useAuth = () => useContext(AuthContext);
+
+export default useAuth;

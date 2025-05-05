@@ -1,9 +1,25 @@
 import React from "react";
-import { Link } from "react-router";
+import { useState } from "react";
+import { useEffect, useCallback }  from "react";
+import AuthPage from "@/modules/authPages/AuthPage";
 
 import ButtonMain from "@/components/ButtonMain";
 
 const ForgetPassword = () => {
+  const [isAuthPageOpen, setIsAuthPageOpen] = useState(false);
+  
+  const openAuthPage = () => {
+    setIsAuthPageOpen(true);
+  };
+
+  const closeAuthPage = useCallback(() => {
+    setIsAuthPageOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isAuthPageOpen) return;
+  }, [isAuthPageOpen, closeAuthPage]);
+
   return (
     <div className="bg-[var(--clr-white)] flex flex-col min-h-fit">
       <main className="flex justify-center my-8">
@@ -33,12 +49,20 @@ const ForgetPassword = () => {
           </form>
 
           <div className="mt-6 text-center">
-            <Link to="/AuthPage" className="text-[var(--clr-gray-600)] text-lg">
+            <button type="button"
+              onClick={openAuthPage}
+              className="cursor-pointer hover:text-[var(--facebook-blue)] text-[var(--clr-gray-600)] text-lg"
+            >
               ยกเลิกการตั้งรหัสผ่านใหม่
-            </Link>
+            </button>
           </div>
         </div>
       </main>
+      {isAuthPageOpen && (
+        <div>
+          <AuthPage onClose={closeAuthPage} />
+        </div>
+      )}
     </div>
   );
 };
