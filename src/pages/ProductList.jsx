@@ -172,7 +172,7 @@ const ProductList = () => {
       </div>
 
       <h2 className="text-2xl font-extrabold mb-7">สินค้าทั้งหมด</h2>
-      <div className="grid grid-cols-2 md:grid-cols-5 gap-x-0 gap-y-7">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 gap-y-7">
         {visibleProducts.map((product) => (
           <ProductCard key={product.product_id} product={product} />
         ))}
