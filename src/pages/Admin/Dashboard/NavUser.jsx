@@ -21,10 +21,10 @@ import {
 } from "@/components/ui/sidebar";
 import { useAdminAuth } from "../AdminContext";
 
-function NavUser({ user }) {
+function NavUser() {
   const { isMobile } = useSidebar();
 
-  const { logoutAdmin } = useAdminAuth();
+  const { admin, logoutAdmin } = useAdminAuth();
 
   return (
     <SidebarMenu>
@@ -36,15 +36,15 @@ function NavUser({ user }) {
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground cursor-pointer"
             >
               <Avatar className="w-8 h-8 rounded-lg grayscale">
-                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarImage src={admin?.avatar} alt={admin?.username} />
                 <AvatarFallback className="rounded-lg">
-                  {user.name.slice(0, 2).toUpperCase()}
+                  {admin?.username?.slice(0, 2).toUpperCase()}
                 </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-sm leading-tight text-left">
-                <span className="font-medium truncate">{user.name}</span>
+                <span className="font-medium truncate">{admin?.username}</span>
                 <span className="text-xs truncate text-muted-foreground">
-                  {user.email}
+                  {admin?.email}
                 </span>
               </div>
               <MoreVerticalIcon className="ml-auto size-4" />
@@ -59,15 +59,15 @@ function NavUser({ user }) {
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="w-8 h-8 rounded-lg">
-                  <AvatarImage src={user.avatar} alt={user.name} />
+                  <AvatarImage src={admin?.avatar} alt={admin?.username} />
                   <AvatarFallback className="rounded-lg">
-                    {user.name.slice(0, 2).toUpperCase()}
+                    {admin?.username?.slice(0, 2).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-sm leading-tight text-left">
-                  <span className="font-medium truncate">{user.name}</span>
+                  <span className="font-medium truncate">{admin?.username}</span>
                   <span className="text-xs truncate text-muted-foreground">
-                    {user.email}
+                    {admin?.email}
                   </span>
                 </div>
               </div>
