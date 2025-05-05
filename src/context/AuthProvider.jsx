@@ -23,7 +23,7 @@ const AuthProvider = ({ children }) => {
           },
         });
 
-        console.log("✅ Response from /users:", res.data);
+        console.log("🍺 Response from /users:", res.data);
 
         if (res.data && res.data.user) {
           setIsLogin(true);

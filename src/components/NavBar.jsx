@@ -11,7 +11,8 @@ import { CartContext } from '../context/CartContext';
 import AuthPage from '../modules/authPages/AuthPage';
 
 
-const UserPopUp = ({ isOpen, setIsLogin }) => {
+const UserPopUp = ({ isOpen }) => {
+   const { logout } = useContext(AuthContext);
   if (!isOpen) return null;
 
   return (
@@ -29,7 +30,7 @@ const UserPopUp = ({ isOpen, setIsLogin }) => {
           คำสั่งซื้อสินค้า
         </NavLink>
 
-        <NavLink className="flex items-center py-2 hover:text-accent" to="/" onClick={() => setIsLogin(false)}>
+        <NavLink className="flex items-center py-2 hover:text-accent" to="/" onClick={logout}>
           <LogoutIcon className='mr-2' />
           ออกจากระบบ
         </NavLink>
