@@ -24,3 +24,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE3O
 
 ### Get all users for Admin
 GET http://localhost:5000/api/auth/users
+
+### Create dev admin
+POST http://localhost:5000/admin/auth/logout
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "password123"
+}
+
+### Login dev admin
+POST http://localhost:5000/admin/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "password123"
+}
+
+### logout dev admin
+POST http://localhost:5000/admin/auth/logout
+

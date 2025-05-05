@@ -1,9 +1,6 @@
 import {
-  BellIcon,
-  CreditCardIcon,
   LogOutIcon,
-  MoreVerticalIcon,
-  UserCircleIcon,
+  MoreVerticalIcon
 } from "lucide-react";
 import * as React from "react";
 
@@ -11,11 +8,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {
   SidebarMenu,
@@ -23,9 +19,12 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { useAdminAuth } from "../AdminContext";
 
 function NavUser({ user }) {
   const { isMobile } = useSidebar();
+
+  const { logoutAdmin } = useAdminAuth();
 
   return (
     <SidebarMenu>
@@ -74,22 +73,8 @@ function NavUser({ user }) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <UserCircleIcon />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCardIcon />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <BellIcon />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
+
+            <DropdownMenuItem onClick={logoutAdmin}>
               <LogOutIcon />
               Log out
             </DropdownMenuItem>

@@ -12,7 +12,12 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors()); // อย่าลืมมาแก้ cors ตอน deploy
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Allow requests from your frontend origin
+    credentials: true,
+  })
+); // อย่าลืมมาแก้ cors ตอน deploy
 app.use(express.json());
 app.use(cookieParser());
 
@@ -22,6 +27,11 @@ app.use("/api/auth", userRoutes);
 // app.use("/api/products", productRoutes);
 // app.use("/api/orders", orderRoutes);
 // app.use("/api/reviews", reviewRoutes);
+
+// TODO : Kob working on this
+// TODO : required other models to be done to see what schema look like.
+import adminRoutes from "./routes/adminRoutes.js";
+app.use("/admin", adminRoutes);
 
 const connectDB = async () => {
   try {

@@ -9,11 +9,12 @@ import AuthPage from "./modules/authPages/AuthPage";
 import ForgetPassword from "./modules/authPages/ForgetPassword";
 import AboutUs from "./pages/AboutUs";
 import Account from "./pages/Account";
-import AdminCustomers from "./pages/Admin/AdminCustomers";
+import { AdminProvider } from "./pages/Admin/AdminContext";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminLayout from "./pages/Admin/AdminLayout";
 import AdminOrders from "./pages/Admin/AdminOrders";
 import AdminProducts from "./pages/Admin/AdminProducts";
+import AdminUsers from "./pages/Admin/AdminUsers";
 import Cart from "./pages/Cart";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import ConfirmPayment from "./pages/ConfirmPayment";
@@ -61,12 +62,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: <AdminProvider><AdminLayout /></AdminProvider>,
     children: [
       { index: true, element: <AdminDashboard /> },
       { path: "/admin/products", element: <AdminProducts /> },
       { path: "/admin/orders", element: <AdminOrders /> },
-      { path: "/admin/customers", element: <AdminCustomers /> },
+      { path: "/admin/users", element: <AdminUsers /> },
     ]
   }
 ]);
