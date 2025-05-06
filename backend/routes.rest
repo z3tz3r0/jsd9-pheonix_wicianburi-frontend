@@ -30,6 +30,7 @@ POST http://localhost:5000/admin/auth/logout
 Content-Type: application/json
 
 {
+  "username": "devadmin",
   "email": "admin@example.com",
   "password": "password123"
 }
