@@ -6,7 +6,6 @@ import ButtonFirst from '../components/account/ButtonFirst';
 //import { X } from 'lucide-react';
 
 
-
 const Account = () => {
 
   const { register, handleSubmit, formState }= useForm();
