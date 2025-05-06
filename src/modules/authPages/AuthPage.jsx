@@ -48,19 +48,16 @@ const AuthPage = ({ onClose }) => {
     try {
       const res = await axios.post(
         "http://localhost:5000/api/auth/login",
-        loginData
+        loginData,
+        { withCredentials: true }
       );
-      if (res && res.data && res.data.token) {
-        localStorage.setItem("token", res.data.token);
-        console.log("Login response:", res);
 
-        setIsLogin(true);
-        setUser(res.data.user || null);
-        onClose();
-        navigate("/profile");
-      } else {
-        throw new Error("ไม่พบข้อมูล token จาก server");
-      }
+      console.log("Login response:", res);
+
+      setIsLogin(true);
+      setUser(res.data.user || null);
+      onClose();
+      navigate("/profile");
     } catch (error) {
       console.error("Login error:", error);
       setLoginError(error.response?.data?.error || "Login failed");
