@@ -24,7 +24,7 @@ const AboutUs = () => {
         rating: 4,
         image: '/assets/นภา.jpg'
       },
-      // Add more testimonials here if needed
+      
     ];
   
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
