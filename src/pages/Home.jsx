@@ -163,7 +163,7 @@ const Home = () => {
       {/* other product */}
       <section className="flex flex-col items-center">
         {/* <Typography variant="h3" component="h2">ผลิตภัณฑ์แปรรูปจากข้าว</Typography> */}
-        <h2 className="text-4xl font-bold my-1 text-nowrap sm:text-[52px]">
+        <h2 className="text-4xl font-bold my-14 text-nowrap sm:text-[52px]">
           ผลิตภัณฑ์แปรรูปจากข้าว
         </h2>
         <div className="w-full sm:max-w-7xl">
