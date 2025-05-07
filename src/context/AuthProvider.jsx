@@ -6,23 +6,14 @@ import { AuthContext } from "./AuthContext";
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isLogin, setIsLogin] = useState(false);
+  axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        setIsLogin(false);
-        setUser(null);
-        return;
-      }
-
       try {
         const res = await axios.get("http://localhost:5000/api/auth/users/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          withCredentials: true,
         });
-
         console.log("🍺 Response from /users:", res.data);
 
         if (res.data && res.data.user) {
@@ -31,23 +22,25 @@ const AuthProvider = ({ children }) => {
         } else {
           setIsLogin(false);
           setUser(null);
-          localStorage.removeItem("token");
         }
       } catch (err) {
         console.error("Token verification failed:", err);
         setIsLogin(false);
         setUser(null);
-        localStorage.removeItem("token");
       }
     };
 
     checkAuth();
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-    setIsLogin(false);
+  const logout = async () => {
+    try {
+      await axios.post("http://localhost:5000/api/auth/logout");
+      setUser(null);
+      setIsLogin(false);
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
   };
 
   const value = {
