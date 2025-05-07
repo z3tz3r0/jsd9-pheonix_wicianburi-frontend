@@ -26,7 +26,9 @@ const Cart = () => {
   return (
     <div className="min-h-screen">
       <div className="flex flex-col items-center">
-        <h1 className="text-[28px] font-bold mx-4 sm:text-[44px]">Cart</h1>
+        <h1 className="text-[28px] font-bold mx-4 my-2 sm:text-[44px]">
+          ตะกร้าสินค้า
+        </h1>
         <div className="w-full md:grid md:grid-cols-3 md:max-w-7xl ">
           <div className="col-span-2 mx-4 border-b">
             {/* header */}
@@ -86,7 +88,7 @@ const Cart = () => {
                       <div className="col-span-2">
                         <div className="flex items-center justify-center">
                           <button
-                            className="flex items-center justify-center w-8 h-8 border border-black rounded-l"
+                            className="flex items-center justify-center w-6 h-8 border border-black rounded-l cursor-pointer"
                             onClick={() =>
                               updateQuantity(
                                 item.product_id,
@@ -100,10 +102,10 @@ const Cart = () => {
                             type="text"
                             value={item.quantity}
                             readOnly
-                            className="w-10 h-8 text-center border-t border-b border-black bg-primary"
+                            className="w-8 h-8 text-center border-t border-b border-black bg-primary"
                           />
                           <button
-                            className="flex items-center justify-center w-8 h-8 border border-black rounded-r"
+                            className="flex items-center justify-center w-6 h-8 border border-black rounded-r cursor-pointer"
                             onClick={() =>
                               updateQuantity(item.product_id, item.quantity + 1)
                             }
@@ -121,7 +123,7 @@ const Cart = () => {
                     </div>
                     <button
                       onClick={() => removeFromCart(item.product_id)}
-                      className="flex items-start justify-end col-span-1 text-gray-400 hover:text-red-500"
+                      className="flex items-start justify-end col-span-1 text-gray-400 hover:text-red-500 cursor-pointer"
                     >
                       ×
                     </button>
@@ -131,7 +133,7 @@ const Cart = () => {
               <div className="mt-8">
                 <Link
                   to="/products"
-                  className="flex items-center mb-4 text-gray-600 hover:text-accent"
+                  className="flex items-center mb-4 text-gray-600 hover:text-accent cursor-pointer"
                 >
                   ← กลับไปช้อปต่อ
                 </Link>
