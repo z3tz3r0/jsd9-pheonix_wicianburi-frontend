@@ -8,18 +8,21 @@ const AboutUs = () => {
           "ดิฉันประทับใจกับข้าวไรซ์เบอร์รี่ มากค่ะ หุงขึ้นหม้อ เมล็ดสวย หอมอร่อยเหมือนข้าวที่บ้านนาสมัยเด็กๆ เลยค่ะ ที่สำคัญคือรู้สึกได้เลยว่าเป็นข้าวใหม่ สดจริงๆ ค่ะ แถมยังได้สนับสนุนชาวนาโดยตรงอีกด้วย จะสั่งซื้อต่อไปแน่นอนค่ะ",
         author: 'คุณเรืองฤดี',
         rating: 4,
+        image: '/assets/เรืองฤดี.jpg',
       },
       {
         quote:
           "ผมเป็นคนทานข้าวเยอะมาก และให้ความสำคัญกับคุณภาพของข้าว ทาง All Rice ไม่ทำให้ผิดหวังเลยครับ ข้าวมีให้เลือกหลากหลาย ผมลองสั่งมาหลายแบบแล้วก็อร่อยทุกชนิด การจัดส่งก็รวดเร็ว แพ็คมาอย่างดี ทำให้มั่นใจได้ว่าข้าวสะอาดและปลอดภัยครับ เป็นอีกหนึ่งช่องทางที่ดีมากๆ ในการซื้อข้าวคุณภาพ",
         author: 'คุณธนากร',
         rating: 5,
+        image: '/assets/ธนากร.jpg'
       },
       {
         quote:
           "สนับสนุน All Rice ค่ะ นอกจากจะได้ข้าวดี มีคุณภาพแล้ว ยังรู้สึกดีที่ได้เป็นส่วนหนึ่งในการช่วยเหลือเกษตรกรไทยด้วยค่ะ ราคาอาจจะสูงกว่าท้องตลาดนิดหน่อย แต่เมื่อเทียบกับคุณภาพและความตั้งใจของผู้ขายแล้ว คุ้มค่ามากๆ ค่ะ เป็นกำลังใจให้ทีมงานนะคะ จะบอกต่อเพื่อนๆ และคนในครอบครัวให้มาอุดหนุนค่ะ",
         author: 'คุณนภา',
         rating: 4,
+        image: '/assets/นภา.jpg'
       },
       
     ];
@@ -48,7 +51,7 @@ const AboutUs = () => {
           <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-20">
             <div className="rounded-lg overflow-hidden shadow-md mb-8 md:mb-0">
               <img
-                src="/assets/farmer_with_magnificent_mountains.jpg"
+                src="assets/farmer_with_magnificent_mountains.jpg"
                 alt="Our Story Image"
                 className="w-full h-auto"
               />
@@ -72,7 +75,7 @@ const AboutUs = () => {
           <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 lg:gap-20 md:grid-flow-row-dense">
             <div className="md:order-2 rounded-lg overflow-hidden shadow-md mb-8 md:mb-0">
               <img
-                src="/assets/A_scenic_landscape_rice_field.jpeg"
+                src="assets/A_scenic_landscape_rice_field.jpeg"
                 alt="Our Mission Image"
                 className="w-full h-auto"
               />

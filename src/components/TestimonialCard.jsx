@@ -1,12 +1,17 @@
 import React from 'react';
 
-const TestimonialCard = ({ quote, author, rating }) => {
+const TestimonialCard = ({ quote, author, rating, image }) => {
   return (
     <div className="bg-gray-100 rounded-lg p-6 shadow-sm">
       <div className="flex justify-center mb-4">
-        {/* Placeholder for user image */}
-        <div className="w-16 h-16 rounded-full bg-gray-300"></div>
+           <img
+             src={image} // Use the image prop as the source
+             alt={`${author}'s profile`} // Provide descriptive alt text
+             className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-md" // Styles for the profile picture
+           />
       </div>
+      
+      {/*star*/}
       <div className="flex justify-center text-yellow-500 mb-2">
         {Array.from({ length: 5 }).map((_, index) => (
           <svg
@@ -21,9 +26,13 @@ const TestimonialCard = ({ quote, author, rating }) => {
           </svg>
         ))}
       </div>
+      
+      {/*Quote*/}
       <p className="text-gray-700 text-center leading-relaxed mb-4">
         "{quote}"
       </p>
+      
+      {/*Author*/}
       <p className="text-sm text-gray-500 text-center font-semibold">
         - {author}
       </p>
