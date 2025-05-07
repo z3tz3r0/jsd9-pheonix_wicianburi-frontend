@@ -34,6 +34,7 @@ const ProductCard = ({ product }) => {
       variantValue: selectedVariant.value,
       variantLabel: selectedVariant.label,
       price: selectedVariant.price,
+      quantity: 1,
       image: product.image
     }
     addToCart(itemToAdd)

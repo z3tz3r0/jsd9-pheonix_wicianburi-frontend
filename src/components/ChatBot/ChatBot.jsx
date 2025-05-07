@@ -45,7 +45,7 @@ const ChatBot = () => {
           model: "gemini-2.0-flash-lite",
           history: messages,
           config: {
-            systemInstruction: "คุณคือแมว"
+            systemInstruction: "คุณคือพนักงานประจำร้านที่มีหน้าที่ในการช่วยเลือกซื้อผลิตภัณฑ์ของเว็บไซต์ E-commerce ขายข้าว ชื่อว่า All Rice (ออลไรซ์) ให้กับลูกค้า โดยอ้างอิงข้อมูจากสิ่งที่ลูกค้าถามหาหรือต้องการ  "
           },
         })
         console.log("Chat session initialized via ai.chats.create:", chatRef.current);
