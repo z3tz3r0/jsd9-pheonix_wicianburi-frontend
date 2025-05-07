@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import api from "../pages/Admin/services/api";
 import { AuthContext } from "./AuthContext";
 
 // context
@@ -11,7 +12,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/users/me", {
+        const res = await api.get("/api/auth/users/me", {
           withCredentials: true,
         });
         console.log("🍺 Response from /users:", res.data);
@@ -35,7 +36,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout");
+      await api.post("http://localhost:5000/api/auth/logout");
       setUser(null);
       setIsLogin(false);
     } catch (err) {

@@ -1,8 +1,8 @@
-import adminApi from "./adminApi";
+import api from "./api";
 
 export const getAllUsers = async () => {
   try {
-    const response = await adminApi.get("/admin/users");
+    const response = await api.get("/admin/users");
     return response.data;
   } catch (error) {
     console.error("Error fetching users:", error);
@@ -12,7 +12,7 @@ export const getAllUsers = async () => {
 
 export const createUser = async (userData) => {
   try {
-    const response = await adminApi.post("/admin/users", userData);
+    const response = await api.post("/admin/users", userData);
     return response.data;
   } catch (error) {
     console.error("Error creating user:", error);
@@ -22,7 +22,7 @@ export const createUser = async (userData) => {
 
 export const updateUser = async (userId, userData) => {
   try {
-    const response = await adminApi.put(`/admin/users/${userId}`, userData);
+    const response = await api.put(`/admin/users/${userId}`, userData);
     return response.data;
   } catch (error) {
     console.error(`Error updating user ${userId}:`, error);
@@ -32,7 +32,7 @@ export const updateUser = async (userId, userData) => {
 
 export const deleteUser = async (userId) => {
   try {
-    const response = await adminApi.delete(`/admin/users/${userId}`);
+    const response = await api.delete(`/admin/users/${userId}`);
     return response.data;
   } catch (error) {
     console.error(`Error deleting user ${userId}:`, error);

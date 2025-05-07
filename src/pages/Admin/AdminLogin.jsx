@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Alert } from "@mui/material"
 import React, { useState } from 'react'
 import { useAdminAuth } from "./AdminContext"
-import adminApi from "./services/adminApi"
+import api from "./services/api"
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -31,7 +31,7 @@ const AdminLogin = () => {
     event.preventDefault();
     setError('');
     try {
-      const response = await adminApi.post('/admin/auth/login', formData);
+      const response = await api.post('/admin/auth/login', formData);
       if (response.data?.admin) {
         loginAdmin(response.data?.admin);
       } else {
