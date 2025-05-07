@@ -33,17 +33,17 @@ const Cart = () => {
           <div className="col-span-2 mx-4 border-b">
             {/* header */}
             <div>
-              <div className="grid grid-cols-12 bg-[#dfdddd] p-4 rounded-t border-b-2">
-                <div className="col-span-6 sm:col-span-7">
+              <div className="grid grid-cols-12 bg-[#dfdddd] p-4 rounded-t border-b-2 text-sm sm:text-base">
+                <div className="col-span-5">
                   <h2 className="font-medium">สินค้า</h2>
                 </div>
-                <div className="col-span-2 text-center sm:col-span-1">
+                <div className="col-span-2 text-center">
                   <h2 className="font-medium">ราคา</h2>
                 </div>
                 <div className="col-span-2 text-center">
                   <h2 className="font-medium ">ปริมาณ</h2>
                 </div>
-                <div className="col-span-1 text-center">
+                <div className="col-span-2 text-center ml-1 sm:ml-0">
                   <h2 className="font-medium text-nowrap">ราคาสุทธิ</h2>
                 </div>
               </div>
@@ -62,7 +62,7 @@ const Cart = () => {
                     key={item.product_id + item.variantLabel}
                     className="grid grid-cols-12 bg-[#dfdddd] p-4 border-b-2 sm:p-5"
                   >
-                    <div className="flex col-span-6 sm:col-span-7">
+                    <div className="flex col-span-5">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -77,55 +77,54 @@ const Cart = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="col-span-2 text-center sm:col-span-1">
+                    <div className="col-span-2 text-center text-sm sm:text-base">
                       <p>฿{item.price}</p>
                       {/* .toFixed(1) */}
                     </div>
 
                     {/* Quantity Controls */}
 
-                    <div className="col-span-2 text-center">
-                      <div className="col-span-2">
-                        <div className="flex items-center justify-center">
-                          <button
-                            className="flex items-center justify-center w-6 h-8 border border-black rounded-l cursor-pointer"
-                            onClick={() =>
-                              updateQuantity(
-                                item.product_id,
-                                item.variantLabel,
-                                Math.max(1, item.quantity - 1)
-                              )
-                            }
-                          >
-                            −
-                          </button>
-                          <input
-                            type="text"
-                            value={item.quantity}
-                            readOnly
-                            className="w-8 h-8 text-center border-t border-b border-black bg-primary"
-                          />
-                          <button
-                            className="flex items-center justify-center w-6 h-8 border border-black rounded-r cursor-pointer"
-                            onClick={() =>
-                              updateQuantity(
-                                item.product_id,
-                                item.variantLabel,
-                                item.quantity + 1
-                              )
-                            }
-                          >
-                            +
-                          </button>
-                        </div>
+                    <div className="col-span-2 text-center  text-sm sm:text-base">
+                      <div className="flex items-center justify-center">
+                        <button
+                          className="flex items-center justify-center w-4 sm:w-6 h-8 border border-black rounded-l cursor-pointer"
+                          onClick={() =>
+                            updateQuantity(
+                              item.product_id,
+                              item.variantLabel,
+                              Math.max(1, item.quantity - 1)
+                            )
+                          }
+                        >
+                          −
+                        </button>
+                        <input
+                          type="text"
+                          value={item.quantity}
+                          readOnly
+                          className="w-4 sm:w-8 h-8 text-center border-t border-b border-black bg-primary"
+                        />
+                        <button
+                          className="flex items-center justify-center w-4 sm:w-6 h-8 border border-black rounded-r cursor-pointer"
+                          onClick={() =>
+                            updateQuantity(
+                              item.product_id,
+                              item.variantLabel,
+                              item.quantity + 1
+                            )
+                          }
+                        >
+                          +
+                        </button>
                       </div>
                     </div>
 
-                    <div className="col-span-1 text-center">
-                      <p className="mx-2 w-fit">
+                    <div className="col-span-2 text-center text-sm sm:text-base">
+                      <p className="mx-2 sm:mx-10 w-fit">
                         ฿{(item.price * item.quantity).toFixed(1)}
                       </p>
                     </div>
+
                     <button
                       onClick={() =>
                         removeFromCart(item.product_id, item.variantLabel)
