@@ -57,7 +57,7 @@ const Cart = () => {
               ) : (
                 cart.map((item) => (
                   <div
-                    key={item.product_id}
+                    key={item.product_id + item.variantLabel}
                     className="grid grid-cols-12 bg-[#dfdddd] p-4 border-b-2 sm:p-5"
                   >
                     <div className="flex col-span-6 sm:col-span-7">
@@ -90,6 +90,7 @@ const Cart = () => {
                             onClick={() =>
                               updateQuantity(
                                 item.product_id,
+                                item.variantLabel,
                                 Math.max(1, item.quantity - 1)
                               )
                             }
@@ -105,7 +106,7 @@ const Cart = () => {
                           <button
                             className="flex items-center justify-center w-8 h-8 border border-black rounded-r"
                             onClick={() =>
-                              updateQuantity(item.product_id, item.quantity + 1)
+                              updateQuantity(item.product_id, item.variantLabel, item.quantity + 1)
                             }
                           >
                             +
@@ -120,7 +121,7 @@ const Cart = () => {
                       </p>
                     </div>
                     <button
-                      onClick={() => removeFromCart(item.product_id)}
+                      onClick={() => removeFromCart(item.product_id, item.variantLabel)}
                       className="flex items-start justify-end col-span-1 text-gray-400 hover:text-red-500"
                     >
                       ×

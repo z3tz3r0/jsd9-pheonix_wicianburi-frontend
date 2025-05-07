@@ -36,9 +36,7 @@ const ProductDetails = ({ productItem, reviews }) => {
     } else {
       console.error("Selected variant not found: ", selectedValue);
     }
-
   }
-
 
   const prepareCartItem = () => {
     const selectedVariant = productVariants.find(variant => variant.value === selectedVariantValue);
@@ -67,7 +65,6 @@ const ProductDetails = ({ productItem, reviews }) => {
   const handleAddToCartClick = () => {
     const itemToAdd = prepareCartItem();
     if (itemToAdd) {
-      console.log("Adding to cart: ", itemToAdd);
       addToCart(itemToAdd);
     } else {
       console.error("Failed to add item to cart due to mising info.")
@@ -76,8 +73,6 @@ const ProductDetails = ({ productItem, reviews }) => {
   };
 
 
-  // TODO: handle buy now, redirect to the Checkout page with current information
-  // probably like submit the form.
   const handleBuyNowClick = () => {
     const itemToAdd = prepareCartItem();
     if (itemToAdd) {
