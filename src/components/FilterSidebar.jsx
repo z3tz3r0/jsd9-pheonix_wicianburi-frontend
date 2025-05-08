@@ -5,10 +5,16 @@ const productTypes = [
   "ข้าวเหนียว",
   "ข้าวขาว",
   "ข้าวเพื่อสุขภาพ",
-  "ผลิตภัณฑ์แปรรูป",
-  "เครื่องดื่ม",
-  "ขนมขบเคี้ยว",
+  "สินค้าแปรรูป"
 ];
+
+const regionOptions = [
+  "ทั้งหมด",
+  "ภาคกลาง",
+  "ภาคเหนือ",
+  "ภาคอีสาน",
+  "ภาคใต้",
+]
 
 const FilterSidebar = ({ filter, setFilters, onClose }) => {
 
@@ -77,11 +83,7 @@ const FilterSidebar = ({ filter, setFilters, onClose }) => {
           onChange={(e) => setFilters((prev) => ({ ...prev, region: e.target.value }))}
           className="w-full px-2 py-1 text-sm border rounded focus:outline-none focus:ring focus:border-black"
         >
-          <option value="ทั้งหมด">ทั้งหมด</option>
-          <option value="ภาคกลาง">ภาคกลาง</option>
-          <option value="ภาคเหนือ">ภาคเหนือ</option>
-          <option value="ภาคอีสาน">ภาคอีสาน</option>
-          <option value="ภาคใต้">ภาคใต้</option>
+          {regionOptions.map((region, index) => (<option key={index}>{region}</option>))}
         </select>
       </div>
 

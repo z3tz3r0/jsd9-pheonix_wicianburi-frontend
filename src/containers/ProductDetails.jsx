@@ -69,7 +69,6 @@ const ProductDetails = ({ productItem, reviews }) => {
     } else {
       console.error("Failed to add item to cart due to mising info.")
     }
-
   };
 
 
@@ -91,7 +90,7 @@ const ProductDetails = ({ productItem, reviews }) => {
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
 
-        <img src={`../${productItem.image}`} className='my-4 rounded-3xl sm:rounded-xl' alt="" />
+        <img src={productItem.image} className='my-4 rounded-3xl sm:rounded-xl' alt="" />
 
         <div className="w-full sm:py-8 md:py-12">
           <h1 className="mb-4 text-xl font-bold md:text-2xl">{productItem.name}</h1>
