@@ -1,16 +1,42 @@
-import React  from 'react';
+import React, { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useForm } from 'react-hook-form';
 import FormInputs from '../components/account/FormInputs';
 import ButtonFirst from '../components/account/ButtonFirst';
+import api from '../services/api';
 //import { X } from 'lucide-react';
 
 
 const Account = () => {
 
-  const { register, handleSubmit, formState }= useForm();
+  const { register, handleSubmit, reset, formState }= useForm();
   const { isSubmitting } = formState;
   console.log(isSubmitting);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await api.get('/auth/users/me');
+        const data = res.data.user;
+
+        reset({
+          ชื่อ: data.firstname || '',
+          นามสกุล: data.lastname || '',
+          โทรศัพท์: data.phone || '',
+          อีเมล: data.email || '',
+          ที่อยู่: data.address || '',
+          ตำบล: data.subdistrict || '',
+          อำเภอ: data.district || '',
+          จังหวัด: data.province || '',
+          รหัสไปรษณีย์: data.postalcode || '',
+        });
+      } catch (err) {
+        console.error("โหลดข้อมูลไม่สำเร็จ", err);
+      }
+    };
+
+    fetchUser();
+  }, [reset]); // dependency ?? 
 
 
   const accountSubmit = async(data) => {
