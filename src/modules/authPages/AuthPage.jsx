@@ -27,8 +27,8 @@ const AuthPage = ({ onClose }) => {
 
   const [registerData, setRegisterData] = useState({
     email: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     password: "",
     confirmpassword: "",
   });
@@ -44,44 +44,44 @@ const AuthPage = ({ onClose }) => {
 
   // จัดการ หลังกด Login button
   const handleLoginSubmit = async (e) => {
-  e.preventDefault();
-  try {
-    const data = await loginUser(loginData);
-    setIsLogin(true);
-    setUser(data.user || null);
-    onClose();
-    navigate("/profile");
-  } catch (error) {
-    console.error("Login error:", error);
-    setLoginError(error.response?.data?.error || "Login failed");
-  }
-};
+    e.preventDefault();
+    try {
+      const data = await loginUser(loginData);
+      setIsLogin(true);
+      setUser(data.user || null);
+      onClose();
+      navigate("/profile");
+    } catch (error) {
+      console.error("Login error:", error);
+      setLoginError(error.response?.data?.error || "Login failed");
+    }
+  };
 
   // จัดการ หลังกด Register button
   const handleRegisterSubmit = async (e) => {
-  e.preventDefault();
-  if (registerData.password !== registerData.confirmpassword) {
-    setRegisterError("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
-    return;
-  }
-  try {
-    await registerUser(registerData);
-    alert("ลงทะเบียนสำเร็จ");
-    setRegisterData({
-      email: "",
-      firstname: "",
-      lastname: "",
-      password: "",
-      confirmpassword: "",
-    });
-    toggleSlide();
-  } catch (error) {
-    setRegisterError(
-      error.response?.data?.error || "เกิดข้อผิดพลาดในการลงทะเบียน"
-    );
-    console.error(error);
-  }
-};
+    e.preventDefault();
+    if (registerData.password !== registerData.confirmpassword) {
+      setRegisterError("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
+      return;
+    }
+    try {
+      await registerUser(registerData);
+      alert("ลงทะเบียนสำเร็จ");
+      setRegisterData({
+        email: "",
+        firstName: "",
+        lastName: "",
+        password: "",
+        confirmpassword: "",
+      });
+      toggleSlide();
+    } catch (error) {
+      setRegisterError(
+        error.response?.data?.error || "เกิดข้อผิดพลาดในการลงทะเบียน"
+      );
+      console.error(error);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center">
@@ -93,9 +93,8 @@ const AuthPage = ({ onClose }) => {
       >
         <div className="flex max-w-4xl overflow-hidden">
           <div
-            className={`flex w-full transform transition-transform duration-300 ${
-              isSignUp ? "-translate-x-full" : "translate-x-0"
-            }`}
+            className={`flex w-full transform transition-transform duration-300 ${isSignUp ? "-translate-x-full" : "translate-x-0"
+              }`}
           >
             {/* Login */}
             <div className="flex flex-col w-full md:flex-row shrink-0">
@@ -206,18 +205,18 @@ const AuthPage = ({ onClose }) => {
                   <div className="flex space-x-2">
                     <input
                       type="text"
-                      name="firstname"
+                      name="firstName"
                       placeholder="ชื่อจริง"
                       className="w-1/2 p-2 border border-[var(--clr-gray-400)] rounded-md"
-                      value={registerData.firstname}
+                      value={registerData.firstName}
                       onChange={handleRegisterChange}
                     />
                     <input
                       type="text"
-                      name="lastname"
+                      name="lastName"
                       placeholder="นามสกุล"
                       className="w-1/2 p-2 border border-[var(--clr-gray-400)] rounded-md"
-                      value={registerData.lastname}
+                      value={registerData.lastName}
                       onChange={handleRegisterChange}
                     />
                   </div>
