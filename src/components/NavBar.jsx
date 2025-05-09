@@ -4,7 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Backdrop, Badge } from "@mui/material";
-import React, {
+import {
   useCallback,
   useContext,
   useEffect,
@@ -225,7 +225,7 @@ const NavBar = () => {
             >
               {isLogin && user ? (
                 <span className="text-md font-bold text-[var(--facebook-blue)] hover:text-accent">
-                 สวัสดีคุณ {user.firstName || user.email}
+                  สวัสดีคุณ {user.firstName || user.email}
                 </span>
               ) : (
                 <AccountCircleOutlinedIcon />
