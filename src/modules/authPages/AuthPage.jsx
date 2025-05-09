@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import api from "../../services/api";
-
+import { loginUser, registerUser } from "../../services/userService";
 
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
@@ -45,54 +44,44 @@ const AuthPage = ({ onClose }) => {
 
   // จัดการ หลังกด Login button
   const handleLoginSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await api.post(
-        "/auth/login",
-        loginData,
-        { withCredentials: true }
-      );
-
-      console.log("🍺 Login response from:", res);
-
-      setIsLogin(true);
-      setUser(res.data.user || null);
-      onClose();
-      navigate("/profile");
-    } catch (error) {
-      console.error("Login error:", error);
-      setLoginError(error.response?.data?.error || "Login failed");
-    }
-  };
+  e.preventDefault();
+  try {
+    const data = await loginUser(loginData);
+    setIsLogin(true);
+    setUser(data.user || null);
+    onClose();
+    navigate("/profile");
+  } catch (error) {
+    console.error("Login error:", error);
+    setLoginError(error.response?.data?.error || "Login failed");
+  }
+};
 
   // จัดการ หลังกด Register button
   const handleRegisterSubmit = async (e) => {
-    e.preventDefault();
-    if (registerData.password !== registerData.confirmpassword) {
-      setRegisterError("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
-      console.error(registerError);
-      return;
-    }
-    try {
-      await api.post("/auth/register", registerData);
-      alert("ลงทะเบียนสำเร็จ");
-      setRegisterData({
-        email: "",
-        firstname: "",
-        lastname: "",
-        password: "",
-        confirmpassword: "",
-      });
-      toggleSlide();
-    } catch (error) {
-      if (error.response && error.response.data.error) {
-        setRegisterError(error.response.data.error);
-      } else {
-        setRegisterError("เกิดข้อผิดพลาดในการลงทะเบียน");
-      }
-      console.error(error);
-    }
-  };
+  e.preventDefault();
+  if (registerData.password !== registerData.confirmpassword) {
+    setRegisterError("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
+    return;
+  }
+  try {
+    await registerUser(registerData);
+    alert("ลงทะเบียนสำเร็จ");
+    setRegisterData({
+      email: "",
+      firstname: "",
+      lastname: "",
+      password: "",
+      confirmpassword: "",
+    });
+    toggleSlide();
+  } catch (error) {
+    setRegisterError(
+      error.response?.data?.error || "เกิดข้อผิดพลาดในการลงทะเบียน"
+    );
+    console.error(error);
+  }
+};
 
   return (
     <div className="fixed inset-0 z-10 flex items-center justify-center">

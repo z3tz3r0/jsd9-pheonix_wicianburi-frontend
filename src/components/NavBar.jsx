@@ -215,7 +215,7 @@ const NavBar = () => {
           </div>
           <div className="flex items-center mr-4">
             <NavLink to="cart" className="flex items-center">
-              <Badge badgeContent={getTotalItems()} color="error">
+              <Badge className="ml-12" badgeContent={getTotalItems()} color="error">
                 <ShoppingCartOutlinedIcon />
               </Badge>
             </NavLink>
@@ -224,8 +224,8 @@ const NavBar = () => {
               onClick={toggleUserPopUp}
             >
               {isLogin && user ? (
-                <span className="text-lg font-bold text-[var(--facebook-blue)] hover:text-accent">
-                 สวัสดีคุณ {user.firstname || user.email}
+                <span className="text-md font-bold text-[var(--facebook-blue)] hover:text-accent">
+                 สวัสดีคุณ {user.firstName || user.email}
                 </span>
               ) : (
                 <AccountCircleOutlinedIcon />
