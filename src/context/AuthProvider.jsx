@@ -1,26 +1,27 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../services/api";
+import { getCurrentUser } from "../services/userService";
 import { AuthContext } from "./AuthContext";
 
 // context
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const checkAuth = async () => {
+      setUserLoading(true);
       console.log('Cookies:', document.cookie);
       try {
-        const res = await api.get("/auth/users/me", {
-          withCredentials: true,
-        });
-        console.log("🍺 Response from:", res.data);
+        const res = await getCurrentUser();
+        console.log("🍺 Response from:", res);
 
-        if (res.data && res.data.user) {
+        if (res && res.user) {
           setIsLogin(true);
-          setUser(res.data.user);
+          setUser(res.user);
         } else {
           setIsLogin(false);
           setUser(null);
@@ -29,6 +30,8 @@ const AuthProvider = ({ children }) => {
         console.error("Token verification failed:", err);
         setIsLogin(false);
         setUser(null);
+      } finally {
+        setUserLoading(false);
       }
     };
 
@@ -51,6 +54,7 @@ const AuthProvider = ({ children }) => {
     isLogin,
     setIsLogin,
     logout,
+    userLoading,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
