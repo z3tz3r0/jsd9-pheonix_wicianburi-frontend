@@ -1,16 +1,15 @@
-import React from 'react'
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-const FormInputs = ({ register,name,type,placeholder,className }) => {
+const FormInputs = ({ register, name, type, placeholder, className }) => {
   return (
     <div className={className}>
-        <Label className="mb-2">{name}</Label>
-        <Input 
+      <Label className="mb-2">{name}</Label>
+      <Input
         {...register(name)}
-        type={type} 
-        placeholder={placeholder} 
-        />
+        type={type}
+        placeholder={placeholder}
+      />
     </div>
   )
 }

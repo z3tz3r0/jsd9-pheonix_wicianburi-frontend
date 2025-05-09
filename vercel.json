@@ -3,5 +3,12 @@
     "env": {
       "NODE_VERSION": "18"
     }
-  }
+  },
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
 }
