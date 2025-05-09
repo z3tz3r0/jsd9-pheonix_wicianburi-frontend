@@ -225,7 +225,7 @@ const NavBar = () => {
             >
               {isLogin && user ? (
                 <span className="text-md font-bold text-[var(--facebook-blue)] hover:text-accent">
-                 สวัสดีคุณ {user.firstname || user.email}
+                 สวัสดีคุณ {user.firstName || user.email}
                 </span>
               ) : (
                 <AccountCircleOutlinedIcon />
