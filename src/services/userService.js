@@ -21,3 +21,25 @@ export const getCurrentUser = async () => {
     return error;
   }
 };
+
+export const updateCurrentUser = async (usersInfo) => {
+  try {
+    const perpData = {
+      firstName: usersInfo.firstName,
+      lastName: usersInfo.lastName,
+      phone: usersInfo.phone,
+      email: usersInfo.email,
+      address: {
+        street: usersInfo.street,
+        subDistrict: usersInfo.subDistrict,
+        district: usersInfo.district,
+        province: usersInfo.province,
+        postal: usersInfo.postal,
+      },
+    };
+    const res = await api.put("/api/auth/users/update", perpData);
+    return res.data;
+  } catch (error) {
+    return error;
+  }
+};
