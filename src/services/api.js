@@ -5,9 +5,9 @@ const baseURL = import.meta.env.DEV
   ? import.meta.env.VITE_API_URL
   : import.meta.env.VITE_PUBLIC_API_URL;
 
-const adminApi = axios.create({
+const api = axios.create({
   baseURL,
-  withCredentials: true, // crucial for sending cookies.
+  withCredentials: true, // critical for sending cookies!
 });
 
-export default adminApi;
+export default api;

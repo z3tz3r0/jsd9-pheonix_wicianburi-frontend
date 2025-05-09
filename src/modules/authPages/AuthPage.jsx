@@ -1,6 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import api from "../../services/api";
+
 
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
@@ -46,13 +47,13 @@ const AuthPage = ({ onClose }) => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+      const res = await api.post(
+        "/auth/login",
         loginData,
         { withCredentials: true }
       );
 
-      console.log("Login response:", res);
+      console.log("🍺 Login response from:", res);
 
       setIsLogin(true);
       setUser(res.data.user || null);
@@ -73,7 +74,7 @@ const AuthPage = ({ onClose }) => {
       return;
     }
     try {
-      await axios.post("http://localhost:5000/api/auth/register", registerData);
+      await api.post("/auth/register", registerData);
       alert("ลงทะเบียนสำเร็จ");
       setRegisterData({
         email: "",

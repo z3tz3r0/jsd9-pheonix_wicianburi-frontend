@@ -36,9 +36,7 @@ const ProductDetails = ({ productItem, reviews }) => {
     } else {
       console.error("Selected variant not found: ", selectedValue);
     }
-
   }
-
 
   const prepareCartItem = () => {
     const selectedVariant = productVariants.find(variant => variant.value === selectedVariantValue);
@@ -67,17 +65,13 @@ const ProductDetails = ({ productItem, reviews }) => {
   const handleAddToCartClick = () => {
     const itemToAdd = prepareCartItem();
     if (itemToAdd) {
-      console.log("Adding to cart: ", itemToAdd);
       addToCart(itemToAdd);
     } else {
       console.error("Failed to add item to cart due to mising info.")
     }
-
   };
 
 
-  // TODO: handle buy now, redirect to the Checkout page with current information
-  // probably like submit the form.
   const handleBuyNowClick = () => {
     const itemToAdd = prepareCartItem();
     if (itemToAdd) {
@@ -96,7 +90,7 @@ const ProductDetails = ({ productItem, reviews }) => {
 
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
 
-        <img src={`../${productItem.image}`} className='my-4 rounded-3xl sm:rounded-xl' alt="" />
+        <img src={productItem.image} className='my-4 rounded-3xl sm:rounded-xl' alt="" />
 
         <div className="w-full sm:py-8 md:py-12">
           <h1 className="mb-4 text-xl font-bold md:text-2xl">{productItem.name}</h1>

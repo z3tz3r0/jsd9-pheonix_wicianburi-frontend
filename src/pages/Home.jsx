@@ -35,11 +35,28 @@ const Home = () => {
           </Link>
         </div>
         <div className="flex flex-col items-center">
-          <figure className="relative overflow-hidden sm:flex -z-0">
+          <figure className="bg-accent rounded-b-full sm:w-[480px] sm:h-[500px]">
+            <img
+              src="/assets/homepage-img.png"
+              alt="homepage image"
+              className="min-w-auto max-h-auto"
+            />
+          </figure>
+          <Link to="products" className="sm:hidden">
+            <ButtonMain types="submit" className="bg-[#01c9ac] my-4">
+              ซื้อสินค้า
+            </ButtonMain>
+          </Link>
+        </div>
+        {/* <div className="flex flex-col items-center">
+          <figure className="bg-accent rounded-b-full w-[480px] h-[500px]">
+            <img src="/assets/homepage-img.png" alt="homepage image" />
+          </figure>
+          {/* <figure className="relative overflow-hidden sm:flex -z-0">
             <figure className="w-auto h-auto bg-accent rounded-b-full top-0 right-0 sm:w-[480px] sm:h-[500px]">
               <img src="/assets/homepage-img.png" alt="homepage image" />
             </figure>
-          </figure>
+          </figure> 
           <Link to="products" className="sm:hidden">
             <ButtonMain
               types="submit"
@@ -48,13 +65,12 @@ const Home = () => {
               ซื้อสินค้า
             </ButtonMain>
           </Link>
-        </div>
+        </div> */}
       </section>
-
       {/* recommend section */}
-      <section className="flex flex-col items-center mt-10">
+      <section className="flex flex-col items-center mt-14">
         <h2 className="text-4xl font-bold mb-10 sm:text-[52px]">สินค้าขายดี</h2>
-        <div className="w-full sm:w-7xl ">
+        <div className="w-full sm:max-w-7xl">
           <Carousel>
             {products.slice(0, 10).map((product) => (
               <ProductCard key={product.product_id} product={product} />
@@ -62,7 +78,6 @@ const Home = () => {
           </Carousel>
         </div>
       </section>
-
       {/* image section */}
       <section className="flex flex-col mt-10 mb-20">
         <div className="mx-auto">
@@ -82,7 +97,6 @@ const Home = () => {
           </figure>
         </div>
       </section>
-
       {/* filter section */}
       <section className="grid grid-cols-2 sm:flex sm:flex-col ">
         <div className="category-1 flex flex-col justify-center items-center h-[200px] sm:h-[280px]">
@@ -146,14 +160,13 @@ const Home = () => {
           </ButtonFilter>
         </div>
       </section>
-
       {/* other product */}
       <section className="flex flex-col items-center">
         {/* <Typography variant="h3" component="h2">ผลิตภัณฑ์แปรรูปจากข้าว</Typography> */}
-        <h2 className="text-4xl font-bold my-10 sm:text-[52px]">
+        <h2 className="text-4xl font-bold my-14 text-nowrap sm:text-[52px]">
           ผลิตภัณฑ์แปรรูปจากข้าว
         </h2>
-        <div className="w-full sm:w-7xl  ">
+        <div className="w-full sm:max-w-7xl">
           <Carousel>
             {products.slice(17, 31).map((product) => (
               <ProductCard key={product.product_id} product={product} />
@@ -161,12 +174,11 @@ const Home = () => {
           </Carousel>
         </div>
       </section>
-
       {/* promotion section */}
       <section className="flex items-center justify-between h-40 promotion-section mt-15">
         <p className="mx-10 font-semibold sm:text-lg">
-          Free Delivery
-          <br /> On all order over ฿1000
+          ส่งฟรี!
+          <br /> เมื่อสั่งซื้อสินค้าครบ ฿1000
         </p>
         <img
           src="assets/promotionbanner.png"

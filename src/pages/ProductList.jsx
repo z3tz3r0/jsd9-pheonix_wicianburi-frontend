@@ -172,14 +172,14 @@ const ProductList = () => {
       </div>
 
       <h2 className="text-2xl font-extrabold mb-7">สินค้าทั้งหมด</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-0 gap-y-7">
+      <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
         {visibleProducts.map((product) => (
           <ProductCard key={product.product_id} product={product} />
         ))}
       </div>
 
       {visibleCount < filteredProducts.length && (
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center m-8 mt-12">
           <button
             onClick={loadMore}
             className="px-4 py-2 text-sm bg-gray-100 rounded cursor-pointer hover:bg-gray-300"
