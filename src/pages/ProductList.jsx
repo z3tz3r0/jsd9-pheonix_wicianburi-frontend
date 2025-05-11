@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCard from "../containers/ProductCard";
 // import { Container, Grid, Typography } from '@mui/material';
 import { Backdrop } from "@mui/material";
@@ -172,7 +172,7 @@ const ProductList = () => {
       </div>
 
       <h2 className="text-2xl font-extrabold mb-7">สินค้าทั้งหมด</h2>
-      <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-8 place-items-center-safe sm:grid-cols-3 lg:grid-cols-5">
         {visibleProducts.map((product) => (
           <ProductCard key={product.product_id} product={product} />
         ))}
