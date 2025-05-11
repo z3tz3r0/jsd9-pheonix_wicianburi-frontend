@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import api from './services/api.js';
+import api from '../../services/api.js';
 
 const AdminContext = createContext();
 
