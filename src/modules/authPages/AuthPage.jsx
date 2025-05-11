@@ -14,7 +14,7 @@ const AuthPage = ({ onClose }) => {
 
   const [loginError, setLoginError] = useState("");
   const [registerError, setRegisterError] = useState("");
-  const { setIsLogin, setUser } = useAuth();
+  const { setIsLogin, setUser, setUserLoading } = useAuth();
   // ใช้ useAuth ตัวนี้ในหน้าอื่น ๆ
 
   const navigate = useNavigate();
@@ -45,15 +45,23 @@ const AuthPage = ({ onClose }) => {
   // จัดการ หลังกด Login button
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setLoginError("");
+    setUserLoading(true);
     try {
       const data = await loginUser(loginData);
-      setIsLogin(true);
-      setUser(data.user || null);
-      onClose();
-      navigate("/profile");
+      if (data && data.user) {
+        setIsLogin(true);
+        setUser(data.user || null);
+        onClose();
+        navigate("/profile");
+      } else {
+        setLoginError("เกิดข้อผิดพลาดระหว่างการเข้าสู่ระบบ กรุณาลองใหม่อีกครั้ง")
+      }
     } catch (error) {
       console.error("Login error:", error);
-      setLoginError(error.response?.data?.error || "Login failed");
+      setLoginError(error.response?.data?.error || "การเข้าสู่ระบบล้มเหลว");
+    } finally {
+      setUserLoading(false);
     }
   };
 
