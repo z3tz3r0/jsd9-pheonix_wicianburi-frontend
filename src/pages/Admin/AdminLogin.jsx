@@ -9,9 +9,9 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert } from "@mui/material"
-import React, { useState } from 'react'
+import { useState } from 'react'
+import api from "../../services/api.js"
 import { useAdminAuth } from "./AdminContext"
-import api from "./services/api"
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
