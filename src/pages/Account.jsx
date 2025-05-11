@@ -15,9 +15,8 @@ const Account = () => {
   const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm();
   // console.log(isSubmitting);
   const { user, userLoading } = useAuth();
-
   useEffect(() => {
-    if (user && !userLoading) {
+    if (user) {
       reset({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -30,7 +29,8 @@ const Account = () => {
         postal: user.address?.postal,
       });
     }
-  }, [user, userLoading, reset]);
+  }, [user, reset]);
+
   const accountSubmit = async (data) => {
     try {
       const result = await updateCurrentUser(data);
@@ -42,7 +42,7 @@ const Account = () => {
 
   return (
     <main className="px-4 mb-20 mr-4 sm:w-4xl">
-      {userLoading ? (
+      {userLoading || !user || !user?.address ? (
         <AccountLoading />
       ) : (
         <>
@@ -62,7 +62,6 @@ const Account = () => {
                   name="firstName"
                   type="text"
                   placeholder="ชื่อ"
-                  value={user.firstName}
                   validation={{ required: 'ชื่อจำเป็นต้องกรอก' }}
                   error={errors.firstName}
                 />
@@ -72,7 +71,6 @@ const Account = () => {
                   name="lastName"
                   type="text"
                   placeholder="นามสกุล"
-                  value={user.lastName}
                   validation={{ required: 'นามสกุลจำเป็นต้องกรอก' }}
                   error={errors.lastName}
                 />
@@ -82,7 +80,6 @@ const Account = () => {
                   name="phone"
                   type="tel"
                   placeholder="โทรศัพท์"
-                  value={user.phone}
                   validation={{ required: 'เบอร์โทรศัพท์จำเป็นต้องกรอก', pattern: { value: /^[0-9]{10}$/, message: 'รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง (10 หลัก)' } }}
                   error={errors.phone}
                 />
@@ -92,7 +89,6 @@ const Account = () => {
                   name="email"
                   type="email"
                   placeholder="อีเมล"
-                  value={user.email}
                   validation={{ required: 'อีเมลจำเป็นต้องกรอก', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'รูปแบบอีเมลไม่ถูกต้อง' } }}
                   error={errors.email}
                 />
@@ -103,7 +99,6 @@ const Account = () => {
                   type="text"
                   placeholder="ที่อยู่"
                   className="sm:col-span-2"
-                  value={user.address.street}
                   validation={{ required: 'ที่อยู่จำเป็นต้องกรอก' }}
                   error={errors.street}
                 />
@@ -113,7 +108,6 @@ const Account = () => {
                   name="subDistrict"
                   type="text"
                   placeholder="ตำบล"
-                  value={user.address.subDistrict}
                   validation={{ required: 'ตำบลจำเป็นต้องกรอก' }}
                   error={errors.subDistrict}
                 />
@@ -123,7 +117,6 @@ const Account = () => {
                   name="district"
                   type="text"
                   placeholder="อำเภอ"
-                  value={user.address.district}
                   validation={{ required: 'อำเภอจำเป็นต้องกรอก' }}
                   error={errors.district}
                 />
@@ -133,7 +126,6 @@ const Account = () => {
                   name="province"
                   type="text"
                   placeholder="จังหวัด"
-                  value={user.address.province}
                   validation={{ required: 'จังหวัดจำเป็นต้องกรอก' }}
                   error={errors.province}
                 />
@@ -143,7 +135,6 @@ const Account = () => {
                   name="postal"
                   type="text"
                   placeholder="รหัสไปรษณีย์"
-                  value={user.address.postal}
                   validation={{ required: 'รหัสไปรษณีย์จำเป็นต้องกรอก', pattern: { value: /^[0-9]{5}$/, message: 'รูปแบบรหัสไปรษณีย์ไม่ถูกต้อง (5 หลัก)' } }}
                   error={errors.postal}
                 />

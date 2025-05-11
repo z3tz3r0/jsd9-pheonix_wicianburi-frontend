@@ -14,11 +14,8 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       setUserLoading(true);
-      console.log('Cookies:', document.cookie);
       try {
         const res = await getCurrentUser();
-        console.log("🍺 Response from:", res);
-
         if (res && res.user) {
           setIsLogin(true);
           setUser(res.user);
@@ -55,6 +52,7 @@ const AuthProvider = ({ children }) => {
     setIsLogin,
     logout,
     userLoading,
+    setUserLoading,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
