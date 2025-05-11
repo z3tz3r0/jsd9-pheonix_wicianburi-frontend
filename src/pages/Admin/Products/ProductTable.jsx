@@ -15,7 +15,7 @@ import DeleteConfirmationDialog from './DeleteConfirmationDialog';
 import EditProductDialog from './EditProductDialog';
 import ProductTableLoading from './ProductTableLoading';
 
-const ProductTable = ({ products = [], isLoading }) => {
+const ProductTable = ({ products = [], isLoading, onProductChange }) => {
   // Function to get the price range or first variant price
   const getPriceDisplay = (variants) => {
     if (!variants || variants.length === 0) return 'N/A';
@@ -48,7 +48,7 @@ const ProductTable = ({ products = [], isLoading }) => {
         <TableBody>
           {isLoading ? (
             Array.from({ length: 20 }).map((_, index) => (
-              <ProductTableLoading index={index} />
+              <ProductTableLoading key={`skeleton-${index}`} />
             ))
           ) : products.length === 0 ? (
             <TableRow>
@@ -66,12 +66,12 @@ const ProductTable = ({ products = [], isLoading }) => {
                 <TableCell>{product.region || 'ไม่ระบุ'}</TableCell>
                 <TableCell>
                   <div className="flex justify-center gap-2">
-                    <EditProductDialog product={product}>
+                    <EditProductDialog product={product} onEditedProduct={onProductChange}>
                       <Button variant="ghost" size="icon" title="แก้ไข">
                         <PencilIcon className="w-4 h-4" />
                       </Button>
                     </EditProductDialog>
-                    <DeleteConfirmationDialog productId={product._id || product.productId} productName={product.name}>
+                    <DeleteConfirmationDialog productId={product._id || product.productId} productName={product.name} onDeletedProduct={onProductChange}>
                       <Button variant="ghost" size="icon" title="ลบ">
                         <TrashIcon className="w-4 h-4" />
                       </Button>

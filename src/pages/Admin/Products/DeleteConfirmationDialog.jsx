@@ -1,17 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import React from 'react';
 import { deleteProduct } from '../services/productApi.js';
 
-const DeleteConfirmationDialog = ({ productId, productName, children }) => {
+const DeleteConfirmationDialog = ({ productId, productName, children, onDeletedProduct }) => {
   // Function for handling product deletion
   const handleDeleteProduct = async () => {
     try {
-      console.log('Deleting product:', productId);
-      // Call the API service (currently mocked)
-      const result = await deleteProduct(productId);
-      console.log('Product deleted:', result);
-      // In a real implementation, we would close the dialog on success
+      await deleteProduct(productId);
+      onDeletedProduct();
     } catch (error) {
       console.error('Error deleting product:', error);
     }

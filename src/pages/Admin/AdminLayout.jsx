@@ -1,7 +1,7 @@
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Backdrop, CircularProgress } from "@mui/material";
 import { LayoutDashboardIcon, ShoppingBag, ShoppingCart, UsersRound } from 'lucide-react';
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Outlet, useLocation } from 'react-router';
 import { useAdminAuth } from "./AdminContext";
 import AdminLogin from "./AdminLogin";
@@ -69,19 +69,16 @@ const AdminLayout = () => {
 
 
   return (
-    // Using dark theme as in AdminDashboard example
+    // Using dark theme 
     <SidebarProvider className="text-white dark">
-      {/* Pass navData and the title update handler to AppSidebar */}
       <AppSidebar
         variant="inset"
         navData={navData}
         onTitleChange={handleTitleUpdate}
       />
       <SidebarInset>
-        {/* Pass the activeTitle state to SiteHeader */}
         <SiteHeader title={activeTitle} />
         <div className="flex flex-col flex-1">
-          {/* Outlet renders the matched child route component (AdminDashboard, AdminAnalytics, etc.) */}
           <Outlet />
         </div>
       </SidebarInset>

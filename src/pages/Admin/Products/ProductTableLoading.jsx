@@ -4,9 +4,9 @@ import {
   TableRow
 } from '@/components/ui/table';
 
-const ProductTableLoading = ({ index }) => {
+const ProductTableLoading = () => {
   return (
-    <TableRow key={`skeleton-${index}`}>
+    <TableRow>
       <TableCell>
         <Skeleton className="w-24 h-5" />
       </TableCell>
