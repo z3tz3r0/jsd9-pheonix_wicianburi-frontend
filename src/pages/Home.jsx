@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router";
 import ButtonFilter from "../components/ButtonFilter";
 import ButtonMain from "../components/ButtonMain";
@@ -8,7 +8,7 @@ import { CartContext } from "../context/CartContext";
 import products from "../data/products";
 
 const Home = () => {
-  const { filters, setFilters } = useContext(CartContext);
+  const { setFilters } = useContext(CartContext);
 
   return (
     <div>

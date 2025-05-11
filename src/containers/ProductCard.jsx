@@ -1,5 +1,5 @@
 import { ShoppingCart } from 'lucide-react';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Rating from "react-rating";
 import { Link } from 'react-router';
 import { CartContext } from '../context/CartContext';
@@ -42,7 +42,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link
-      className='flex flex-col h-full bg-white rounded-lg shadow-md w-45 hover:shadow-lg'
+      className='flex flex-col my-4 bg-white rounded-lg shadow-md max-h-72 w-45 hover:shadow-lg'
       to={`/products/${product.product_id}`}
     >
       <img
