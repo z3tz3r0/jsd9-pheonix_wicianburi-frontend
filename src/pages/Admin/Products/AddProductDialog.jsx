@@ -1,19 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { PlusIcon } from 'lucide-react';
-import React from 'react';
 import { addProduct } from '../services/productApi.js';
 import ProductForm from './ProductForm';
 
-const AddProductDialog = ({ children }) => {
+const AddProductDialog = ({ children, onProductAdded }) => {
   // Function for handling product addition
   const handleAddProduct = async (productData) => {
     try {
-      console.log('Adding product:', productData);
-      // Call the API service (currently mocked)
       const result = await addProduct(productData);
       console.log('Product added:', result);
-      // In a real implementation, we would close the dialog on success
+      if (onProductAdded) {
+        onProductAdded();
+      }
     } catch (error) {
       console.error('Error adding product:', error);
     }

@@ -1,18 +1,14 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import React from 'react';
 import { updateProduct } from '../services/productApi.js';
 import ProductForm from './ProductForm';
 
-const EditProductDialog = ({ product, children }) => {
+const EditProductDialog = ({ product, children, onEditedProduct }) => {
   // Function for handling product update
   const handleUpdateProduct = async (productData) => {
     try {
-      const productId = product?.product_id || product?.productId;
-      console.log('Updating product:', productData);
-      // Call the API service (currently mocked)
-      const result = await updateProduct(productId, productData);
-      console.log('Product updated:', result);
-      // In a real implementation, we would close the dialog on success
+      const productId = product?._id || product?.productId;
+      await updateProduct(productId, productData);
+      onEditedProduct();
     } catch (error) {
       console.error('Error updating product:', error);
     }
