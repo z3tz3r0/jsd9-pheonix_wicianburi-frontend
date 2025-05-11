@@ -7,17 +7,20 @@ import ButtonFirst from "../components/account/ButtonFirst";
 import FormInputs from "../components/account/FormInputs";
 
 import AuthPage from "../modules/authPages/AuthPage";
-import api from "../services/api";
 
 const FREE_SHIPPING_THRESHOLD = 1000;
 const SHIPPING_FEE = 100;
 
 export default function ConfirmOrder() {
   const navigate = useNavigate();
-  const { cart, getSubtotal, removeFromCart } = useCart();
+  const { cart, getSubtotal } = useCart();
   const { user } = useAuth();
 
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset
+  } = useForm();
 
   useEffect(() => {
     if (user) {
@@ -38,51 +41,44 @@ export default function ConfirmOrder() {
   const [delivery, setDelivery] = useState(0);
   const [total, setTotal] = useState(0);
   const [cartSubtotal, setCartSubtotal] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const subtotal = getSubtotal();
-    setCartSubtotal(subtotal);
+    const subtotal = getSubtotal(); // คำนวณยอดรวมจาก getSubtotal()
+    setCartSubtotal(subtotal); // ตั้งค่า subtotal
     const deliveryCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
     setDelivery(deliveryCost);
     setTotal(subtotal + deliveryCost);
-  }, [cart, getSubtotal]);
+  }, [cart, getSubtotal]); // คำนวณใหม่เมื่อ cart หรือ getSubtotal เปลี่ยน
 
   const [showAuthModal, setShowAuthModal] = useState(false);
 
-  const onSubmit = async () => {
-    console.log("รายการสินค้าในตะกร้า:", cart);
+  const onSubmit = (data) => {
+    console.log("Submitting order form", data);
     if (!user) {
+      console.log("User not logged in, showing auth modal");
       setShowAuthModal(true);
       return;
     }
-    console.log("ข้อมูลสินค้าก่อนส่งไปหลังบ้าน:", cart);
 
-    setIsSubmitting(true);
-
-    // ก้อนนี้คือส่งไป create order ในหลังบ้านทันที หน้าถัดไปแค่ get แล้ว put รูปขึ้น
     const orderData = {
-      userId: user._id,
-      orderItems: cart.map((item) => ({
-        productId: item.product_id,
-        variantValue: item.variantLabel || "",
-        quantity: item.quantity,
-      })),
-      totalAmount: total,
-      deliveryFee: delivery,
-      createdAt: new Date(),
+      userInfo: {
+        ...data,
+        address: {
+          street: data.address,
+          subDistrict: data.subDistrict,
+          district: data.district,
+          province: data.province,
+          postal: data.postalCode,
+        },
+      },
+      items: cart,
+      subtotal: getSubtotal(),
+      delivery,
+      total,
     };
-    try {
-      const response = await api.post("api/orders", orderData);
-      console.log("Order created:", response.data);
-      removeFromCart?.();
-      navigate("/confirm-payment");
-    } catch (error) {
-      console.error("Error submitting order:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-    console.log("ส่งก้อนนี้ไปหลังบ้าน:", orderData);
+
+    sessionStorage.setItem("orderData", JSON.stringify(orderData));
+    navigate("confirm-payment");
   };
 
   return (
@@ -107,64 +103,80 @@ export default function ConfirmOrder() {
                   name="email"
                   type="email"
                   placeholder="อีเมล"
+                  value={user?.email}
                   readOnly
-                  className={"cursor-not-allowed text-gray-500 border-transparent"}
                 />
+
                 <FormInputs
                   register={register}
                   name="phone"
                   type="tel"
                   placeholder="เบอร์โทรศัพท์"
+                  value={user?.phone}
                   readOnly
                 />
+
                 <FormInputs
                   register={register}
                   name="firstName"
                   type="text"
                   placeholder="ชื่อ"
+                  value={user?.firstName}
                   readOnly
                 />
+
                 <FormInputs
                   register={register}
                   name="lastName"
                   type="text"
                   placeholder="นามสกุล"
+                  value={user?.lastName}
                   readOnly
                 />
+
                 <FormInputs
                   register={register}
                   name="address"
                   type="text"
                   placeholder="ที่อยู่"
+                  value={user?.address?.street}
                   className="sm:col-span-2"
                   readOnly
                 />
+
                 <FormInputs
                   register={register}
                   name="subDistrict"
                   type="text"
                   placeholder="ตำบล"
+                  value={user?.address?.subDistrict}
                   readOnly
                 />
+
                 <FormInputs
                   register={register}
                   name="district"
                   type="text"
                   placeholder="อำเภอ"
+                  value={user?.address?.district}
                   readOnly
                 />
+
                 <FormInputs
                   register={register}
                   name="province"
                   type="text"
                   placeholder="จังหวัด"
+                  value={user?.address?.province}
                   readOnly
                 />
+
                 <FormInputs
                   register={register}
                   name="postalCode"
                   type="text"
                   placeholder="รหัสไปรษณีย์"
+                  value={user?.address?.postal}
                   readOnly
                 />
               </div>
@@ -173,7 +185,7 @@ export default function ConfirmOrder() {
                 <ButtonFirst
                   text="ยืนยันคำสั่งซื้อ"
                   type="submit"
-                  isPending={isSubmitting}
+                  isPending={false}
                 />
               </div>
             </form>
@@ -205,8 +217,9 @@ export default function ConfirmOrder() {
                       >
                         <td className="py-2">
                           {item.name}
+                          {/* แสดง variant.label ถ้ามี */}
                           {item.variant?.label &&
-                            `(${item.variant.label})`}x {item.quantity}
+                            (${item.variant.label})}x {item.quantity}
                         </td>
                         <td className="py-2 text-right">
                           ฿ {(item.price * item.quantity).toLocaleString()}
@@ -222,7 +235,7 @@ export default function ConfirmOrder() {
                     <span className={delivery === 0 ? "text-green-600" : ""}>
                       {delivery === 0
                         ? "ฟรี"
-                        : `฿ ${delivery.toLocaleString()}`}
+                        : ฿ ${delivery.toLocaleString()}}
                     </span>
                   </p>
                   <p className="font-bold text-accent">
