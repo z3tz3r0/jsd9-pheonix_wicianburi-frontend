@@ -16,6 +16,7 @@ import { CartContext } from "../context/CartContext"
 
 
 const ProductDetails = ({ productItem, reviews }) => {
+  console.log("PRODUCT ITEM:", productItem);
 
   const productVariants = productItem?.variants || [];
   const [selectedVariantValue, setSelectedVariantValue] = useState(() => productVariants.length > 0 ? productVariants[0].value : "");
@@ -83,6 +84,7 @@ const ProductDetails = ({ productItem, reviews }) => {
       console.error("Failed to add item to cart due to mising info.")
     }
   };
+  
 
 
   return (
