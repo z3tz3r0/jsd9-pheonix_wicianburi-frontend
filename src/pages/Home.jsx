@@ -5,10 +5,12 @@ import ButtonMain from "../components/ButtonMain";
 import Carousel from "../containers/Carousel";
 import ProductCard from "../containers/ProductCard";
 import { CartContext } from "../context/CartContext";
-import products from "../data/products";
+import { ProductContext } from "../context/ProductContext";
 
 const Home = () => {
   const { setFilters } = useContext(CartContext);
+
+  const { products } = useContext(ProductContext);
 
   return (
     <div>
@@ -73,7 +75,7 @@ const Home = () => {
         <div className="w-full sm:max-w-7xl">
           <Carousel>
             {products.slice(0, 10).map((product) => (
-              <ProductCard key={product.product_id} product={product} />
+              <ProductCard key={product.productId} product={product} />
             ))}
           </Carousel>
         </div>
@@ -169,7 +171,7 @@ const Home = () => {
         <div className="w-full sm:max-w-7xl">
           <Carousel>
             {products.slice(17, 31).map((product) => (
-              <ProductCard key={product.product_id} product={product} />
+              <ProductCard key={product.productId} product={product} />
             ))}
           </Carousel>
         </div>

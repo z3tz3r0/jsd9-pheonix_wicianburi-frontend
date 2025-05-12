@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import ButtonMain from "../components/ButtonMain";
 import { CartContext } from "../context/CartContext";
@@ -59,7 +59,7 @@ const Cart = () => {
               ) : (
                 cart.map((item) => (
                   <div
-                    key={item.product_id + item.variantLabel}
+                    key={item.productId + item.variantLabel}
                     className="grid grid-cols-12 bg-[#dfdddd] p-4 border-b-2 sm:p-5"
                   >
                     <div className="flex col-span-5">
@@ -90,7 +90,7 @@ const Cart = () => {
                           className="flex items-center justify-center w-4 h-8 border border-black rounded-l cursor-pointer sm:w-6"
                           onClick={() =>
                             updateQuantity(
-                              item.product_id,
+                              item.productId,
                               item.variantLabel,
                               Math.max(1, item.quantity - 1)
                             )
@@ -108,7 +108,7 @@ const Cart = () => {
                           className="flex items-center justify-center w-4 h-8 border border-black rounded-r cursor-pointer sm:w-6"
                           onClick={() =>
                             updateQuantity(
-                              item.product_id,
+                              item.productId,
                               item.variantLabel,
                               item.quantity + 1
                             )
@@ -127,7 +127,7 @@ const Cart = () => {
 
                     <button
                       onClick={() =>
-                        removeFromCart(item.product_id, item.variantLabel)
+                        removeFromCart(item.productId, item.variantLabel)
                       }
                       className="flex items-start justify-end col-span-1 text-gray-400 hover:text-red-500"
                     >

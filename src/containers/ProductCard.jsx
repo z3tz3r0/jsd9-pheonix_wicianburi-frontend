@@ -1,24 +1,11 @@
 import { ShoppingCart } from 'lucide-react';
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Rating from "react-rating";
 import { Link } from 'react-router';
 import { CartContext } from '../context/CartContext';
-import mockReviews from '../data/mockReviews';
 
 const ProductCard = ({ product }) => {
-  const [averageStars, setAverageStars] = useState([]);
   const { addToCart } = useContext(CartContext);
-
-  useEffect(() => {
-    let averageStar = 0;
-    const reviewsItems = mockReviews.filter((item) => item.product_id === product.product_id);
-    if (!reviewsItems) {
-      setAverageStars(averageStar);
-    } else {
-      const averageStar = reviewsItems.reduce((sum, review) => sum + review.stars, 0) / reviewsItems.length
-      setAverageStars(averageStar.toFixed(1))
-    }
-  }, []);
 
   const handleAddToCart = (event) => {
     event.stopPropagation();
@@ -29,7 +16,7 @@ const ProductCard = ({ product }) => {
       console.error("Cannot add to cart: Variant is not found");
     }
     const itemToAdd = {
-      product_id: product.product_id,
+      productId: product._id,
       name: product.name,
       variantValue: selectedVariant.value,
       variantLabel: selectedVariant.label,
@@ -43,7 +30,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link
       className='flex flex-col my-4 bg-white rounded-lg shadow-md max-h-72 w-45 hover:shadow-lg'
-      to={`/products/${product.product_id}`}
+      to={`/products/${product._id}`}
     >
       <img
         src={product.image}
@@ -61,7 +48,7 @@ const ProductCard = ({ product }) => {
           <div className='inline-flex items-center gap-[2px] text-[10px] text-yellow-400 overflow-hidden'>
             {/* Left: Star + reviews */}
             <Rating
-              initialRating={averageStars}
+              initialRating={product.averageStar}
               readonly
               fractions={2} // allows half-stars
               emptySymbol={<span className='text-gray-300 text-[10px]'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="size-4">
@@ -74,7 +61,7 @@ const ProductCard = ({ product }) => {
               </span>}
             />
 
-            <span className='text-gray-500 text-[10px] ml-[2px] whitespace-nowrap'>({averageStars})</span>
+            <span className='text-gray-500 text-[10px] ml-[2px] whitespace-nowrap'>({product.reviewCount})</span>
           </div>
 
           {/* Right: Cart icon*/}

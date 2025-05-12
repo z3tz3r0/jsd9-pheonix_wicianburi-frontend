@@ -3,7 +3,7 @@ import { getAllProducts } from "../services/productService";
 import { ProductContext } from "./ProductContext";
 
 const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState([]);
   const [prodLoading, setProdLoading] = useState(true);
 
   useEffect(() => {

@@ -14,11 +14,13 @@ export const registerUser = async (registerData) => {
 
 export const getCurrentUser = async () => {
   try {
-    const res = await api.get("/api/auth/users/me");
+    const res = await api.get("/api/auth/users/me", {
+      withCredentials: true,
+    });
     return res.data;
   } catch (error) {
-    console.error(error);
-    return error;
+    console.error("getCurrentUser error:", error);
+    return null;
   }
 };
 
