@@ -1,7 +1,4 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./containers/Layout";
 import AuthProvider from "./context/AuthProvider";
 import { CartProvider } from "./context/CartProvider";
@@ -28,6 +25,7 @@ import OrderHistory from "./pages/OrderHistory";
 import ProductInfo from "./pages/ProductInfo";
 import ProductList from "./pages/ProductList";
 import Profile from "./pages/Profile";
+import ProductProvider from "./context/ProductProvider";
 
 const router = createBrowserRouter([
   {
@@ -51,36 +49,47 @@ const router = createBrowserRouter([
           { index: true, element: <Account /> },
           { path: "order-history", element: <OrderHistory /> },
           { path: "order-history/:orderId", element: <OrderDetail /> },
-        ]
+        ],
       },
       { path: "/cart", element: <Cart /> },
       { path: "/cart/confirm-order", element: <ConfirmOrder /> },
-      { path: "/cart/confirm-order/confirm-payment", element: <ConfirmPayment /> },
-      { path: "/cart/confirm-order/confirm-payment/order-done", element: <OrderDone /> },
+      {
+        path: "/cart/confirm-order/confirm-payment",
+        element: <ConfirmPayment />,
+      },
+      {
+        path: "/cart/confirm-order/confirm-payment/order-done",
+        element: <OrderDone />,
+      },
       { path: "*", element: <NotFound /> },
-    ]
+    ],
   },
   {
     path: "/admin",
-    element: <AdminProvider><AdminLayout /></AdminProvider>,
+    element: (
+      <AdminProvider>
+        <AdminLayout />
+      </AdminProvider>
+    ),
     children: [
       { index: true, element: <AdminDashboard /> },
       { path: "/admin/products", element: <AdminProducts /> },
       { path: "/admin/orders", element: <AdminOrders /> },
       { path: "/admin/users", element: <AdminUsers /> },
-    ]
-  }
+    ],
+  },
 ]);
 
 function App() {
-
   return (
     <AuthProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
+      <ProductProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </ProductProvider>
     </AuthProvider>
-  )
+  );
 }
 
-export default App
+export default App;
