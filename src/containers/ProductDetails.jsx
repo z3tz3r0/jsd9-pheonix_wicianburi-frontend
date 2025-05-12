@@ -6,7 +6,7 @@ import {
 import StarIcon from '@mui/icons-material/Star'
 import FormControl from '@mui/material/FormControl'
 import Stack from '@mui/material/Stack'
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from "react-router"
 import ButtonAddToCart from '../components/ButtonAddToCart'
 import ButtonMain from "../components/ButtonMain"
@@ -22,7 +22,7 @@ const ProductDetails = ({ productItem, reviews }) => {
   const [selectingPrice, setSelectingPrice] = useState(() => productVariants.length > 0 ? productVariants[0].price : 0);
   const [productAmount, setProductAmount] = useState(1);
   const reviewCount = Array.isArray(reviews) ? reviews.length : 0;
-  const averageStars = Array.isArray(reviews) && reviewCount > 0 ? (reviews.reduce((sum, review) => sum + review.stars, 0)) / reviewCount : 0
+  const averageStars = Array.isArray(reviews) && reviewCount > 0 ? (reviews.reduce((sum, review) => sum + review.star, 0)) / reviewCount : 0
   const { addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -45,13 +45,13 @@ const ProductDetails = ({ productItem, reviews }) => {
       console.error("Cannot add to cart: Variant is not selected or not found")
       return null;
     }
-    if (!productItem || !productItem.product_id) {
+    if (!productItem || !productItem._id) {
       console.error("Cannot add to cart: Product data is missing");
       return null;
     }
 
     return {
-      product_id: productItem.product_id,
+      productId: productItem._id,
       name: productItem.name,
       variantValue: selectedVariant.value,
       variantLabel: selectedVariant.label,
@@ -61,7 +61,6 @@ const ProductDetails = ({ productItem, reviews }) => {
     }
   }
 
-  // TODO: handle add to cart make it simple log to the console first
   const handleAddToCartClick = () => {
     const itemToAdd = prepareCartItem();
     if (itemToAdd) {
