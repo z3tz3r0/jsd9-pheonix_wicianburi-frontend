@@ -43,7 +43,7 @@ const Cart = () => {
                 <div className="col-span-2 text-center">
                   <h2 className="font-medium ">ปริมาณ</h2>
                 </div>
-                <div className="col-span-2 text-center ml-1 sm:ml-0">
+                <div className="col-span-2 ml-1 text-center sm:ml-0">
                   <h2 className="font-medium text-nowrap">ราคาสุทธิ</h2>
                 </div>
               </div>
@@ -77,17 +77,17 @@ const Cart = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="col-span-2 text-center text-sm sm:text-base">
+                    <div className="col-span-2 text-sm text-center sm:text-base">
                       <p>฿{item.price}</p>
                       {/* .toFixed(1) */}
                     </div>
 
                     {/* Quantity Controls */}
 
-                    <div className="col-span-2 text-center  text-sm sm:text-base">
+                    <div className="col-span-2 text-sm text-center sm:text-base">
                       <div className="flex items-center justify-center">
                         <button
-                          className="flex items-center justify-center w-4 sm:w-6 h-8 border border-black rounded-l cursor-pointer"
+                          className="flex items-center justify-center w-4 h-8 border border-black rounded-l cursor-pointer sm:w-6"
                           onClick={() =>
                             updateQuantity(
                               item.product_id,
@@ -102,10 +102,10 @@ const Cart = () => {
                           type="text"
                           value={item.quantity}
                           readOnly
-                          className="w-4 sm:w-8 h-8 text-center border-t border-b border-black bg-primary"
+                          className="w-4 h-8 text-center border-t border-b border-black sm:w-8 bg-primary"
                         />
                         <button
-                          className="flex items-center justify-center w-4 sm:w-6 h-8 border border-black rounded-r cursor-pointer"
+                          className="flex items-center justify-center w-4 h-8 border border-black rounded-r cursor-pointer sm:w-6"
                           onClick={() =>
                             updateQuantity(
                               item.product_id,
@@ -119,7 +119,7 @@ const Cart = () => {
                       </div>
                     </div>
 
-                    <div className="col-span-2 text-center text-sm sm:text-base">
+                    <div className="col-span-2 text-sm text-center sm:text-base">
                       <p className="mx-2 sm:mx-10 w-fit">
                         ฿{(item.price * item.quantity).toFixed(1)}
                       </p>
@@ -139,7 +139,7 @@ const Cart = () => {
               <div className="mt-8">
                 <Link
                   to="/products"
-                  className="flex items-center mb-4 text-gray-600 hover:text-accent cursor-pointer"
+                  className="flex items-center mb-4 text-gray-600 cursor-pointer hover:text-accent"
                 >
                   ← กลับไปช้อปต่อ
                 </Link>
