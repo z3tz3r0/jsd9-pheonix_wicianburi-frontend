@@ -9,7 +9,7 @@ export default function OrderSuccess() {
     <div className="p-4 min-h-fit bg-primary sm:p-8">
       <div className="flex justify-center gap-4 mx-auto sm:gap-8 max-w-7xl sm:grid-cols-3">
         <div className="flex flex-col items-center justify-center p-8 space-y-6 bg-white shadow rounded-2xl sm:col-span-2">
-          <img src="/assets/843349.png" alt="" className="w-28 h-28" />
+          <img src="/assets/farmer2.png" alt="" className="w-28 h-28" />
           <div className="space-y-4 text-center">
             <h1 className="text-4xl font-semibold">คำสั่งซื้อสำเร็จ</h1>
             <p>เรากำลังตรวจสอบหลักฐานการชำระเงินของท่าน</p>

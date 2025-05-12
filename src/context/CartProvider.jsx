@@ -48,43 +48,36 @@ export const CartProvider = ({ children }) => {
 
   // Add item to cart
   const addToCart = (product) => {
-    // console.log(product)
+    console.log(product)
     // console.log(cart)
     const existingItem = cart.find(
-      (item) => item.product_id === product.product_id
+      (item) => item.productId === product.productId && item.variantValue === product.variantValue
     );
 
     if (existingItem) {
       setCart(
         cart.map((prevItem) =>
-          prevItem.product_id === product.product_id
-            ? { ...prevItem, quantity: prevItem.quantity + 1 }
+          prevItem.productId === product.productId && prevItem.variantValue === product.variantValue
+            ? { ...prevItem, quantity: prevItem.quantity + product.quantity }
             : prevItem
         )
       );
     } else {
-      setCart([...cart, { ...product, quantity: 1 }]);
+      setCart([...cart, { ...product, quantity: product?.quantity || 1 }]);
     }
   };
 
   // Remove item from cart
-  const removeFromCart = (productId) => {
-    setCart(cart.filter((item) => item.product_id !== productId));
+  const removeFromCart = (productId, variantLabel) => {
+    setCart(cart.filter((item) => item.productId !== productId || item.variantLabel !== variantLabel));
   };
 
-  // Update item quantity
-  // const updateQuantity = (productId, newQuantity) => {
-  //   setCart(cart.map(item =>
-  //     item.id === productId ? { ...item, newQuantity } : item
-  //   ));
-  // };
-
-  const updateQuantity = (productId, newQuantity) => {
+  const updateQuantity = (productId, variantLabel, newQuantity) => {
     const quantityValue = Math.max(0, Number(newQuantity) || 0);
     setCart((prevCart) =>
       prevCart
         .map((item) =>
-          item.product_id === productId ? { ...item, quantity: quantityValue } : item
+          item.productId === productId && item.variantLabel === variantLabel ? { ...item, quantity: quantityValue } : item
         )
         .filter((item) => item.quantity > 0)
     );
@@ -102,7 +95,6 @@ export const CartProvider = ({ children }) => {
 
   // Reset Filter
   const resetFilter = useCallback(() => {
-    console.log("Reset");
     setFilters(initialFilter);
     setSearchTerm(initialSearchTerm);
   }, []);

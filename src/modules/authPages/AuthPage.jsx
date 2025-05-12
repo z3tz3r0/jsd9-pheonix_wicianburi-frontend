@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { loginUser, registerUser } from "../../services/userService";
 
 import ButtonFacebook from "@/components/ButtonFacebook";
 import ButtonGoogle from "@/components/ButtonGoogle";
@@ -14,7 +14,7 @@ const AuthPage = ({ onClose }) => {
 
   const [loginError, setLoginError] = useState("");
   const [registerError, setRegisterError] = useState("");
-  const { setIsLogin, setUser } = useAuth();
+  const { setIsLogin, setUser, setUserLoading } = useAuth();
   // ใช้ useAuth ตัวนี้ในหน้าอื่น ๆ
 
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ const AuthPage = ({ onClose }) => {
 
   const [registerData, setRegisterData] = useState({
     email: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     password: "",
     confirmpassword: "",
   });
@@ -45,22 +45,23 @@ const AuthPage = ({ onClose }) => {
   // จัดการ หลังกด Login button
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setLoginError("");
+    setUserLoading(true);
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        loginData,
-        { withCredentials: true }
-      );
-
-      console.log("Login response:", res);
-
-      setIsLogin(true);
-      setUser(res.data.user || null);
-      onClose();
-      navigate("/profile");
+      const data = await loginUser(loginData);
+      if (data && data.user) {
+        setIsLogin(true);
+        setUser(data.user || null);
+        onClose();
+        navigate("/profile");
+      } else {
+        setLoginError("เกิดข้อผิดพลาดระหว่างการเข้าสู่ระบบ กรุณาลองใหม่อีกครั้ง")
+      }
     } catch (error) {
       console.error("Login error:", error);
-      setLoginError(error.response?.data?.error || "Login failed");
+      setLoginError(error.response?.data?.error || "การเข้าสู่ระบบล้มเหลว");
+    } finally {
+      setUserLoading(false);
     }
   };
 
@@ -69,26 +70,23 @@ const AuthPage = ({ onClose }) => {
     e.preventDefault();
     if (registerData.password !== registerData.confirmpassword) {
       setRegisterError("รหัสผ่านไม่ตรงกับที่ตั้งไว้");
-      console.error(registerError);
       return;
     }
     try {
-      await axios.post("http://localhost:5000/api/auth/register", registerData);
+      await registerUser(registerData);
       alert("ลงทะเบียนสำเร็จ");
       setRegisterData({
         email: "",
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         password: "",
         confirmpassword: "",
       });
       toggleSlide();
     } catch (error) {
-      if (error.response && error.response.data.error) {
-        setRegisterError(error.response.data.error);
-      } else {
-        setRegisterError("เกิดข้อผิดพลาดในการลงทะเบียน");
-      }
+      setRegisterError(
+        error.response?.data?.error || "เกิดข้อผิดพลาดในการลงทะเบียน"
+      );
       console.error(error);
     }
   };
@@ -103,9 +101,8 @@ const AuthPage = ({ onClose }) => {
       >
         <div className="flex max-w-4xl overflow-hidden">
           <div
-            className={`flex w-full transform transition-transform duration-300 ${
-              isSignUp ? "-translate-x-full" : "translate-x-0"
-            }`}
+            className={`flex w-full transform transition-transform duration-300 ${isSignUp ? "-translate-x-full" : "translate-x-0"
+              }`}
           >
             {/* Login */}
             <div className="flex flex-col w-full md:flex-row shrink-0">
@@ -216,18 +213,18 @@ const AuthPage = ({ onClose }) => {
                   <div className="flex space-x-2">
                     <input
                       type="text"
-                      name="firstname"
+                      name="firstName"
                       placeholder="ชื่อจริง"
                       className="w-1/2 p-2 border border-[var(--clr-gray-400)] rounded-md"
-                      value={registerData.firstname}
+                      value={registerData.firstName}
                       onChange={handleRegisterChange}
                     />
                     <input
                       type="text"
-                      name="lastname"
+                      name="lastName"
                       placeholder="นามสกุล"
                       className="w-1/2 p-2 border border-[var(--clr-gray-400)] rounded-md"
-                      value={registerData.lastname}
+                      value={registerData.lastName}
                       onChange={handleRegisterChange}
                     />
                   </div>

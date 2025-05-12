@@ -1,122 +1,183 @@
-import React from "react";
-import BasicButton from "../components/BasicButton";
+import ButtonMain from "@/components/ButtonMain";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../context/useAuth";
+import useCart from "../context/useCart";
 
+import AuthPage from "../modules/authPages/AuthPage";
+import api from "../services/api";
+
+const FREE_SHIPPING_THRESHOLD = 1000;
+const SHIPPING_FEE = 100;
 
 export default function ConfirmOrder() {
+  const navigate = useNavigate();
+  const { cart, getSubtotal, removeFromCart } = useCart();
+  const { user } = useAuth();
+
+  const [delivery, setDelivery] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [cartSubtotal, setCartSubtotal] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const subtotal = getSubtotal();
+    setCartSubtotal(subtotal);
+    const deliveryCost = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_FEE;
+    setDelivery(deliveryCost);
+    setTotal(subtotal + deliveryCost);
+  }, [cart, getSubtotal]);
+
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
+  const onSubmit = async () => {
+    console.log("รายการสินค้าในตะกร้า:", cart);
+    if (!user) {
+      setShowAuthModal(true);
+      console.log("ผู้ใช้ไม่ได้เข้าสู่ระบบ");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // ก้อนนี้คือส่งไป create order ในหลังบ้าน
+    const orderData = {
+      userId: user._id,
+      orderItems: cart.map((item) => ({
+        productId: item.product_id,
+        variantValue: item.variantValue,
+        quantity: item.quantity,
+      })),
+      totalAmount: total,
+      deliveryFee: delivery,
+      stateVariant: "รอยืนยัน",
+    };
+    try {
+      const response = await api.post("api/orders", orderData);
+      console.log("Order created:", response.data);
+      removeFromCart?.();
+      navigate("/confirm-payment");
+    } catch (error) {
+      console.error("Error submitting order:", error.response?.data || error);
+    } finally {
+      setIsSubmitting(false);
+    }
+    console.log("ส่งก้อนนี้ไปหลังบ้าน:", orderData);
+  };
+
   return (
-    <div className="min-h-screen p-4 bg-primary sm:p-8">
-      <div className="grid grid-cols-1 gap-8 mx-auto max-w-7xl lg:grid-cols-3">
-        <div className="space-y-6 lg:col-span-2">
-          <h1 className="text-2xl font-bold">ตรวจสอบคำสั่งซื้อ</h1>
+    <>
+      <div className="min-h-screen p-4 bg-primary sm:p-8">
+        <div className="grid grid-cols-1 gap-8 mx-auto max-w-7xl lg:grid-cols-3">
+          {/* Left side: User Info */}
+          <div className="space-y-6 lg:col-span-2">
+            <h1 className="text-2xl font-bold">การยืนยันคำสั่งซื้อ</h1>
 
-          {/* input field  */}
+            <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
+              <h2 className="text-lg font-semibold">ที่อยู่จัดส่ง</h2>
 
-          <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
-            <h2 className="text-lg font-semibold">
-              โปรดกรอกรายละเอียดการจัดส่ง
-            </h2>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <input
-                type="email"
-                autoComplete="email"
-                placeholder="อีเมล์"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
-              <input
-                type="tel"
-                autoComplete="tel"
-                placeholder="เบอร์โทรศัพท์"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
-              <input
-                type="text"
-                name="firstName"
-                autoComplete="given-name"
-                placeholder="ชื่อ"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
-              <input
-                type="text"
-                name="lastName"
-                autoComplete="family-name"
-                placeholder="นามสกุล"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
-              <input
-                type="text"
-                name="address"
-                autoComplete="address-line1"
-                placeholder="ที่อยู่"
-                className="w-full col-span-1 px-4 py-2 border border-gray-300 rounded-lg sm:col-span-2"
-              />
-              <input
-                type="text"
-                name="subDistrict"
-                autoComplete="address-line2"
-                placeholder="ตำบล"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
-              <input
-                type="text"
-                name="district"
-                autoComplete="address-level2"
-                placeholder="อำเภอ"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
-              <input
-                type="text"
-                name="province"
-                autoComplete="address-level1"
-                placeholder="จังหวัด"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
-              <input
-                type="text"
-                name="postalCode"
-                autoComplete="postal-code"
-                placeholder="รหัสไปรษณีย์"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg "
-              />
+              {user ? (
+                <div className="space-y-2 text-gray-700">
+                  <p>
+                    <strong>อีเมล:</strong> {user.email || "-"}
+                  </p>
+                  <p>
+                    <strong>เบอร์โทร:</strong> {user.phone || "-"}
+                  </p>
+                  <p>
+                    <strong>ชื่อ:</strong> {user.firstName || "-"}{" "}
+                    {user.lastName || "-"}
+                  </p>
+                  <p>
+                    <strong>ที่อยู่:</strong> {user.address?.street || "-"}
+                  </p>
+                  <p>
+                    <strong>ตำบล/แขวง:</strong>{" "}
+                    {user.address?.subDistrict || "-"}
+                  </p>
+                  <p>
+                    <strong>อำเภอ/เขต:</strong> {user.address?.district || "-"}
+                  </p>
+                  <p>
+                    <strong>จังหวัด:</strong> {user.address?.province || "-"}
+                  </p>
+                  <p>
+                    <strong>รหัสไปรษณีย์:</strong> {user.address?.postal || "-"}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-red-500">
+                  กรุณาเข้าสู่ระบบก่อนทำการสั่งซื้อ
+                </p>
+              )}
+
+              <div className="flex flex-row gap-4 sm:flex-row sm:justify-between">
+                <ButtonMain text="ยืนยันคำสั่งซื้อ" onClick={onSubmit} isPending={isSubmitting} className="w-auto mt-8 mb-8 sm:w-auto">
+                  ยืนยันคำสั่งซื้อ
+                </ButtonMain>
+                {/* <ButtonMain text="แก้ไขข้อมูลจัดส่ง" onClick={() => navigate("/account")} className="mt-8 mb-8 sm:w-fit">
+                  แก้ไขข้อมูลจัดส่ง
+                </ButtonMain> */}
+              </div>
             </div>
           </div>
 
-          {/* Mui Button (need to be fix) !! */}
-          <BasicButton text="ยืนยันคำสั่งซื้อ" />
-        </div>
-
-        {/* Right Column for items summary and Subtotal */}
-
-        <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
-          <h2 className="text-lg font-semibold">รายการสั่งซื้อ</h2>
-          <table className="w-full mt-4 border-collapse">
-            <thead>
-              <tr className="border-b">
-                <th className="py-2 text-xl font-semibold text-left">สินค้า</th>
-                <th className="py-2 text-xl font-semibold text-right">ราคา</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b-[0.5px] border-gray-300">
-                <td className="py-2">ข้าวเหนียวเขี้ยวงู เกรดเอ x 2 กก.</td>
-                <td className="py-2 text-right">฿ 120</td>
-              </tr>
-
-              <tr className="border-b-[0.5px] border-gray-300">
-                <td className="py-2">ข้าวไรซ์เบอรี่ เกรดเอบวก x 2 กก.</td>
-                <td className="py-2 text-right">฿ 180</td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="mt-4 text-right">
-            <p className="text-lg font-semibold">
-              ราคารวม :<span className=""> ฿300</span>
-            </p>
-            <p className="text-lg font-semibold">
-              ค่าจัดส่ง :<span className=""> ฿35</span>
-            </p>
+          {/* Right side: Order Summary */}
+          <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
+            <h2 className="text-lg font-semibold">รายการสั่งซื้อ</h2>
+            {cart.length === 0 ? (
+              <p>ไม่มีสินค้าในตะกร้า</p>
+            ) : (
+              <>
+                <table className="w-full mt-4 border-collapse">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="py-2 text-xl font-semibold text-left">
+                        สินค้า
+                      </th>
+                      <th className="py-2 text-xl font-semibold text-right">
+                        ราคา
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cart.map((item, index) => (
+                      <tr
+                        key={index}
+                        className="border-b-[0.5px] border-gray-300"
+                      >
+                        <td className="py-2">
+                          {item.name}
+                          {item.variant?.label &&
+                            `(${item.variant.label})`} x {item.quantity}
+                        </td>
+                        <td className="py-2 text-right">
+                          ฿ {(item.price * item.quantity).toLocaleString()}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="mt-4 space-y-1 text-lg font-semibold text-right">
+                  <p>ราคารวม : ฿ {cartSubtotal.toLocaleString()}</p>
+                  <p>
+                    ค่าจัดส่ง :{" "}
+                    <span className={delivery === 0 ? "text-green-600" : ""}>
+                      {delivery === 0
+                        ? "ฟรี"
+                        : `฿ ${delivery.toLocaleString()}`}
+                    </span>
+                  </p>
+                  <p className="font-bold text-accent">
+                    ยอดชำระทั้งหมด : ฿ {total.toLocaleString()}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
-    </div>
+      {showAuthModal && <AuthPage onClose={() => setShowAuthModal(false)} />}
+    </>
   );
 }

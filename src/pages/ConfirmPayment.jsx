@@ -1,7 +1,6 @@
-import React from "react";
 import BasicButton from "../components/BasicButton";
 import UploadButton from "../components/UploadButton";
- 
+
 
 export default function ConfirmPayment() {
   return (
@@ -9,7 +8,7 @@ export default function ConfirmPayment() {
       <div className="grid grid-cols-1 gap-4 mx-auto sm:gap-8 max-w-7xl sm:grid-cols-3">
         <div className="space-y-4 sm:col-span-2">
 
-{/* Order Summary & Thank you message */}
+          {/* Order Summary & Thank you message */}
 
           <h1 className="mb-2 text-2xl font-semibold">
             ขอบคุณค่ะ เราได้รับคำสั่งซื้อของคุณแล้ว
@@ -29,12 +28,12 @@ export default function ConfirmPayment() {
             </div>
           </div>
 
-{/* QR and Upload Section */}
+          {/* QR and Upload Section */}
 
           <div className="p-6 bg-white shadow rounded-2xl">
             <h2 className="mb-4 text-lg font-semibold">ยืนยันการชำระเงิน</h2>
 
-{/* รูปภาพ QR Code */}
+            {/* รูปภาพ QR Code */}
 
             <div className="flex items-center p-4 space-x-4 border rounded-lg">
               <img
@@ -48,14 +47,16 @@ export default function ConfirmPayment() {
               </div>
             </div>
 
-{/* File Upload */}
+            {/* File Upload */}
 
             <div className="mt-4">
               <label className="block mb-1 font-medium">แนบหลักฐานการโอน</label>
-              <UploadButton />
+
+              {/* // TODO : pass orderId as a props once it's done. */}
+              <UploadButton orderId={"TODO"} />
             </div>
 
-{/* Transfer Date and Time */}
+            {/* Transfer Date and Time */}
 
             <div className="grid grid-cols-2 gap-4 mt-4">
               <div>
@@ -76,7 +77,7 @@ export default function ConfirmPayment() {
               </div>
             </div>
 
-{/* Submit Button */}
+            {/* Submit Button */}
 
             <div className="mt-6">
               <BasicButton text="ส่งรายละเอียดการชำระเงิน" />
@@ -84,7 +85,7 @@ export default function ConfirmPayment() {
           </div>
         </div>
 
-{/* Address Section */}
+        {/* Address Section */}
 
         <div className="p-6 bg-white shadow rounded-2xl max-h-fit">
           <h3 className="mb-4 text-lg font-semibold">ที่อยู่</h3>

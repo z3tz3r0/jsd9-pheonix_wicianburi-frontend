@@ -160,26 +160,26 @@
   }
 
   .hero-section {
-    background-image: url("assets/hero-background.png");
+    background-image: url("/assets/hero-background.png");
   }
 
   .category-1 {
-    background-image: url("assets/bg-ข้าวหอมมะลิ.png");
+    background-image: url("/assets/bg-ข้าวหอมมะลิ.png");
     background-size: cover;
   }
 
   .category-2 {
-    background-image: url("assets/bg-ข้าวเหนียว.png");
+    background-image: url("/assets/bg-ข้าวเหนียว.png");
     background-size: cover;
   }
 
   .category-3 {
-    background-image: url("assets/bg-ข้าวขาว.png");
+    background-image: url("/assets/bg-ข้าวขาว.png");
     background-size: cover;
   }
 
   .category-4 {
-    background-image: url("assets/bg-ข้าวกล้อง.png");
+    background-image: url("/assets/bg-ข้าวกล้อง.png");
     background-size: cover;
   }
 

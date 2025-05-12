@@ -11,11 +11,11 @@ import {
   PencilIcon,
   TrashIcon
 } from 'lucide-react';
-import React from 'react';
 import DeleteConfirmationDialog from './DeleteConfirmationDialog';
 import EditProductDialog from './EditProductDialog';
+import ProductTableLoading from './ProductTableLoading';
 
-const ProductTable = ({ products = [] }) => {
+const ProductTable = ({ products = [], isLoading, onProductChange }) => {
   // Function to get the price range or first variant price
   const getPriceDisplay = (variants) => {
     if (!variants || variants.length === 0) return 'N/A';
@@ -46,7 +46,11 @@ const ProductTable = ({ products = [] }) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {products.length === 0 ? (
+          {isLoading ? (
+            Array.from({ length: 20 }).map((_, index) => (
+              <ProductTableLoading key={`skeleton-${index}`} />
+            ))
+          ) : products.length === 0 ? (
             <TableRow>
               <TableCell colSpan={6} className="py-6 text-center">
                 ไม่พบข้อมูลสินค้า
@@ -54,20 +58,20 @@ const ProductTable = ({ products = [] }) => {
             </TableRow>
           ) : (
             products.map((product) => (
-              <TableRow key={product.product_id || product.productId}>
-                <TableCell>{product.product_id || product.productId}</TableCell>
+              <TableRow key={product._id || product.productId}>
+                <TableCell>{product._id || product.productId}</TableCell>
                 <TableCell className="font-medium">{product.name}</TableCell>
                 <TableCell>{product.type}</TableCell>
                 <TableCell>{getPriceDisplay(product.variants)}</TableCell>
                 <TableCell>{product.region || 'ไม่ระบุ'}</TableCell>
                 <TableCell>
                   <div className="flex justify-center gap-2">
-                    <EditProductDialog product={product}>
+                    <EditProductDialog product={product} onEditedProduct={onProductChange}>
                       <Button variant="ghost" size="icon" title="แก้ไข">
                         <PencilIcon className="w-4 h-4" />
                       </Button>
                     </EditProductDialog>
-                    <DeleteConfirmationDialog productId={product.product_id || product.productId} productName={product.name}>
+                    <DeleteConfirmationDialog productId={product._id || product.productId} productName={product.name} onDeletedProduct={onProductChange}>
                       <Button variant="ghost" size="icon" title="ลบ">
                         <TrashIcon className="w-4 h-4" />
                       </Button>

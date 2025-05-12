@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import adminApi from './services/adminApi.js';
+import api from '../../services/api.js';
 
 const AdminContext = createContext();
 
@@ -13,7 +13,7 @@ export const AdminProvider = ({ children }) => {
   useEffect(() => {
     const fetchAdmin = async () => {
       try {
-        const response = await adminApi.get('/admin/auth/verify');
+        const response = await api.get('/admin/auth/verify');
         setAdmin(response.data.admin);
       } catch (error) {
         console.error("Not authenticated: ", error);
@@ -34,7 +34,7 @@ export const AdminProvider = ({ children }) => {
     setLoading(true);
     console.log("Logout button is clicked, Attempting to logout")
     try {
-      await adminApi.post('/admin/auth/logout');
+      await api.post('/admin/auth/logout');
       console.log("Logged out")
     } catch (error) {
       console.error("Logout failed: ", error);

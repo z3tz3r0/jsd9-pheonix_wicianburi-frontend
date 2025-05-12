@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import api from "../services/api";
+import { getCurrentUser } from "../services/userService";
 import { AuthContext } from "./AuthContext";
 
 // context
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
   const [isLogin, setIsLogin] = useState(false);
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
     const checkAuth = async () => {
+      setUserLoading(true);
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/users/me", {
-          withCredentials: true,
-        });
-        console.log("🍺 Response from /users:", res.data);
-
-        if (res.data && res.data.user) {
+        const res = await getCurrentUser();
+        if (res && res.user) {
           setIsLogin(true);
-          setUser(res.data.user);
+          setUser(res.user);
         } else {
           setIsLogin(false);
           setUser(null);
@@ -27,6 +27,8 @@ const AuthProvider = ({ children }) => {
         console.error("Token verification failed:", err);
         setIsLogin(false);
         setUser(null);
+      } finally {
+        setUserLoading(false);
       }
     };
 
@@ -35,7 +37,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout");
+      await api.post("/api/auth/logout");
       setUser(null);
       setIsLogin(false);
     } catch (err) {
@@ -49,6 +51,8 @@ const AuthProvider = ({ children }) => {
     isLogin,
     setIsLogin,
     logout,
+    userLoading,
+    setUserLoading,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
