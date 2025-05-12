@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 
@@ -240,7 +240,7 @@ const UserForm = ({ onSubmit, initialData }) => {
           )}
         />
 
-        <Button type="submit">บันทึก</Button>
+        <Button className="bg-foreground text-background" type="submit">บันทึก</Button>
       </form>
     </Form>
   );
