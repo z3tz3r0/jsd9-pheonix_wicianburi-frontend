@@ -1,12 +1,14 @@
+import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
   TableBody,
   TableCaption,
+  TableCell,
   TableHead,
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getAllUsers } from './services/userApi';
 import AddUserDialog from './Users/AddUserDialog'; // Import AddUserDialog
 import UserRow from './Users/UserRow'; // Import UserRow
@@ -17,11 +19,22 @@ const AdminUsers = () => {
   const [error, setError] = useState(null);
 
   const fetchUsers = async () => {
+    setLoading(true);
+    setError(null);
     try {
       const data = await getAllUsers();
-      setUsers(data);
+      if (Array.isArray(data)) {
+        setUsers(data);
+      } else {
+        // If data is not an array, log an error and set users to an empty array
+        console.error("Expected an array of users from getAllUsers, but received:", data);
+        setUsers([]); // Prevent .map error by ensuring users is an array
+        setError(new Error("Invalid data format received for users."));
+      }
     } catch (err) {
+      console.error("Error fetching users:", err);
       setError(err);
+      setUsers([]);
     } finally {
       setLoading(false);
     }
@@ -45,7 +58,35 @@ const AdminUsers = () => {
 
 
   if (loading) {
-    return <div>กำลังโหลดผู้ใช้...</div>;
+    return (
+      <div className="@container/main flex flex-1 flex-col gap-2">
+        <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+          <div className="flex items-center justify-between px-4 lg:px-6">
+            <Skeleton className="w-1/4 h-8" />
+            <Skeleton className="w-24 h-10" />
+          </div>
+          <div className="px-4 lg:px-6">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  {Array.from({ length: 8 }).map((_, index) => (
+                    <TableHead key={index}><Skeleton className="w-full h-5" /></TableHead>
+                  ))}
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {Array.from({ length: 5 }).map((_, rowIndex) => (
+                  <TableRow key={rowIndex}>
+                    {Array.from({ length: 8 }).map((_, cellIndex) => (
+                      <TableCell key={cellIndex}><Skeleton className="w-full h-5" /></TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+      </div>);
   }
 
   if (error) {
