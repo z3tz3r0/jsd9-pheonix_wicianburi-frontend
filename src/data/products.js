@@ -2,7 +2,7 @@
 
 const products = [
   {
-    productId: 1,
+    product_id: "681b66bf6015bf57cfd8b5f1",
     name: "ข้าวกล้อง",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -15,7 +15,7 @@ const products = [
     region: "ภาคกลาง", // Added
   },
   {
-    productId: 2,
+    product_id: "681b66bf6015bf57cfd8b5f4",
     name: "ข้าวมันปู",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -28,7 +28,7 @@ const products = [
     region: "ภาคเหนือ", // Added
   },
   {
-    productId: 3,
+    product_id: "681b66bf6015bf57cfd8b5f7",
     name: "ข้าวไรซ์เบอร์รี่",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -42,7 +42,7 @@ const products = [
     region: "ภาคอีสาน", // Added
   },
   {
-    productId: 4,
+    product_id: "681b66bf6015bf57cfd8b5fa",
     name: "ข้าวสังข์หยดพัทลุง",
     type: "ข้าวเพื่อสุขภาพ",
     variants: [
@@ -55,7 +55,7 @@ const products = [
     region: "ภาคใต้", // Added
   },
   {
-    productId: 5,
+    product_id: "681b66bf6015bf57cfd8b5fd",
     name: "ข้าวเสาไห้",
     type: "ข้าวขาว",
     variants: [
@@ -68,7 +68,7 @@ const products = [
     region: "ภาคกลาง", // Added
   },
   {
-    productId: 6,
+    product_id: "681b66bf6015bf57cfd8b600",
     name: "ข้าวหอมมะลิ 105",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -82,7 +82,7 @@ const products = [
     region: "ภาคเหนือ", // Added (Matched name with id 7 in ProductList)
   },
   {
-    productId: 7,
+    product_id: "681b66bf6015bf57cfd8b603",
     name: "ข้าวหอมมะลิ กข15",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -95,7 +95,7 @@ const products = [
     region: "ภาคอีสาน", // Added (Matched name with id 6 in ProductList)
   },
   {
-    productId: 8,
+    product_id: "681b66bf6015bf57cfd8b606",
     name: "ข้าวหอมมะลิทุ่งกุลา",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -109,7 +109,7 @@ const products = [
     region: "ภาคอีสาน", // Added
   },
   {
-    productId: 9,
+    product_id: "681b66bf6015bf57cfd8b609",
     name: "ข้าวหอมมะลิปทุมธานี",
     type: "ข้าวหอมมะลิ",
     variants: [
@@ -122,7 +122,7 @@ const products = [
     region: "ภาคกลาง", // Added
   },
   {
-    productId: 10,
+    product_id: "681b66bf6015bf57cfd8b60c",
     name: "ข้าวเหนียว กข6",
     type: "ข้าวเหนียว",
     variants: [
@@ -135,7 +135,7 @@ const products = [
     region: "ภาคอีสาน", // Added
   },
   {
-    productId: 11,
+    product_id: "681b66bf6015bf57cfd8b60f",
     name: "ข้าวเหนียวเขาวงกาฬสินธุ์",
     type: "ข้าวเหนียว",
     variants: [
@@ -149,7 +149,7 @@ const products = [
     region: "ภาคอีสาน", // Added
   },
   {
-    productId: 12,
+    product_id: "681b66bf6015bf57cfd8b612",
     name: "ข้าวเหนียวเขี้ยวงู",
     type: "ข้าวเหนียว",
     variants: [
@@ -162,7 +162,7 @@ const products = [
     region: "ภาคเหนือ", // Added
   },
   {
-    productId: 13,
+    product_id: "681b66bf6015bf57cfd8b615",
     name: "ข้าวเหนียวดำ",
     type: "ข้าวเหนียว",
     variants: [
@@ -176,7 +176,7 @@ const products = [
     region: "ภาคเหนือ", // Added
   },
   {
-    productId: 14,
+    product_id: "681b66bf6015bf57cfd8b618",
     name: "ข้าวเหนียว กข4",
     type: "ข้าวเหนียว",
     variants: [
@@ -189,7 +189,7 @@ const products = [
     region: "ภาคใต้", // Added
   },
   {
-    productId: 15,
+    product_id: "681b66bf6015bf57cfd8b61b",
     name: "ข้าวเหนียวสกลนคร",
     type: "ข้าวเหนียว",
     variants: [
@@ -202,7 +202,7 @@ const products = [
     region: "ภาคอีสาน", // Added
   },
   {
-    productId: 16,
+    product_id: "681b66bf6015bf57cfd8b61e",
     name: "ข้าวเหลืองประทิวชุมพร",
     type: "ข้าวขาว",
     variants: [
@@ -215,7 +215,7 @@ const products = [
     region: "ภาคใต้", // Added
   },
   {
-    productId: 17,
+    product_id: "681b66bf6015bf57cfd8b621",
     name: "ข้าวตังทอดตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (50g)", value: "50g", price: 45 }],
@@ -226,7 +226,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 18,
+    product_id: "681b66bf6015bf57cfd8b623",
     name: "ขนมข้าวอบกรอบแบบแท่งตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (50g)", value: "50g", price: 45 }],
@@ -237,7 +237,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 19,
+    product_id: "681b66bf6015bf57cfd8b625",
     name: "ขนมเจลลี่ตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (25g)", value: "25g", price: 30 }],
@@ -248,7 +248,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 20,
+    product_id: "681b66bf6015bf57cfd8b627",
     name: "ขนมเจลลี่ข้าวเจ้าตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (25g)", value: "25g", price: 35 }],
@@ -259,7 +259,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 21,
+    product_id: "681b66bf6015bf57cfd8b629",
     name: "น้ำนมจมูกข้าวหอมมะลิตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 65 }],
@@ -270,7 +270,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 22,
+    product_id: "681b66bf6015bf57cfd8b62b",
     name: "น้ำนมจมูกข้าวกล้องตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 65 }],
@@ -281,7 +281,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 23,
+    product_id: "681b66bf6015bf57cfd8b62d",
     name: "น้ำมันรำข้าวตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 85 }],
@@ -292,7 +292,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 24,
+    product_id: "681b66bf6015bf57cfd8b62f",
     name: "น้ำมันรำข้าวพรีเมียมข้าวตราออลไรซ์",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (250ml)", value: "250ml", price: 95 }],
@@ -303,7 +303,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 25,
+    product_id: "681b66bf6015bf57cfd8b631",
     name: "สาเก (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (330ml)", value: "330ml", price: 250 }],
@@ -314,7 +314,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 26,
+    product_id: "681b66bf6015bf57cfd8b633",
     name: "สาเกพรีเมี่ยม (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ขวด (330ml)", value: "330ml", price: 450 }],
@@ -325,7 +325,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 27,
+    product_id: "681b66bf6015bf57cfd8b635",
     name: "เบียร์ลาเกอร์ตราออลไรซ์ (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 กระป๋อง (330ml)", value: "330ml", price: 120 }],
@@ -336,7 +336,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 28,
+    product_id: "681b66bf6015bf57cfd8b637",
     name: "เบียร์เพลเอลตราออลไรซ์ (แอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 กระป๋อง (330ml)", value: "330ml", price: 150 }],
@@ -347,7 +347,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 29,
+    product_id: "681b66bf6015bf57cfd8b639",
     name: "เบียร์ดำจากข้าวมอลท์ตราออลไรซ์ (แแอลกอฮอลลต่ำ)",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 กระป๋อง (330ml)", value: "330ml", price: 160 }],
@@ -358,7 +358,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 30,
+    product_id: "681b66bf6015bf57cfd8b63b",
     name: "มอลท์ข้าวหอมมะลิเชียงราย",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (450g)", value: "450g", price: 85 }],
@@ -369,7 +369,7 @@ const products = [
     // No region in ProductList data for this
   },
   {
-    productId: 31,
+    product_id: "681b66bf6015bf57cfd8b63d",
     name: "มอลท์ข้าวเหนียวดำ",
     type: "สินค้าแปรรูป",
     variants: [{ label: "1 ถุง (450g)", value: "450g", price: 95 }],

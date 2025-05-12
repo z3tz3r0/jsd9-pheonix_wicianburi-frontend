@@ -159,15 +159,15 @@ const Account = () => {
                   />
                 </div>
 
-                {/* <div className="flex justify-center gap-4 my-8 sm:justify-start">
-                  <Link to="/cart/confirm-order">
+                <div className="flex justify-center gap-4 my-8 sm:justify-start">
+                  <Link to="/cart">
                     <ButtonFirst
-                      text="ยืนยันคำสั่งซื้อ"
+                      text="กลับไปที่ตะกร้าสินค้า"
                       type="button"
                       isPending={false} // ปุ่มลิงก์ไม่ต้องใช้ isSubmitting
                     />
                   </Link>
-                </div> */}
+                </div>
               </div>
             </form>
           </section>

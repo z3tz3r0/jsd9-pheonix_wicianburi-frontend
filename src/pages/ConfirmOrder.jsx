@@ -1,8 +1,6 @@
+import ButtonMain from "@/components/ButtonMain";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import ButtonFirst from "../components/account/ButtonFirst";
-import FormInputs from "../components/account/FormInputs";
 import useAuth from "../context/useAuth";
 import useCart from "../context/useCart";
 
@@ -16,24 +14,6 @@ export default function ConfirmOrder() {
   const navigate = useNavigate();
   const { cart, getSubtotal, removeFromCart } = useCart();
   const { user } = useAuth();
-
-  const { register, handleSubmit, reset } = useForm();
-
-  useEffect(() => {
-    if (user) {
-      reset({
-        email: user.email,
-        phone: user.phone,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        address: user.address?.street,
-        subDistrict: user.address?.subDistrict,
-        district: user.address?.district,
-        province: user.address?.province,
-        postalCode: user.address?.postal,
-      });
-    }
-  }, [user, reset]);
 
   const [delivery, setDelivery] = useState(0);
   const [total, setTotal] = useState(0);
@@ -54,23 +34,23 @@ export default function ConfirmOrder() {
     console.log("รายการสินค้าในตะกร้า:", cart);
     if (!user) {
       setShowAuthModal(true);
+      console.log("ผู้ใช้ไม่ได้เข้าสู่ระบบ");
       return;
     }
-    console.log("ข้อมูลสินค้าก่อนส่งไปหลังบ้าน:", cart);
 
     setIsSubmitting(true);
 
-    // ก้อนนี้คือส่งไป create order ในหลังบ้านทันที หน้าถัดไปแค่ get แล้ว put รูปขึ้น
+    // ก้อนนี้คือส่งไป create order ในหลังบ้าน
     const orderData = {
       userId: user._id,
       orderItems: cart.map((item) => ({
-        productId: item.productId,
-        variantValue: item.variantLabel || "",
+        productId: item.product_id,
+        variantValue: item.variantValue,
         quantity: item.quantity,
       })),
       totalAmount: total,
       deliveryFee: delivery,
-      createdAt: new Date(),
+      stateVariant: "รอยืนยัน",
     };
     try {
       const response = await api.post("api/orders", orderData);
@@ -78,7 +58,7 @@ export default function ConfirmOrder() {
       removeFromCart?.();
       navigate("/confirm-payment");
     } catch (error) {
-      console.error("Error submitting order:", error);
+      console.error("Error submitting order:", error.response?.data || error);
     } finally {
       setIsSubmitting(false);
     }
@@ -93,90 +73,53 @@ export default function ConfirmOrder() {
           <div className="space-y-6 lg:col-span-2">
             <h1 className="text-2xl font-bold">การยืนยันคำสั่งซื้อ</h1>
 
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="p-6 space-y-4 bg-white shadow rounded-2xl"
-            >
-              <h2 className="text-lg font-semibold">
-                ตรวจสอบรายละเอียดการจัดส่ง
-              </h2>
+            <div className="p-6 space-y-4 bg-white shadow rounded-2xl">
+              <h2 className="text-lg font-semibold">ที่อยู่จัดส่ง</h2>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <FormInputs
-                  register={register}
-                  name="email"
-                  type="email"
-                  placeholder="อีเมล"
-                  readOnly
-                  className={"cursor-not-allowed text-gray-500 border-transparent"}
-                />
-                <FormInputs
-                  register={register}
-                  name="phone"
-                  type="tel"
-                  placeholder="เบอร์โทรศัพท์"
-                  readOnly
-                />
-                <FormInputs
-                  register={register}
-                  name="firstName"
-                  type="text"
-                  placeholder="ชื่อ"
-                  readOnly
-                />
-                <FormInputs
-                  register={register}
-                  name="lastName"
-                  type="text"
-                  placeholder="นามสกุล"
-                  readOnly
-                />
-                <FormInputs
-                  register={register}
-                  name="address"
-                  type="text"
-                  placeholder="ที่อยู่"
-                  className="sm:col-span-2"
-                  readOnly
-                />
-                <FormInputs
-                  register={register}
-                  name="subDistrict"
-                  type="text"
-                  placeholder="ตำบล"
-                  readOnly
-                />
-                <FormInputs
-                  register={register}
-                  name="district"
-                  type="text"
-                  placeholder="อำเภอ"
-                  readOnly
-                />
-                <FormInputs
-                  register={register}
-                  name="province"
-                  type="text"
-                  placeholder="จังหวัด"
-                  readOnly
-                />
-                <FormInputs
-                  register={register}
-                  name="postalCode"
-                  type="text"
-                  placeholder="รหัสไปรษณีย์"
-                  readOnly
-                />
-              </div>
+              {user ? (
+                <div className="space-y-2 text-gray-700">
+                  <p>
+                    <strong>อีเมล:</strong> {user.email || "-"}
+                  </p>
+                  <p>
+                    <strong>เบอร์โทร:</strong> {user.phone || "-"}
+                  </p>
+                  <p>
+                    <strong>ชื่อ:</strong> {user.firstName || "-"}{" "}
+                    {user.lastName || "-"}
+                  </p>
+                  <p>
+                    <strong>ที่อยู่:</strong> {user.address?.street || "-"}
+                  </p>
+                  <p>
+                    <strong>ตำบล/แขวง:</strong>{" "}
+                    {user.address?.subDistrict || "-"}
+                  </p>
+                  <p>
+                    <strong>อำเภอ/เขต:</strong> {user.address?.district || "-"}
+                  </p>
+                  <p>
+                    <strong>จังหวัด:</strong> {user.address?.province || "-"}
+                  </p>
+                  <p>
+                    <strong>รหัสไปรษณีย์:</strong> {user.address?.postal || "-"}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-red-500">
+                  กรุณาเข้าสู่ระบบก่อนทำการสั่งซื้อ
+                </p>
+              )}
 
-              <div>
-                <ButtonFirst
-                  text="ยืนยันคำสั่งซื้อ"
-                  type="submit"
-                  isPending={isSubmitting}
-                />
+              <div className="flex flex-row gap-4 sm:flex-row sm:justify-between">
+                <ButtonMain text="ยืนยันคำสั่งซื้อ" onClick={onSubmit} isPending={isSubmitting} className="w-auto mt-8 mb-8 sm:w-auto">
+                  ยืนยันคำสั่งซื้อ
+                </ButtonMain>
+                {/* <ButtonMain text="แก้ไขข้อมูลจัดส่ง" onClick={() => navigate("/account")} className="mt-8 mb-8 sm:w-fit">
+                  แก้ไขข้อมูลจัดส่ง
+                </ButtonMain> */}
               </div>
-            </form>
+            </div>
           </div>
 
           {/* Right side: Order Summary */}
@@ -206,7 +149,7 @@ export default function ConfirmOrder() {
                         <td className="py-2">
                           {item.name}
                           {item.variant?.label &&
-                            `(${item.variant.label})`}x {item.quantity}
+                            `(${item.variant.label})`} x {item.quantity}
                         </td>
                         <td className="py-2 text-right">
                           ฿ {(item.price * item.quantity).toLocaleString()}

@@ -48,7 +48,7 @@ export const CartProvider = ({ children }) => {
 
   // Add item to cart
   const addToCart = (product) => {
-    // console.log(product)
+    console.log(product)
     // console.log(cart)
     const existingItem = cart.find(
       (item) => item.productId === product.productId && item.variantValue === product.variantValue
