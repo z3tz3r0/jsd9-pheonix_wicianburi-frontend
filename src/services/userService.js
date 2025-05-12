@@ -19,7 +19,9 @@ export const getCurrentUser = async () => {
     });
     return res.data;
   } catch (error) {
-    console.error("getCurrentUser error:", error);
+    if (!(error.response && error.response.status === 401)) {
+      console.error("getCurrentUser error:", error);
+    }
     return null;
   }
 };
