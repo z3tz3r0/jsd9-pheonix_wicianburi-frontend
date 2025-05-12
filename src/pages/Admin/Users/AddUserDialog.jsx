@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { PlusIcon } from 'lucide-react';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createUser } from '../services/userApi';
 import UserForm from './UserForm';
 
@@ -35,7 +35,7 @@ const AddUserDialog = ({ onUserAdded }) => {
         <SheetHeader>
           <SheetTitle>เพิ่มผู้ใช้ใหม่</SheetTitle>
         </SheetHeader>
-        <div className="px-4">
+        <div className="px-4 py-8">
           <UserForm onSubmit={handleAddUser} />
         </div>
       </SheetContent>

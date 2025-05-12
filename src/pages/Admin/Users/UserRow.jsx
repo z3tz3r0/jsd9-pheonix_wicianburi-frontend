@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from "@/components/ui/table";
-import React from 'react';
+import { PencilIcon, TrashIcon } from 'lucide-react';
 import DeleteConfirmationDialog from './DeleteConfirmationDialog';
 import EditUserDialog from './EditUserDialog';
 
@@ -16,10 +16,14 @@ const UserRow = ({ user, onUserUpdated, onUserDeleted }) => {
       <TableCell>{user.isVerified ? 'ใช่' : 'ไม่ใช่'}</TableCell>
       <TableCell className="text-right">
         <EditUserDialog user={user} onUserUpdated={onUserUpdated}>
-          <Button variant="ghost" size="sm" className="mr-2">แก้ไข</Button>
+          <Button variant="ghost" size="icon" title="แก้ไข">
+            <PencilIcon className="w-4 h-4" />
+          </Button>
         </EditUserDialog>
         <DeleteConfirmationDialog user={user} onUserDeleted={onUserDeleted}>
-          <Button variant="ghost" size="sm" className="text-red-600 hover:text-red-800">ลบ</Button>
+          <Button variant="ghost" size="icon" title="ลบ" className="text-red-600 hover:text-red-700">
+            <TrashIcon className="w-4 h-4" />
+          </Button>
         </DeleteConfirmationDialog>
       </TableCell>
     </TableRow>

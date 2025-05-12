@@ -72,7 +72,7 @@ const ProductTable = ({ products = [], isLoading, onProductChange }) => {
                       </Button>
                     </EditProductDialog>
                     <DeleteConfirmationDialog productId={product._id || product.productId} productName={product.name} onDeletedProduct={onProductChange}>
-                      <Button variant="ghost" size="icon" title="ลบ">
+                      <Button variant="ghost" size="icon" title="ลบ" className="text-red-600 hover:text-red-700">
                         <TrashIcon className="w-4 h-4" />
                       </Button>
                     </DeleteConfirmationDialog>
