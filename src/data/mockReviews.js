@@ -1,7 +1,7 @@
 const mockReviews = [
   {
     review_id: 1,
-    product_id: 1,
+    productId: 1,
     name: "Kob",
     stars: 4.5,
     comment:
@@ -10,7 +10,7 @@ const mockReviews = [
   },
   {
     review_id: 2,
-    product_id: 1,
+    productId: 1,
     name: "Wang",
     stars: 4.8,
     comment:
@@ -19,7 +19,7 @@ const mockReviews = [
   },
   {
     review_id: 3,
-    product_id: 1,
+    productId: 1,
     name: "Tong",
     stars: 5.0,
     comment:
@@ -28,7 +28,7 @@ const mockReviews = [
   },
   {
     review_id: 4,
-    product_id: 1,
+    productId: 1,
     name: "HotFire",
     stars: 4.0,
     comment: "Good chicken, but a bit dry this time. Usually it's better.",
@@ -36,7 +36,7 @@ const mockReviews = [
   },
   {
     review_id: 5,
-    product_id: 1,
+    productId: 1,
     name: "Alice",
     stars: 4.2,
     comment: "Enjoyed the meal, good portion size for the price.",
@@ -44,7 +44,7 @@ const mockReviews = [
   },
   {
     review_id: 6,
-    product_id: 1,
+    productId: 1,
     name: "Bob",
     stars: 4.6,
     comment:
@@ -53,7 +53,7 @@ const mockReviews = [
   },
   {
     review_id: 7,
-    product_id: 1,
+    productId: 1,
     name: "Charlie",
     stars: 3.9,
     comment: "It was okay. Nothing spectacular, but decent grilled chicken.",
@@ -61,7 +61,7 @@ const mockReviews = [
   },
   {
     review_id: 8,
-    product_id: 1,
+    productId: 1,
     name: "David",
     stars: 4.7,
     comment: "Consistently good quality. My go-to for grilled chicken.",
@@ -69,7 +69,7 @@ const mockReviews = [
   },
   {
     review_id: 9,
-    product_id: 1,
+    productId: 1,
     name: "Eve",
     stars: 4.3,
     comment: "Delivery was quick and the chicken was still hot. Satisfied.",
@@ -77,7 +77,7 @@ const mockReviews = [
   },
   {
     review_id: 10,
-    product_id: 1,
+    productId: 1,
     name: "Frank",
     stars: 4.9,
     comment: "Superb flavor profile. The skin was perfectly crispy.",
@@ -87,7 +87,7 @@ const mockReviews = [
   // Product 2 Reviews (10) - Assuming Product 2 is Sticky Rice
   {
     review_id: 11,
-    product_id: 2,
+    productId: 2,
     name: "Grace",
     stars: 4.0,
     comment: "Good sticky rice, paired well with the chicken.",
@@ -95,7 +95,7 @@ const mockReviews = [
   },
   {
     review_id: 12,
-    product_id: 2,
+    productId: 2,
     name: "Heidi",
     stars: 3.5,
     comment: "A bit hard, maybe cooked too long ago?",
@@ -103,7 +103,7 @@ const mockReviews = [
   },
   {
     review_id: 13,
-    product_id: 2,
+    productId: 2,
     name: "Ivan",
     stars: 4.5,
     comment: "Perfectly cooked sticky rice, soft and chewy.",
@@ -111,7 +111,7 @@ const mockReviews = [
   },
   {
     review_id: 14,
-    product_id: 2,
+    productId: 2,
     name: "Judy",
     stars: 4.2,
     comment: "Generous portion of sticky rice.",
@@ -119,7 +119,7 @@ const mockReviews = [
   },
   {
     review_id: 15,
-    product_id: 2,
+    productId: 2,
     name: "Liam",
     stars: 4.0,
     comment: "Standard sticky rice, does the job.",
@@ -127,7 +127,7 @@ const mockReviews = [
   },
   {
     review_id: 16,
-    product_id: 2,
+    productId: 2,
     name: "Mia",
     stars: 3.8,
     comment: "It was okay, had better elsewhere.",
@@ -135,7 +135,7 @@ const mockReviews = [
   },
   {
     review_id: 17,
-    product_id: 2,
+    productId: 2,
     name: "Noah",
     stars: 4.6,
     comment: "Fresh and delicious sticky rice.",
@@ -143,7 +143,7 @@ const mockReviews = [
   },
   {
     review_id: 18,
-    product_id: 2,
+    productId: 2,
     name: "Olivia",
     stars: 4.1,
     comment: "Good texture and taste.",
@@ -151,7 +151,7 @@ const mockReviews = [
   },
   {
     review_id: 19,
-    product_id: 2,
+    productId: 2,
     name: "Peter",
     stars: 4.3,
     comment: "Essential side for the grilled chicken!",
@@ -159,7 +159,7 @@ const mockReviews = [
   },
   {
     review_id: 20,
-    product_id: 2,
+    productId: 2,
     name: "Quinn",
     stars: 3.7,
     comment: "Slightly dry, but edible.",
@@ -169,7 +169,7 @@ const mockReviews = [
   // Product 3 Reviews (10) - Assuming Product 3 is Papaya Salad (Som Tum)
   {
     review_id: 21,
-    product_id: 3,
+    productId: 3,
     name: "Ruby",
     stars: 4.8,
     comment: "Spicy and refreshing Som Tum! Loved the balance of flavors.",
@@ -177,7 +177,7 @@ const mockReviews = [
   },
   {
     review_id: 22,
-    product_id: 3,
+    productId: 3,
     name: "Sam",
     stars: 4.5,
     comment: "Authentic Isaan style papaya salad. Very tasty.",
@@ -185,7 +185,7 @@ const mockReviews = [
   },
   {
     review_id: 23,
-    product_id: 3,
+    productId: 3,
     name: "Tara",
     stars: 3.8,
     comment: "A bit too sweet for my liking, but still good.",
@@ -193,7 +193,7 @@ const mockReviews = [
   },
   {
     review_id: 24,
-    product_id: 3,
+    productId: 3,
     name: "Uma",
     stars: 5.0,
     comment: "Perfect Som Tum! Just the right amount of spice and sourness.",
@@ -201,7 +201,7 @@ const mockReviews = [
   },
   {
     review_id: 25,
-    product_id: 3,
+    productId: 3,
     name: "Victor",
     stars: 4.2,
     comment: "Fresh ingredients, good crunch.",
@@ -209,7 +209,7 @@ const mockReviews = [
   },
   {
     review_id: 26,
-    product_id: 3,
+    productId: 3,
     name: "Wendy",
     stars: 4.0,
     comment: "Asked for mild, but it was still quite spicy.",
@@ -217,7 +217,7 @@ const mockReviews = [
   },
   {
     review_id: 27,
-    product_id: 3,
+    productId: 3,
     name: "Xavier",
     stars: 4.6,
     comment: "Delicious and addictive papaya salad.",
@@ -225,7 +225,7 @@ const mockReviews = [
   },
   {
     review_id: 28,
-    product_id: 3,
+    productId: 3,
     name: "Yara",
     stars: 4.3,
     comment: "Good portion size, very flavorful.",
@@ -233,7 +233,7 @@ const mockReviews = [
   },
   {
     review_id: 29,
-    product_id: 3,
+    productId: 3,
     name: "Zane",
     stars: 4.7,
     comment: "One of the best Som Tum I've had delivered.",
@@ -241,7 +241,7 @@ const mockReviews = [
   },
   {
     review_id: 30,
-    product_id: 3,
+    productId: 3,
     name: "Kob",
     stars: 4.4,
     comment: "Great side dish to cut through the richness of the chicken.",
@@ -251,7 +251,7 @@ const mockReviews = [
   // Product 4 Reviews (10) - Assuming Product 4 is Grilled Pork Neck (Kor Moo Yang)
   {
     review_id: 31,
-    product_id: 4,
+    productId: 4,
     name: "Wang",
     stars: 4.9,
     comment: "Tender and juicy pork neck, perfectly grilled.",
@@ -259,7 +259,7 @@ const mockReviews = [
   },
   {
     review_id: 32,
-    product_id: 4,
+    productId: 4,
     name: "Tong",
     stars: 4.7,
     comment: "Amazing flavor, the marinade is incredible.",
@@ -267,7 +267,7 @@ const mockReviews = [
   },
   {
     review_id: 33,
-    product_id: 4,
+    productId: 4,
     name: "HotFire",
     stars: 4.5,
     comment: "Very tasty Kor Moo Yang, good fat-to-meat ratio.",
@@ -275,7 +275,7 @@ const mockReviews = [
   },
   {
     review_id: 34,
-    product_id: 4,
+    productId: 4,
     name: "Alice",
     stars: 4.2,
     comment: "A bit too fatty in some pieces, but overall delicious.",
@@ -283,7 +283,7 @@ const mockReviews = [
   },
   {
     review_id: 35,
-    product_id: 4,
+    productId: 4,
     name: "Bob",
     stars: 5.0,
     comment: "Absolutely perfect! Melt-in-your-mouth pork.",
@@ -291,7 +291,7 @@ const mockReviews = [
   },
   {
     review_id: 36,
-    product_id: 4,
+    productId: 4,
     name: "Charlie",
     stars: 4.6,
     comment: "Goes perfectly with the spicy dipping sauce.",
@@ -299,7 +299,7 @@ const mockReviews = [
   },
   {
     review_id: 37,
-    product_id: 4,
+    productId: 4,
     name: "David",
     stars: 4.3,
     comment: "Good portion, well-cooked.",
@@ -307,7 +307,7 @@ const mockReviews = [
   },
   {
     review_id: 38,
-    product_id: 4,
+    productId: 4,
     name: "Eve",
     stars: 4.8,
     comment: "Highly recommend the grilled pork neck!",
@@ -315,7 +315,7 @@ const mockReviews = [
   },
   {
     review_id: 39,
-    product_id: 4,
+    productId: 4,
     name: "Frank",
     stars: 4.0,
     comment: "Slightly chewy this time, but usually it's great.",
@@ -323,7 +323,7 @@ const mockReviews = [
   },
   {
     review_id: 40,
-    product_id: 4,
+    productId: 4,
     name: "Grace",
     stars: 4.7,
     comment: "Smoky flavor was excellent.",
@@ -333,7 +333,7 @@ const mockReviews = [
   // Product 5 Reviews (10) - Assuming Product 5 is Spicy Dipping Sauce (Nam Jim Jaew)
   {
     review_id: 41,
-    product_id: 5,
+    productId: 5,
     name: "Heidi",
     stars: 4.5,
     comment: "Great Nam Jim Jaew, perfect balance of spicy, sour, and salty.",
@@ -341,7 +341,7 @@ const mockReviews = [
   },
   {
     review_id: 42,
-    product_id: 5,
+    productId: 5,
     name: "Ivan",
     stars: 4.2,
     comment: "Good sauce, complements the grilled meats well.",
@@ -349,7 +349,7 @@ const mockReviews = [
   },
   {
     review_id: 43,
-    product_id: 5,
+    productId: 5,
     name: "Judy",
     stars: 4.8,
     comment:
@@ -358,7 +358,7 @@ const mockReviews = [
   },
   {
     review_id: 44,
-    product_id: 5,
+    productId: 5,
     name: "Liam",
     stars: 3.9,
     comment: "A bit too watery for my preference.",
@@ -366,7 +366,7 @@ const mockReviews = [
   },
   {
     review_id: 45,
-    product_id: 5,
+    productId: 5,
     name: "Mia",
     stars: 4.6,
     comment: "Authentic taste, very flavorful.",
@@ -374,7 +374,7 @@ const mockReviews = [
   },
   {
     review_id: 46,
-    product_id: 5,
+    productId: 5,
     name: "Noah",
     stars: 4.0,
     comment: "It's a good dipping sauce, maybe a little more spice needed.",
@@ -382,7 +382,7 @@ const mockReviews = [
   },
   {
     review_id: 47,
-    product_id: 5,
+    productId: 5,
     name: "Olivia",
     stars: 5.0,
     comment: "Best Nam Jim Jaew I've had!",
@@ -390,7 +390,7 @@ const mockReviews = [
   },
   {
     review_id: 48,
-    product_id: 5,
+    productId: 5,
     name: "Peter",
     stars: 4.3,
     comment: "Essential for the grilled meats.",
@@ -398,7 +398,7 @@ const mockReviews = [
   },
   {
     review_id: 49,
-    product_id: 5,
+    productId: 5,
     name: "Quinn",
     stars: 4.7,
     comment: "Really enhances the flavor of the chicken and pork.",
@@ -406,7 +406,7 @@ const mockReviews = [
   },
   {
     review_id: 50,
-    product_id: 5,
+    productId: 5,
     name: "Ruby",
     stars: 4.1,
     comment: "Decent sauce, good flavor.",
@@ -416,7 +416,7 @@ const mockReviews = [
   // Product 6 Reviews (10)
   {
     review_id: 51,
-    product_id: 6,
+    productId: 6,
     name: "Sam",
     stars: 4.2,
     comment: "Good value combo set.",
@@ -424,7 +424,7 @@ const mockReviews = [
   },
   {
     review_id: 52,
-    product_id: 6,
+    productId: 6,
     name: "Tara",
     stars: 4.5,
     comment: "Perfect for a quick lunch.",
@@ -432,7 +432,7 @@ const mockReviews = [
   },
   {
     review_id: 53,
-    product_id: 6,
+    productId: 6,
     name: "Uma",
     stars: 4.0,
     comment: "Chicken was slightly dry.",
@@ -440,7 +440,7 @@ const mockReviews = [
   },
   {
     review_id: 54,
-    product_id: 6,
+    productId: 6,
     name: "Victor",
     stars: 4.6,
     comment: "Everything tasted great.",
@@ -448,7 +448,7 @@ const mockReviews = [
   },
   {
     review_id: 55,
-    product_id: 6,
+    productId: 6,
     name: "Wendy",
     stars: 4.3,
     comment: "Convenient and tasty.",
@@ -456,7 +456,7 @@ const mockReviews = [
   },
   {
     review_id: 56,
-    product_id: 6,
+    productId: 6,
     name: "Xavier",
     stars: 4.7,
     comment: "Loved the variety in the set.",
@@ -464,7 +464,7 @@ const mockReviews = [
   },
   {
     review_id: 57,
-    product_id: 6,
+    productId: 6,
     name: "Yara",
     stars: 3.9,
     comment: "Rice portion was small.",
@@ -472,7 +472,7 @@ const mockReviews = [
   },
   {
     review_id: 58,
-    product_id: 6,
+    productId: 6,
     name: "Zane",
     stars: 4.4,
     comment: "Solid meal option.",
@@ -480,7 +480,7 @@ const mockReviews = [
   },
   {
     review_id: 59,
-    product_id: 6,
+    productId: 6,
     name: "Kob",
     stars: 4.8,
     comment: "Excellent combination.",
@@ -488,7 +488,7 @@ const mockReviews = [
   },
   {
     review_id: 60,
-    product_id: 6,
+    productId: 6,
     name: "Wang",
     stars: 4.1,
     comment: "Good, but not outstanding.",
@@ -498,7 +498,7 @@ const mockReviews = [
   // Product 7 Reviews (10)
   {
     review_id: 61,
-    product_id: 7,
+    productId: 7,
     name: "Tong",
     stars: 3.8,
     comment: "Soup was a bit bland.",
@@ -506,7 +506,7 @@ const mockReviews = [
   },
   {
     review_id: 62,
-    product_id: 7,
+    productId: 7,
     name: "HotFire",
     stars: 4.5,
     comment: "Hearty and flavorful soup.",
@@ -514,7 +514,7 @@ const mockReviews = [
   },
   {
     review_id: 63,
-    product_id: 7,
+    productId: 7,
     name: "Alice",
     stars: 4.2,
     comment: "Nice addition to the meal.",
@@ -522,7 +522,7 @@ const mockReviews = [
   },
   {
     review_id: 64,
-    product_id: 7,
+    productId: 7,
     name: "Bob",
     stars: 4.7,
     comment: "Loved the spicy kick!",
@@ -530,7 +530,7 @@ const mockReviews = [
   },
   {
     review_id: 65,
-    product_id: 7,
+    productId: 7,
     name: "Charlie",
     stars: 4.0,
     comment: "Good, solid Tom Saap.",
@@ -538,7 +538,7 @@ const mockReviews = [
   },
   {
     review_id: 66,
-    product_id: 7,
+    productId: 7,
     name: "David",
     stars: 4.4,
     comment: "Tender pork ribs in the soup.",
@@ -546,7 +546,7 @@ const mockReviews = [
   },
   {
     review_id: 67,
-    product_id: 7,
+    productId: 7,
     name: "Eve",
     stars: 4.9,
     comment: "Perfectly sour and spicy.",
@@ -554,7 +554,7 @@ const mockReviews = [
   },
   {
     review_id: 68,
-    product_id: 7,
+    productId: 7,
     name: "Frank",
     stars: 4.1,
     comment: "A little too oily.",
@@ -562,7 +562,7 @@ const mockReviews = [
   },
   {
     review_id: 69,
-    product_id: 7,
+    productId: 7,
     name: "Grace",
     stars: 4.6,
     comment: "Warming and delicious.",
@@ -570,7 +570,7 @@ const mockReviews = [
   },
   {
     review_id: 70,
-    product_id: 7,
+    productId: 7,
     name: "Heidi",
     stars: 4.3,
     comment: "Generous amount of herbs.",
@@ -580,7 +580,7 @@ const mockReviews = [
   // Product 8 Reviews (10)
   {
     review_id: 71,
-    product_id: 8,
+    productId: 8,
     name: "Ivan",
     stars: 4.0,
     comment: "Standard Thai iced tea.",
@@ -588,7 +588,7 @@ const mockReviews = [
   },
   {
     review_id: 72,
-    product_id: 8,
+    productId: 8,
     name: "Judy",
     stars: 4.6,
     comment: "Sweet and refreshing!",
@@ -596,7 +596,7 @@ const mockReviews = [
   },
   {
     review_id: 73,
-    product_id: 8,
+    productId: 8,
     name: "Liam",
     stars: 3.7,
     comment: "A bit too sweet for me.",
@@ -604,7 +604,7 @@ const mockReviews = [
   },
   {
     review_id: 74,
-    product_id: 8,
+    productId: 8,
     name: "Mia",
     stars: 4.8,
     comment: "Perfectly brewed Thai tea.",
@@ -612,7 +612,7 @@ const mockReviews = [
   },
   {
     review_id: 75,
-    product_id: 8,
+    productId: 8,
     name: "Noah",
     stars: 4.2,
     comment: "Good thirst quencher.",
@@ -620,7 +620,7 @@ const mockReviews = [
   },
   {
     review_id: 76,
-    product_id: 8,
+    productId: 8,
     name: "Olivia",
     stars: 4.5,
     comment: "Creamy and delicious.",
@@ -628,7 +628,7 @@ const mockReviews = [
   },
   {
     review_id: 77,
-    product_id: 8,
+    productId: 8,
     name: "Peter",
     stars: 4.1,
     comment: "Nice color and flavor.",
@@ -636,7 +636,7 @@ const mockReviews = [
   },
   {
     review_id: 78,
-    product_id: 8,
+    productId: 8,
     name: "Quinn",
     stars: 4.7,
     comment: "Loved it with the spicy food.",
@@ -644,7 +644,7 @@ const mockReviews = [
   },
   {
     review_id: 79,
-    product_id: 8,
+    productId: 8,
     name: "Ruby",
     stars: 4.3,
     comment: "Good amount of ice.",
@@ -652,7 +652,7 @@ const mockReviews = [
   },
   {
     review_id: 80,
-    product_id: 8,
+    productId: 8,
     name: "Sam",
     stars: 4.9,
     comment: "One of the best Thai teas.",
@@ -662,7 +662,7 @@ const mockReviews = [
   // Product 9 Reviews (10)
   {
     review_id: 81,
-    product_id: 9,
+    productId: 9,
     name: "Tara",
     stars: 4.4,
     comment: "Crispy and tasty chicken skin.",
@@ -670,7 +670,7 @@ const mockReviews = [
   },
   {
     review_id: 82,
-    product_id: 9,
+    productId: 9,
     name: "Uma",
     stars: 4.0,
     comment: "A bit greasy, but good.",
@@ -678,7 +678,7 @@ const mockReviews = [
   },
   {
     review_id: 83,
-    product_id: 9,
+    productId: 9,
     name: "Victor",
     stars: 4.8,
     comment: "Addictive snack!",
@@ -686,7 +686,7 @@ const mockReviews = [
   },
   {
     review_id: 84,
-    product_id: 9,
+    productId: 9,
     name: "Wendy",
     stars: 4.2,
     comment: "Nice crunchy texture.",
@@ -694,7 +694,7 @@ const mockReviews = [
   },
   {
     review_id: 85,
-    product_id: 9,
+    productId: 9,
     name: "Xavier",
     stars: 4.6,
     comment: "Perfect beer snack.",
@@ -702,7 +702,7 @@ const mockReviews = [
   },
   {
     review_id: 86,
-    product_id: 9,
+    productId: 9,
     name: "Yara",
     stars: 3.9,
     comment: "Some pieces were burnt.",
@@ -710,7 +710,7 @@ const mockReviews = [
   },
   {
     review_id: 87,
-    product_id: 9,
+    productId: 9,
     name: "Zane",
     stars: 4.7,
     comment: "Flavorful and crispy.",
@@ -718,7 +718,7 @@ const mockReviews = [
   },
   {
     review_id: 88,
-    product_id: 9,
+    productId: 9,
     name: "Kob",
     stars: 4.1,
     comment: "Good portion for the price.",
@@ -726,7 +726,7 @@ const mockReviews = [
   },
   {
     review_id: 89,
-    product_id: 9,
+    productId: 9,
     name: "Wang",
     stars: 4.5,
     comment: "Loved the seasoning.",
@@ -734,7 +734,7 @@ const mockReviews = [
   },
   {
     review_id: 90,
-    product_id: 9,
+    productId: 9,
     name: "Tong",
     stars: 4.9,
     comment: "Can't stop eating these!",
@@ -744,7 +744,7 @@ const mockReviews = [
   // Product 10 Reviews (10)
   {
     review_id: 91,
-    product_id: 10,
+    productId: 10,
     name: "HotFire",
     stars: 4.3,
     comment: "Sweet and satisfying dessert.",
@@ -752,7 +752,7 @@ const mockReviews = [
   },
   {
     review_id: 92,
-    product_id: 10,
+    productId: 10,
     name: "Alice",
     stars: 4.7,
     comment: "Perfect mango sticky rice.",
@@ -760,7 +760,7 @@ const mockReviews = [
   },
   {
     review_id: 93,
-    product_id: 10,
+    productId: 10,
     name: "Bob",
     stars: 4.0,
     comment: "Mango was slightly sour.",
@@ -768,7 +768,7 @@ const mockReviews = [
   },
   {
     review_id: 94,
-    product_id: 10,
+    productId: 10,
     name: "Charlie",
     stars: 4.9,
     comment: "Creamy coconut milk, sweet mango.",
@@ -776,7 +776,7 @@ const mockReviews = [
   },
   {
     review_id: 95,
-    product_id: 10,
+    productId: 10,
     name: "David",
     stars: 4.2,
     comment: "Rice was a bit mushy.",
@@ -784,7 +784,7 @@ const mockReviews = [
   },
   {
     review_id: 96,
-    product_id: 10,
+    productId: 10,
     name: "Eve",
     stars: 4.6,
     comment: "Delicious end to the meal.",
@@ -792,7 +792,7 @@ const mockReviews = [
   },
   {
     review_id: 97,
-    product_id: 10,
+    productId: 10,
     name: "Frank",
     stars: 4.4,
     comment: "Good balance of sweetness.",
@@ -800,7 +800,7 @@ const mockReviews = [
   },
   {
     review_id: 98,
-    product_id: 10,
+    productId: 10,
     name: "Grace",
     stars: 5.0,
     comment: "Best mango sticky rice ever!",
@@ -808,7 +808,7 @@ const mockReviews = [
   },
   {
     review_id: 99,
-    product_id: 10,
+    productId: 10,
     name: "Heidi",
     stars: 4.1,
     comment: "Nice presentation.",
@@ -816,7 +816,7 @@ const mockReviews = [
   },
   {
     review_id: 100,
-    product_id: 10,
+    productId: 10,
     name: "Ivan",
     stars: 4.8,
     comment: "Mango was perfectly ripe.",
@@ -826,7 +826,7 @@ const mockReviews = [
   // Product 11 Reviews (10)
   {
     review_id: 101,
-    product_id: 11,
+    productId: 11,
     name: "Judy",
     stars: 4.5,
     comment: "Refreshing lemongrass drink.",
@@ -834,7 +834,7 @@ const mockReviews = [
   },
   {
     review_id: 102,
-    product_id: 11,
+    productId: 11,
     name: "Liam",
     stars: 4.1,
     comment: "A bit too subtle flavor.",
@@ -842,7 +842,7 @@ const mockReviews = [
   },
   {
     review_id: 103,
-    product_id: 11,
+    productId: 11,
     name: "Mia",
     stars: 4.7,
     comment: "Loved the aroma and taste.",
@@ -850,7 +850,7 @@ const mockReviews = [
   },
   {
     review_id: 104,
-    product_id: 11,
+    productId: 11,
     name: "Noah",
     stars: 4.3,
     comment: "Good alternative to soda.",
@@ -858,7 +858,7 @@ const mockReviews = [
   },
   {
     review_id: 105,
-    product_id: 11,
+    productId: 11,
     name: "Olivia",
     stars: 4.9,
     comment: "Perfectly balanced sweetness.",
@@ -866,7 +866,7 @@ const mockReviews = [
   },
   {
     review_id: 106,
-    product_id: 11,
+    productId: 11,
     name: "Peter",
     stars: 4.0,
     comment: "Slightly watery.",
@@ -874,7 +874,7 @@ const mockReviews = [
   },
   {
     review_id: 107,
-    product_id: 11,
+    productId: 11,
     name: "Quinn",
     stars: 4.6,
     comment: "Very soothing drink.",
@@ -882,7 +882,7 @@ const mockReviews = [
   },
   {
     review_id: 108,
-    product_id: 11,
+    productId: 11,
     name: "Ruby",
     stars: 4.2,
     comment: "Nice and light.",
@@ -890,7 +890,7 @@ const mockReviews = [
   },
   {
     review_id: 109,
-    product_id: 11,
+    productId: 11,
     name: "Sam",
     stars: 4.8,
     comment: "Great authentic flavor.",
@@ -898,7 +898,7 @@ const mockReviews = [
   },
   {
     review_id: 110,
-    product_id: 11,
+    productId: 11,
     name: "Tara",
     stars: 4.4,
     comment: "Enjoyed it very much.",
@@ -908,7 +908,7 @@ const mockReviews = [
   // Product 12 Reviews (10)
   {
     review_id: 111,
-    product_id: 12,
+    productId: 12,
     name: "Uma",
     stars: 4.6,
     comment: "Spicy and flavorful Larb Moo.",
@@ -916,7 +916,7 @@ const mockReviews = [
   },
   {
     review_id: 112,
-    product_id: 12,
+    productId: 12,
     name: "Victor",
     stars: 4.2,
     comment: "Good, but could use more herbs.",
@@ -924,7 +924,7 @@ const mockReviews = [
   },
   {
     review_id: 113,
-    product_id: 12,
+    productId: 12,
     name: "Wendy",
     stars: 4.8,
     comment: "Excellent balance of flavors.",
@@ -932,7 +932,7 @@ const mockReviews = [
   },
   {
     review_id: 114,
-    product_id: 12,
+    productId: 12,
     name: "Xavier",
     stars: 4.4,
     comment: "Tasty minced pork salad.",
@@ -940,7 +940,7 @@ const mockReviews = [
   },
   {
     review_id: 115,
-    product_id: 12,
+    productId: 12,
     name: "Yara",
     stars: 5.0,
     comment: "Perfect Larb! Just like in Isaan.",
@@ -948,7 +948,7 @@ const mockReviews = [
   },
   {
     review_id: 116,
-    product_id: 12,
+    productId: 12,
     name: "Zane",
     stars: 4.0,
     comment: "A bit too dry.",
@@ -956,7 +956,7 @@ const mockReviews = [
   },
   {
     review_id: 117,
-    product_id: 12,
+    productId: 12,
     name: "Kob",
     stars: 4.7,
     comment: "Loved the toasted rice powder.",
@@ -964,7 +964,7 @@ const mockReviews = [
   },
   {
     review_id: 118,
-    product_id: 12,
+    productId: 12,
     name: "Wang",
     stars: 4.3,
     comment: "Good level of spiciness.",
@@ -972,7 +972,7 @@ const mockReviews = [
   },
   {
     review_id: 119,
-    product_id: 12,
+    productId: 12,
     name: "Tong",
     stars: 4.9,
     comment: "Highly recommend this dish.",
@@ -980,7 +980,7 @@ const mockReviews = [
   },
   {
     review_id: 120,
-    product_id: 12,
+    productId: 12,
     name: "HotFire",
     stars: 4.5,
     comment: "Very satisfying.",
@@ -990,7 +990,7 @@ const mockReviews = [
   // Product 13 Reviews (10)
   {
     review_id: 121,
-    product_id: 13,
+    productId: 13,
     name: "Alice",
     stars: 4.1,
     comment: "Fish cakes were okay.",
@@ -998,7 +998,7 @@ const mockReviews = [
   },
   {
     review_id: 122,
-    product_id: 13,
+    productId: 13,
     name: "Bob",
     stars: 4.7,
     comment: "Flavorful and bouncy Tod Mun Pla.",
@@ -1006,7 +1006,7 @@ const mockReviews = [
   },
   {
     review_id: 123,
-    product_id: 13,
+    productId: 13,
     name: "Charlie",
     stars: 4.3,
     comment: "Good appetizer.",
@@ -1014,7 +1014,7 @@ const mockReviews = [
   },
   {
     review_id: 124,
-    product_id: 13,
+    productId: 13,
     name: "David",
     stars: 4.9,
     comment: "Loved the texture and taste.",
@@ -1022,7 +1022,7 @@ const mockReviews = [
   },
   {
     review_id: 125,
-    product_id: 13,
+    productId: 13,
     name: "Eve",
     stars: 3.9,
     comment: "A bit oily.",
@@ -1030,7 +1030,7 @@ const mockReviews = [
   },
   {
     review_id: 126,
-    product_id: 13,
+    productId: 13,
     name: "Frank",
     stars: 4.5,
     comment: "Served with a nice sweet chili sauce.",
@@ -1038,7 +1038,7 @@ const mockReviews = [
   },
   {
     review_id: 127,
-    product_id: 13,
+    productId: 13,
     name: "Grace",
     stars: 4.2,
     comment: "Decent fish cakes.",
@@ -1046,7 +1046,7 @@ const mockReviews = [
   },
   {
     review_id: 128,
-    product_id: 13,
+    productId: 13,
     name: "Heidi",
     stars: 4.8,
     comment: "Authentic Thai fish cakes.",
@@ -1054,7 +1054,7 @@ const mockReviews = [
   },
   {
     review_id: 129,
-    product_id: 13,
+    productId: 13,
     name: "Ivan",
     stars: 4.0,
     comment: "Slightly rubbery.",
@@ -1062,7 +1062,7 @@ const mockReviews = [
   },
   {
     review_id: 130,
-    product_id: 13,
+    productId: 13,
     name: "Judy",
     stars: 4.6,
     comment: "Very tasty snack.",
@@ -1072,7 +1072,7 @@ const mockReviews = [
   // Product 14 Reviews (10)
   {
     review_id: 131,
-    product_id: 14,
+    productId: 14,
     name: "Liam",
     stars: 4.4,
     comment: "Sweet chili sauce was good.",
@@ -1080,7 +1080,7 @@ const mockReviews = [
   },
   {
     review_id: 132,
-    product_id: 14,
+    productId: 14,
     name: "Mia",
     stars: 4.0,
     comment: "Standard sauce, nothing special.",
@@ -1088,7 +1088,7 @@ const mockReviews = [
   },
   {
     review_id: 133,
-    product_id: 14,
+    productId: 14,
     name: "Noah",
     stars: 4.8,
     comment: "Perfect dipping sauce for many items.",
@@ -1096,7 +1096,7 @@ const mockReviews = [
   },
   {
     review_id: 134,
-    product_id: 14,
+    productId: 14,
     name: "Olivia",
     stars: 4.2,
     comment: "A bit too sweet.",
@@ -1104,7 +1104,7 @@ const mockReviews = [
   },
   {
     review_id: 135,
-    product_id: 14,
+    productId: 14,
     name: "Peter",
     stars: 4.6,
     comment: "Nice balance of sweet and spicy.",
@@ -1112,7 +1112,7 @@ const mockReviews = [
   },
   {
     review_id: 136,
-    product_id: 14,
+    productId: 14,
     name: "Quinn",
     stars: 4.1,
     comment: "Good consistency.",
@@ -1120,7 +1120,7 @@ const mockReviews = [
   },
   {
     review_id: 137,
-    product_id: 14,
+    productId: 14,
     name: "Ruby",
     stars: 4.7,
     comment: "Goes well with fried items.",
@@ -1128,7 +1128,7 @@ const mockReviews = [
   },
   {
     review_id: 138,
-    product_id: 14,
+    productId: 14,
     name: "Sam",
     stars: 4.3,
     comment: "Decent flavor.",
@@ -1136,7 +1136,7 @@ const mockReviews = [
   },
   {
     review_id: 139,
-    product_id: 14,
+    productId: 14,
     name: "Tara",
     stars: 4.9,
     comment: "Love this sweet chili sauce!",
@@ -1144,7 +1144,7 @@ const mockReviews = [
   },
   {
     review_id: 140,
-    product_id: 14,
+    productId: 14,
     name: "Uma",
     stars: 4.5,
     comment: "Good quality sauce.",
@@ -1154,7 +1154,7 @@ const mockReviews = [
   // Product 15 Reviews (10)
   {
     review_id: 141,
-    product_id: 15,
+    productId: 15,
     name: "Victor",
     stars: 4.0,
     comment: "Just plain water.",
@@ -1162,7 +1162,7 @@ const mockReviews = [
   },
   {
     review_id: 142,
-    product_id: 15,
+    productId: 15,
     name: "Wendy",
     stars: 5.0,
     comment: "Hydrating!",
@@ -1170,7 +1170,7 @@ const mockReviews = [
   },
   {
     review_id: 143,
-    product_id: 15,
+    productId: 15,
     name: "Xavier",
     stars: 4.5,
     comment: "Cold and refreshing.",
@@ -1178,7 +1178,7 @@ const mockReviews = [
   },
   {
     review_id: 144,
-    product_id: 15,
+    productId: 15,
     name: "Yara",
     stars: 4.2,
     comment: "Standard bottled water.",
@@ -1186,7 +1186,7 @@ const mockReviews = [
   },
   {
     review_id: 145,
-    product_id: 15,
+    productId: 15,
     name: "Zane",
     stars: 4.8,
     comment: "Good brand of water.",
@@ -1194,7 +1194,7 @@ const mockReviews = [
   },
   {
     review_id: 146,
-    product_id: 15,
+    productId: 15,
     name: "Kob",
     stars: 4.3,
     comment: "Does the job.",
@@ -1202,7 +1202,7 @@ const mockReviews = [
   },
   {
     review_id: 147,
-    product_id: 15,
+    productId: 15,
     name: "Wang",
     stars: 4.6,
     comment: "Clean tasting water.",
@@ -1210,7 +1210,7 @@ const mockReviews = [
   },
   {
     review_id: 148,
-    product_id: 15,
+    productId: 15,
     name: "Tong",
     stars: 4.1,
     comment: "It's water.",
@@ -1218,7 +1218,7 @@ const mockReviews = [
   },
   {
     review_id: 149,
-    product_id: 15,
+    productId: 15,
     name: "HotFire",
     stars: 4.7,
     comment: "Necessary with spicy food.",
@@ -1226,7 +1226,7 @@ const mockReviews = [
   },
   {
     review_id: 150,
-    product_id: 15,
+    productId: 15,
     name: "Alice",
     stars: 4.4,
     comment: "Good size bottle.",
@@ -1236,7 +1236,7 @@ const mockReviews = [
   // Product 16 Reviews (10)
   {
     review_id: 151,
-    product_id: 16,
+    productId: 16,
     name: "Bob",
     stars: 4.7,
     comment: "Crispy and delicious spring rolls.",
@@ -1244,7 +1244,7 @@ const mockReviews = [
   },
   {
     review_id: 152,
-    product_id: 16,
+    productId: 16,
     name: "Charlie",
     stars: 4.3,
     comment: "Good filling, nice crunch.",
@@ -1252,7 +1252,7 @@ const mockReviews = [
   },
   {
     review_id: 153,
-    product_id: 16,
+    productId: 16,
     name: "David",
     stars: 4.9,
     comment: "Perfectly fried, not too oily.",
@@ -1260,7 +1260,7 @@ const mockReviews = [
   },
   {
     review_id: 154,
-    product_id: 16,
+    productId: 16,
     name: "Eve",
     stars: 4.1,
     comment: "Filling was a bit bland.",
@@ -1268,7 +1268,7 @@ const mockReviews = [
   },
   {
     review_id: 155,
-    product_id: 16,
+    productId: 16,
     name: "Frank",
     stars: 4.6,
     comment: "Great appetizer choice.",
@@ -1276,7 +1276,7 @@ const mockReviews = [
   },
   {
     review_id: 156,
-    product_id: 16,
+    productId: 16,
     name: "Grace",
     stars: 4.4,
     comment: "Tasty veggie spring rolls.",
@@ -1284,7 +1284,7 @@ const mockReviews = [
   },
   {
     review_id: 157,
-    product_id: 16,
+    productId: 16,
     name: "Heidi",
     stars: 4.8,
     comment: "Loved them with the sweet chili sauce.",
@@ -1292,7 +1292,7 @@ const mockReviews = [
   },
   {
     review_id: 158,
-    product_id: 16,
+    productId: 16,
     name: "Ivan",
     stars: 4.0,
     comment: "A little small.",
@@ -1300,7 +1300,7 @@ const mockReviews = [
   },
   {
     review_id: 159,
-    product_id: 16,
+    productId: 16,
     name: "Judy",
     stars: 4.5,
     comment: "Classic and well-executed.",
@@ -1308,7 +1308,7 @@ const mockReviews = [
   },
   {
     review_id: 160,
-    product_id: 16,
+    productId: 16,
     name: "Liam",
     stars: 4.7,
     comment: "Very satisfying crunch.",
@@ -1318,7 +1318,7 @@ const mockReviews = [
   // Product 17 Reviews (10)
   {
     review_id: 161,
-    product_id: 17,
+    productId: 17,
     name: "Mia",
     stars: 4.2,
     comment: "Isaan sausage was interesting.",
@@ -1326,7 +1326,7 @@ const mockReviews = [
   },
   {
     review_id: 162,
-    product_id: 17,
+    productId: 17,
     name: "Noah",
     stars: 4.8,
     comment: "Sour and savory, very authentic.",
@@ -1334,7 +1334,7 @@ const mockReviews = [
   },
   {
     review_id: 163,
-    product_id: 17,
+    productId: 17,
     name: "Olivia",
     stars: 4.5,
     comment: "Good texture and flavor.",
@@ -1342,7 +1342,7 @@ const mockReviews = [
   },
   {
     review_id: 164,
-    product_id: 17,
+    productId: 17,
     name: "Peter",
     stars: 4.0,
     comment: "A bit too sour for my taste.",
@@ -1350,7 +1350,7 @@ const mockReviews = [
   },
   {
     review_id: 165,
-    product_id: 17,
+    productId: 17,
     name: "Quinn",
     stars: 4.9,
     comment: "Loved the Sai Krok Isaan!",
@@ -1358,7 +1358,7 @@ const mockReviews = [
   },
   {
     review_id: 166,
-    product_id: 17,
+    productId: 17,
     name: "Ruby",
     stars: 4.3,
     comment: "Served with fresh ginger and chili.",
@@ -1366,7 +1366,7 @@ const mockReviews = [
   },
   {
     review_id: 167,
-    product_id: 17,
+    productId: 17,
     name: "Sam",
     stars: 4.7,
     comment: "Great example of this dish.",
@@ -1374,7 +1374,7 @@ const mockReviews = [
   },
   {
     review_id: 168,
-    product_id: 17,
+    productId: 17,
     name: "Tara",
     stars: 4.1,
     comment: "Slightly greasy.",
@@ -1382,7 +1382,7 @@ const mockReviews = [
   },
   {
     review_id: 169,
-    product_id: 17,
+    productId: 17,
     name: "Uma",
     stars: 4.6,
     comment: "Unique and delicious flavor.",
@@ -1390,7 +1390,7 @@ const mockReviews = [
   },
   {
     review_id: 170,
-    product_id: 17,
+    productId: 17,
     name: "Victor",
     stars: 4.4,
     comment: "Good portion size.",
@@ -1400,7 +1400,7 @@ const mockReviews = [
   // Product 18 Reviews (10)
   {
     review_id: 171,
-    product_id: 18,
+    productId: 18,
     name: "Wendy",
     stars: 4.5,
     comment: "Refreshing coconut water.",
@@ -1408,7 +1408,7 @@ const mockReviews = [
   },
   {
     review_id: 172,
-    product_id: 18,
+    productId: 18,
     name: "Xavier",
     stars: 4.1,
     comment: "A bit too sweet.",
@@ -1416,7 +1416,7 @@ const mockReviews = [
   },
   {
     review_id: 173,
-    product_id: 18,
+    productId: 18,
     name: "Yara",
     stars: 4.9,
     comment: "Fresh and natural taste.",
@@ -1424,7 +1424,7 @@ const mockReviews = [
   },
   {
     review_id: 174,
-    product_id: 18,
+    productId: 18,
     name: "Zane",
     stars: 4.3,
     comment: "Good hydration option.",
@@ -1432,7 +1432,7 @@ const mockReviews = [
   },
   {
     review_id: 175,
-    product_id: 18,
+    productId: 18,
     name: "Kob",
     stars: 4.7,
     comment: "Loved the little bits of pulp.",
@@ -1440,7 +1440,7 @@ const mockReviews = [
   },
   {
     review_id: 176,
-    product_id: 18,
+    productId: 18,
     name: "Wang",
     stars: 4.0,
     comment: "Standard canned coconut water.",
@@ -1448,7 +1448,7 @@ const mockReviews = [
   },
   {
     review_id: 177,
-    product_id: 18,
+    productId: 18,
     name: "Tong",
     stars: 4.6,
     comment: "Very refreshing on a hot day.",
@@ -1456,7 +1456,7 @@ const mockReviews = [
   },
   {
     review_id: 178,
-    product_id: 18,
+    productId: 18,
     name: "HotFire",
     stars: 4.2,
     comment: "Nice alternative drink.",
@@ -1464,7 +1464,7 @@ const mockReviews = [
   },
   {
     review_id: 179,
-    product_id: 18,
+    productId: 18,
     name: "Alice",
     stars: 4.8,
     comment: "Tastes great.",
@@ -1472,7 +1472,7 @@ const mockReviews = [
   },
   {
     review_id: 180,
-    product_id: 18,
+    productId: 18,
     name: "Bob",
     stars: 4.4,
     comment: "Good quality.",
@@ -1482,7 +1482,7 @@ const mockReviews = [
   // Product 19 Reviews (10)
   {
     review_id: 181,
-    product_id: 19,
+    productId: 19,
     name: "Charlie",
     stars: 4.6,
     comment: "Spicy beef salad was excellent.",
@@ -1490,7 +1490,7 @@ const mockReviews = [
   },
   {
     review_id: 182,
-    product_id: 19,
+    productId: 19,
     name: "David",
     stars: 4.2,
     comment: "Beef was slightly tough.",
@@ -1498,7 +1498,7 @@ const mockReviews = [
   },
   {
     review_id: 183,
-    product_id: 19,
+    productId: 19,
     name: "Eve",
     stars: 4.9,
     comment: "Amazing Nam Tok Nuea!",
@@ -1506,7 +1506,7 @@ const mockReviews = [
   },
   {
     review_id: 184,
-    product_id: 19,
+    productId: 19,
     name: "Frank",
     stars: 4.4,
     comment: "Great flavors, very aromatic.",
@@ -1514,7 +1514,7 @@ const mockReviews = [
   },
   {
     review_id: 185,
-    product_id: 19,
+    productId: 19,
     name: "Grace",
     stars: 4.7,
     comment: "Perfect level of spice and sourness.",
@@ -1522,7 +1522,7 @@ const mockReviews = [
   },
   {
     review_id: 186,
-    product_id: 19,
+    productId: 19,
     name: "Heidi",
     stars: 4.0,
     comment: "Good, but I prefer the pork version.",
@@ -1530,7 +1530,7 @@ const mockReviews = [
   },
   {
     review_id: 187,
-    product_id: 19,
+    productId: 19,
     name: "Ivan",
     stars: 4.8,
     comment: "Tender beef, lots of herbs.",
@@ -1538,7 +1538,7 @@ const mockReviews = [
   },
   {
     review_id: 188,
-    product_id: 19,
+    productId: 19,
     name: "Judy",
     stars: 4.3,
     comment: "Tasty beef salad.",
@@ -1546,7 +1546,7 @@ const mockReviews = [
   },
   {
     review_id: 189,
-    product_id: 19,
+    productId: 19,
     name: "Liam",
     stars: 5.0,
     comment: "Absolutely delicious!",
@@ -1554,7 +1554,7 @@ const mockReviews = [
   },
   {
     review_id: 190,
-    product_id: 19,
+    productId: 19,
     name: "Mia",
     stars: 4.5,
     comment: "Very satisfying dish.",
@@ -1564,7 +1564,7 @@ const mockReviews = [
   // Product 20 Reviews (10)
   {
     review_id: 191,
-    product_id: 20,
+    productId: 20,
     name: "Noah",
     stars: 4.3,
     comment: "Chicken satay was decent.",
@@ -1572,7 +1572,7 @@ const mockReviews = [
   },
   {
     review_id: 192,
-    product_id: 20,
+    productId: 20,
     name: "Olivia",
     stars: 4.8,
     comment: "Tender chicken, amazing peanut sauce.",
@@ -1580,7 +1580,7 @@ const mockReviews = [
   },
   {
     review_id: 193,
-    product_id: 20,
+    productId: 20,
     name: "Peter",
     stars: 4.1,
     comment: "Chicken was a bit dry.",
@@ -1588,7 +1588,7 @@ const mockReviews = [
   },
   {
     review_id: 194,
-    product_id: 20,
+    productId: 20,
     name: "Quinn",
     stars: 4.9,
     comment: "Best peanut sauce I've had!",
@@ -1596,7 +1596,7 @@ const mockReviews = [
   },
   {
     review_id: 195,
-    product_id: 20,
+    productId: 20,
     name: "Ruby",
     stars: 4.4,
     comment: "Good appetizer, nice flavor.",
@@ -1604,7 +1604,7 @@ const mockReviews = [
   },
   {
     review_id: 196,
-    product_id: 20,
+    productId: 20,
     name: "Sam",
     stars: 4.7,
     comment: "Well-marinated chicken.",
@@ -1612,7 +1612,7 @@ const mockReviews = [
   },
   {
     review_id: 197,
-    product_id: 20,
+    productId: 20,
     name: "Tara",
     stars: 4.2,
     comment: "Peanut sauce was a bit thin.",
@@ -1620,7 +1620,7 @@ const mockReviews = [
   },
   {
     review_id: 198,
-    product_id: 20,
+    productId: 20,
     name: "Uma",
     stars: 4.6,
     comment: "Tasty and satisfying.",
@@ -1628,7 +1628,7 @@ const mockReviews = [
   },
   {
     review_id: 199,
-    product_id: 20,
+    productId: 20,
     name: "Victor",
     stars: 4.0,
     comment: "Okay satay, nothing special.",
@@ -1636,7 +1636,7 @@ const mockReviews = [
   },
   {
     review_id: 200,
-    product_id: 20,
+    productId: 20,
     name: "Wendy",
     stars: 5.0,
     comment: "Perfect chicken satay!",
@@ -1645,7 +1645,7 @@ const mockReviews = [
   // Product 18 Reviews (5)
   {
     review_id: 201,
-    product_id: 18,
+    productId: 18,
     name: "Chris",
     stars: 4.5,
     comment: "Crunchy and delicious snack!",
@@ -1653,7 +1653,7 @@ const mockReviews = [
   },
   {
     review_id: 202,
-    product_id: 18,
+    productId: 18,
     name: "Dana",
     stars: 4.0,
     comment: "Good flavor, but a bit hard.",
@@ -1661,7 +1661,7 @@ const mockReviews = [
   },
   {
     review_id: 203,
-    product_id: 18,
+    productId: 18,
     name: "Ethan",
     stars: 4.8,
     comment: "Love these rice crackers!",
@@ -1669,7 +1669,7 @@ const mockReviews = [
   },
   {
     review_id: 204,
-    product_id: 18,
+    productId: 18,
     name: "Fiona",
     stars: 4.2,
     comment: "Healthy and tasty.",
@@ -1677,7 +1677,7 @@ const mockReviews = [
   },
   {
     review_id: 205,
-    product_id: 18,
+    productId: 18,
     name: "George",
     stars: 4.6,
     comment: "Great texture.",
@@ -1687,7 +1687,7 @@ const mockReviews = [
   // Product 19 Reviews (5)
   {
     review_id: 206,
-    product_id: 19,
+    productId: 19,
     name: "Mike",
     stars: 4.7,
     comment: "Chewy and flavorful jelly!",
@@ -1695,7 +1695,7 @@ const mockReviews = [
   },
   {
     review_id: 207,
-    product_id: 19,
+    productId: 19,
     name: "Nora",
     stars: 4.3,
     comment: "Unique taste from the rice.",
@@ -1703,7 +1703,7 @@ const mockReviews = [
   },
   {
     review_id: 208,
-    product_id: 19,
+    productId: 19,
     name: "Oscar",
     stars: 4.9,
     comment: "Delicious and fun to eat.",
@@ -1711,7 +1711,7 @@ const mockReviews = [
   },
   {
     review_id: 209,
-    product_id: 19,
+    productId: 19,
     name: "Paula",
     stars: 4.1,
     comment: "A bit too sweet for me.",
@@ -1719,7 +1719,7 @@ const mockReviews = [
   },
   {
     review_id: 210,
-    product_id: 19,
+    productId: 19,
     name: "Quentin",
     stars: 4.6,
     comment: "Enjoyed the mix of rice types.",
@@ -1729,7 +1729,7 @@ const mockReviews = [
   // Product 20 Reviews (5)
   {
     review_id: 211,
-    product_id: 20,
+    productId: 20,
     name: "Wendy",
     stars: 4.5,
     comment: "Jelly with rice is interesting.",
@@ -1737,7 +1737,7 @@ const mockReviews = [
   },
   {
     review_id: 212,
-    product_id: 20,
+    productId: 20,
     name: "Xavier",
     stars: 4.1,
     comment: "Subtle rice flavor.",
@@ -1745,7 +1745,7 @@ const mockReviews = [
   },
   {
     review_id: 213,
-    product_id: 20,
+    productId: 20,
     name: "Yara",
     stars: 4.9,
     comment: "Delicious and unique!",
@@ -1753,7 +1753,7 @@ const mockReviews = [
   },
   {
     review_id: 214,
-    product_id: 20,
+    productId: 20,
     name: "Zane",
     stars: 4.3,
     comment: "Chewy and fun.",
@@ -1761,7 +1761,7 @@ const mockReviews = [
   },
   {
     review_id: 215,
-    product_id: 20,
+    productId: 20,
     name: "Alice",
     stars: 4.7,
     comment: "Good sweetness.",
@@ -1771,7 +1771,7 @@ const mockReviews = [
   // Product 21 Reviews (5)
   {
     review_id: 216,
-    product_id: 21,
+    productId: 21,
     name: "Grace",
     stars: 4.7,
     comment: "Delicious rice milk!",
@@ -1779,7 +1779,7 @@ const mockReviews = [
   },
   {
     review_id: 217,
-    product_id: 21,
+    productId: 21,
     name: "Heidi",
     stars: 4.2,
     comment: "Smooth and creamy.",
@@ -1787,7 +1787,7 @@ const mockReviews = [
   },
   {
     review_id: 218,
-    product_id: 21,
+    productId: 21,
     name: "Ivan",
     stars: 4.9,
     comment: "Love the jasmine rice aroma.",
@@ -1795,7 +1795,7 @@ const mockReviews = [
   },
   {
     review_id: 219,
-    product_id: 21,
+    productId: 21,
     name: "Judy",
     stars: 4.4,
     comment: "Good alternative to dairy.",
@@ -1803,7 +1803,7 @@ const mockReviews = [
   },
   {
     review_id: 220,
-    product_id: 21,
+    productId: 21,
     name: "Kevin",
     stars: 4.8,
     comment: "Very refreshing.",
@@ -1813,7 +1813,7 @@ const mockReviews = [
   // Product 22 Reviews (5)
   {
     review_id: 221,
-    product_id: 22,
+    productId: 22,
     name: "Quentin",
     stars: 4.5,
     comment: "Nutty flavor from brown rice.",
@@ -1821,7 +1821,7 @@ const mockReviews = [
   },
   {
     review_id: 222,
-    product_id: 22,
+    productId: 22,
     name: "Rachel",
     stars: 4.0,
     comment: "Good source of fiber.",
@@ -1829,7 +1829,7 @@ const mockReviews = [
   },
   {
     review_id: 223,
-    product_id: 22,
+    productId: 22,
     name: "Steve",
     stars: 4.8,
     comment: "Enjoyed the earthy taste.",
@@ -1837,7 +1837,7 @@ const mockReviews = [
   },
   {
     review_id: 224,
-    product_id: 22,
+    productId: 22,
     name: "Tina",
     stars: 4.2,
     comment: "Healthy drink.",
@@ -1845,7 +1845,7 @@ const mockReviews = [
   },
   {
     review_id: 225,
-    product_id: 22,
+    productId: 22,
     name: "Uma",
     stars: 4.6,
     comment: "Not too sweet.",
@@ -1855,7 +1855,7 @@ const mockReviews = [
   // Product 23 Reviews (5)
   {
     review_id: 226,
-    product_id: 23,
+    productId: 23,
     name: "Alice",
     stars: 4.7,
     comment: "Great for cooking!",
@@ -1863,7 +1863,7 @@ const mockReviews = [
   },
   {
     review_id: 227,
-    product_id: 23,
+    productId: 23,
     name: "Bob",
     stars: 4.2,
     comment: "Neutral taste, good for frying.",
@@ -1871,7 +1871,7 @@ const mockReviews = [
   },
   {
     review_id: 228,
-    product_id: 23,
+    productId: 23,
     name: "Charlie",
     stars: 4.9,
     comment: "Love the health benefits.",
@@ -1879,7 +1879,7 @@ const mockReviews = [
   },
   {
     review_id: 229,
-    product_id: 23,
+    productId: 23,
     name: "David",
     stars: 4.4,
     comment: "Good quality rice bran oil.",
@@ -1887,7 +1887,7 @@ const mockReviews = [
   },
   {
     review_id: 230,
-    product_id: 23,
+    productId: 23,
     name: "Eve",
     stars: 4.8,
     comment: "Doesn't smoke easily.",
@@ -1897,7 +1897,7 @@ const mockReviews = [
   // Product 24 Reviews (5)
   {
     review_id: 231,
-    product_id: 24,
+    productId: 24,
     name: "Kevin",
     stars: 4.8,
     comment: "Premium quality oil.",
@@ -1905,7 +1905,7 @@ const mockReviews = [
   },
   {
     review_id: 232,
-    product_id: 24,
+    productId: 24,
     name: "Lily",
     stars: 4.3,
     comment: "Noticeable difference in cooking.",
@@ -1913,7 +1913,7 @@ const mockReviews = [
   },
   {
     review_id: 233,
-    product_id: 24,
+    productId: 24,
     name: "Mike",
     stars: 4.9,
     comment: "Worth the price for the health benefits.",
@@ -1921,7 +1921,7 @@ const mockReviews = [
   },
   {
     review_id: 234,
-    product_id: 24,
+    productId: 24,
     name: "Nora",
     stars: 4.1,
     comment: "Subtle flavor.",
@@ -1929,7 +1929,7 @@ const mockReviews = [
   },
   {
     review_id: 235,
-    product_id: 24,
+    productId: 24,
     name: "Oscar",
     stars: 4.7,
     comment: "Great for dressings too.",
@@ -1939,7 +1939,7 @@ const mockReviews = [
   // Product 25 Reviews (5)
   {
     review_id: 236,
-    product_id: 25,
+    productId: 25,
     name: "Uma",
     stars: 4.6,
     comment: "Smooth and easy to drink sake.",
@@ -1947,7 +1947,7 @@ const mockReviews = [
   },
   {
     review_id: 237,
-    product_id: 25,
+    productId: 25,
     name: "Victor",
     stars: 4.2,
     comment: "Nice low alcohol option.",
@@ -1955,7 +1955,7 @@ const mockReviews = [
   },
   {
     review_id: 238,
-    product_id: 25,
+    productId: 25,
     name: "Wendy",
     stars: 4.8,
     comment: "Loved the subtle rice notes.",
@@ -1963,7 +1963,7 @@ const mockReviews = [
   },
   {
     review_id: 239,
-    product_id: 25,
+    productId: 25,
     name: "Xavier",
     stars: 4.4,
     comment: "Good with Thai food.",
@@ -1971,7 +1971,7 @@ const mockReviews = [
   },
   {
     review_id: 240,
-    product_id: 25,
+    productId: 25,
     name: "Yara",
     stars: 5.0,
     comment: "Perfect for a relaxed evening.",
@@ -1981,7 +1981,7 @@ const mockReviews = [
   // Product 26 Reviews (5)
   {
     review_id: 241,
-    product_id: 26,
+    productId: 26,
     name: "Eve",
     stars: 4.8,
     comment: "Smooth and refined premium sake.",
@@ -1989,7 +1989,7 @@ const mockReviews = [
   },
   {
     review_id: 242,
-    product_id: 26,
+    productId: 26,
     name: "Frank",
     stars: 4.3,
     comment: "Worth the higher price.",
@@ -1997,7 +1997,7 @@ const mockReviews = [
   },
   {
     review_id: 243,
-    product_id: 26,
+    productId: 26,
     name: "Grace",
     stars: 4.9,
     comment: "Exceptional quality.",
@@ -2005,7 +2005,7 @@ const mockReviews = [
   },
   {
     review_id: 244,
-    product_id: 26,
+    productId: 26,
     name: "Heidi",
     stars: 4.1,
     comment: "Subtle and complex flavors.",
@@ -2013,7 +2013,7 @@ const mockReviews = [
   },
   {
     review_id: 245,
-    product_id: 26,
+    productId: 26,
     name: "Ivan",
     stars: 4.7,
     comment: "Perfect for special occasions.",
@@ -2023,7 +2023,7 @@ const mockReviews = [
   // Product 27 Reviews (5)
   {
     review_id: 246,
-    product_id: 27,
+    productId: 27,
     name: "Oscar",
     stars: 4.5,
     comment: "Crisp and refreshing lager.",
@@ -2031,7 +2031,7 @@ const mockReviews = [
   },
   {
     review_id: 247,
-    product_id: 27,
+    productId: 27,
     name: "Paula",
     stars: 4.0,
     comment: "Nice rice flavor hint.",
@@ -2039,7 +2039,7 @@ const mockReviews = [
   },
   {
     review_id: 248,
-    product_id: 27,
+    productId: 27,
     name: "Quentin",
     stars: 4.8,
     comment: "Smooth and easy to drink.",
@@ -2047,7 +2047,7 @@ const mockReviews = [
   },
   {
     review_id: 249,
-    product_id: 27,
+    productId: 27,
     name: "Rachel",
     stars: 4.2,
     comment: "Good low alcohol beer.",
@@ -2055,7 +2055,7 @@ const mockReviews = [
   },
   {
     review_id: 250,
-    product_id: 27,
+    productId: 27,
     name: "Steve",
     stars: 4.6,
     comment: "Pairs well with food.",
@@ -2065,7 +2065,7 @@ const mockReviews = [
   // Product 28 Reviews (5)
   {
     review_id: 251,
-    product_id: 28,
+    productId: 28,
     name: "Yara",
     stars: 4.7,
     comment: "Fruity and refreshing pale ale.",
@@ -2073,7 +2073,7 @@ const mockReviews = [
   },
   {
     review_id: 252,
-    product_id: 28,
+    productId: 28,
     name: "Zane",
     stars: 4.2,
     comment: "Nice hop aroma.",
@@ -2081,7 +2081,7 @@ const mockReviews = [
   },
   {
     review_id: 253,
-    product_id: 28,
+    productId: 28,
     name: "Alice",
     stars: 4.8,
     comment: "Great balance of flavors.",
@@ -2089,7 +2089,7 @@ const mockReviews = [
   },
   {
     review_id: 254,
-    product_id: 28,
+    productId: 28,
     name: "Bob",
     stars: 4.4,
     comment: "Smooth and not too bitter.",
@@ -2097,7 +2097,7 @@ const mockReviews = [
   },
   {
     review_id: 255,
-    product_id: 28,
+    productId: 28,
     name: "Charlie",
     stars: 4.6,
     comment: "Enjoyed the craft beer style.",
@@ -2107,7 +2107,7 @@ const mockReviews = [
   // Product 29 Reviews (5)
   {
     review_id: 256,
-    product_id: 29,
+    productId: 29,
     name: "Ivan",
     stars: 4.6,
     comment: "Rich and dark beer.",
@@ -2115,7 +2115,7 @@ const mockReviews = [
   },
   {
     review_id: 257,
-    product_id: 29,
+    productId: 29,
     name: "Judy",
     stars: 4.2,
     comment: "Notes of roasted rice.",
@@ -2123,7 +2123,7 @@ const mockReviews = [
   },
   {
     review_id: 258,
-    product_id: 29,
+    productId: 29,
     name: "Kevin",
     stars: 4.8,
     comment: "Smooth and full-bodied.",
@@ -2131,7 +2131,7 @@ const mockReviews = [
   },
   {
     review_id: 259,
-    product_id: 29,
+    productId: 29,
     name: "Lily",
     stars: 4.4,
     comment: "Good dark beer option.",
@@ -2139,7 +2139,7 @@ const mockReviews = [
   },
   {
     review_id: 260,
-    product_id: 29,
+    productId: 29,
     name: "Mike",
     stars: 5.0,
     comment: "Fantastic dark beer!",
@@ -2149,7 +2149,7 @@ const mockReviews = [
   // Product 30 Reviews (5)
   {
     review_id: 261,
-    product_id: 30,
+    productId: 30,
     name: "Steve",
     stars: 4.7,
     comment: "Fragrant jasmine rice malt.",
@@ -2157,7 +2157,7 @@ const mockReviews = [
   },
   {
     review_id: 262,
-    product_id: 30,
+    productId: 30,
     name: "Tina",
     stars: 4.2,
     comment: "Good for making drinks.",
@@ -2165,7 +2165,7 @@ const mockReviews = [
   },
   {
     review_id: 263,
-    product_id: 30,
+    productId: 30,
     name: "Uma",
     stars: 4.9,
     comment: "Love the natural sweetness.",
@@ -2173,7 +2173,7 @@ const mockReviews = [
   },
   {
     review_id: 264,
-    product_id: 30,
+    productId: 30,
     name: "Victor",
     stars: 4.4,
     comment: "Unique ingredient.",
@@ -2181,7 +2181,7 @@ const mockReviews = [
   },
   {
     review_id: 265,
-    product_id: 30,
+    productId: 30,
     name: "Wendy",
     stars: 4.8,
     comment: "Adds a nice touch to recipes.",
@@ -2191,7 +2191,7 @@ const mockReviews = [
   // Product 31 Reviews (5)
   {
     review_id: 266,
-    product_id: 31,
+    productId: 31,
     name: "Charlie",
     stars: 4.6,
     comment: "Distinct flavor from black sticky rice.",
@@ -2199,7 +2199,7 @@ const mockReviews = [
   },
   {
     review_id: 267,
-    product_id: 31,
+    productId: 31,
     name: "David",
     stars: 4.2,
     comment: "Adds a nice color to drinks.",
@@ -2207,7 +2207,7 @@ const mockReviews = [
   },
   {
     review_id: 268,
-    product_id: 31,
+    productId: 31,
     name: "Eve",
     stars: 4.9,
     comment: "Unique and delicious malt.",
@@ -2215,7 +2215,7 @@ const mockReviews = [
   },
   {
     review_id: 269,
-    product_id: 31,
+    productId: 31,
     name: "Frank",
     stars: 4.4,
     comment: "Good for experimental brewing.",
@@ -2223,7 +2223,7 @@ const mockReviews = [
   },
   {
     review_id: 270,
-    product_id: 31,
+    productId: 31,
     name: "Grace",
     stars: 4.7,
     comment: "Interesting flavor profile.",

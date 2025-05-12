@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import useCart from "../context/useCart";
-import useAuth from "../context/useAuth";
 import ButtonFirst from "../components/account/ButtonFirst";
 import FormInputs from "../components/account/FormInputs";
+import useAuth from "../context/useAuth";
+import useCart from "../context/useCart";
 
 import AuthPage from "../modules/authPages/AuthPage";
 import api from "../services/api";
@@ -64,7 +64,7 @@ export default function ConfirmOrder() {
     const orderData = {
       userId: user._id,
       orderItems: cart.map((item) => ({
-        productId: item.product_id,
+        productId: item.productId,
         variantValue: item.variantLabel || "",
         quantity: item.quantity,
       })),
