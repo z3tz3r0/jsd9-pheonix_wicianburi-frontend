@@ -14,7 +14,10 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { GoogleGenAI } from "@google/genai";
 import { MessageSquare, Send } from "lucide-react";
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { ProductContext } from "../../context/ProductContext";
+import useAuth from "../../context/useAuth";
+import useCart from "../../context/useCart";
 import MessageFromAi from "./MessageFromAI";
 import MessageFromUser from "./MessageFromUser";
 
@@ -34,28 +37,38 @@ const ChatBot = () => {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const chatRef = useRef(null);
+  const { user, isLogin } = useAuth();
+  const { cart, getTotalItems, getSubtotal } = useCart();
+  const { products, prodLoading } = useContext(ProductContext);
+
+  const chatSessionRef = useRef(null);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    if (ai && !chatRef.current) {
-      console.log("Initializeing chat session with @google/genai...")
+    if (ai && !chatSessionRef.current && products && products.length > 0 && !prodLoading) {
       try {
-        chatRef.current = ai.chats.create({
+
+        const productsList = Array.isArray(products)
+          ? products.map(p =>
+            `- ชื่อ: ${p.name}, รหัส: ${p._id}, ประเภท: ${p.variants}, รายละเอียด: ${p.description || 'ไม่มีข้อมูล'}`
+          ).join('\n')
+          : 'ไม่มีข้อมูลสินค้า';
+
+
+        chatSessionRef.current = ai.chats.create({
           model: "gemini-2.0-flash-lite",
           history: messages,
           config: {
-            systemInstruction: "คุณคือพนักงานประจำร้านที่มีหน้าที่ในการช่วยเลือกซื้อผลิตภัณฑ์ของเว็บไซต์ E-commerce ขายข้าว ชื่อว่า All Rice (ออลไรซ์) ให้กับลูกค้า โดยอ้างอิงข้อมูจากสิ่งที่ลูกค้าถามหาหรือต้องการ  "
+            systemInstruction: `คุณคือพนักงานประจำร้านเพศหญิง ที่มีหน้าที่ในการช่วยเลือกซื้อผลิตภัณฑ์ของเว็บไซต์ E-commerce ขายข้าว ชื่อว่า All Rice (ออลไรซ์) ให้กับลูกค้า โดยอ้างอิงข้อมูจากสิ่งที่ลูกค้าถามหาหรือต้องการ โปรดใช้ Markdown สำหรับการจัดรูปแบบข้อความ เช่น รายการ, ตัวหนา, หรือตัวเอียง เมื่อเหมาะสมเพื่อให้ข้อมูลอ่านง่ายขึ้น. คุณมีข้อมูลผลิตภัณฑ์ต่าง ๆ ของเรา ดังนี้: \n${productsList}`
           },
         })
-        console.log("Chat session initialized via ai.chats.create:", chatRef.current);
       } catch (error) {
         console.error("Error initializing chat session:", error);
       }
     }
 
 
-  }, [])
+  }, [user, isLogin, prodLoading, products, messages])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -63,7 +76,7 @@ const ChatBot = () => {
 
   const handleSendMessage = useCallback(async () => {
     // Basic checks (no changes needed)
-    if (!userInput.trim() || isLoading || !chatRef.current) return;
+    if (!userInput.trim() || isLoading || !chatSessionRef.current) return;
 
     const userMessageText = userInput.trim();
     const newUserMessage = { role: 'user', parts: [{ text: userMessageText }] };
@@ -79,16 +92,26 @@ const ChatBot = () => {
     ]);
 
     try {
-      console.log("Sending message:", userMessageText);
-      // Use sendMessageStream from the chat object stored in ref (no changes needed)
-      const streamResult = await chatRef.current.sendMessageStream({
-        message: userMessageText // Pass message content directly if that's the expected format for sendMessageStream
+      let contextualPrompt = "";
+
+      if (user && isLogin) {
+        contextualPrompt += `ลูกค้าชื่อ: ${user.firstName}.`;
+      }
+      let currTotalItems = getTotalItems();
+      if (currTotalItems > 0 && cart.length > 0) {
+        const cartSummary = cart.map(item => `${item.name} (จำนวน: ${item.quantity}, ราคาต่อชิ้น: ${item.price})`).join(', ');
+        contextualPrompt += `\nข้อมูลตะกร้าสินค้าปัจจุบัน: [${cartSummary}]. ยอดรวม: ${getSubtotal()} บาท.`;
+      } else {
+        contextualPrompt += "\nลูกค้ายังไม่มีสินค้าในตระกร้า"
+      }
+      // Use sendMessageStream from the chat object stored in ref
+      const streamResult = await chatSessionRef.current.sendMessageStream({
+        message: `${contextualPrompt}\n\nคำถามจากลูกค้า: ${userMessageText}` // Pass message content directly if that's the expected format for sendMessageStream
       });
 
       let currentAIResponse = '';
       // --- Process Stream Chunks (Simplified based on user's example) ---
       for await (const chunk of streamResult) { // Access the async iterator via streamResult.stream
-        console.log(currentAIResponse);
         const chunkText = chunk?.text; // Use chunk.text, add optional chaining
         if (typeof chunkText === 'string') { // Check if text exists and is a string
           currentAIResponse += chunkText;
@@ -99,19 +122,17 @@ const ChatBot = () => {
           ]);
         }
       }
-      console.log("Streaming finished.");
 
     } catch (error) {
-      console.error("Error sending message or processing stream:", error);
       // Error handling (no changes needed)
       setMessages(prevMessages => [
         ...prevMessages.slice(0, -1),
-        { role: 'model', parts: [{ text: "ขออภัย มีข้อผิดพลาดเกิดขึ้น โปรดลองอีกครั้ง" }] }
+        { role: 'model', parts: [{ text: `ขออภัย มีข้อผิดพลาดเกิดขึ้น ${error} โปรดลองอีกครั้ง` }] }
       ]);
     } finally {
       setIsLoading(false); // Reset loading state (no changes needed)
     }
-  }, [userInput, isLoading]); // Dependencies
+  }, [userInput, isLoading, user, isLogin, cart, getTotalItems, getSubtotal, products, prodLoading]); // Dependencies
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
