@@ -13,7 +13,7 @@ export const createOrder = async (orderData) => {
 export const getUserOrders = async () => {
   try {
     const res = await api.get("/api/orders");
-    return res.data;
+    return res.data.orders;
   } catch (error) {
     console.error(error);
     throw error;
