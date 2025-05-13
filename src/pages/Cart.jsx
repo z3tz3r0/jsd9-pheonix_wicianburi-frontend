@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import ButtonMain from "../components/ButtonMain";
 import { CartContext } from "../context/CartContext";
@@ -43,7 +43,7 @@ const Cart = () => {
                 <div className="col-span-2 text-center">
                   <h2 className="font-medium ">ปริมาณ</h2>
                 </div>
-                <div className="col-span-2 text-center ml-1 sm:ml-0">
+                <div className="col-span-2 ml-1 text-center sm:ml-0">
                   <h2 className="font-medium text-nowrap">ราคาสุทธิ</h2>
                 </div>
               </div>
@@ -59,7 +59,7 @@ const Cart = () => {
               ) : (
                 cart.map((item) => (
                   <div
-                    key={item.product_id + item.variantLabel}
+                    key={item.productId + item.variantLabel}
                     className="grid grid-cols-12 bg-[#dfdddd] p-4 border-b-2 sm:p-5"
                   >
                     <div className="flex col-span-5">
@@ -77,20 +77,20 @@ const Cart = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="col-span-2 text-center text-sm sm:text-base">
+                    <div className="col-span-2 text-sm text-center sm:text-base">
                       <p>฿{item.price}</p>
                       {/* .toFixed(1) */}
                     </div>
 
                     {/* Quantity Controls */}
 
-                    <div className="col-span-2 text-center  text-sm sm:text-base">
+                    <div className="col-span-2 text-sm text-center sm:text-base">
                       <div className="flex items-center justify-center">
                         <button
-                          className="flex items-center justify-center w-4 sm:w-6 h-8 border border-black rounded-l cursor-pointer"
+                          className="flex items-center justify-center w-4 h-8 border border-black rounded-l cursor-pointer sm:w-6"
                           onClick={() =>
                             updateQuantity(
-                              item.product_id,
+                              item.productId,
                               item.variantLabel,
                               Math.max(1, item.quantity - 1)
                             )
@@ -102,13 +102,13 @@ const Cart = () => {
                           type="text"
                           value={item.quantity}
                           readOnly
-                          className="w-4 sm:w-8 h-8 text-center border-t border-b border-black bg-primary"
+                          className="w-4 h-8 text-center border-t border-b border-black sm:w-8 bg-primary"
                         />
                         <button
-                          className="flex items-center justify-center w-4 sm:w-6 h-8 border border-black rounded-r cursor-pointer"
+                          className="flex items-center justify-center w-4 h-8 border border-black rounded-r cursor-pointer sm:w-6"
                           onClick={() =>
                             updateQuantity(
-                              item.product_id,
+                              item.productId,
                               item.variantLabel,
                               item.quantity + 1
                             )
@@ -119,7 +119,7 @@ const Cart = () => {
                       </div>
                     </div>
 
-                    <div className="col-span-2 text-center text-sm sm:text-base">
+                    <div className="col-span-2 text-sm text-center sm:text-base">
                       <p className="mx-2 sm:mx-10 w-fit">
                         ฿{(item.price * item.quantity).toFixed(1)}
                       </p>
@@ -127,7 +127,7 @@ const Cart = () => {
 
                     <button
                       onClick={() =>
-                        removeFromCart(item.product_id, item.variantLabel)
+                        removeFromCart(item.productId, item.variantLabel)
                       }
                       className="flex items-start justify-end col-span-1 text-gray-400 hover:text-red-500"
                     >
@@ -139,7 +139,7 @@ const Cart = () => {
               <div className="mt-8">
                 <Link
                   to="/products"
-                  className="flex items-center mb-4 text-gray-600 hover:text-accent cursor-pointer"
+                  className="flex items-center mb-4 text-gray-600 cursor-pointer hover:text-accent"
                 >
                   ← กลับไปช้อปต่อ
                 </Link>

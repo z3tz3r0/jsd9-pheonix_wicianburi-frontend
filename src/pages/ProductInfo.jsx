@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductDetails from '../containers/ProductDetails';
 
 import { useParams } from 'react-router';
@@ -9,8 +9,8 @@ import Carousel from '../containers/Carousel';
 import ProductCard from '../containers/ProductCard';
 import Review from '../containers/Review';
 import TabPane from '../containers/TabPane';
-import mockReviews from '../data/mockReviews';
-import products from '../data/products';
+import { getProductById, getSimilarType } from '../services/productService';
+import { getReviewByProductId } from '../services/reviewService';
 
 const ProductInfo = () => {
   const { productId } = useParams();
@@ -18,22 +18,24 @@ const ProductInfo = () => {
   const [reviewItems, setReviewItems] = useState([]);
   const [similarProducts, setSimilarProducts] = useState([]);
 
+  const fetchProduct = async (id) => {
+    try {
+      const fetchedProduct = await getProductById(id);
+      setProduct(fetchedProduct);
+      const fetchedSimilarProduct = await getSimilarType(fetchedProduct.type);
+      setSimilarProducts(fetchedSimilarProduct);
+      const fetchedReview = await getReviewByProductId(id);
+      fetchedReview.sort((a, b) => b.star - a.star);
+      setReviewItems(fetchedReview);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
   // mocking the fecthing data from db
   useEffect(() => {
-    const numericProductId = Number(productId);
-    const foundProduct = products.find((product) => product.product_id === numericProductId);
-    const sameTypeProducts = products.filter((product) => product.type === foundProduct.type);
-
-    if (foundProduct) {
-      setProduct(foundProduct);
-      setSimilarProducts(sameTypeProducts);
-      const productReview = mockReviews.filter((review) => foundProduct.product_id === review.product_id);
-      setReviewItems(productReview)
-    } else {
-      console.error(`Product with ID ${numericProductId} not found.`);
-      setProduct(null);
-      setReviewItems([]);
-    }
+    fetchProduct(productId);
   }, [productId]);
 
   if (!product) {
@@ -55,7 +57,7 @@ const ProductInfo = () => {
       <TabPane>
         {/* ไว้รอทำ .map() */}
         <p headerlabel="รายละเอียดสินค้า" className='min-h-[20dvh]'>{product.description}</p>
-        <Review headerlabel="รีวิว" reviews={reviewItems} />
+        <Review headerlabel="รีวิว" reviews={reviewItems} productId={productId} setReview={setReviewItems} />
       </TabPane>
 
       <h3 className='my-8 text-3xl font-bold sm:text-4xl'>คุณอาจจะอยากลอง</h3>
@@ -64,7 +66,7 @@ const ProductInfo = () => {
       <Carousel>
         {/* ไว้รอทำ .map() */}
         {similarProducts.map(item => (
-          <ProductCard key={item.product_id} product={item} />
+          <ProductCard key={item.productId} product={item} productId={productId} />
         ))}
       </Carousel>
     </Container >

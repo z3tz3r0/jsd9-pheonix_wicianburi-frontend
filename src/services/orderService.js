@@ -29,16 +29,3 @@ export const getOrderById = async (id) => {
     throw error;
   }
 };
-
-export const updatePaymentSlip = async (orderId, paymentSlipLink) => {
-  try {
-    const res = await api.put(`/api/orders/${orderId}`, {
-      paymentSlipLink,
-    });
-    return res.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-

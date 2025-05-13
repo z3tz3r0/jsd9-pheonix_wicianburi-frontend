@@ -1,21 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import ProductCard from "../containers/ProductCard";
 // import { Container, Grid, Typography } from '@mui/material';
-import { Backdrop } from "@mui/material";
+import { Backdrop, Skeleton } from "@mui/material";
 import { Funnel, MapPin, Search } from "lucide-react";
 import FilterSidebar from "../components/FilterSidebar";
 import { CartContext } from "../context/CartContext";
 import mockReviews from "../data/mockReviews";
-import mockProducts from "../data/products";
+// import mockProducts from "../data/products";
+import ProductCardLoading from "../containers/ProductCardLoading";
+import { ProductContext } from "../context/ProductContext";
 
 const ProductList = () => {
   const [visibleCount, setVisibleCount] = useState(10);
 
-
   const [showFilterDrawer, setShowFilterDrawer] = useState(false);
 
-  const { filters, setFilters, searchTerm, setSearchTerm, resetFilter } = useContext(CartContext);
+  const { filters, setFilters, searchTerm, setSearchTerm, resetFilter } =
+    useContext(CartContext);
 
+  const { products, prodLoading } = useContext(ProductContext);
   // Function to apply filters
   const applyFilters = (product) => {
     // --- 1. Filter by Search Term ---
@@ -45,7 +48,7 @@ const ProductList = () => {
     } else {
       // Find reviews for the current product
       const productReviews = mockReviews.filter(
-        (review) => review.product_id === product.product_id
+        (review) => review.productId === product.productId
       );
 
       if (productReviews.length > 0) {
@@ -77,7 +80,8 @@ const ProductList = () => {
     );
   };
 
-  const filteredProducts = mockProducts.filter(applyFilters);
+  // const filteredProducts = mockProducts.filter(applyFilters);
+  const filteredProducts = products.filter(applyFilters);
 
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
@@ -93,7 +97,7 @@ const ProductList = () => {
   useEffect(() => {
     return () => {
       resetFilter();
-    }
+    };
   }, [resetFilter]);
 
   return (
@@ -105,10 +109,6 @@ const ProductList = () => {
           <label htmlFor="region" className="text-sm font-medium">
             ภูมิภาค
           </label>
-          {/* This region selector is now redundant as it's also in the sidebar.
-              If I want to remove this one and only use the sidebar one,
-              or keep them both and ensure they sync state.
-              For now, let's keep it as it was in your original code but note the redundancy. */}
           <select
             id="region"
             value={filters.region}
@@ -162,7 +162,7 @@ const ProductList = () => {
       {/* Filter Sidebar */}
       <div
         className={`fixed inset-y-0 right-0 z-50 w-full sm:w-3/4 md:w-1/3 lg:w-1/4 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
-          ${showFilterDrawer ? "translate-x-0" : "translate-x-full"}`}
+            ${showFilterDrawer ? "translate-x-0" : "translate-x-full"}`}
       >
         <FilterSidebar
           filter={filters}
@@ -171,21 +171,43 @@ const ProductList = () => {
         />
       </div>
 
-      <h2 className="text-2xl font-extrabold mb-7">สินค้าทั้งหมด</h2>
-      <div className="grid grid-cols-2 gap-8 place-items-center-safe sm:grid-cols-3 lg:grid-cols-5">
-        {visibleProducts.map((product) => (
-          <ProductCard key={product.product_id} product={product} />
-        ))}
-      </div>
+      {prodLoading ? (
+        // Skeleton Loading State
+        <div>
+          <Skeleton className="w-1/3 h-6 mb-8" />
+          <div className="grid grid-cols-2 gap-8 place-items-center-safe sm:grid-cols-3 lg:grid-cols-5">
+            {Array.from({ length: visibleCount > 0 ? visibleCount : 10 }).map((_, index) => (
+              <ProductCardLoading key={index} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        // Actual Content
+        <div>
+          <h2 className="mb-8 text-2xl font-extrabold">สินค้าทั้งหมด</h2>
+          {filteredProducts.length === 0 ? (
+            <div className="py-10 text-center text-gray-500">
+              <p className="text-xl">ไม่พบสินค้าที่ตรงกับการค้นหาของคุณ</p>
+              <p className="mt-2">ลองปรับเปลี่ยนตัวกรองหรือคำค้นหาของคุณอีกครั้ง</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-8 place-items-center-safe sm:grid-cols-3 lg:grid-cols-5">
+              {visibleProducts.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))}
+            </div>
+          )}
 
-      {visibleCount < filteredProducts.length && (
-        <div className="flex justify-center m-8 mt-12">
-          <button
-            onClick={loadMore}
-            className="px-4 py-2 text-sm bg-gray-100 rounded cursor-pointer hover:bg-gray-300"
-          >
-            ดูเพิ่มเติม ({filteredProducts.length - visibleCount})
-          </button>
+          {visibleCount < filteredProducts.length && (
+            <div className="flex justify-center m-8 mt-12">
+              <button
+                onClick={loadMore}
+                className="px-4 py-2 text-sm bg-gray-100 rounded cursor-pointer hover:bg-gray-300"
+              >
+                ดูเพิ่มเติม ({filteredProducts.length - visibleCount})
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -193,3 +215,4 @@ const ProductList = () => {
 };
 
 export default ProductList;
+
