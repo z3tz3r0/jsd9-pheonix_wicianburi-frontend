@@ -12,7 +12,7 @@ const SHIPPING_FEE = 100;
 
 export default function ConfirmOrder() {
   const navigate = useNavigate();
-  const { cart, getSubtotal, removeFromCart } = useCart();
+  const { cart, getSubtotal, clearCart } = useCart();
   const { user } = useAuth();
 
   const [delivery, setDelivery] = useState(0);
@@ -55,7 +55,7 @@ export default function ConfirmOrder() {
     try {
       const response = await api.post("api/orders", orderData);
       console.log("Order created:", response.data);
-      removeFromCart("");
+      clearCart();
       navigate("/cart/confirm-order/confirm-payment", {
         state: { orderData: response.data.order },
       });
@@ -118,6 +118,7 @@ export default function ConfirmOrder() {
                   text="ยืนยันคำสั่งซื้อ"
                   onClick={onSubmit}
                   isPending={isSubmitting}
+                  disabled={isSubmitting}
                   className="w-auto mt-8 mb-8 sm:w-auto"
                 >
                   ยืนยันคำสั่งซื้อ
