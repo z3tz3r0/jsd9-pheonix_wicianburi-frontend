@@ -6,9 +6,10 @@ const FormInputs = ({ register, name, type, placeholder, validation = {}, classN
   return (
 
     <div className={className}>
-      <Label className="mb-2">{placeholder}</Label>
+      <Label htmlFor={name} className="mb-2">{placeholder}</Label>
       <Input
         {...register(name, { ...validation })}
+        id={name}
         type={type}
         placeholder={placeholder}
       />

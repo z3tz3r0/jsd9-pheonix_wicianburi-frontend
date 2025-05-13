@@ -1,18 +1,23 @@
-import { Button } from '@/components/ui/button';
-import { useForm } from 'react-hook-form';
-import ButtonFirst from '../components/account/ButtonFirst';
-import FormInputs from '../components/account/FormInputs';
-import AccountLoading from '../containers/AccountLoading';
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import ButtonFirst from "../components/account/ButtonFirst";
+import FormInputs from "../components/account/FormInputs";
+import AccountLoading from "../containers/AccountLoading";
 
-import { useEffect } from 'react';
-import useAuth from '../context/useAuth';
-import { updateCurrentUser } from '../services/userService';
+import { useEffect } from "react";
+import useAuth from "../context/useAuth";
+import { updateCurrentUser } from "../services/userService";
+import { Link } from "react-router-dom";
+
 //import { X } from 'lucide-react';
 
-
 const Account = () => {
-
-  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm();
   // console.log(isSubmitting);
   const { user, userLoading } = useAuth();
   useEffect(() => {
@@ -34,9 +39,9 @@ const Account = () => {
   const accountSubmit = async (data) => {
     try {
       const result = await updateCurrentUser(data);
-      console.log('Update successful:', result);
+      console.log("Update successful:", result);
     } catch (error) {
-      console.error('Update failed:', error);
+      console.error("Update failed:", error);
     }
   };
 
@@ -50,18 +55,16 @@ const Account = () => {
             บัญชีของฉัน
           </h1>
           <section>
-            <h2 className="mb-8">
-              ข้อมูลบัญชี
-            </h2>
+            <h2 className="mb-8">ข้อมูลบัญชี</h2>
 
             <form onSubmit={handleSubmit(accountSubmit)}>
               <div className="grid gap-4 mb-8 sm:grid-cols-2">
-
                 <FormInputs
                   register={register}
                   name="firstName"
                   type="text"
                   placeholder="ชื่อ"
+                  value={user.firstName}
                   validation={{ required: 'ชื่อจำเป็นต้องกรอก' }}
                   error={errors.firstName}
                 />
@@ -71,6 +74,7 @@ const Account = () => {
                   name="lastName"
                   type="text"
                   placeholder="นามสกุล"
+                  value={user.lastName}
                   validation={{ required: 'นามสกุลจำเป็นต้องกรอก' }}
                   error={errors.lastName}
                 />
@@ -80,6 +84,7 @@ const Account = () => {
                   name="phone"
                   type="tel"
                   placeholder="โทรศัพท์"
+                  value={user.phone}
                   validation={{ required: 'เบอร์โทรศัพท์จำเป็นต้องกรอก', pattern: { value: /^[0-9]{10}$/, message: 'รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง (10 หลัก)' } }}
                   error={errors.phone}
                 />
@@ -89,6 +94,7 @@ const Account = () => {
                   name="email"
                   type="email"
                   placeholder="อีเมล"
+                  value={user.email}
                   validation={{ required: 'อีเมลจำเป็นต้องกรอก', pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: 'รูปแบบอีเมลไม่ถูกต้อง' } }}
                   error={errors.email}
                 />
@@ -99,6 +105,7 @@ const Account = () => {
                   type="text"
                   placeholder="ที่อยู่"
                   className="sm:col-span-2"
+                  value={user.address.street}
                   validation={{ required: 'ที่อยู่จำเป็นต้องกรอก' }}
                   error={errors.street}
                 />
@@ -108,6 +115,7 @@ const Account = () => {
                   name="subDistrict"
                   type="text"
                   placeholder="ตำบล"
+                  value={user.address.subDistrict}
                   validation={{ required: 'ตำบลจำเป็นต้องกรอก' }}
                   error={errors.subDistrict}
                 />
@@ -117,6 +125,7 @@ const Account = () => {
                   name="district"
                   type="text"
                   placeholder="อำเภอ"
+                  value={user.address.district}
                   validation={{ required: 'อำเภอจำเป็นต้องกรอก' }}
                   error={errors.district}
                 />
@@ -126,6 +135,7 @@ const Account = () => {
                   name="province"
                   type="text"
                   placeholder="จังหวัด"
+                  value={user.address.province}
                   validation={{ required: 'จังหวัดจำเป็นต้องกรอก' }}
                   error={errors.province}
                 />
@@ -135,46 +145,36 @@ const Account = () => {
                   name="postal"
                   type="text"
                   placeholder="รหัสไปรษณีย์"
+                  value={user.address.postal}
                   validation={{ required: 'รหัสไปรษณีย์จำเป็นต้องกรอก', pattern: { value: /^[0-9]{5}$/, message: 'รูปแบบรหัสไปรษณีย์ไม่ถูกต้อง (5 หลัก)' } }}
                   error={errors.postal}
                 />
               </div>
+              <div className="flex gap-6">
+                <div className="flex justify-center gap-4 my-8 sm:justify-start">
+                  <ButtonFirst
+                    text="อัปเดตบัญชี"
+                    type="submit"
+                    isPending={isSubmitting}
+                  />
+                </div>
 
-              <div className="flex justify-center gap-4 my-8 sm:justify-start">
-                <ButtonFirst
-                  text="อัปเดตบัญชี"
-                  type="submit"
-                  isPending={isSubmitting}
-                />
-
+                <div className="flex justify-center gap-4 my-8 sm:justify-start">
+                  <Link to="/cart">
+                    <ButtonFirst
+                      text="กลับไปที่ตะกร้าสินค้า"
+                      type="button"
+                      isPending={false} // ปุ่มลิงก์ไม่ต้องใช้ isSubmitting
+                    />
+                  </Link>
+                </div>
               </div>
             </form>
-          </section>
-
-          <div className="hidden mb-8 border-b sm:block"></div>
-
-          <section >
-            <h2 className="mb-4 text-2xl font-bold">
-              เข้าสู่ระบบ
-            </h2>
-            <div className="flex flex-col sm:flex-row sm:justify-between">
-              <div>
-                <p className="mb-2 font-bold">รหัสผ่าน</p>
-                <p className="mb-2 text-sm text-gray-400 ">อัปเดตล่าสุดเมื่อ 1 เดือนที่แล้ว</p>
-              </div>
-              <div className='flex justify-center'>
-                <Button
-                  className="w-auto font-bold text-black border border-gray-300 rounded-full cursor-pointer hover:bg-gray-50 active:bg-gray-200 active:shadow-md"
-                >
-                  อัปเดตรหัสผ่าน
-                </Button>
-              </div>
-            </div>
           </section>
         </>
       )}
     </main>
-  )
-}
+  );
+};
 
-export default Account
+export default Account;

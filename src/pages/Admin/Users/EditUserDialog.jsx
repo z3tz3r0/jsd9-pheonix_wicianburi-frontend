@@ -1,5 +1,5 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { updateUser } from '../services/userApi';
 import UserForm from './UserForm';
 
@@ -31,7 +31,7 @@ const EditUserDialog = ({ user, children, onUserUpdated }) => {
         <SheetHeader>
           <SheetTitle>แก้ไขผู้ใช้: {user?.firstName} {user?.lastName}</SheetTitle>
         </SheetHeader>
-        <div className="px-4">
+        <div className="px-4 py-8">
           <UserForm initialData={user} onSubmit={handleUpdateUser} />
         </div>
       </SheetContent>

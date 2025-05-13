@@ -13,7 +13,7 @@ export const createOrder = async (orderData) => {
 export const getUserOrders = async () => {
   try {
     const res = await api.get("/api/orders");
-    return res.data;
+    return res.data.orders;
   } catch (error) {
     console.error(error);
     throw error;
@@ -29,16 +29,3 @@ export const getOrderById = async (id) => {
     throw error;
   }
 };
-
-export const updatePaymentSlip = async (orderId, paymentSlipLink) => {
-  try {
-    const res = await api.put(`/api/orders/${orderId}`, {
-      paymentSlipLink,
-    });
-    return res.data;
-  } catch (error) {
-    console.error(error);
-    throw error;
-  }
-};
-
