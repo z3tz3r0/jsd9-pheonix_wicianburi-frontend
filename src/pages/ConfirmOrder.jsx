@@ -1,6 +1,6 @@
 import ButtonMain from "@/components/ButtonMain";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../context/useAuth";
 import useCart from "../context/useCart";
 
@@ -113,20 +113,32 @@ export default function ConfirmOrder() {
                 </p>
               )}
 
-              <div className="flex flex-row gap-4 sm:flex-row sm:justify-between">
+              <div className="flex flex-wrap justify-center lg:justify-start lg:gap-4">
                 <ButtonMain
                   text="ยืนยันคำสั่งซื้อ"
                   onClick={onSubmit}
                   isPending={isSubmitting}
                   disabled={isSubmitting}
-                  className="w-auto mt-8 mb-8 sm:w-auto"
+                  className="w-auto my-2 lg:w-fit"
                 >
                   ยืนยันคำสั่งซื้อ
                 </ButtonMain>
-                {/* <ButtonMain text="แก้ไขข้อมูลจัดส่ง" onClick={() => navigate("/account")} className="mt-8 mb-8 sm:w-fit">
-                  แก้ไขข้อมูลจัดส่ง
-                </ButtonMain> */}
+                {user && (
+                  <ButtonMain
+                    text="แก้ไขข้อมูลจัดส่ง"
+                    onClick={() => navigate("/profile")}
+                    className="w-auto my-2 lg:w-fit"
+                  >
+                    แก้ไขข้อมูลจัดส่ง
+                  </ButtonMain>
+                )}
               </div>
+              <Link
+                to="/products"
+                className="flex items-center mb-4 text-gray-600 cursor-pointer hover:text-accent"
+              >
+                ← กลับไปช้อปต่อ
+              </Link>
             </div>
           </div>
 
