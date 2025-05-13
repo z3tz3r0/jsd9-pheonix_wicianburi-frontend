@@ -55,8 +55,10 @@ export default function ConfirmOrder() {
     try {
       const response = await api.post("api/orders", orderData);
       console.log("Order created:", response.data);
-      removeFromCart?.();
-      navigate("/cart/confirm-order/confirm-payment");
+      removeFromCart("");
+      navigate("/cart/confirm-order/confirm-payment", {
+        state: { orderData: response.data.order },
+      });
     } catch (error) {
       console.error("Error submitting order:", error.response?.data || error);
     } finally {
@@ -112,7 +114,12 @@ export default function ConfirmOrder() {
               )}
 
               <div className="flex flex-row gap-4 sm:flex-row sm:justify-between">
-                <ButtonMain text="ยืนยันคำสั่งซื้อ" onClick={onSubmit} isPending={isSubmitting} className="w-auto mt-8 mb-8 sm:w-auto">
+                <ButtonMain
+                  text="ยืนยันคำสั่งซื้อ"
+                  onClick={onSubmit}
+                  isPending={isSubmitting}
+                  className="w-auto mt-8 mb-8 sm:w-auto"
+                >
                   ยืนยันคำสั่งซื้อ
                 </ButtonMain>
                 {/* <ButtonMain text="แก้ไขข้อมูลจัดส่ง" onClick={() => navigate("/account")} className="mt-8 mb-8 sm:w-fit">

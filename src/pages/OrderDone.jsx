@@ -1,9 +1,10 @@
 import { buttonVariants } from "@/components/ui/button";
-import React from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function OrderSuccess() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const orderId = location.state?.orderId;
 
   return (
     <div className="p-4 min-h-fit bg-primary sm:p-8">
@@ -14,7 +15,7 @@ export default function OrderSuccess() {
             <h1 className="text-4xl font-semibold">คำสั่งซื้อสำเร็จ</h1>
             <p>เรากำลังตรวจสอบหลักฐานการชำระเงินของท่าน</p>
             <h2 className="text-4xl font-semibold">ขอขอบคุณที่สนับสนุนเรา !</h2>
-            <p>หมายเลขคำสั่งซื้อของท่านคือ 123465</p>
+            <p>หมายเลขคำสั่งซื้อของท่านคือ <strong>{orderId}</strong></p>
           </div>
 
           <button
