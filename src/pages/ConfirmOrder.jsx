@@ -44,7 +44,7 @@ export default function ConfirmOrder() {
     const orderData = {
       userId: user._id,
       orderItems: cart.map((item) => ({
-        productId: item.product_id,
+        productId: item.productId,
         variantValue: item.variantValue,
         quantity: item.quantity,
       })),
