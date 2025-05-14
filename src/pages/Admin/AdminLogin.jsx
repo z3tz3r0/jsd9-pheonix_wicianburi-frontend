@@ -47,11 +47,6 @@ const AdminLogin = () => {
     <div className="flex items-center justify-center w-full p-6 bg-black min-h-svh md:p-10 dark">
       <div className="w-full max-w-sm">
         <div className="flex flex-col gap-6">
-          <Alert severity="info" sx={{ my: 2, width: '100%' }}>
-            <p>For development only: </p>
-            <p>Email: <strong>admin@example.com</strong></p>
-            <p>Password: <strong>password123</strong></p>
-          </Alert>
           {error && <Alert severity="error" sx={{ mt: 2, width: '100%' }}>{error}</Alert>}
           <Card>
             <CardHeader>
