@@ -35,7 +35,6 @@ const OrderHistory = () => {
     const fetchOrders = async () => {
       try {
         const data = await getUserOrders();
-        console.log("data ที่ได้จาก getUserOrders:", data); // ✅ เพิ่มตรงนี้
         setOrders(data);
       } catch (error) {
         console.error('เกิดข้อผิดพลาดในการโหลดคำสั่งซื้อ:', error);
