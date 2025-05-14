@@ -83,7 +83,7 @@ const ProductDetails = ({ productItem, reviews }) => {
       console.error("Failed to add item to cart due to mising info.")
     }
   };
-  
+
 
 
   return (
