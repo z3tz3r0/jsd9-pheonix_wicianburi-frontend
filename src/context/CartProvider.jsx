@@ -99,6 +99,12 @@ export const CartProvider = ({ children }) => {
     setSearchTerm(initialSearchTerm);
   }, []);
 
+  // Clear Cart
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
   const value = {
     cart,
     addToCart,
@@ -110,7 +116,8 @@ export const CartProvider = ({ children }) => {
     setFilters,
     searchTerm,
     setSearchTerm,
-    resetFilter
+    resetFilter,
+    clearCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
