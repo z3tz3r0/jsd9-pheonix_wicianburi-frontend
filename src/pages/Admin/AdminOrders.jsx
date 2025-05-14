@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow
 } from "@/components/ui/table";
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import OrderRow from './Orders/OrderRow'; // Import the new component
 import { getAllOrders } from './services/orderApi';
 
@@ -15,26 +15,24 @@ const AdminOrders = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const data = await getAllOrders();
-        setOrders(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
 
+  const fetchOrders = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await getAllOrders();
+      setOrders(res.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchOrders();
   }, []);
 
-  const handleStatusUpdate = (orderId, newStatus) => {
-    // This function can be used to update the state locally if needed,
-    // or re-fetch orders after an update. For now, just a placeholder.
-    console.log(`Order ${orderId} status updated to ${newStatus}`);
-  };
 
   if (loading) {
     return <div>กำลังโหลดคำสั่งซื้อ...</div>;
@@ -62,12 +60,12 @@ const AdminOrders = () => {
                 <TableHead>ยอดรวม</TableHead>
                 <TableHead>สถานะ</TableHead>
                 <TableHead>สร้างเมื่อ</TableHead>
-                <TableHead className="text-right">การดำเนินการ</TableHead>
+                <TableHead className="text-center">การดำเนินการ</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {orders.map((order) => (
-                <OrderRow key={order._id} order={order} onStatusUpdate={handleStatusUpdate} />
+                <OrderRow key={order._id} order={order} />
               ))}
             </TableBody>
           </Table>

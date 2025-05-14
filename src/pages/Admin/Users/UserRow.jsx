@@ -11,7 +11,7 @@ const UserRow = ({ user, onUserUpdated, onUserDeleted }) => {
       <TableCell>{user.firstName}</TableCell>
       <TableCell>{user.lastName}</TableCell>
       <TableCell>{user.email}</TableCell>
-      <TableCell>{user.Phone}</TableCell>
+      <TableCell>{user.phone}</TableCell>
       <TableCell>{user.isMember ? 'ใช่' : 'ไม่ใช่'}</TableCell>
       <TableCell>{user.isVerified ? 'ใช่' : 'ไม่ใช่'}</TableCell>
       <TableCell className="text-right">

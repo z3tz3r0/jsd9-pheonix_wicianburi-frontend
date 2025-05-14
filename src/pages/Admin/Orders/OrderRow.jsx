@@ -6,11 +6,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TableCell, TableRow } from "@/components/ui/table";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { updateOrderStatus } from '../services/orderApi';
+import SeeOrderDialog from "./SeeOrderDialog";
 
-const OrderRow = ({ order, onStatusUpdate }) => {
-  const [currentStatus, setCurrentStatus] = useState(order.orderStatus);
+const OrderRow = ({ order }) => {
+  const [currentStatus, setCurrentStatus] = useState(order.stateVariant);
   const [isUpdating, setIsUpdating] = useState(false);
 
   const handleStatusChange = async (newStatus) => {
@@ -18,13 +19,8 @@ const OrderRow = ({ order, onStatusUpdate }) => {
     try {
       await updateOrderStatus(order._id, newStatus);
       setCurrentStatus(newStatus);
-      if (onStatusUpdate) {
-        onStatusUpdate(order._id, newStatus);
-      }
     } catch (error) {
       console.error("Failed to update order status:", error);
-      // Revert status on error or show an error message
-      alert("Failed to update order status.");
     } finally {
       setIsUpdating(false);
     }
@@ -39,8 +35,8 @@ const OrderRow = ({ order, onStatusUpdate }) => {
   return (
     <TableRow key={order._id}>
       <TableCell className="font-medium">{order._id}</TableCell>
-      <TableCell>{order.user ? order.user.name : 'N/A'}</TableCell>
-      <TableCell>฿{order.totalPrice.toFixed(2)}</TableCell>
+      <TableCell>{order.userId.email}</TableCell>
+      <TableCell>฿{order.totalAmount.toFixed(2)}</TableCell>
       <TableCell>
         <Select value={currentStatus} onValueChange={handleStatusChange} disabled={isUpdating}>
           <SelectTrigger className="w-[180px]">
@@ -56,9 +52,9 @@ const OrderRow = ({ order, onStatusUpdate }) => {
         </Select>
       </TableCell>
       <TableCell>{new Date(order.createdAt).toLocaleString('th-TH')}</TableCell>
-      <TableCell className="text-right">
+      <TableCell className="flex justify-center">
         {/* Add action buttons here, e.g., View Details */}
-        <button className="mr-2 text-blue-600 hover:underline">ดูรายละเอียด</button>
+        <SeeOrderDialog order={order} />
       </TableCell>
     </TableRow>
   );
