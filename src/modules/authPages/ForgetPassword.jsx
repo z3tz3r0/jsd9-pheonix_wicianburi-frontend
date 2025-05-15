@@ -1,13 +1,11 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect, useCallback }  from "react";
 import AuthPage from "@/modules/authPages/AuthPage";
+import { useCallback, useEffect, useState } from "react";
 
 import ButtonMain from "@/components/ButtonMain";
 
 const ForgetPassword = () => {
   const [isAuthPageOpen, setIsAuthPageOpen] = useState(false);
-  
+
   const openAuthPage = () => {
     setIsAuthPageOpen(true);
   };
@@ -39,7 +37,6 @@ const ForgetPassword = () => {
             />
             <div className="flex justify-center mt-6">
               <ButtonMain
-                onClick={() => console.log("Password Changed")}
                 type="submit"
                 className="w-fit"
               >

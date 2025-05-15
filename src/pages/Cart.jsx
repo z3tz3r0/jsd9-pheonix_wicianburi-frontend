@@ -17,7 +17,7 @@ const Cart = () => {
   const total = subtotal + delivery; // ยอดรวมทั้งหมด
 
   const handleCheckout = () => {
-    console.log(cart.length);
+    // console.log(cart.length);
     if (cart.length !== 0) {
       navigate("/cart/confirm-order");
     }
@@ -121,7 +121,7 @@ const Cart = () => {
 
                     <div className="col-span-2 text-sm text-center sm:text-base">
                       <p className="mx-2 sm:mx-10 w-fit">
-                        ฿{(item.price * item.quantity).toFixed(1)}
+                        {new Intl.NumberFormat("th-TH", { style: "currency", currency: "THB" }).format(item.price * item.quantity)}
                       </p>
                     </div>
 
@@ -129,9 +129,9 @@ const Cart = () => {
                       onClick={() =>
                         removeFromCart(item.productId, item.variantLabel)
                       }
-                      className="flex items-start justify-end col-span-1 text-gray-400 hover:text-red-500"
+                      className="flex items-start justify-end col-span-1 text-gray-400 cursor-pointer hover:text-red-500"
                     >
-                      ×
+                      x
                     </button>
                   </div>
                 ))
@@ -153,7 +153,7 @@ const Cart = () => {
             <div className="border-t border-gray-200">
               <div className="flex justify-between py-3">
                 <span>ยอดรวม</span>
-                <span className="font-semibold">{subtotal.toFixed(2)}</span>
+                <span className="font-semibold">{new Intl.NumberFormat("th-TH", { style: "currency", currency: "THB" }).format(subtotal)}</span>
               </div>
 
               <div className="flex justify-between py-2">
@@ -174,8 +174,8 @@ const Cart = () => {
               )}
               <div className="flex justify-between py-3 mt-2 border-t border-gray-200">
                 <span className="text-lg font-bold">ยอดสุทธิ</span>
-                <span className="font-bold text-accent">
-                  ฿{total.toFixed(2)}
+                <span className="font-bold">
+                  {new Intl.NumberFormat("th-TH", { style: "currency", currency: "THB" }).format(total)}
                 </span>
               </div>
             </div>

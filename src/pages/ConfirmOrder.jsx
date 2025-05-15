@@ -31,10 +31,10 @@ export default function ConfirmOrder() {
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   const onSubmit = async () => {
-    console.log("รายการสินค้าในตะกร้า:", cart);
+    // console.log("รายการสินค้าในตะกร้า:", cart);
     if (!user) {
       setShowAuthModal(true);
-      console.log("ผู้ใช้ไม่ได้เข้าสู่ระบบ");
+      // console.log("ผู้ใช้ไม่ได้เข้าสู่ระบบ");
       return;
     }
 
@@ -54,7 +54,7 @@ export default function ConfirmOrder() {
     };
     try {
       const response = await api.post("api/orders", orderData);
-      console.log("Order created:", response.data);
+      // console.log("Order created:", response.data);
       clearCart();
       navigate("/cart/confirm-order/confirm-payment", {
         state: { orderData: response.data.order },
@@ -64,7 +64,7 @@ export default function ConfirmOrder() {
     } finally {
       setIsSubmitting(false);
     }
-    console.log("ส่งก้อนนี้ไปหลังบ้าน:", orderData);
+    // console.log("ส่งก้อนนี้ไปหลังบ้าน:", orderData);
   };
 
   return (
@@ -178,7 +178,7 @@ export default function ConfirmOrder() {
                     ))}
                   </tbody>
                 </table>
-                <div className="mt-4 space-y-1 text-lg font-semibold text-right">
+                <div className="mt-4 space-y-1 text-lg text-right">
                   <p>ราคารวม : ฿ {cartSubtotal.toLocaleString()}</p>
                   <p>
                     ค่าจัดส่ง :{" "}
@@ -188,7 +188,7 @@ export default function ConfirmOrder() {
                         : `฿ ${delivery.toLocaleString()}`}
                     </span>
                   </p>
-                  <p className="font-bold text-accent">
+                  <p className="font-bold">
                     ยอดชำระทั้งหมด : ฿ {total.toLocaleString()}
                   </p>
                 </div>

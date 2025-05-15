@@ -41,7 +41,7 @@ const ContactUs = () => {
       message: message,
     };
 
-    console.log("Submitting contact form data: ", templateParams);
+    // console.log("Submitting contact form data: ", templateParams);
 
     emailjs.send(
       EMAILJS_SERVICE_ID,
@@ -49,7 +49,7 @@ const ContactUs = () => {
       templateParams,
       { publicKey: EMAILJS_PUBLIC_KEY, }
     ).then((result) => {
-      console.log('EmailJS Success: ', result.text);
+      // console.log('EmailJS Success: ', result.text);
       // Clear form fields after successful submission (optional)
       setName('');
       setEmail('');

@@ -150,7 +150,7 @@ const ChatBot = () => {
           {/* --- Trigger Button --- */}
           <Button
             size="icon"
-            className="p-6 bg-black rounded-full hover:bg-gray-600"
+            className="p-8 rounded-full bg-accent hover:bg-gray-600"
           >
             <MessageSquare />
           </Button>

@@ -16,7 +16,7 @@ import { CartContext } from "../context/CartContext"
 
 
 const ProductDetails = ({ productItem, reviews }) => {
-  console.log("PRODUCT ITEM:", productItem);
+  // console.log("PRODUCT ITEM:", productItem);
 
   const productVariants = productItem?.variants || [];
   const [selectedVariantValue, setSelectedVariantValue] = useState(() => productVariants.length > 0 ? productVariants[0].value : "");
@@ -75,9 +75,9 @@ const ProductDetails = ({ productItem, reviews }) => {
   const handleBuyNowClick = () => {
     const itemToAdd = prepareCartItem();
     if (itemToAdd) {
-      console.log("Adding to cart: ", itemToAdd);
+      // console.log("Adding to cart: ", itemToAdd);
       addToCart(itemToAdd);
-      console.log("Item added, navigating to confirm order...");
+      // console.log("Item added, navigating to confirm order...");
       navigate('/cart');
     } else {
       console.error("Failed to add item to cart due to mising info.")

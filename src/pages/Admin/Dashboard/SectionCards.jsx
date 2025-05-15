@@ -12,7 +12,7 @@ import {
 
 
 const getCardDataForRange = (range) => {
-  console.log("Fetching/calculating card data for range:", range);
+  // console.log("Fetching/calculating card data for range:", range);
   // In a real app, fetch data from an API or process existing data
   // based on the 'range' (e.g., 'all', '12m', '30d', '7d')
   // Return mock data for now:

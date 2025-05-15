@@ -8,9 +8,9 @@ const EditUserDialog = ({ user, children, onUserUpdated }) => {
 
   const handleUpdateUser = async (userData) => {
     try {
-      console.log('Updating user:', user._id, userData);
+      // console.log('Updating user:', user._id, userData);
       const updatedUser = await updateUser(user._id, userData);
-      console.log('User updated:', updatedUser);
+      // console.log('User updated:', updatedUser);
       setIsOpen(false); // Close the dialog on success
       if (onUserUpdated) {
         onUserUpdated(updatedUser); // Notify parent component

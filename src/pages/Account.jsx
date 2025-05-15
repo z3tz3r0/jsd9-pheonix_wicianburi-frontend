@@ -1,13 +1,12 @@
-import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import ButtonFirst from "../components/account/ButtonFirst";
 import FormInputs from "../components/account/FormInputs";
 import AccountLoading from "../containers/AccountLoading";
 
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import useAuth from "../context/useAuth";
 import { updateCurrentUser } from "../services/userService";
-import { Link } from "react-router-dom";
 
 //import { X } from 'lucide-react';
 
@@ -18,7 +17,7 @@ const Account = () => {
     formState: { errors, isSubmitting },
     reset,
   } = useForm();
-  // console.log(isSubmitting);
+  // // console.log(isSubmitting);
   const { user, userLoading, setUser, setUserLoading } = useAuth();
   useEffect(() => {
     if (user) {
@@ -39,7 +38,7 @@ const Account = () => {
   const accountSubmit = async (data) => {
     try {
       const result = await updateCurrentUser(data);
-      console.log("Update successful:", result);
+      // console.log("Update successful:", result);
 
       setUser(result.user);
       setUserLoading(false);

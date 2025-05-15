@@ -10,9 +10,9 @@ const AddUserDialog = ({ onUserAdded }) => {
 
   const handleAddUser = async (userData) => {
     try {
-      console.log('Adding user:', userData);
+      // console.log('Adding user:', userData);
       const newUser = await createUser(userData);
-      console.log('User added:', newUser);
+      // console.log('User added:', newUser);
       setIsOpen(false); // Close the dialog on success
       if (onUserAdded) {
         onUserAdded(newUser); // Notify parent component

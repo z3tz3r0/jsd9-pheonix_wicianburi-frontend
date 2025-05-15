@@ -68,7 +68,7 @@ const Review = ({ reviews, productId, setReview }) => {
       const newReview = await createReview(review);
       setReview((prev) => [newReview, ...prev]);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
     setRating(0);
     setCommentText('');

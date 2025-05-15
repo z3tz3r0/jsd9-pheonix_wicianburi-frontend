@@ -32,10 +32,10 @@ export const AdminProvider = ({ children }) => {
 
   const logoutAdmin = async () => {
     setLoading(true);
-    console.log("Logout button is clicked, Attempting to logout")
+    // console.log("Logout button is clicked, Attempting to logout")
     try {
       await api.post('/admin/auth/logout');
-      console.log("Logged out")
+      // console.log("Logged out")
     } catch (error) {
       console.error("Logout failed: ", error);
     } finally {
