@@ -55,8 +55,10 @@ export default function ConfirmOrder() {
     try {
       const response = await api.post("api/orders", orderData);
       console.log("Order created:", response.data);
-      removeFromCart?.();
-      navigate("/confirm-payment");
+      clearCart();
+      navigate("/cart/confirm-order/confirm-payment", {
+        state: { orderData: response.data.order },
+      });
     } catch (error) {
       console.error("Error submitting order:", error.response?.data || error);
     } finally {

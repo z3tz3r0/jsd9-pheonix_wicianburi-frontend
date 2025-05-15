@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import UploadButton from "../components/UploadButton";
 import ButtonMain from "../components/ButtonMain";
+import UploadButton from "../components/UploadButton";
 import useAuth from "../context/useAuth";
 
 export default function ConfirmPayment() {
