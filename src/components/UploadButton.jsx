@@ -62,6 +62,13 @@ export default function InputFileUpload({ orderId }) {
         role={undefined}
         variant="contained"
         tabIndex={-1}
+        sx={{
+          borderRadius: 100,
+          bgcolor: 'black',
+          fontFamily: "Noto Sans Thai",
+          fontWeight: 700,
+          minWidth: 160
+        }}
         onClick={() => {
           setUploadedAssetInfo(null);
           setUploadError(null);

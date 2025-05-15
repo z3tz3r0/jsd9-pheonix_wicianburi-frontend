@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import UploadButton from "../components/UploadButton";
 import ButtonMain from "../components/ButtonMain";
+import UploadButton from "../components/UploadButton";
 import useAuth from "../context/useAuth";
 
 export default function ConfirmPayment() {
@@ -56,7 +56,7 @@ export default function ConfirmPayment() {
 
             <div className="flex items-center p-4 space-x-4 border rounded-lg">
               <img
-                src="assets/qrcode-phoenix.png"
+                src="/assets/qrcode-phoenix.png"
                 alt="PromptPay QR"
                 className="object-contain w-24 h-24"
               />
