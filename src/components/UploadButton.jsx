@@ -26,7 +26,7 @@ export default function InputFileUpload({ orderId }) {
           setUploadedAssetInfo(null);
         } else if (result && result.event === "success") {
           setUploadedAssetInfo(result.info);
-          console.log(result.info)
+          // console.log(result.info)
           setUploadError(null);
 
           if (orderId && result.info.secure_url) {
@@ -36,7 +36,7 @@ export default function InputFileUpload({ orderId }) {
             sendImageUrl(orderId, result.info.secure_url)
               .then(response => {
                 // Assuming your service returns the updated order or a success message
-                console.log("Payment slip URL sent successfully:", response);
+                // console.log("Payment slip URL sent successfully:", response);
                 setLinkSubmitSuccess("หลักฐานการชำระเงินถูกส่งเรียบร้อยแล้ว");
               })
               .catch(err => {

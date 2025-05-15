@@ -7,7 +7,7 @@ export default function ConfirmPayment() {
   const location = useLocation();
   const navigate = useNavigate();
   const orderData = location.state?.orderData;
-  console.log("ข้อมูลที่รับมาจาก ConfirmOrder:", orderData);
+  // console.log("ข้อมูลที่รับมาจาก ConfirmOrder:", orderData);
 
   const { user } = useAuth();
 
@@ -16,7 +16,7 @@ export default function ConfirmPayment() {
   }
 
   const handleSubmitPayment = () => {
-    console.log("ส่งหลักฐานแล้วววว");
+    // console.log("ส่งหลักฐานแล้วววว");
 
     navigate("/cart/confirm-order/confirm-payment/order-done", {
       state: { orderId: orderData.orderId },

@@ -9,7 +9,7 @@ const AddProductDialog = ({ children, onProductAdded }) => {
   const handleAddProduct = async (productData) => {
     try {
       const result = await addProduct(productData);
-      console.log('Product added:', result);
+      // console.log('Product added:', result);
       if (onProductAdded) {
         onProductAdded();
       }

@@ -32,7 +32,7 @@ export const CartProvider = ({ children }) => {
       // Log the specific error and the data that caused it
       console.error("Error parsing cart from localStorage:", error);
       console.error("Data that caused error:", localStorage.getItem("cart"));
-      console.log("Falling back to mock data due to error.");
+      // console.log("Falling back to mock data due to error.");
       setCart(carts);
     }
   }, []); // Dependencies are empty, correct for load-once
@@ -48,8 +48,8 @@ export const CartProvider = ({ children }) => {
 
   // Add item to cart
   const addToCart = (product) => {
-    console.log(product)
-    // console.log(cart)
+    // console.log(product)
+    // // console.log(cart)
     const existingItem = cart.find(
       (item) => item.productId === product.productId && item.variantValue === product.variantValue
     );

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { deleteUser } from '../services/userApi';
 
 const DeleteConfirmationDialog = ({ user, children, onUserDeleted }) => {
@@ -8,9 +8,9 @@ const DeleteConfirmationDialog = ({ user, children, onUserDeleted }) => {
 
   const handleDeleteUser = async () => {
     try {
-      console.log('Deleting user:', user._id);
+      // console.log('Deleting user:', user._id);
       await deleteUser(user._id);
-      console.log('User deleted:', user._id);
+      // console.log('User deleted:', user._id);
       setIsOpen(false); // Close the dialog on success
       if (onUserDeleted) {
         onUserDeleted(user._id); // Notify parent component
