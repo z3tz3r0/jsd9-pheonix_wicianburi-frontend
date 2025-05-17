@@ -1,0 +1,3 @@
+; DNS Records for all-rice-inc.vercel.com
+; Add these records to your DNS provider's configuration
+_vercel    IN    TXT    vc-domain-verify=all-rice-inc.vercel.com,b9aa122b7db1e5df8fde
