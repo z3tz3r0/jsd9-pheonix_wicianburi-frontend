@@ -132,7 +132,7 @@ const ChatBot = () => {
     } finally {
       setIsLoading(false); // Reset loading state (no changes needed)
     }
-  }, [userInput, isLoading, user, isLogin, cart, getTotalItems, getSubtotal, products, prodLoading]); // Dependencies
+  }, [userInput, isLoading, user, isLogin, cart, getTotalItems, getSubtotal]); // Dependencies
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
